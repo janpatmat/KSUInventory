@@ -7,31 +7,11 @@ package ikapilanatest;
 import java.sql.*;
 public class Ikapilanatest {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            //connection
-            Connection mycon = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/awts" , "root" , "Naiskongmagpakalasingdahilwalakana14");
-            if(mycon != null){
-                System.out.println("Success");
-            }
-            /*
-            //statement
-            Statement myStat = mycon.createStatement();
-            //execute query
-            ResultSet myRs = myStat.executeQuery("select * from hotdog");
-            //print result set
-            while(myRs.next()){
-                System.out.println(myRs.getString("HDName") + ", " + myRs.getString("HDAdress"));
-            }*/
-            
-        }
-        catch(Exception ex){
-            System.out.println(ex);
-        }
+      System.out.println("Cid pisot");
+      System.out.println("Hehehehe");
+      System.out.println("awiwt");
     }
     
 }
