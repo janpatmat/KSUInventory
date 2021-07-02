@@ -6,11 +6,17 @@
 package ikapilanatest;
 import java.sql.*;
 import java.beans.AppletInitializer;
+import java.awt.AWTError;
 
 public class Ikapilanatest {
 
    
     public static void main(String[] args) {
+        
+        for (int x = 0 ; x < 5; x++){
+            System.out.println("hello world");
+        }
+   
         try{
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("arururu");
@@ -37,9 +43,6 @@ public class Ikapilanatest {
             System.out.println(ex);
         }
 
-      System.out.println("Cid pisot");
-      System.out.println("Hehehehe");
-      System.out.println("awiwt");
 
     }
     
