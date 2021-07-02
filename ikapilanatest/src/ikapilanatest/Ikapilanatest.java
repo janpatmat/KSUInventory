@@ -6,6 +6,7 @@
 package ikapilanatest;
 import java.sql.*;
 import java.beans.AppletInitializer;
+import java.awt.AWTError;
 
 public class Ikapilanatest {
 int z = 4;
@@ -13,10 +14,12 @@ int z = 4;
   
     public static void main(String[] args) {
         
-          if (4 < 5){
-    System.out.println("awit");
-        
-        
+
+        for (int x = 0 ; x < 5; x++){
+            System.out.println("hello world");
+        }
+   
+
         try{
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("arururu");
@@ -43,9 +46,6 @@ int z = 4;
             System.out.println(ex);
         }
 
-      System.out.println("Cid pisot");
-      System.out.println("Hehehehe");
-      System.out.println("awiwt");
 
     }
     
