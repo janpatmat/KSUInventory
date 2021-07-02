@@ -8,9 +8,15 @@ import java.sql.*;
 import java.beans.AppletInitializer;
 
 public class Ikapilanatest {
-
-   
+int z = 4;
+    
+  
     public static void main(String[] args) {
+        
+          if (4 < 5){
+    System.out.println("awit");
+        
+        
         try{
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("arururu");
