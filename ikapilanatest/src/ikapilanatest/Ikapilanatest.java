@@ -14,10 +14,13 @@ public class Ikapilanatest {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             //connection
-            Connection mycon = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/awts" , "root" , "Naiskongmagpakalasingdahilwalakana14");
-            if(mycon != null){
-                System.out.println("Success");
-            }
+//            Connection mycon = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/awts" , "root" , "Naiskongmagpakalasingdahilwalakana14");
+//            if(mycon != null){
+//                System.out.println("Success");
+//            }
+            
+            
+            System.out.println("hehehehehehehehehehe");
             /*
             //statement
             Statement myStat = mycon.createStatement();
