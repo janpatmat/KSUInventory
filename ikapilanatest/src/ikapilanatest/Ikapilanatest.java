@@ -7,9 +7,7 @@ package ikapilanatest;
 import java.sql.*;
 public class Ikapilanatest {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -35,6 +33,11 @@ public class Ikapilanatest {
         catch(Exception ex){
             System.out.println(ex);
         }
+
+      System.out.println("Cid pisot");
+      System.out.println("Hehehehe");
+      System.out.println("awiwt");
+
     }
     
 }
