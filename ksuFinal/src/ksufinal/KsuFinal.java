@@ -16,6 +16,11 @@ public class KsuFinal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        TransReport window = new TransReport();
+        window.setVisible(true);
+        
+        
     }
     
 }
