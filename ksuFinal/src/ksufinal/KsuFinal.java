@@ -3,20 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ksuin;
+package ksufinal;
 
 /**
  *
  * @author Ricky
  */
-public class KsuIn {
+public class KsuFinal {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Expenses exp = new Expenses();
-        exp.setVisible(true);
+        // TODO code application logic here
     }
     
 }
