@@ -39,6 +39,11 @@ public class Withdraw extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -72,15 +77,23 @@ public class Withdraw extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        
-        
+    
+    
+    
+    
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try{
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.product;");
             
             while(rs.next()){
 
                 String nm = rs.getString("Name");
+               
+                System.out.println("New Branch");
+                
                 
                 
             }
@@ -89,8 +102,7 @@ public class Withdraw extends javax.swing.JFrame {
         catch(Exception e){
             System.out.println(e);
         }
-    
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
