@@ -14,13 +14,11 @@ import javax.swing.JOptionPane;
  *
  * @author Ricky
  */
-public class Deposit extends javax.swing.JFrame {
+public class Deposit extends javax.swing.JFrame {   
     
-    public static final String user = "root";
-        public static final String pass = "Naiskongmagpakalasingdahilwalakana14";
     static ArrayList<String[]> lstDep = new ArrayList<String[]>();
     PreparedStatement st = null;
-    Connection con = null;
+    
     public Deposit() {
         initComponents();
     }
@@ -175,17 +173,16 @@ public class Deposit extends javax.swing.JFrame {
     }//GEN-LAST:event_ptxtDateActionPerformed
 
     private void pbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pbtnAddActionPerformed
-       // String[] items = {"null","null",ptxtDate.getText(), ptxtName.getText(), txtPrice.getText(),ptxtTrans.getText(),pcmbUnit.getSelectedItem().toString(),ptxtSup.getText(),"Deposit"};
-       // lstDep.add(items);
-        
-       // TransReport.changeTable(items);
+        String[] items = {"null","null",ptxtDate.getText(), ptxtName.getText(), txtPrice.getText(),ptxtTrans.getText(),pcmbUnit.getSelectedItem().toString(),ptxtSup.getText(),"Deposit"};
+//        lstDep.add(items);
+//        
+        TransReport.changeTable(items);
         try{
-             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/expenses ",user,pass);
-            //Statement st = myCon.createStatement();
-            st = con.prepareStatement("INSERT INTO product (Name,Quantity,Unit,Price,Tran,Supplier,Branch,Date)VALUES(?,?,?,?,?,?,?,?)");
+
+            st = KsuFinal.con.prepareStatement("INSERT INTO product (Name,Quantity,Unit,Price,Tran,Supplier,Branch,Date)VALUES(?,?,?,?,?,?,?,?)");
             System.out.println("p");
             st.setString(1,ptxtName.getText());
-            st.setString    (2,ptxtQty.getText());
+            st.setString(2,ptxtQty.getText());
             st.setString(3,(String) pcmbUnit.getSelectedItem());
             st.setString(4,txtPrice.getText());
             st.setString(5,ptxtTrans.getText());
@@ -199,6 +196,8 @@ public class Deposit extends javax.swing.JFrame {
         catch(Exception e){
             System.out.println(e);
         }
+        
+        
 
     }//GEN-LAST:event_pbtnAddActionPerformed
 

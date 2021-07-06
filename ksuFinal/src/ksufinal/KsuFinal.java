@@ -5,6 +5,9 @@
  */
 package ksufinal;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  *
  * @author Ricky
@@ -14,12 +17,36 @@ public class KsuFinal {
     /**
      * @param args the command line arguments
      */
+    
+    static Connection con;
+    
     public static void main(String[] args) {
         // TODO code application logic here
+        
+//        String user = "root";
+//        String pass = "Naiskongmagpakalasingdahilwalakana14";
+        
+        String user = "root";
+        String pass = "Langgalangga1";
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/expenses ",user,pass);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        
+        
+        
         
         TransReport window = new TransReport();
         window.setVisible(true);
         
+//        public static final String user = "root";
+//        public static final String pass = "Naiskongmagpakalasingdahilwalakana14";
+        
+        
+
         
     }
     

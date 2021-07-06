@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class TransReport extends javax.swing.JFrame {
 
     Deposit depositClass = new Deposit();
+    Withdraw withdrawClass = new Withdraw();
     
     public TransReport() {
         initComponents();
@@ -90,6 +91,11 @@ public class TransReport extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Withdraw");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Edit products");
@@ -148,6 +154,10 @@ public class TransReport extends javax.swing.JFrame {
         depositClass.setVisible(true);
         
     }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        withdrawClass.setVisible(true);
+    }//GEN-LAST:event_jMenu2MouseClicked
    
     public static void changeTable(String[] items){
         DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
