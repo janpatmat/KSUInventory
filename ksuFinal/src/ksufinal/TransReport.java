@@ -48,6 +48,7 @@ public class TransReport extends javax.swing.JFrame {
         button1.setLabel("button1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         TransactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,11 +153,13 @@ public class TransReport extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         depositClass.setVisible(true);
+        depositClass.setDefaultCloseOperation(depositClass.HIDE_ON_CLOSE);
         
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         withdrawClass.setVisible(true);
+        withdrawClass.setDefaultCloseOperation(withdrawClass.HIDE_ON_CLOSE);
     }//GEN-LAST:event_jMenu2MouseClicked
    
     public static void changeTable(String[] items){

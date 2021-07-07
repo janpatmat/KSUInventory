@@ -51,6 +51,7 @@ public class Deposit extends javax.swing.JFrame {
         pcmbUnit = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Date");
 

@@ -53,7 +53,11 @@ public class Withdraw extends javax.swing.JFrame {
         unitShow = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -153,7 +157,7 @@ public class Withdraw extends javax.swing.JFrame {
             int quan = Integer.parseInt(quanAndUnitArr.get(idx)[0]);
             int inputQuan = Integer.parseInt(withdrawQuanTF.getText());
             
-            if (inputQuan < quan){
+            if (inputQuan <= quan){
                 // do action
                 String newQuan = String.valueOf(quan - inputQuan);
                 
@@ -161,14 +165,14 @@ public class Withdraw extends javax.swing.JFrame {
                             
                 
                 try{
-                    KsuFinal.con.prepareStatement(statement).executeUpdate();
-                    
+                    KsuFinal.con.prepareStatement(statement).executeUpdate(); 
                 }
                 catch(Exception e){
                     System.out.println(e);
                 }
                 
-                
+                quanAndUnitArr.get(idx)[0] = newQuan; //Update the array
+                quantityShow.setText("Quantity in the Inverntory: " + newQuan + " " + quanAndUnitArr.get(idx)[1]); // Update the text field
             }
             else{
                 JOptionPane.showMessageDialog(this,"You cannot withdraw this kind of quantity");
@@ -223,6 +227,10 @@ public class Withdraw extends javax.swing.JFrame {
             unitShow.setText(unit);
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
