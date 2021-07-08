@@ -24,11 +24,11 @@ public class KsuFinal {
     public static void main(String[] args) {
         // TODO code application logic here
         
-//        String user = "root";
-//        String pass = "Naiskongmagpakalasingdahilwalakana14";
-        
         String user = "root";
-        String pass = "Langgalangga1";
+        String pass = "Naiskongmagpakalasingdahilwalakana14";
+        
+        //String user = "root";
+        //String pass = "Langgalangga1";
         
         try {
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/expenses ",user,pass);
