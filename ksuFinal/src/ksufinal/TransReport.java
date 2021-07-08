@@ -78,7 +78,7 @@ public class TransReport extends javax.swing.JFrame {
 
         jButton1.setText("jButton1");
 
-        jMenu1.setText("Deposit");
+        jMenu1.setText("Transaction");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);
