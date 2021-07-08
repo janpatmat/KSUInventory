@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TransReport extends javax.swing.JFrame {
 
-    Deposit depositClass = new Deposit();
-    Withdraw withdrawClass = new Withdraw();
+    Transaction transactionClass = new Transaction();
+//    Withdraw withdrawClass = new Withdraw();
     
     public TransReport() {
         initComponents();
@@ -41,7 +41,6 @@ public class TransReport extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -78,7 +77,7 @@ public class TransReport extends javax.swing.JFrame {
 
         jButton1.setText("jButton1");
 
-        jMenu1.setText("Deposit");
+        jMenu1.setText("Transaction");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);
@@ -90,14 +89,6 @@ public class TransReport extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Withdraw");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Edit products");
         jMenuBar1.add(jMenu3);
@@ -152,15 +143,10 @@ public class TransReport extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        depositClass.setVisible(true);
-        depositClass.setDefaultCloseOperation(depositClass.HIDE_ON_CLOSE);
+        transactionClass.setVisible(true);
+        transactionClass.setDefaultCloseOperation(transactionClass.HIDE_ON_CLOSE);
         
     }//GEN-LAST:event_jMenu1MouseClicked
-
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        withdrawClass.setVisible(true);
-        withdrawClass.setDefaultCloseOperation(withdrawClass.HIDE_ON_CLOSE);
-    }//GEN-LAST:event_jMenu2MouseClicked
    
     public static void changeTable(String[] items){
         DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
@@ -211,7 +197,6 @@ public class TransReport extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox jComboBox1;
     javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
