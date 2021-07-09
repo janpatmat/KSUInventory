@@ -151,6 +151,7 @@ public class TransReport extends javax.swing.JFrame {
     public static void changeTable(String[] items){
         DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
         TransactionTableModel.addRow(items);
+        
           
     }
     
