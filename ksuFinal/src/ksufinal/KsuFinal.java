@@ -41,7 +41,7 @@ public class KsuFinal {
         //String pass = "123456789";
 
         try {
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/expenses ",user,pass);
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/expenses ",user,pass);
         }
         catch(Exception e){
             System.out.println(e);

@@ -71,6 +71,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="productName">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
@@ -79,6 +82,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="java.awt.Label" name="label1">
       <Properties>
@@ -91,6 +97,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="productUnit">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="java.awt.Label" name="label3">
       <Properties>
@@ -98,6 +107,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="minQ">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

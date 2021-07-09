@@ -12,13 +12,15 @@ import javax.swing.JOptionPane;
  *
  * @author Ricky
  */
-public class AddProduct extends javax.swing.JFrame {
+public class editProduct extends javax.swing.JFrame {
 PreparedStatement st = null;
 public String prdnm = null;
+//adProd adprodclass = new adProd();
+
     /**
      * Creates new form AddProduct
      */
-    public AddProduct() {
+    public editProduct() {
         initComponents();
     }
 
@@ -99,9 +101,24 @@ public String prdnm = null;
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try{
+      if(adProd.proddbTable.getSelectedRowCount()== 0){
+          System.out.print("hehe");
+      }
+      else{
+        try{
+            
+            int i = adProd.proddbTable.getSelectedRow();
+            //update new fields
+            
+            //update db except ID
+            
+            //check if same
            boolean checker = false;
-        st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, productUnit,prodMinq) VALUES (?,?,?,?)");
+           String id = adProd.adProdArr.get(i)[0];
+           String sql = "UPDATE producttable SET productName = '"+productName.getText()+"' WHERE (productID = '"+ id +"')";
+           
+        st = KsuFinal.con.prepareStatement(sql);
+        
       String nm = productName.getText();
       Statement sta = KsuFinal.con.createStatement();
       ResultSet rs = sta.executeQuery("SELECT productName from producttable");
@@ -114,7 +131,8 @@ public String prdnm = null;
           else{
               checker = false;
           }
-          }
+        }
+      
       System.out.println("prdnm = " + prdnm);
       System.out.println("nm = " + nm);
       System.out.println("checker = " + checker);
@@ -123,11 +141,7 @@ public String prdnm = null;
           
       }
       else{
-        st.setString(1, productName.getText());;
-        st.setString(2, "0");
-        st.setString(3, productUnit.getText());
-        st.setString(4, minQ.getText());
-      
+             
         
         
        st.executeUpdate();
@@ -137,6 +151,7 @@ public String prdnm = null;
        catch(Exception e){
            System.out.println(e);
        }
+      }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -156,31 +171,32 @@ public String prdnm = null;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddProduct().setVisible(true);
+                new editProduct().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public static javax.swing.JButton jButton1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
-    private javax.swing.JTextField minQ;
-    private javax.swing.JTextField productName;
-    private javax.swing.JTextField productUnit;
+    public static javax.swing.JTextField minQ;
+    public static javax.swing.JTextField productName;
+    public static javax.swing.JTextField productUnit;
     // End of variables declaration//GEN-END:variables
 }
