@@ -217,7 +217,7 @@ public class Transaction extends javax.swing.JFrame {
         try{
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
             while(rs.next()){
-
+                String id = rs.getString("productID");
                 String nm = rs.getString("productName");
                 String qt = rs.getString("productQuantity");
 //                String qt = "null";
@@ -225,7 +225,7 @@ public class Transaction extends javax.swing.JFrame {
                 String mm = rs.getString("prodMinq");
                 
                 productComboBox.addItem(nm);
-                String[] item = {qt, ut, nm, mm};
+                String[] item = {qt, ut, nm, mm, id};
                 
                 transactionArr.add(item);
                 
@@ -275,7 +275,7 @@ public class Transaction extends javax.swing.JFrame {
         suppBranchLabel.setText("Branch");
         transSuppBranchTF.setText("");
         transactionQtyTF.setText("");
-        transactionPriceTF.setText("");
+        transactionPriceTF.setText("10");
         transactionBtn.setText("Withdraw");
        
         currRadioBtn = "withdraw";
@@ -309,14 +309,20 @@ public class Transaction extends javax.swing.JFrame {
             newQuan =String.valueOf(quan - inputQuan);
             int intNewQuan = Integer.parseInt(newQuan);
             int intMin = Integer.parseInt(transactionArr.get(idx)[3]);
-            
-            if (intNewQuan < intMin){
-                // display Warning
+            if (intNewQuan >= 0){
+                if (intNewQuan < intMin){
+                    // display Warning
+
+                    yesNO = JOptionPane.showConfirmDialog (null, "You product is now below the minimum, Would you still like to proceed?","Warning",JOptionPane.YES_NO_OPTION);
+
+                }
+            }else{
                 
-                yesNO = JOptionPane.showConfirmDialog (null, "You product is now below the minimum, Would you still like to proceed?","Warning",JOptionPane.YES_NO_OPTION);
+                yesNO = JOptionPane.NO_OPTION;
+                JOptionPane.showMessageDialog(this,"You cannot withdraw this quantity");
             }
         }
-        if (yesNO != JOptionPane.NO_OPTION){
+        if (yesNO == JOptionPane.YES_OPTION){
             String statement = "UPDATE expenses.producttable SET productQuantity = " + newQuan + " WHERE productName = '" + nm + "'";
 
             try{
@@ -326,40 +332,49 @@ public class Transaction extends javax.swing.JFrame {
                 System.out.println(e);
             }      
 
-            transactionArr.get(idx)[0] = newQuan; // Update the array}
-//            try{
-//                PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO product (TransactionNo,Name,Quantity,Unit,Price,Supp,Branch,Date)VALUES(?,?,?,?,?,?,?,?)");
-//                st.setString(1, transactionNoTF.getText());
-//                st.setString(2, transactionArr.get(idx)[2]);
-//                st.setString(3, transactionArr.get(idx)[0]);
-//                st.setString(4, transactionArr.get(idx)[1]);
-//                st.setString(5, transactionPriceTF.getText());
-//                st.setString(6, transSuppBranchTF.getText());
-//                st.setString(7, java.time.LocalDate.now().toString());
-//                
-//                
-//                
-//            }
-//            catch(Exception e){
-//                System.out.println(e);
-//            }  
             
+            transactionArr.get(idx)[0] = newQuan; // Update the array
             
+            //Edit the table in the transactions table
+            try{
+                PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID,Name,Quantity,Unit,Price,SuppBranch,Date, Action)VALUES(?,?,?,?,?,?,?,?)");
+                st.setString(1, transactionArr.get(idx)[4]);
+                st.setString(2, transactionArr.get(idx)[2]);
+                st.setString(3, transactionArr.get(idx)[0]);
+                st.setString(4, transactionArr.get(idx)[1]);
+                st.setString(5, transactionPriceTF.getText());
+                st.setString(6, transSuppBranchTF.getText());
+                st.setString(7, java.time.LocalDate.now().toString());
+                if (currRadioBtn.equals("deposit")){
+                    st.setString(8, "deposit");
+                }else{
+                    st.setString(8, "withdraw");
+                }
+
+                st.executeUpdate();
+
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }  
+            TransReport.updateTransReportTable();
+
+
             if (currRadioBtn.equals("deposit")){
                 JOptionPane.showMessageDialog(this,"Successfully deposited the product");
             }else{
                 JOptionPane.showMessageDialog(this,"Successfully withdrawn the product");
                 quantityShow.setText("Current stocks: " + newQuan +  " " + transactionArr.get(idx)[1]); // Update the Quantity text field
             }
-            
-            
+
+
         }
         
         
 
 
         
-        //Edit the table in the transactions table
+        
         
         
         
