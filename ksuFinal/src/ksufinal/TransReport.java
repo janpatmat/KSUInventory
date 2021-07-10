@@ -1,5 +1,6 @@
 package ksufinal;
 
+import java.sql.ResultSet;
 import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 
@@ -49,13 +50,18 @@ public class TransReport extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         TransactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Trans. ID", "Prod. ID", "Date", "Name", "Price", "Quantity", "Unit of measure", "Branch", "deposit/withdraw"
+                "Trans. ID", "Prod. ID", "Date", "Name", "Price", "Quantity", "Unit of measure", "Branch/Supplier", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -154,15 +160,58 @@ public class TransReport extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenu1MouseClicked
 
+<<<<<<< HEAD
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         prodTrans.setVisible(true);
          prodTrans.setDefaultCloseOperation(prodTrans.HIDE_ON_CLOSE);
         
     }//GEN-LAST:event_jMenu3MouseClicked
    
+=======
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        updateTransReportTable();
+    }//GEN-LAST:event_formWindowOpened
+    
+    public static void updateTransReportTable(){
+        
+        DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
+        
+        TransactionTableModel.setRowCount(0);
+        try{
+            ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttrans;");
+            while(rs.next()){
+
+                String id = rs.getString("prodID");
+                String TranNo = rs.getString("TransactionNo");
+                String nm = rs.getString("Name");
+                String qty = rs.getString("Quantity");
+                String ut = rs.getString("Unit");
+                String pr = rs.getString("Price");
+                String sb = rs.getString("SuppBranch");
+                String dt = rs.getString("Date");
+                String act = rs.getString("Action");
+
+                String[] item = {TranNo, id, dt, nm, pr, qty, ut, sb, act};
+                
+                
+                TransactionTableModel.addRow(item);
+                
+//                quanAndUnitArr.add(item);
+
+            }  
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    
+    
+>>>>>>> b80a2d44b0b4f840b9d06e14b0cc36a36d0e2d51
     public static void changeTable(String[] items){
         DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
         TransactionTableModel.addRow(items);
+        
           
     }
     

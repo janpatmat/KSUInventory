@@ -171,6 +171,7 @@ public class Withdraw extends javax.swing.JFrame {
                     System.out.println(e);
                 }
                 
+                
                 quanAndUnitArr.get(idx)[0] = newQuan; //Update the array
                 quantityShow.setText("Quantity in the Inverntory: " + newQuan + " " + quanAndUnitArr.get(idx)[1]); // Update the text field
             }
