@@ -160,14 +160,13 @@ public class TransReport extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenu1MouseClicked
 
-<<<<<<< HEAD
+
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         prodTrans.setVisible(true);
          prodTrans.setDefaultCloseOperation(prodTrans.HIDE_ON_CLOSE);
         
     }//GEN-LAST:event_jMenu3MouseClicked
-   
-=======
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         updateTransReportTable();
     }//GEN-LAST:event_formWindowOpened
@@ -207,7 +206,6 @@ public class TransReport extends javax.swing.JFrame {
     
     
     
->>>>>>> b80a2d44b0b4f840b9d06e14b0cc36a36d0e2d51
     public static void changeTable(String[] items){
         DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
         TransactionTableModel.addRow(items);
