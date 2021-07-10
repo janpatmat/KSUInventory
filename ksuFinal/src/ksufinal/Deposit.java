@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -180,7 +181,7 @@ public class Deposit extends javax.swing.JFrame {
         TransReport.changeTable(items);
         try{
 
-            st = KsuFinal.con.prepareStatement("INSERT INTO product (Name,Quantity,Unit,Price,Tran,Supplier,Branch,Date)VALUES(?,?,?,?,?,?,?,?)");
+         //   st = KsuFinal.con.prepareStatement("INSERT INTO product (Name,Quantity,Unit,Price,Tran,Supplier,Branch,Date)VALUES(?,?,?,?,?,?,?,?)");
             System.out.println("p");
             st.setString(1,ptxtName.getText());
             st.setString(2,ptxtQty.getText());

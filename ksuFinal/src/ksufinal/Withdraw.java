@@ -161,7 +161,7 @@ public class Withdraw extends javax.swing.JFrame {
                 // do action
                 String newQuan = String.valueOf(quan - inputQuan);
                 
-                String statement = "UPDATE expenses.product SET Quantity = " + newQuan + " WHERE Name = '" + jComboBox1.getSelectedItem().toString() + "'";
+                String statement = "UPDATE expenses.producttrans SET Quantity = " + newQuan + " WHERE Name = '" + jComboBox1.getSelectedItem().toString() + "'";
                             
                 
                 try{
@@ -189,7 +189,7 @@ public class Withdraw extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try{
-            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.product;");
+            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttrans;");
             while(rs.next()){
 
                 String nm = rs.getString("Name");
