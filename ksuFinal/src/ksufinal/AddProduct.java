@@ -101,7 +101,7 @@ public String prdnm = null;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        try{
            boolean checker = false;
-        st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, productUnit,prodMinq) VALUES (?,?,?,?)");
+        st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, productUnit,prodMinq,standardPrice) VALUES (?,?,?,?,?)");
       String nm = productName.getText();
       Statement sta = KsuFinal.con.createStatement();
       ResultSet rs = sta.executeQuery("SELECT productName from producttable");
@@ -127,6 +127,7 @@ public String prdnm = null;
         st.setString(2, "0");
         st.setString(3, productUnit.getText());
         st.setString(4, minQ.getText());
+        st.setString(5, "0");
       
         
         

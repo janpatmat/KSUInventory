@@ -52,11 +52,11 @@ PreparedStatement st = null;
 
             },
             new String [] {
-                "Name", "Qty", "UoM"
+                "Name", "Qty", "UoM", "SP"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -130,7 +130,8 @@ PreparedStatement st = null;
                 String name = prodres.getString("productName");
                 String quan = String.valueOf(prodres.getInt("productQuantity"));
                 String unit = prodres.getString("productUnit");
-                String[] item = {name, quan, unit};
+                String stndrd = prodres.getString("standardPrice");
+                String[] item = {name, quan, unit, stndrd};
                 t.addRow(item);
 
                 
@@ -147,7 +148,10 @@ PreparedStatement st = null;
         
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-      try{
+        DefaultTableModel t = (DefaultTableModel)deacTable.getModel();
+        
+        t.setRowCount(0);
+        try{
         Statement prodstate = KsuFinal.con.createStatement();
         ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'FALSE'");
         
@@ -157,9 +161,13 @@ PreparedStatement st = null;
             String name = prodres.getString("productName");
             String quan = String.valueOf(prodres.getInt("productQuantity"));
             String unit = prodres.getString("productUnit");
-            String[] item = {name, quan, unit};
-            String[] item2 = {id, name, quan, unit};
-            DefaultTableModel t = (DefaultTableModel)deacTable.getModel();
+            String stndrd = prodres.getString("standardPrice");
+            String fromD = prodres.getString("dateFrom");
+            String toD = prodres.getString("dateTo");
+            
+            String[] item = {name, quan, unit, stndrd};
+            String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
+            
             
             t.addRow(item);
             
@@ -175,18 +183,17 @@ PreparedStatement st = null;
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       printThis();
+//       printThis();
         int i = deacTable.getSelectedRow();
        
         int id = Integer.parseInt(deacArr.get(i)[0]);
         String pname = deacTable.getValueAt(i, 0).toString();
         String pun = deacTable.getValueAt(i, 1).toString();
         String pmq = deacTable.getValueAt(i, 2).toString();
-        System.out.print(pname);
+//        System.out.print(pname);
         
         try{
             st = KsuFinal.con.prepareStatement("UPDATE producttable SET Active = 'TRUE' WHERE productID = "+id);
-            System.err.println(st);
             st.executeUpdate();
         }
         catch(Exception e){

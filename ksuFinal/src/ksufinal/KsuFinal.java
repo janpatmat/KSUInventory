@@ -31,8 +31,6 @@ public class KsuFinal {
         String user = "root";
         String pass = "Langgalangga1";
 
-        System.out.print("this is branch");
-
 //        String user = "root";
 //        String pass = "Naiskongmagpakalasingdahilwalakana14";
         
