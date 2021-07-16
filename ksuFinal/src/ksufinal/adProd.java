@@ -345,7 +345,7 @@ public class adProd extends javax.swing.JFrame {
                 String prodId = adProdArr.get(idx)[0];
                 
 
-
+                    
 
                 String statement = "SELECT * FROM expenses.producttrans WHERE prodID = " + prodId + " AND Action = 'deposit'";
 
