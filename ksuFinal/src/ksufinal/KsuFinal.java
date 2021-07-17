@@ -50,7 +50,7 @@ public class KsuFinal {
         
         
         
-        login index = new login();
+        Menu index = new Menu();
         index.setVisible(true);
         
 //        public static final String user = "root";
