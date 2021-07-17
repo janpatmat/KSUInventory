@@ -49,8 +49,6 @@ public class Transaction extends javax.swing.JFrame {
         transactionQtyTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         transactionPriceTF = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        transactionNoTF = new javax.swing.JTextField();
         quantityShow = new javax.swing.JLabel();
         transactionBtn = new javax.swing.JButton();
         suppBranchLabel = new javax.swing.JLabel();
@@ -95,10 +93,6 @@ public class Transaction extends javax.swing.JFrame {
         jLabel3.setText("Quantity");
 
         jLabel4.setText("Price");
-
-        jLabel5.setText("Transaction No. ");
-
-        transactionNoTF.setEditable(false);
 
         transactionBtn.setText("Deposit");
         transactionBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -149,13 +143,11 @@ public class Transaction extends javax.swing.JFrame {
                                 .addComponent(quantityShow, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
                                     .addComponent(suppBranchLabel)
                                     .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
+                                .addGap(65, 65, 65)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(transactionNoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                                    .addComponent(transSuppBranchTF)
+                                    .addComponent(transSuppBranchTF, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                                     .addComponent(transactionPriceTF))
                                 .addContainerGap())))))
         );
@@ -187,11 +179,7 @@ public class Transaction extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(suppBranchLabel)
                     .addComponent(transSuppBranchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(transactionNoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(129, 129, 129)
+                .addGap(169, 169, 169)
                 .addComponent(transactionBtn)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
@@ -313,7 +301,7 @@ public class Transaction extends javax.swing.JFrame {
             int intMin = Integer.parseInt(transactionArr.get(idx)[3]);
             if (intNewQuan >= 0){
                 if (intNewQuan < intMin){
-                    // display Warning
+                    // display Warning if below minimum
 
                     yesNO = JOptionPane.showConfirmDialog (null, "You product is now below the minimum, Would you still like to proceed?","Warning",JOptionPane.YES_NO_OPTION);
 
@@ -426,13 +414,11 @@ public class Transaction extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JComboBox<String> productComboBox;
     private javax.swing.JLabel quantityShow;
     private javax.swing.JLabel suppBranchLabel;
     private javax.swing.JTextField transSuppBranchTF;
     private javax.swing.JButton transactionBtn;
-    private javax.swing.JTextField transactionNoTF;
     private javax.swing.JTextField transactionPriceTF;
     private javax.swing.JTextField transactionQtyTF;
     private javax.swing.JTextField unitShow;

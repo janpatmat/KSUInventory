@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static ksufinal.sortProduct.selectedProducts;
 
@@ -79,6 +80,7 @@ public class TransReport extends javax.swing.JFrame {
             }
         });
 
+        TransactionTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         TransactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -95,6 +97,7 @@ public class TransReport extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TransactionTable.setRowHeight(20);
         jScrollPane1.setViewportView(TransactionTable);
 
         deliveryCB.setText("Delivery");
@@ -109,7 +112,7 @@ public class TransReport extends javax.swing.JFrame {
 
         jLabel5.setText("Branch/Supplier");
 
-        editDateCB.setText("Edit Date");
+        editDateCB.setText("Edit Period");
         editDateCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editDateCBActionPerformed(evt);
@@ -325,9 +328,12 @@ public class TransReport extends javax.swing.JFrame {
 
     private void filterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterBtnActionPerformed
         DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
-        TransactionTableModel.setRowCount(0);
+        
+        
+        Boolean notChange = true;
         
         ArrayList<String> strArr = new ArrayList<String>();
+        
         if (deliveryCB.isSelected()){
             strArr.add("Action = 'deposit'");
         }
@@ -344,88 +350,127 @@ public class TransReport extends javax.swing.JFrame {
         if(sortProduct.prodSortStatement.length() > 5){
             finalArr.add(sortProduct.prodSortStatement);
         }
+        else if(prodSortTF.getText().equals("All")){
+            //do Nothing
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Please select a product");
+            notChange = false;
+        }
 
         
         if (sortUOM.UOMSortStatement.length() > 5){
             finalArr.add(sortUOM.UOMSortStatement);
+        }
+        else if(UOMSortTF.getText().equals("All")){
+            //do Nothing
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Please select a Unit of Measure");
+            notChange = false;
         }
         
         
         if (sortBS.BSSortStatement.length() > 5){
             finalArr.add(sortBS.BSSortStatement);
         }
+        else if(BSSortTF.getText().equals("All")){
+            //do Nothing
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Please select a Branch or Supplier");
+            notChange = false;
+        }
  
         
         if (deliveryWithdrawStatement.length() > 5){
             finalArr.add(deliveryWithdrawStatement);
         }
-        
-        String finalStatement = "SELECT * FROM expenses.producttrans";
-        
-        if (finalArr.size() > 0){
-            finalStatement += " WHERE";
-            finalStatement += String.join("and", finalArr);
+        else{
+            JOptionPane.showMessageDialog(this,"Please select if either withdraw or deposit");
+            notChange = false;
         }
         
-        if (editDateCB.isSelected()){
-            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String fdate = dFormat.format(fromDateChooser.getDate()); 
-            String tdate = dFormat.format(toDateChooser.getDate());
+        if (notChange){
+            
+            String finalStatement = "SELECT * FROM expenses.producttrans";
 
-            try{
-                rs = KsuFinal.con.createStatement().executeQuery(finalStatement);
-                while(rs.next()){
+            if (finalArr.size() > 0){
+                finalStatement += " WHERE";
+                finalStatement += String.join("and", finalArr);
+            }
 
-                    String id = rs.getString("prodID");
-                    String TranNo = rs.getString("TransactionNo");
-                    String nm = rs.getString("Name");
-                    String qty = rs.getString("Quantity");
-                    String ut = rs.getString("Unit");
-                    String pr = rs.getString("Price");
-                    String sb = rs.getString("SuppBranch");
-                    String dt = rs.getString("Date");
-                    String act = rs.getString("Action");
+            if (editDateCB.isSelected()){
+
+                
+                try{
+                    SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String fdate = dFormat.format(fromDateChooser.getDate()); 
+                    String tdate = dFormat.format(toDateChooser.getDate());
+                    TransactionTableModel.setRowCount(0);
+                    try{
+                        rs = KsuFinal.con.createStatement().executeQuery(finalStatement);
+                        while(rs.next()){
+
+                            String id = rs.getString("prodID");
+                            String TranNo = rs.getString("TransactionNo");
+                            String nm = rs.getString("Name");
+                            String qty = rs.getString("Quantity");
+                            String ut = rs.getString("Unit");
+                            String pr = rs.getString("Price");
+                            String sb = rs.getString("SuppBranch");
+                            String dt = rs.getString("Date");
+                            String act = rs.getString("Action");
 
 
-                    Date currdate = dFormat.parse(dt);
-                    Date fromDate = dFormat.parse(fdate);
-                    Date toDate = dFormat.parse(tdate);
+                            Date currdate = dFormat.parse(dt);
+                            Date fromDate = dFormat.parse(fdate);
+                            Date toDate = dFormat.parse(tdate);
 
-                    if (((currdate.after(fromDate) && currdate.before(toDate)) || currdate.equals(fromDate) || currdate.equals(toDate)) && (fromDate.before(toDate) || fromDate.equals(toDate))){
+                            if (((currdate.after(fromDate) && currdate.before(toDate)) || currdate.equals(fromDate) || currdate.equals(toDate)) && (fromDate.before(toDate) || fromDate.equals(toDate))){
+
+                                String[] item = {TranNo, id, dt, nm, pr, qty, ut, sb, act};
+                                TransactionTableModel.addRow(item);
+                            }
+
+                        }
+                        JOptionPane.showMessageDialog(this,"Filtered Successfully!");
+                    }
+                    catch(Exception e){
+                        System.out.println(e);
+                    }
+                }catch(NullPointerException ex){
+                    JOptionPane.showMessageDialog(this,"Please input a period or uncheck the Edit Period checkbox");
+                }
+                
+            }else{
+                TransactionTableModel.setRowCount(0);
+                try{
+                    rs = KsuFinal.con.createStatement().executeQuery(finalStatement);
+                    while(rs.next()){
+
+                        String id = rs.getString("prodID");
+                        String TranNo = rs.getString("TransactionNo");
+                        String nm = rs.getString("Name");
+                        String qty = rs.getString("Quantity");
+                        String ut = rs.getString("Unit"); 
+                        String pr = rs.getString("Price");
+                        String sb = rs.getString("SuppBranch");
+                        String dt = rs.getString("Date");
+                        String act = rs.getString("Action");
 
                         String[] item = {TranNo, id, dt, nm, pr, qty, ut, sb, act};
                         TransactionTableModel.addRow(item);
+
+
                     }
-
-                }  
+                    JOptionPane.showMessageDialog(this,"Filtered Successfully!");
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                }
             }
-            catch(Exception e){
-                System.out.println(e);
-            }
-        }else{
-            try{
-                rs = KsuFinal.con.createStatement().executeQuery(finalStatement);
-                while(rs.next()){
-
-                    String id = rs.getString("prodID");
-                    String TranNo = rs.getString("TransactionNo");
-                    String nm = rs.getString("Name");
-                    String qty = rs.getString("Quantity");
-                    String ut = rs.getString("Unit");
-                    String pr = rs.getString("Price");
-                    String sb = rs.getString("SuppBranch");
-                    String dt = rs.getString("Date");
-                    String act = rs.getString("Action");
-
-                    String[] item = {TranNo, id, dt, nm, pr, qty, ut, sb, act};
-                    TransactionTableModel.addRow(item);
-                    
-
-                }  
-            }
-            catch(Exception e){
-                System.out.println(e);
-            }
+            
         }
         
     }//GEN-LAST:event_filterBtnActionPerformed

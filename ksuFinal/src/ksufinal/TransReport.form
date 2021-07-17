@@ -182,6 +182,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="TransactionTable">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="15" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="9" rowCount="0">
                 <Column editable="false" title="Trans. ID" type="java.lang.Object"/>
@@ -244,6 +247,7 @@
                 </Column>
               </TableColumnModel>
             </Property>
+            <Property name="rowHeight" type="int" value="20"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
@@ -290,7 +294,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="editDateCB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Date"/>
+        <Property name="text" type="java.lang.String" value="Edit Period"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editDateCBActionPerformed"/>

@@ -107,11 +107,10 @@ public class sortUOM extends javax.swing.JFrame {
     private void saveUOMSortBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveUOMSortBtnActionPerformed
 
         selectedUOM.clear();
+        UOMSortStatement = "";
 
         if (selectAllCBox.isSelected()){
-            for (int x = 0; x < sortUOMTable.getRowCount(); x++){
-                selectedUOM.add(sortUOMTable.getValueAt(x, 0).toString());
-            }
+
             TransReport.UOMSortTF.setText("All");
         }
         else{
@@ -132,8 +131,8 @@ public class sortUOM extends javax.swing.JFrame {
             
         }
 
-
-
+        this.setVisible(false);
+        
         //        System.out.println(jointArray);
 
     }//GEN-LAST:event_saveUOMSortBtnActionPerformed

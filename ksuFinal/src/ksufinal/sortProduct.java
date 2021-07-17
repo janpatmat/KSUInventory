@@ -140,12 +140,9 @@ public class sortProduct extends javax.swing.JFrame {
     private void saveprodSortBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveprodSortBtnActionPerformed
         
         selectedProducts.clear();
-        
+        prodSortStatement = "";
         
         if (selectAllCBox.isSelected()){
-            for (int x = 0; x < sortProdTable.getRowCount(); x++){  
-                selectedProducts.add(sortProdTable.getValueAt(x, 0).toString());
-            }
             TransReport.prodSortTF.setText("All");
         }
         else{
@@ -165,6 +162,8 @@ public class sortProduct extends javax.swing.JFrame {
             prodSortStatement = " (" + String.join(" or ", strArr) + ") ";
             
         }
+        
+        this.setVisible(false);
         
         System.out.println(prodSortStatement);
         

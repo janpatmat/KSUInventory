@@ -300,25 +300,34 @@ public class adProd extends javax.swing.JFrame {
     }//GEN-LAST:event_proddbTableMouseClicked
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        int i = proddbTable.getSelectedRow();
-        int id = Integer.parseInt(adProdArr.get(i)[0]);
+        int yesNO = 0;
+        yesNO = JOptionPane.showConfirmDialog (null, "Do you really want to deactivate these products?","Warning",JOptionPane.YES_NO_OPTION);
         
         
-        try{
-            st = KsuFinal.con.prepareStatement("UPDATE producttable SET Active = 'FALSE' WHERE productID = " + id);
+        if (yesNO == JOptionPane.YES_OPTION){
 
-            st.executeUpdate();
+            int[] allSelected = proddbTable.getSelectedRows();
+            for (int x = allSelected.length-1; x > -1; x--){
+                int i = allSelected[x];
+                int id = Integer.parseInt(adProdArr.get(i)[0]);
 
+
+                try{
+                    st = KsuFinal.con.prepareStatement("UPDATE producttable SET Active = 'FALSE' WHERE productID = " + id);
+
+                    st.executeUpdate();
+
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                }
+
+                deactivated.deacArr.add(adProdArr.get(i));
+                adProdArr.remove(i);
+                editActiveTable();
+                deactivated.editDeactiveTable();
+            }
         }
-        catch(Exception e){
-            System.out.println(e);
-        }
-        
-        deactivated.deacArr.add(adProdArr.get(i));
-        adProdArr.remove(i);
-        editActiveTable();
-        deactivated.editDeactiveTable();
         
     }//GEN-LAST:event_jButton2ActionPerformed
     public static void printThis(){
@@ -328,6 +337,7 @@ public class adProd extends javax.swing.JFrame {
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dec.setVisible(true);
+        dec.setDefaultCloseOperation(dec.HIDE_ON_CLOSE);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void SPBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SPBtnActionPerformed

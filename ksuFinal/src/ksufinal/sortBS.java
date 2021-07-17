@@ -108,11 +108,11 @@ public class sortBS extends javax.swing.JFrame {
     private void saveBSSortBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBSSortBtnActionPerformed
 
         selectedBS.clear();
+        
+        BSSortStatement = "";
 
         if (selectAllCBox.isSelected()){
-            for (int x = 0; x < sortBSTable.getRowCount(); x++){
-                selectedBS.add(sortBSTable.getValueAt(x, 0).toString());
-            }
+
             TransReport.BSSortTF.setText("All");
         }
         else{
@@ -135,7 +135,7 @@ public class sortBS extends javax.swing.JFrame {
             System.out.println(BSSortStatement);
         }
 
-
+        this.setVisible(false);
 
         //        System.out.println(jointArray);
     }//GEN-LAST:event_saveBSSortBtnActionPerformed
