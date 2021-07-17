@@ -43,15 +43,13 @@ public class Transaction extends javax.swing.JFrame {
         depositRadioBtn = new javax.swing.JRadioButton();
         withdrawRadioBtn = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        productComboBox = new javax.swing.JComboBox<String>();
+        productComboBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         unitShow = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         transactionQtyTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         transactionPriceTF = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        transactionNoTF = new javax.swing.JTextField();
         quantityShow = new javax.swing.JLabel();
         transactionBtn = new javax.swing.JButton();
         suppBranchLabel = new javax.swing.JLabel();
@@ -99,10 +97,6 @@ public class Transaction extends javax.swing.JFrame {
         jLabel3.setText("Quantity");
 
         jLabel4.setText("Price");
-
-        jLabel5.setText("Transaction No. ");
-
-        transactionNoTF.setEditable(false);
 
         transactionBtn.setText("Deposit");
         transactionBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -165,14 +159,11 @@ public class Transaction extends javax.swing.JFrame {
                                 .addComponent(quantityShow, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
                                     .addComponent(suppBranchLabel)
                                     .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
+                                .addGap(65, 65, 65)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(transactionNoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                                        .addComponent(transactionPriceTF))
+                                    .addComponent(transactionPriceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(supCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(32, 32, 32)
@@ -208,11 +199,7 @@ public class Transaction extends javax.swing.JFrame {
                     .addComponent(suppBranchLabel)
                     .addComponent(supCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(branchCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(transactionNoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(129, 129, 129)
+                .addGap(169, 169, 169)
                 .addComponent(transactionBtn)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -468,7 +455,6 @@ public class Transaction extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JComboBox<String> productComboBox;
@@ -476,7 +462,6 @@ public class Transaction extends javax.swing.JFrame {
     private javax.swing.JComboBox supCmb;
     private javax.swing.JLabel suppBranchLabel;
     private javax.swing.JButton transactionBtn;
-    private javax.swing.JTextField transactionNoTF;
     private javax.swing.JTextField transactionPriceTF;
     private javax.swing.JTextField transactionQtyTF;
     private javax.swing.JTextField unitShow;
