@@ -215,6 +215,7 @@ public class Transaction extends javax.swing.JFrame {
             
             if (currRadioBtn.equals("withdraw")){
                 quantityShow.setText("Current stocks: " + quan +  " " + transactionArr.get(idx)[1]);
+                transactionPriceTF.setText(transactionArr.get(idx)[5]);
             }
 //            quantityShow.setText("Quantity in the Inverntory: " + quan + " " + unit);
             unitShow.setText(unit);
@@ -233,9 +234,10 @@ public class Transaction extends javax.swing.JFrame {
 //                String qt = "null";
                 String ut = rs.getString("productUnit");
                 String mm = rs.getString("prodMinq");
+                String sp = rs.getString("standardPrice");
                 
                 productComboBox.addItem(nm);
-                String[] item = {qt, ut, nm, mm, id};
+                String[] item = {qt, ut, nm, mm, id, sp};
                 
                 transactionArr.add(item);
                 
@@ -293,7 +295,7 @@ public class Transaction extends javax.swing.JFrame {
         suppBranchLabel.setText("Branch");
        // transSuppBranchTF.setText("");
         transactionQtyTF.setText("");
-        transactionPriceTF.setText("10");
+        transactionPriceTF.setText(transactionArr.get(idx)[5]);
         transactionBtn.setText("Withdraw");
        
         currRadioBtn = "withdraw";
@@ -331,7 +333,7 @@ public class Transaction extends javax.swing.JFrame {
             int intMin = Integer.parseInt(transactionArr.get(idx)[3]);
             if (intNewQuan >= 0){
                 if (intNewQuan < intMin){
-                    // display Warning
+                    // display Warning if below minimum
 
                     yesNO = JOptionPane.showConfirmDialog (null, "You product is now below the minimum, Would you still like to proceed?","Warning",JOptionPane.YES_NO_OPTION);
 

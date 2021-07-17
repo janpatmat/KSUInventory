@@ -25,11 +25,9 @@ public class KsuFinal {
         // TODO code application logic here
         
 
-//        String user = "root";
-//        String pass = "Naiskongmagpakalasingdahilwalakana14";
         
-        //String user = "root";
-        //String pass = "Langgalangga1";
+//        String user = "root";
+//        String pass = "Langgalangga1";
 
 //        String user = "root";
 //        String pass = "Naiskongmagpakalasingdahilwalakana14";
@@ -41,7 +39,7 @@ public class KsuFinal {
         //String pass = "123456789";
 
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/expenses ",user,pass);
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/expenses",user,pass);
         }
         catch(Exception e){
             System.out.println(e);
@@ -50,8 +48,11 @@ public class KsuFinal {
         
         
         
-        Menu index = new Menu();
-        index.setVisible(true);
+//        Menu index = new Menu();
+//        index.setVisible(true);
+        
+        TransReport a = new TransReport();
+        a.setVisible(true);
         
 //        public static final String user = "root";
 //        public static final String pass = "Naiskongmagpakalasingdahilwalakana14";

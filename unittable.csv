@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 "supplierID";"supplierName"
 3;"de"
 4;"de"
 5;"de"
+=======
+"unitID";"Unit"
+1;"kl"
+3;"gal"
+>>>>>>> standardPrice
