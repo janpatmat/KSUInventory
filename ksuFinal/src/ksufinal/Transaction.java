@@ -21,6 +21,7 @@ public class Transaction extends javax.swing.JFrame {
     ResultSet rs;
     PreparedStatement st = null;
     ArrayList<String[]> transactionArr = new ArrayList<String[]>();
+    ArrayList <String> supar = new ArrayList <String>();
     String currRadioBtn = "deposit";
     /**
      * Creates new form Transaction
@@ -42,7 +43,7 @@ public class Transaction extends javax.swing.JFrame {
         depositRadioBtn = new javax.swing.JRadioButton();
         withdrawRadioBtn = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        productComboBox = new javax.swing.JComboBox<>();
+        productComboBox = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
         unitShow = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -54,7 +55,10 @@ public class Transaction extends javax.swing.JFrame {
         quantityShow = new javax.swing.JLabel();
         transactionBtn = new javax.swing.JButton();
         suppBranchLabel = new javax.swing.JLabel();
-        transSuppBranchTF = new javax.swing.JTextField();
+        supCmb = new javax.swing.JComboBox();
+        branchCmb = new javax.swing.JComboBox();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -109,6 +113,18 @@ public class Transaction extends javax.swing.JFrame {
 
         suppBranchLabel.setText("Supplier");
 
+        branchCmb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Juna", "Marfori", "Bangkal" }));
+
+        jMenu1.setText("Add suplier");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,10 +169,14 @@ public class Transaction extends javax.swing.JFrame {
                                     .addComponent(suppBranchLabel)
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(transactionNoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                                    .addComponent(transSuppBranchTF)
-                                    .addComponent(transactionPriceTF))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(transactionNoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                                        .addComponent(transactionPriceTF))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(supCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(branchCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())))))
         );
         layout.setVerticalGroup(
@@ -186,14 +206,15 @@ public class Transaction extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(suppBranchLabel)
-                    .addComponent(transSuppBranchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(supCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(branchCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(transactionNoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(129, 129, 129)
                 .addComponent(transactionBtn)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -215,7 +236,9 @@ public class Transaction extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try{
+            String supplies;
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
+            ResultSet res = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
             while(rs.next()){
                 String id = rs.getString("productID");
                 String nm = rs.getString("productName");
@@ -230,6 +253,13 @@ public class Transaction extends javax.swing.JFrame {
                 transactionArr.add(item);
                 
             }  
+            while(res.next()){
+              supplies = res.getString("supplierName");
+              supar.add(supplies);
+          }
+             for(int i = 0; i <supar.size();i++){
+               supCmb.addItem(supar.get(i));
+           }
         }
         catch(Exception e){
             System.out.println(e);
@@ -243,6 +273,7 @@ public class Transaction extends javax.swing.JFrame {
 //        
 //        quantityShow.setText("Quantity in the Inverntory: " + quan + " " + unit);
         unitShow.setText(unit);
+       
     }//GEN-LAST:event_formWindowOpened
 
     private void depositRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositRadioBtnActionPerformed
@@ -252,7 +283,7 @@ public class Transaction extends javax.swing.JFrame {
         quantityShow.setText("");
         transactionPriceTF.setEditable(true);
         suppBranchLabel.setText("Supplier");
-        transSuppBranchTF.setText("");
+        //transSuppBranchTF.setText("");
         transactionQtyTF.setText("");
         transactionPriceTF.setText("");
         transactionBtn.setText("Deposit");
@@ -273,7 +304,7 @@ public class Transaction extends javax.swing.JFrame {
         int idx = productComboBox.getSelectedIndex();
         quantityShow.setText("Current stocks: " + transactionArr.get(idx)[0] + " " + transactionArr.get(idx)[1]); 
         suppBranchLabel.setText("Branch");
-        transSuppBranchTF.setText("");
+       // transSuppBranchTF.setText("");
         transactionQtyTF.setText("");
         transactionPriceTF.setText("10");
         transactionBtn.setText("Withdraw");
@@ -290,8 +321,10 @@ public class Transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_withdrawRadioBtnActionPerformed
 
     private void transactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionBtnActionPerformed
-        
-        
+        if (transactionPriceTF.getText().length() == 0 ||transactionQtyTF.getText().length() == 0){
+            JOptionPane.showMessageDialog(this,"Missing fields");
+        }
+        else{
         
         
         //Edit the table in the products table
@@ -343,7 +376,12 @@ public class Transaction extends javax.swing.JFrame {
                 st.setString(3, transactionArr.get(idx)[0]);
                 st.setString(4, transactionArr.get(idx)[1]);
                 st.setString(5, transactionPriceTF.getText());
-                st.setString(6, transSuppBranchTF.getText());
+                if(currRadioBtn.equals("deposit")){
+                st.setString(6, (String) supCmb.getSelectedItem());
+                }
+                else{
+                    st.setString(6, (String) branchCmb.getSelectedItem());
+                }
                 st.setString(7, java.time.LocalDate.now().toString());
                 if (currRadioBtn.equals("deposit")){
                     st.setString(8, "deposit");
@@ -370,7 +408,7 @@ public class Transaction extends javax.swing.JFrame {
 
         }
         
-        
+        }
 
 
         
@@ -381,6 +419,11 @@ public class Transaction extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_transactionBtnActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        addSupplier adup = new addSupplier();
+        adup.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -418,6 +461,7 @@ public class Transaction extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox branchCmb;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton depositRadioBtn;
     private javax.swing.JLabel jLabel1;
@@ -425,10 +469,12 @@ public class Transaction extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JComboBox<String> productComboBox;
     private javax.swing.JLabel quantityShow;
+    private javax.swing.JComboBox supCmb;
     private javax.swing.JLabel suppBranchLabel;
-    private javax.swing.JTextField transSuppBranchTF;
     private javax.swing.JButton transactionBtn;
     private javax.swing.JTextField transactionNoTF;
     private javax.swing.JTextField transactionPriceTF;
