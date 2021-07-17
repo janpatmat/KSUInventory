@@ -50,6 +50,8 @@ public class Deposit extends javax.swing.JFrame {
         ptxtBranch = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         pcmbUnit = new javax.swing.JComboBox();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -84,6 +86,11 @@ public class Deposit extends javax.swing.JFrame {
         jLabel7.setText("Branch");
 
         pcmbUnit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "mL", "L", "g", "Kg", "gal", "pcs" }));
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,7 +151,7 @@ public class Deposit extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(ptxtQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pcmbUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -246,6 +253,8 @@ public class Deposit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton pbtnAdd;
     private javax.swing.JButton pbtnExit;
     private javax.swing.JComboBox pcmbUnit;

@@ -50,8 +50,8 @@ public class KsuFinal {
         
         
         
-        TransReport window = new TransReport();
-        window.setVisible(true);
+        login index = new login();
+        index.setVisible(true);
         
 //        public static final String user = "root";
 //        public static final String pass = "Naiskongmagpakalasingdahilwalakana14";
