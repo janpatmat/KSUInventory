@@ -68,6 +68,7 @@ public class TransReport extends javax.swing.JFrame {
         CategorySortTF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         CategoryBtn = new javax.swing.JButton();
+        changePeriodBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -104,8 +105,18 @@ public class TransReport extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TransactionTable);
 
         deliveryCB.setText("Delivery");
+        deliveryCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deliveryCBActionPerformed(evt);
+            }
+        });
 
         withdrawCB.setText("Withdraw");
+        withdrawCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawCBActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("From");
 
@@ -166,6 +177,13 @@ public class TransReport extends javax.swing.JFrame {
             }
         });
 
+        changePeriodBtn.setText("Change Period");
+        changePeriodBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePeriodBtnActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Transaction");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -203,6 +221,20 @@ public class TransReport extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(prodSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(CategorySortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(filterProdBtn)
+                                    .addComponent(CategoryBtn)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -220,33 +252,21 @@ public class TransReport extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(BSSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(BSBtn)))
+                                    .addComponent(BSBtn))))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editDateCB)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(prodSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(CategorySortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(filterProdBtn)
-                                    .addComponent(CategoryBtn))
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(editDateCB)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(47, 47, 47)
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 92, Short.MAX_VALUE)))
+                                .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(changePeriodBtn)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -255,30 +275,33 @@ public class TransReport extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deliveryCB)
-                    .addComponent(withdrawCB))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(prodSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(editDateCB))
-                    .addComponent(filterProdBtn))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CategoryBtn)
-                            .addComponent(jLabel6)
-                            .addComponent(CategorySortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(deliveryCB)
+                            .addComponent(withdrawCB))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1)
+                                .addComponent(prodSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(editDateCB))
+                            .addComponent(filterProdBtn))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(CategoryBtn)
+                                    .addComponent(jLabel6)
+                                    .addComponent(CategorySortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(changePeriodBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -318,6 +341,7 @@ public class TransReport extends javax.swing.JFrame {
         withdrawCB.setSelected(true);
         fromDateChooser.setEnabled(false);
         toDateChooser.setEnabled(false);  
+        changePeriodBtn.setEnabled(false);
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -325,9 +349,12 @@ public class TransReport extends javax.swing.JFrame {
         if (editDateCB.isSelected()){
             fromDateChooser.setEnabled(true);
             toDateChooser.setEnabled(true);
+            changePeriodBtn.setEnabled(true);
         }else{
             fromDateChooser.setEnabled(false);
-            toDateChooser.setEnabled(false);            
+            toDateChooser.setEnabled(false);
+            changePeriodBtn.setEnabled(false);
+            filterFunction();
         }
     }//GEN-LAST:event_editDateCBActionPerformed
 
@@ -376,6 +403,7 @@ public class TransReport extends javax.swing.JFrame {
             
         }
         else{
+            TransactionTableModel.setRowCount(0);
             JOptionPane.showMessageDialog(null,"Please select a product");
             notChange = false;
         }
@@ -389,6 +417,7 @@ public class TransReport extends javax.swing.JFrame {
             finalArr.add(sortUOMClass.UOMSortStatement);
         }
         else{
+            TransactionTableModel.setRowCount(0);
             JOptionPane.showMessageDialog(null,"Please select a Unit of Measure");
             notChange = false;
         }
@@ -402,6 +431,7 @@ public class TransReport extends javax.swing.JFrame {
             finalArr.add(sortBSClass.BSSortStatement);
         }
         else{
+            TransactionTableModel.setRowCount(0);
             JOptionPane.showMessageDialog(null,"Please select a Branch or Supplier");
             notChange = false;
         }
@@ -415,6 +445,7 @@ public class TransReport extends javax.swing.JFrame {
             finalArr.add(sortCategoryClass.categorySortStatement);
         }
         else{
+            TransactionTableModel.setRowCount(0);
             JOptionPane.showMessageDialog(null,"Please select a Category");
             notChange = false;
         }
@@ -424,6 +455,7 @@ public class TransReport extends javax.swing.JFrame {
             finalArr.add(deliveryWithdrawStatement);
         }
         else{
+            TransactionTableModel.setRowCount(0);
             JOptionPane.showMessageDialog(null,"Please select if either withdraw or deposit");
             notChange = false;
         }
@@ -519,6 +551,18 @@ public class TransReport extends javax.swing.JFrame {
         sortCategoryClass.setVisible(true);
         sortCategoryClass.setDefaultCloseOperation(sortCategoryClass.HIDE_ON_CLOSE);
     }//GEN-LAST:event_CategoryBtnActionPerformed
+
+    private void withdrawCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawCBActionPerformed
+        filterFunction();
+    }//GEN-LAST:event_withdrawCBActionPerformed
+
+    private void deliveryCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryCBActionPerformed
+        filterFunction();
+    }//GEN-LAST:event_deliveryCBActionPerformed
+
+    private void changePeriodBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePeriodBtnActionPerformed
+        filterFunction();
+    }//GEN-LAST:event_changePeriodBtnActionPerformed
     
     public static void updateTransReportTable(){
         
@@ -605,6 +649,7 @@ public class TransReport extends javax.swing.JFrame {
     private javax.swing.JButton UOMBtn;
     public static javax.swing.JTextField UOMSortTF;
     private java.awt.Button button1;
+    private javax.swing.JButton changePeriodBtn;
     public static javax.swing.JCheckBox deliveryCB;
     public static javax.swing.JCheckBox editDateCB;
     private javax.swing.JButton filterProdBtn;

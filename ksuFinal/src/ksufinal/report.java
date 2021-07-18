@@ -651,6 +651,7 @@ public class report extends javax.swing.JFrame {
             fromDateChooser.setEnabled(false);
             toDateChooser.setEnabled(false);
             changePeriodBtn.setEnabled(false);
+            sortFunction();
         }
     }//GEN-LAST:event_editDateCBActionPerformed
 
