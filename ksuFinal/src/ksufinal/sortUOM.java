@@ -61,9 +61,17 @@ public class sortUOM extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Select the Unit of Measure here"
+                "Unit of Measure", "Select Here"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         sortUOMTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortUOMTable);
 
@@ -109,7 +117,9 @@ public class sortUOM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveUOMSortBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveUOMSortBtnActionPerformed
-
+        
+        
+        
         selectedUOM.clear();
         UOMSortStatement = "";
 
@@ -120,6 +130,7 @@ public class sortUOM extends javax.swing.JFrame {
             else if (location.equals("report")){
                 report.UOMSortTF.setText("All");
             }
+            System.out.println("past here");
         }
         else{
             int l = sortUOMTable.getRowCount();
@@ -150,6 +161,16 @@ public class sortUOM extends javax.swing.JFrame {
         this.setVisible(false);
         
         //        System.out.println(jointArray);
+        
+//        System.out.println(UOMSortStatement);
+        
+        if (location.equals("report")){
+            report.sortFunction();
+        }
+        else if (location.equals("TransReport")){
+            TransReport.filterFunction();
+        }
+        
 
     }//GEN-LAST:event_saveUOMSortBtnActionPerformed
 

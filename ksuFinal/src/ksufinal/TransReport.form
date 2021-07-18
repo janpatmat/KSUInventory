@@ -69,65 +69,60 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
+                      <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="filterBtn" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="deliveryCB" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="withdrawCB" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="UOMSortTF" min="-2" pref="525" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="UOMBtn" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="BSSortTF" min="-2" pref="526" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="BSBtn" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="deliveryCB" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="withdrawCB" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="prodSortTF" min="-2" pref="559" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="CategorySortTF" min="-2" pref="556" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="filterProdBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="CategoryBtn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="editDateCB" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="fromDateChooser" min="-2" pref="116" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="toDateChooser" min="-2" pref="119" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="UOMSortTF" min="-2" pref="525" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="UOMBtn" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="BSSortTF" min="-2" pref="526" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="BSBtn" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="prodSortTF" min="-2" pref="559" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="CategorySortTF" min="-2" pref="556" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="filterProdBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CategoryBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="editDateCB" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="fromDateChooser" min="-2" pref="116" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="toDateChooser" min="-2" pref="119" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -189,9 +184,7 @@
                   <Component id="BSSortTF" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BSBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
-              <Component id="filterBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -292,15 +285,27 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Delivery"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="withdrawCB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Withdraw"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="fromDateChooser">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="toDateChooser">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -329,6 +334,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editDateCBActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="filterProdBtn">
       <Properties>
@@ -384,14 +392,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BSBtnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="filterBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Filter"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filterBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="CategorySortTF">

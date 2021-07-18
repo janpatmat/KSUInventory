@@ -115,7 +115,8 @@ public class sortBS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveBSSortBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBSSortBtnActionPerformed
-
+        
+        
         selectedBS.clear();
         
         BSSortStatement = "";
@@ -152,9 +153,15 @@ public class sortBS extends javax.swing.JFrame {
                 strArr.add("SuppBranch = '" + x + "'");
             }
             
-            BSSortStatement = " (" + String.join(" or ", strArr) + ") ";
-            
-            System.out.println(BSSortStatement);
+            BSSortStatement = " (" + String.join(" or ", strArr) + ") "; 
+        }
+//        System.out.println(BSSortStatement);
+
+        if (location.equals("report")){
+            report.sortFunction();
+        }
+        else if (location.equals("TransReport")){
+            TransReport.filterFunction();
         }
 
         this.setVisible(false);

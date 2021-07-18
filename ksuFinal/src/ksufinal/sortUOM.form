@@ -66,12 +66,18 @@
               <Font name="Tahoma" size="15" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="1" rowCount="0">
-                <Column editable="true" title="Select the Unit of Measure here" type="java.lang.Object"/>
+              <Table columnCount="2" rowCount="0">
+                <Column editable="true" title="Unit of Measure" type="java.lang.Object"/>
+                <Column editable="true" title="Select Here" type="java.lang.Boolean"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>

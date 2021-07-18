@@ -187,11 +187,14 @@ public class sortProduct extends javax.swing.JFrame {
         
         this.setVisible(false);
         
-        System.out.println(prodSortStatement);
+//        System.out.println(prodSortStatement);
         
-//        report.sortFunction();
-        
-//        System.out.println(jointArray);
+        if (location.equals("report")){
+            report.sortFunction();
+        }
+        else if (location.equals("TransReport")){
+            TransReport.filterFunction();
+        }
         
         
     }//GEN-LAST:event_saveprodSortBtnActionPerformed

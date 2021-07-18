@@ -174,8 +174,17 @@ public class sortCategory extends javax.swing.JFrame {
 
         this.setVisible(false);
         
+//        System.out.println(categorySortStatement);
         
-        System.out.println(categorySortStatement);
+        if (location.equals("report")){
+            report.sortFunction();
+        }
+        else if (location.equals("TransReport")){
+            TransReport.filterFunction();
+        }
+        
+        
+        
 
         //        System.out.println(jointArray);
 
