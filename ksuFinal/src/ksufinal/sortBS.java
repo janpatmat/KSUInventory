@@ -59,9 +59,17 @@ public class sortBS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Select the Branch/Supplier here"
+                "Branch/Supplier", "Select Here"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         sortBSTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortBSTable);
 
@@ -122,9 +130,12 @@ public class sortBS extends javax.swing.JFrame {
             }
         }
         else{
-            int[] sr = sortBSTable.getSelectedRows();
-            for (int x = 0; x < sr.length; x++){
-                selectedBS.add(sortBSTable.getValueAt(sr[x], 0).toString());
+            int l = sortBSTable.getRowCount();
+
+            for (int x = 0; x < l; x++){
+                if (sortBSTable.getValueAt(x, 1).toString().equals("true")){
+                    selectedBS.add(sortBSTable.getValueAt(x, 0).toString());
+                }
             }
             String jointArray = String.join(", ", selectedBS);
             
@@ -175,7 +186,7 @@ public class sortBS extends javax.swing.JFrame {
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.suppliertable;");
             while(rs.next()){
                 String nm = rs.getString("supplierName");
-                String [] nmArr = {nm};
+                Object [] nmArr = {nm,false};
                 
                 t.addRow(nmArr);
                 

@@ -251,9 +251,9 @@ public class TransReport extends javax.swing.JFrame {
                                             .addComponent(editDateCB)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
-                                                .addGap(18, 18, 18)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(39, 39, 39)
+                                                .addGap(47, 47, 47)
                                                 .addComponent(jLabel3)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
@@ -381,8 +381,8 @@ public class TransReport extends javax.swing.JFrame {
         
         ArrayList<String> finalArr = new ArrayList<String>();
         
-        if(sortProduct.prodSortStatement.length() > 5){
-            finalArr.add(sortProduct.prodSortStatement);
+        if(sortproductClass.prodSortStatement.length() > 5){
+            finalArr.add(sortproductClass.prodSortStatement);
         }
         else if(prodSortTF.getText().equals("All")){
             //do Nothing
@@ -393,8 +393,8 @@ public class TransReport extends javax.swing.JFrame {
         }
 
         
-        if (sortUOM.UOMSortStatement.length() > 5){
-            finalArr.add(sortUOM.UOMSortStatement);
+        if (sortUOMClass.UOMSortStatement.length() > 5){
+            finalArr.add(sortUOMClass.UOMSortStatement);
         }
         else if(UOMSortTF.getText().equals("All")){
             //do Nothing
@@ -405,8 +405,8 @@ public class TransReport extends javax.swing.JFrame {
         }
         
         
-        if (sortBS.BSSortStatement.length() > 5){
-            finalArr.add(sortBS.BSSortStatement);
+        if (sortBSClass.BSSortStatement.length() > 5){
+            finalArr.add(sortBSClass.BSSortStatement);
         }
         else if(BSSortTF.getText().equals("All")){
             //do Nothing
@@ -417,8 +417,8 @@ public class TransReport extends javax.swing.JFrame {
         }
         
         
-        if (sortCategory.categorySortStatement.length() > 5){
-            finalArr.add(sortCategory.categorySortStatement);
+        if (sortCategoryClass.categorySortStatement.length() > 5){
+            finalArr.add(sortCategoryClass.categorySortStatement);
         }
         else if(CategorySortTF.getText().equals("All")){
             //do Nothing

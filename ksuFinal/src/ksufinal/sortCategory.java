@@ -66,9 +66,17 @@ public class sortCategory extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Select your Categories here"
+                "Categories", "Select Here"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         sortCategoryTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortCategoryTable);
 
@@ -138,9 +146,12 @@ public class sortCategory extends javax.swing.JFrame {
             
         }
         else{
-            int[] sr = sortCategoryTable.getSelectedRows();
-            for (int x = 0; x < sr.length; x++){
-                selectedCategories.add(sortCategoryTable.getValueAt(sr[x], 0).toString());
+//            int[] sr = sortCategoryTable.getSelectedRows();
+            int l = sortCategoryTable.getRowCount();
+            for (int x = 0; x < l; x++){
+                if (sortCategoryTable.getValueAt(x, 1).toString().equals("true")){
+                    selectedCategories.add(sortCategoryTable.getValueAt(x, 0).toString());
+                }
             }
             String jointArray = String.join(", ", selectedCategories);
             
@@ -163,6 +174,7 @@ public class sortCategory extends javax.swing.JFrame {
 
         this.setVisible(false);
         
+        
         System.out.println(categorySortStatement);
 
         //        System.out.println(jointArray);
@@ -176,7 +188,7 @@ public class sortCategory extends javax.swing.JFrame {
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.categorytable;");
             while(rs.next()){
                 String nm = rs.getString("categoryName");
-                String [] nmArr = {nm};
+                Object [] nmArr = {nm, false};
                 
                 t.addRow(nmArr);
                 

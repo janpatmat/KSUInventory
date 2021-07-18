@@ -122,9 +122,11 @@ public class sortUOM extends javax.swing.JFrame {
             }
         }
         else{
-            int[] sr = sortUOMTable.getSelectedRows();
-            for (int x = 0; x < sr.length; x++){
-                selectedUOM.add(sortUOMTable.getValueAt(sr[x], 0).toString());
+            int l = sortUOMTable.getRowCount();
+            for (int x = 0; x < l; x++){
+                if(sortUOMTable.getValueAt(x, 1).toString().equals("true")){
+                    selectedUOM.add(sortUOMTable.getValueAt(x, 0).toString());
+                }
             }
             String jointArray = String.join(", ", selectedUOM);
             
@@ -175,7 +177,7 @@ public class sortUOM extends javax.swing.JFrame {
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.unittable;");
             while(rs.next()){
                 String nm = rs.getString("Unit");
-                String [] nmArr = {nm};
+                Object [] nmArr = {nm, false};
                 
                 t.addRow(nmArr);
                 

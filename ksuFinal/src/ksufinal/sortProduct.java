@@ -57,9 +57,17 @@ public class sortProduct extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Select your Products here"
+                "Products", "Select Here"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         sortProdTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortProdTable);
 
@@ -105,14 +113,13 @@ public class sortProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-         DefaultTableModel t = (DefaultTableModel)sortProdTable.getModel();
-        
+        DefaultTableModel t = (DefaultTableModel)sortProdTable.getModel();
         
         try{
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
             while(rs.next()){
                 String nm = rs.getString("productName");
-                String [] nmArr = {nm};
+                Object [] nmArr = {nm, false};
                 
                 t.addRow(nmArr);
                 
@@ -153,9 +160,11 @@ public class sortProduct extends javax.swing.JFrame {
             }
         }
         else{
-            int[] sr = sortProdTable.getSelectedRows();
-            for (int x = 0; x < sr.length; x++){
-                selectedProducts.add(sortProdTable.getValueAt(sr[x], 0).toString());
+            int l = sortProdTable.getRowCount();
+            for (int x = 0; x < l; x++){
+                if (sortProdTable.getValueAt(x, 1).toString().equals("true")){
+                    selectedProducts.add(sortProdTable.getValueAt(x, 0).toString());
+                }
             }
             String jointArray = String.join(", ", selectedProducts);
             
@@ -180,7 +189,7 @@ public class sortProduct extends javax.swing.JFrame {
         
         System.out.println(prodSortStatement);
         
-
+//        report.sortFunction();
         
 //        System.out.println(jointArray);
         
@@ -224,7 +233,7 @@ public class sortProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton saveprodSortBtn;
+    public javax.swing.JButton saveprodSortBtn;
     private javax.swing.JCheckBox selectAllCBox;
     private javax.swing.JTable sortProdTable;
     // End of variables declaration//GEN-END:variables
