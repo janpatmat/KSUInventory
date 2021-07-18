@@ -20,13 +20,17 @@ public class sortUOM extends javax.swing.JFrame {
     static ArrayList<String> selectedUOM = new ArrayList<String>();
     static String UOMSortStatement = "";
     
+    private String location;
+    
     
     
     /**
      * Creates new form sortUOM
      */
-    public sortUOM() {
+    public sortUOM(String location) {
         initComponents();
+        
+        this.location = location;
     }
 
     /**
@@ -110,8 +114,12 @@ public class sortUOM extends javax.swing.JFrame {
         UOMSortStatement = "";
 
         if (selectAllCBox.isSelected()){
-
-            TransReport.UOMSortTF.setText("All");
+            if (location.equals("Transreport")){
+                TransReport.UOMSortTF.setText("All");
+            }
+            else if (location.equals("report")){
+                report.UOMSortTF.setText("All");
+            }
         }
         else{
             int[] sr = sortUOMTable.getSelectedRows();
@@ -119,7 +127,13 @@ public class sortUOM extends javax.swing.JFrame {
                 selectedUOM.add(sortUOMTable.getValueAt(sr[x], 0).toString());
             }
             String jointArray = String.join(", ", selectedUOM);
-            TransReport.UOMSortTF.setText(jointArray);
+            
+            if (location.equals("TransReport")){
+                TransReport.UOMSortTF.setText(jointArray);
+            }
+            else if (location.equals("report")){
+                report.UOMSortTF.setText(jointArray);
+            }
             
             ArrayList<String> strArr = new ArrayList<String>();
             
@@ -202,7 +216,7 @@ public class sortUOM extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sortUOM().setVisible(true);
+                new sortUOM("").setVisible(true);
             }
         });
     }

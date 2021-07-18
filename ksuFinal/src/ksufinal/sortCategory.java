@@ -22,12 +22,13 @@ public class sortCategory extends javax.swing.JFrame {
     static String categorySortStatement = "";
     
     
-    
+    private String location;
     /**
      * Creates new form sortCategory
      */
-    public sortCategory() {
+    public sortCategory(String location) {
         initComponents();
+        this.location = location;
     }
 
     /**
@@ -125,9 +126,16 @@ public class sortCategory extends javax.swing.JFrame {
 
         selectedCategories.clear();
         categorySortStatement = "";
+        
 
         if (selectAllCBox.isSelected()){
-            TransReport.CategorySortTF.setText("All");
+            if (location.equals("TransReport")){
+                TransReport.CategorySortTF.setText("All");
+            }
+            else if (location.equals("report")){
+                report.CategorySortTF.setText("All");
+            }
+            
         }
         else{
             int[] sr = sortCategoryTable.getSelectedRows();
@@ -135,7 +143,13 @@ public class sortCategory extends javax.swing.JFrame {
                 selectedCategories.add(sortCategoryTable.getValueAt(sr[x], 0).toString());
             }
             String jointArray = String.join(", ", selectedCategories);
-            TransReport.CategorySortTF.setText(jointArray);
+            
+            if (location.equals("TransReport")){
+                TransReport.CategorySortTF.setText(jointArray);
+            }
+            else if (location.equals("report")){
+                report.CategorySortTF.setText(jointArray);
+            }
 
             ArrayList<String> strArr = new ArrayList<String>();
 
@@ -148,7 +162,7 @@ public class sortCategory extends javax.swing.JFrame {
         }
 
         this.setVisible(false);
-
+        
         System.out.println(categorySortStatement);
 
         //        System.out.println(jointArray);
@@ -156,8 +170,7 @@ public class sortCategory extends javax.swing.JFrame {
     }//GEN-LAST:event_saveprodSortBtnActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-         DefaultTableModel t = (DefaultTableModel)sortCategoryTable.getModel();
-        
+        DefaultTableModel t = (DefaultTableModel)sortCategoryTable.getModel();
         
         try{
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.categorytable;");
@@ -204,7 +217,7 @@ public class sortCategory extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sortCategory().setVisible(true);
+                new sortCategory("").setVisible(true);
             }
         });
     }

@@ -20,11 +20,13 @@ public class sortProduct extends javax.swing.JFrame {
     static ArrayList<String> selectedProducts = new ArrayList<String>();
     static String prodSortStatement = "";
     
+    private String location;
     /**
      * Creates new form sortProduct
      */
-    public sortProduct() {
+    public sortProduct(String location) {
         initComponents();
+        this.location = location;
     }
 
     /**
@@ -138,12 +140,17 @@ public class sortProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_selectAllCBoxActionPerformed
 
     private void saveprodSortBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveprodSortBtnActionPerformed
-        
+
         selectedProducts.clear();
         prodSortStatement = "";
         
         if (selectAllCBox.isSelected()){
-            TransReport.prodSortTF.setText("All");
+            if (location.equals("TransReport")){
+                TransReport.prodSortTF.setText("All");
+            }
+            else if (location.equals("report")){
+                report.prodSortTF.setText("All");
+            }
         }
         else{
             int[] sr = sortProdTable.getSelectedRows();
@@ -151,7 +158,13 @@ public class sortProduct extends javax.swing.JFrame {
                 selectedProducts.add(sortProdTable.getValueAt(sr[x], 0).toString());
             }
             String jointArray = String.join(", ", selectedProducts);
-            TransReport.prodSortTF.setText(jointArray);
+            
+            if (location.equals("TransReport")){
+                TransReport.prodSortTF.setText(jointArray);
+            }
+            else if (location.equals("report")){
+                report.prodSortTF.setText(jointArray);
+            }
             
             ArrayList<String> strArr = new ArrayList<String>();
             
@@ -204,7 +217,7 @@ public class sortProduct extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sortProduct().setVisible(true);
+                new sortProduct("").setVisible(true);
             }
         });
     }

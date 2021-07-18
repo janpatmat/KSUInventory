@@ -20,14 +20,15 @@ public class sortBS extends javax.swing.JFrame {
     ResultSet rs;
     static ArrayList<String> selectedBS = new ArrayList<String>();
     static String  BSSortStatement = "";
-    
+    private String location;
     
     
     /**
      * Creates new form sortBS
      */
-    public sortBS() {
+    public sortBS(String location) {
         initComponents();
+        this.location = location;
     }
 
     /**
@@ -112,8 +113,13 @@ public class sortBS extends javax.swing.JFrame {
         BSSortStatement = "";
 
         if (selectAllCBox.isSelected()){
-
-            TransReport.BSSortTF.setText("All");
+            
+            if (location.equals("TransReport")){
+                TransReport.BSSortTF.setText("All");
+            }
+            else if (location.equals("report")){
+                report.BSSortTF.setText("All");
+            }
         }
         else{
             int[] sr = sortBSTable.getSelectedRows();
@@ -121,8 +127,13 @@ public class sortBS extends javax.swing.JFrame {
                 selectedBS.add(sortBSTable.getValueAt(sr[x], 0).toString());
             }
             String jointArray = String.join(", ", selectedBS);
-            TransReport.BSSortTF.setText(jointArray);
             
+            if (location.equals("TransReport")){
+                TransReport.BSSortTF.setText(jointArray);
+            }
+            else if (location.equals("report")){
+                report.BSSortTF.setText(jointArray);
+            }
             
             ArrayList<String> strArr = new ArrayList<String>();
             
@@ -205,7 +216,7 @@ public class sortBS extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sortBS().setVisible(true);
+                new sortBS("").setVisible(true);
             }
         });
     }
