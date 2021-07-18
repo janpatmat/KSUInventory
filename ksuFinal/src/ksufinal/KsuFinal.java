@@ -54,6 +54,9 @@ public class KsuFinal {
         TransReport a = new TransReport();
         a.setVisible(true);
         
+//        report a= new report();
+//        a.setVisible(true);
+        
 //        public static final String user = "root";
 //        public static final String pass = "Naiskongmagpakalasingdahilwalakana14";
         

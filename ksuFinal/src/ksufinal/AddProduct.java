@@ -171,7 +171,7 @@ public String prdnm = null;
           
       }
       else{
-        st.setString(1, productName.getText());;
+        st.setString(1, productName.getText());
         st.setString(2, "0");
         st.setString(3,(String) unitCmb.getSelectedItem());
         st.setString(4, minQ.getText());
