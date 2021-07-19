@@ -90,11 +90,11 @@ public class TransReport extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Trans. ID", "Prod. ID", "Date", "Name", "Category", "Price", "Quantity", "Unit of measure", "Branch/Supplier", "Action"
+                "Trans. ID", "Prod. ID", "Date", "Name", "Category", "Price", "Quantity", "Total Price", "Unit of measure", "Branch/Supplier", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -583,8 +583,14 @@ public class TransReport extends javax.swing.JFrame {
                 String sb = rs.getString("SuppBranch");
                 String dt = rs.getString("Date");
                 String act = rs.getString("Action");
+                
+                if (Float.parseFloat(qty) < 0){
+                    qty = String.valueOf(Float.parseFloat(qty) * -1);
+                }
+                
+                String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
 
-                String[] item = {TranNo, id, dt, nm, ct, pr, qty, ut, sb, act};
+                String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act};
                 
                 
                 TransactionTableModel.addRow(item);

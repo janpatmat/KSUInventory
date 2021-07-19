@@ -328,7 +328,7 @@ public class Transaction extends javax.swing.JFrame {
             newQuan = String.valueOf(quan + inputQuan);
           
         }else{
-            newQuan =String.valueOf(quan - inputQuan);
+            newQuan = String.valueOf(quan - inputQuan);
             int intNewQuan = Integer.parseInt(newQuan);
             int intMin = Integer.parseInt(transactionArr.get(idx)[3]);
             if (intNewQuan >= 0){
@@ -343,6 +343,7 @@ public class Transaction extends javax.swing.JFrame {
                 yesNO = JOptionPane.NO_OPTION;
                 JOptionPane.showMessageDialog(this,"You cannot withdraw this quantity");
             }
+            inputQuan *= (-1); // put negative sign when withdrawing
         }
         if (yesNO == JOptionPane.YES_OPTION){
             String statement = "UPDATE expenses.producttable SET productQuantity = " + newQuan + " WHERE productName = '" + nm + "'";
@@ -355,18 +356,18 @@ public class Transaction extends javax.swing.JFrame {
             }      
 
             
-            transactionArr.get(idx)[0] = newQuan; // Update the array
+            
             
             //Edit the table in the transactions table
             try{
-                PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID,Name,Quantity,Unit,Price,SuppBranch,Date, Action)VALUES(?,?,?,?,?,?,?,?)");
-                st.setString(1, transactionArr.get(idx)[4]);
+                PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID, Name, Quantity, Unit, Price, SuppBranch, Date, Action) VALUES(?,?,?,?,?,?,?,?)");
+                st.setString(1, transactionArr.get(idx)[3]);
                 st.setString(2, transactionArr.get(idx)[2]);
-                st.setString(3, transactionArr.get(idx)[0]);
+                st.setString(3, String.valueOf(inputQuan));
                 st.setString(4, transactionArr.get(idx)[1]);
                 st.setString(5, transactionPriceTF.getText());
                 if(currRadioBtn.equals("deposit")){
-                st.setString(6, (String) supCmb.getSelectedItem());
+                    st.setString(6, (String) supCmb.getSelectedItem());
                 }
                 else{
                     st.setString(6, (String) branchCmb.getSelectedItem());
