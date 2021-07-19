@@ -218,7 +218,7 @@ public class adProd extends javax.swing.JFrame {
             String id = prodres.getString("productID");
             String name = prodres.getString("productName");
             String quan = String.valueOf(prodres.getInt("productQuantity"));
-            String unit = prodres.getString("productUnit");
+            String unit = prodres.getString("Unit");
             String stndrd = prodres.getString("standardPrice");
             String fromD = prodres.getString("dateFrom");
             String toD = prodres.getString("dateTo");
@@ -252,7 +252,7 @@ public class adProd extends javax.swing.JFrame {
 
                 String name = prodres.getString("productName");
                 String quan = String.valueOf(prodres.getInt("productQuantity"));
-                String unit = prodres.getString("productUnit");
+                String unit = prodres.getString("Unit");
                 String stndrd = prodres.getString("standardPrice");
                 String[] item = {name, quan, unit, stndrd};
                 t.addRow(item);

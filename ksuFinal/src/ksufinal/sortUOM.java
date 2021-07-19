@@ -124,7 +124,7 @@ public class sortUOM extends javax.swing.JFrame {
         UOMSortStatement = "";
 
         if (selectAllCBox.isSelected()){
-            if (location.equals("Transreport")){
+            if (location.equals("TransReport")){
                 TransReport.UOMSortTF.setText("All");
             }
             else if (location.equals("report")){

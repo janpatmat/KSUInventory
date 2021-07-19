@@ -553,6 +553,8 @@ public class report extends javax.swing.JFrame {
             
         }
         
+//        System.out.println(databaseTableName);
+        
         setColumnInTable();
         sortFunction();
     }//GEN-LAST:event_TransactionCBActionPerformed
@@ -800,12 +802,9 @@ public class report extends javax.swing.JFrame {
         if (UnitOfMeasureCB.isSelected()){
             reportTableModel.addColumn("Unit of Measure");
             filterUOMBtn.setEnabled(true);
-            if (databaseTableName.equals("producttrans")){
-                columnArr.add("Unit");
-            }
-            else{
-                columnArr.add("productUnit");
-            }
+            columnArr.add("Unit");
+
+
         }
         else{
             filterUOMBtn.setEnabled(false);
@@ -836,6 +835,7 @@ public class report extends javax.swing.JFrame {
             prodSortTF.setText("All");
         }
         
+//        System.out.println(Arrays.deepToString(columnArr.toArray(new String[columnArr.size()])));
     }
     
     public static void sortFunction(){
@@ -854,11 +854,11 @@ public class report extends javax.swing.JFrame {
         
         ArrayList<String> finalArr = new ArrayList<String>();
         
-        if(sortProductClass2.prodSortStatement.length() > 5){
-            finalArr.add(sortProductClass2.prodSortStatement);
-        }
-        else if(prodSortTF.getText().equals("All")){
+        if(prodSortTF.getText().equals("All")){
             //do Nothing
+        }
+        else if(sortProductClass2.prodSortStatement.length() > 5){
+            finalArr.add(sortProductClass2.prodSortStatement);
         }
         else{
             ReportTableModel.setRowCount(0);
@@ -866,11 +866,11 @@ public class report extends javax.swing.JFrame {
             notChange = false;
         }
         
-        if (sortUOMClass2.UOMSortStatement.length() > 5){
-            finalArr.add(sortUOMClass2.UOMSortStatement);
-        }
-        else if(UOMSortTF.getText().equals("All")){
+        if (UOMSortTF.getText().equals("All")){
             //do Nothing
+        }
+        else if(sortUOMClass2.UOMSortStatement.length() > 5){
+            finalArr.add(sortUOMClass2.UOMSortStatement);
         }
         else{
             ReportTableModel.setRowCount(0);
@@ -878,11 +878,11 @@ public class report extends javax.swing.JFrame {
             notChange = false;
         }
         
-        if (sortBSClass2.BSSortStatement.length() > 5){
-            finalArr.add(sortBSClass2.BSSortStatement);
-        }
-        else if(BSSortTF.getText().equals("All")){
+        if (BSSortTF.getText().equals("All")){
             //do Nothing
+        }
+        else if(sortBSClass2.BSSortStatement.length() > 5){
+            finalArr.add(sortBSClass2.BSSortStatement);
         }
         else{
             ReportTableModel.setRowCount(0);
@@ -890,11 +890,11 @@ public class report extends javax.swing.JFrame {
             notChange = false;
         }
         
-        if (sortCategoryClass2.categorySortStatement.length() > 5){
-            finalArr.add(sortCategoryClass2.categorySortStatement);
-        }
-        else if(CategorySortTF.getText().equals("All")){
+        if (CategorySortTF.getText().equals("All")){
             //do Nothing
+        }
+        else if(sortCategoryClass2.categorySortStatement.length() > 5){
+            finalArr.add(sortCategoryClass2.categorySortStatement);
         }
         else{
             ReportTableModel.setRowCount(0);
@@ -922,7 +922,8 @@ public class report extends javax.swing.JFrame {
                 finalStatement += " WHERE";
                 finalStatement += String.join("and", finalArr);
             }
-
+//            System.out.println(finalStatement);
+            
             if (editDateCB.isSelected()){
                 try{
                     SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -1082,24 +1083,6 @@ public class report extends javax.swing.JFrame {
                 createSpace(texts, pdfWidth);
             }
             
-//            createSpace(texts);
-//            createcell(texts, "_____________________________________________________________________________", Element.ALIGN_CENTER, 4, text12, 0, 255, 255, 255);
-//            createSpace(texts);
-//            
-//            double tax = totUnitPrice * 0.12;
-//            
-//            double Total = totUnitPrice + tax;
-//            
-//            createcell(texts, "Subtotal", Element.ALIGN_RIGHT, 3, textBold12, 0, 255, 255, 255);
-//            createcell(texts, String.format("%.2f", totUnitPrice), Element.ALIGN_CENTER, 1, text12, 0, 255, 255, 255);
-//            createSpace(texts);
-//            
-//            createcell(texts, "Tax 12%", Element.ALIGN_RIGHT, 3, textBold12, 0, 255, 255, 255);
-//            createcell(texts, String.format("%.2f", tax), Element.ALIGN_CENTER, 1, text12, 0, 255, 255, 255);
-//            createSpace(texts);
-//            
-//            createcell(texts, "Total Cost", Element.ALIGN_RIGHT, 3, textBold12, 0, 255, 255, 255);
-//            createcell(texts, String.format("%.2f", Total), Element.ALIGN_CENTER, 1, text12, 0, 255, 255, 255);
             
             
             texts.setWidthPercentage(100f);
