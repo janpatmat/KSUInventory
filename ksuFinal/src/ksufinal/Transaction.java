@@ -232,7 +232,7 @@ public class Transaction extends javax.swing.JFrame {
                 String nm = rs.getString("productName");
                 String qt = rs.getString("productQuantity");
 //                String qt = "null";
-                String ut = rs.getString("productUnit");
+                String ut = rs.getString("Unit");
                 String mm = rs.getString("prodMinq");
                 String sp = rs.getString("standardPrice");
                 
@@ -361,7 +361,7 @@ public class Transaction extends javax.swing.JFrame {
             //Edit the table in the transactions table
             try{
                 PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID, Name, Quantity, Unit, Price, SuppBranch, Date, Action) VALUES(?,?,?,?,?,?,?,?)");
-                st.setString(1, transactionArr.get(idx)[3]);
+                st.setString(1, transactionArr.get(idx)[4]);
                 st.setString(2, transactionArr.get(idx)[2]);
                 st.setString(3, String.valueOf(inputQuan));
                 st.setString(4, transactionArr.get(idx)[1]);

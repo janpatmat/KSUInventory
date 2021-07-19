@@ -1037,9 +1037,9 @@ public class report extends javax.swing.JFrame {
             for (int x = 0; x < pdfWidth; x++){
                 columnWidths[x] = (float)perWidth;
             }
-            for (float x: columnWidths){
-                System.out.println(x);
-            }
+//            for (float x: columnWidths){
+//                System.out.println(x);
+//            }
             
             PdfPTable texts = new PdfPTable(columnWidths);
             
@@ -1092,6 +1092,7 @@ public class report extends javax.swing.JFrame {
         }
         catch(Exception ex){
             System.out.println(ex);
+            ex.printStackTrace();
         }
         if (doc != null){
             doc.close();
