@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 public class login extends javax.swing.JFrame {
 PreparedStatement st = null;
  static String us;
+ static String full;
     /**
      * Creates new form login
      */
@@ -109,7 +110,11 @@ PreparedStatement st = null;
          if(rs.next()){
              TransReport tra = new TransReport();
              tra.setVisible(true);
-             
+             while(rs.next()){
+                 String fn = rs.getString("Firstname");
+                 String ln = rs.getString("Lastname");
+                 full = (fn + " " + ln);
+             }
          }
          else{
              JOptionPane.showMessageDialog(this,"Incorrect Username or Password");
