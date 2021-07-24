@@ -112,7 +112,7 @@ public class prodDis extends javax.swing.JFrame {
             String id = prodres.getString("productID");
             String name = prodres.getString("productName");
             String quan = String.valueOf(prodres.getInt("productQuantity"));
-            String unit = prodres.getString("productUnit");
+            String unit = prodres.getString("Unit");
             String[] item = {name, quan, unit};
             String[] item2 = {id, name, quan, unit};
             DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();

@@ -115,35 +115,27 @@ PreparedStatement st = null;
          
          ResultSet rs = state.executeQuery();
          
-         if(rs.next()){
-             Menu tra = new Menu();
-             tra.setVisible(true);
-             while(rs.next()){
-                 id = rs.getString("userID");
-                 String fn = rs.getString("Firstname");
-                 String ln = rs.getString("Lastname");
-                 full = (fn + " " + ln);
-             }
-         }
-         else{
-             JOptionPane.showMessageDialog(this,"Incorrect Username or Password");
-         }
+          
+            
+                 if (rs.next()){
+                    Menu tra = new Menu();
+                    tra.setVisible(true);
+                    id = rs.getString("userID");
+                    String fn = rs.getString("Firstname");
+                    String ln = rs.getString("Lastname");
+                    full = (fn + " " + ln);
+                    System.out.println(full);
+                    this.setVisible(false);
+                 }
+                 else{
+                     JOptionPane.showMessageDialog(this,"Invalid Username or Password");
+                 }
+             
      }
      catch(Exception e){
          System.out.println(e);
      }
-     try{
-         Statement state = KsuFinal.con.createStatement();
-         ResultSet rs = state.executeQuery("SELECT * FROM usertable");
-         
-         while(rs.next()){
-             us = rs.getString("Firstname");
-         }
-         System.out.println(us);
-     }
-     catch(Exception e){
-         System.out.println(e);
-     }
+  
     }//GEN-LAST:event_LoginActionPerformed
 
     private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
