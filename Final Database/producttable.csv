@@ -1,0 +1,4 @@
+"productID";"productName";"productQuantity";"Unit";"prodMinq";"Active";"standardPrice";"dateFrom";"dateTo";"Sub"
+1;"Coke";13;"ml";30;"TRUE";1.46;"2021-07-08";"2021-08-14";"Drinks"
+2;"Sprite";25;"l";20;"TRUE";55.0;"2021-06-02";"2021-07-30";"Drinks"
+3;"Royal";25;"gal";5;"TRUE";3.0;"2021-06-02";"2021-07-30";"Drinks"

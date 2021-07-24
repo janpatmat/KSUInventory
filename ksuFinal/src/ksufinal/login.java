@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 public class login extends javax.swing.JFrame {
 PreparedStatement st = null;
  static String us;
+ static String full;
+ static String id;
     /**
      * Creates new form login
      */
@@ -36,6 +38,13 @@ PreparedStatement st = null;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        uname.setText("viv");
+        uname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unameActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Create account");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -43,7 +52,7 @@ PreparedStatement st = null;
             }
         });
 
-        pass.setText("jPasswordField1");
+        pass.setText("123456");
 
         Login.setText("Login");
         Login.addActionListener(new java.awt.event.ActionListener() {
@@ -107,9 +116,14 @@ PreparedStatement st = null;
          ResultSet rs = state.executeQuery();
          
          if(rs.next()){
-             TransReport tra = new TransReport();
+             Menu tra = new Menu();
              tra.setVisible(true);
-             
+             while(rs.next()){
+                 id = rs.getString("userID");
+                 String fn = rs.getString("Firstname");
+                 String ln = rs.getString("Lastname");
+                 full = (fn + " " + ln);
+             }
          }
          else{
              JOptionPane.showMessageDialog(this,"Incorrect Username or Password");
@@ -131,6 +145,10 @@ PreparedStatement st = null;
          System.out.println(e);
      }
     }//GEN-LAST:event_LoginActionPerformed
+
+    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unameActionPerformed
 
     /**
      * @param args the command line arguments

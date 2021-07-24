@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class Transaction extends javax.swing.JFrame {
 
     
-    
+    login t = new login();
     ResultSet rs;
     PreparedStatement st = null;
     ArrayList<String[]> transactionArr = new ArrayList<String[]>();
@@ -360,7 +360,9 @@ public class Transaction extends javax.swing.JFrame {
             
             //Edit the table in the transactions table
             try{
-                PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID, Name, Quantity, Unit, Price, SuppBranch, Date, Action) VALUES(?,?,?,?,?,?,?,?)");
+
+                PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID,Name,Quantity,Unit,Price,SuppBranch,Date, Action, Sub , Transby)VALUES(?,?,?,?,?,?,?,?,?,?)");
+
                 st.setString(1, transactionArr.get(idx)[4]);
                 st.setString(2, transactionArr.get(idx)[2]);
                 st.setString(3, String.valueOf(inputQuan));
@@ -378,6 +380,8 @@ public class Transaction extends javax.swing.JFrame {
                 }else{
                     st.setString(8, "withdraw");
                 }
+                st.setString(9, "P");
+                st.setString(10, t.full);
 
                 st.executeUpdate();
 

@@ -1,0 +1,8 @@
+"TransactionNo";"prodID";"Name";"Quantity";"Unit";"Price";"SuppBranch";"Date";"Action";"Sub";"Transby"
+1;1;"Coke";149;"mL";1.0;"1";"2021-07-09";"deposit";"Drinks";"Viver Bungag"
+2;2;"Sprite";5;"L";55.0;"helo";"2021-07-09";"deposit";"Drinks";"Viver Bungag"
+3;3;"Royal";3;"gal";3.0;"3";"2021-07-09";"deposit";"Drinks";"Viver Bungag"
+4;1;"Coke";8;"mL";10.0;"1";"2021-07-10";"deposit";"Drinks";"Viver Bungag"
+5;3;"Royal";29;"gal";10.0;"one";"2021-07-10";"withdraw";"Drinks";"Viver Bungag"
+6;2;"Sprite";25;"l";20.0;"SM";"2021-07-16";"deposit";"Drinks";"Viver Bungag"
+7;1;"Coke";13;"ml";1.46;"juna";"2021-07-16";"withdraw";"Drinks";"Viver Bungag"

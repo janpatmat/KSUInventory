@@ -10,6 +10,22 @@ package ksufinal;
  * @author Ricky
  */
 public class Menu extends javax.swing.JFrame {
+    login t = new login();
+
+    Transaction transactionClass = new Transaction();
+    
+    AddProduct addProductClass = new AddProduct();
+    
+    editProduct editProductClass = new editProduct();
+    adProd adProdClass = new adProd();
+    addSupplier addSupplierClass = new addSupplier();
+    
+    prodDis prodDisClass = new prodDis();
+    
+    report reportClass = new report();
+    addUnit addUnitClass = new addUnit();
+    disTrans disTransClass = new disTrans();
+    
 
     /**
      * Creates new form Menu
@@ -27,29 +43,131 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        NewProductMenu = new javax.swing.JMenuItem();
+        EditProductMenu = new javax.swing.JMenuItem();
+        NewUnitMenu = new javax.swing.JMenuItem();
+        newSupplierMenu = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        ReceiveWithdrawMenu = new javax.swing.JMenuItem();
+        EditTransactionMenu = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        ViewTransactionMenu = new javax.swing.JMenuItem();
+        ViewProductsMenu = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        CreateReportMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
+        jLabel1.setText("KSU INVENTORY SYSTEM");
+
+        jLabel2.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
+        jLabel2.setText("Welcome");
+
+        jLabel3.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        jLabel3.setText("jLabel3");
 
         jMenu1.setText("New Items");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu1.add(jMenuItem1);
+        NewProductMenu.setText("Enter new product");
+        NewProductMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewProductMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(NewProductMenu);
+
+        EditProductMenu.setText("Edit Product");
+        EditProductMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditProductMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(EditProductMenu);
+
+        NewUnitMenu.setText("New unit");
+        NewUnitMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewUnitMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(NewUnitMenu);
+
+        newSupplierMenu.setText("New Supplier");
+        newSupplierMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newSupplierMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(newSupplierMenu);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Transaction");
+
+        ReceiveWithdrawMenu.setText("Recieve/Withdraw items");
+        ReceiveWithdrawMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReceiveWithdrawMenuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(ReceiveWithdrawMenu);
+
+        EditTransactionMenu.setText("Edit Transaction");
+        jMenu2.add(EditTransactionMenu);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("View");
+
+        ViewTransactionMenu.setText("View Transaction");
+        ViewTransactionMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewTransactionMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(ViewTransactionMenu);
+
+        ViewProductsMenu.setText("View Products");
+        ViewProductsMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewProductsMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(ViewProductsMenu);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Report");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
+
+        CreateReportMenu.setText("Create Report");
+        CreateReportMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreateReportMenuActionPerformed(evt);
+            }
+        });
+        jMenu4.add(CreateReportMenu);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -58,15 +176,106 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 225, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NewUnitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewUnitMenuActionPerformed
+       
+        addUnitClass.setVisible(true);
+        addUnitClass.setDefaultCloseOperation(addUnitClass.HIDE_ON_CLOSE);
+
+    }//GEN-LAST:event_NewUnitMenuActionPerformed
+
+    private void ViewTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionMenuActionPerformed
+        
+        disTransClass.setVisible(true);
+        disTransClass.setDefaultCloseOperation(disTransClass.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_ViewTransactionMenuActionPerformed
+
+    private void NewProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductMenuActionPerformed
+        // TODO add your handling code here:
+//          AddProduct adPrdct = new AddProduct();
+        addProductClass.setVisible(true);
+        addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
+
+    }//GEN-LAST:event_NewProductMenuActionPerformed
+
+    private void ReceiveWithdrawMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReceiveWithdrawMenuActionPerformed
+        // TODO add your handling code here:
+        
+        transactionClass.setVisible(true);
+        transactionClass.setDefaultCloseOperation(transactionClass.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_ReceiveWithdrawMenuActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+        
+        addProductClass.setVisible(true);
+        addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
+
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void EditProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductMenuActionPerformed
+
+        editProductClass.setVisible(true);
+        editProductClass.setDefaultCloseOperation(editProductClass.HIDE_ON_CLOSE);
+
+        adProdClass.setVisible(true);
+        adProdClass.setDefaultCloseOperation(adProdClass.HIDE_ON_CLOSE);
+
+    }//GEN-LAST:event_EditProductMenuActionPerformed
+
+    private void newSupplierMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplierMenuActionPerformed
+       
+        addSupplierClass.setVisible(true);
+        addSupplierClass.setDefaultCloseOperation(addSupplierClass.HIDE_ON_CLOSE);
+
+    }//GEN-LAST:event_newSupplierMenuActionPerformed
+
+    private void ViewProductsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductsMenuActionPerformed
+        prodDisClass.setVisible(true);
+        prodDisClass.setDefaultCloseOperation(prodDisClass.HIDE_ON_CLOSE);
+
+        
+    }//GEN-LAST:event_ViewProductsMenuActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        jLabel3.setText(t.full);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void CreateReportMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateReportMenuActionPerformed
+        reportClass.setVisible(true);
+        reportClass.setDefaultCloseOperation(reportClass.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_CreateReportMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,11 +313,22 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem CreateReportMenu;
+    private javax.swing.JMenuItem EditProductMenu;
+    private javax.swing.JMenuItem EditTransactionMenu;
+    private javax.swing.JMenuItem NewProductMenu;
+    private javax.swing.JMenuItem NewUnitMenu;
+    private javax.swing.JMenuItem ReceiveWithdrawMenu;
+    private javax.swing.JMenuItem ViewProductsMenu;
+    private javax.swing.JMenuItem ViewTransactionMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem newSupplierMenu;
     // End of variables declaration//GEN-END:variables
 }
