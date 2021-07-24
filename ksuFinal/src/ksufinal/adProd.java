@@ -5,8 +5,11 @@
  */
 package ksufinal;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;  
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -45,6 +48,11 @@ public class adProd extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        fromDateChooser = new com.toedter.calendar.JDateChooser();
+        toDateChooser = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        SPBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -66,11 +74,11 @@ public class adProd extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Qty", "UoM"
+                "Name", "Qty", "UOM", "SP"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -105,6 +113,17 @@ public class adProd extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("From");
+
+        jLabel2.setText("To");
+
+        SPBtn.setText("Calculate Standard Price");
+        SPBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SPBtnActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Add Product");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,29 +139,55 @@ public class adProd extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jButton1)
-                .addGap(83, 83, 83)
-                .addComponent(jButton2)
-                .addGap(71, 71, 71)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fromDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(toDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(SPBtn))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton2)
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton3)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(58, 58, 58)
+                        .addComponent(SPBtn)))
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addGap(36, 36, 36))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         pack();
@@ -160,7 +205,11 @@ public class adProd extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       try{
+       
+        DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
+        t.setRowCount(0);
+        
+        try{
         Statement prodstate = KsuFinal.con.createStatement();
         ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
         
@@ -169,10 +218,16 @@ public class adProd extends javax.swing.JFrame {
             String id = prodres.getString("productID");
             String name = prodres.getString("productName");
             String quan = String.valueOf(prodres.getInt("productQuantity"));
-            String unit = prodres.getString("productUnit");
-            String[] item = {name, quan, unit};
-            String[] item2 = {id, name, quan, unit};
-            DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
+            String unit = prodres.getString("Unit");
+            String stndrd = prodres.getString("standardPrice");
+            String fromD = prodres.getString("dateFrom");
+            String toD = prodres.getString("dateTo");
+            
+            
+            
+            String[] item = {name, quan, unit, stndrd};
+            String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
+            
             
             t.addRow(item);
             
@@ -189,7 +244,7 @@ public class adProd extends javax.swing.JFrame {
     public static void editActiveTable(){
         try{
             Statement prodstate = KsuFinal.con.createStatement();
-            ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
+            ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'");
             DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
             t.setRowCount(0);
             while(prodres.next()){
@@ -197,8 +252,9 @@ public class adProd extends javax.swing.JFrame {
 
                 String name = prodres.getString("productName");
                 String quan = String.valueOf(prodres.getInt("productQuantity"));
-                String unit = prodres.getString("productUnit");
-                String[] item = {name, quan, unit};
+                String unit = prodres.getString("Unit");
+                String stndrd = prodres.getString("standardPrice");
+                String[] item = {name, quan, unit, stndrd};
                 t.addRow(item);
 
 
@@ -215,48 +271,63 @@ public class adProd extends javax.swing.JFrame {
         
     }
     private void proddbTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_proddbTableMouseClicked
-       try{
-           Statement prodstate = KsuFinal.con.createStatement();
-        ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable");
+        int i = proddbTable.getSelectedRow();
+        try{
+            Statement prodstate = KsuFinal.con.createStatement();
+            ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable");
         
         while(prodres.next()){
-        String minquan = String.valueOf(prodres.getInt("prodMinq"));
-        int i = proddbTable.getSelectedRow();
-        editProduct.productName.setText(proddbTable.getValueAt(i, 0).toString());
-        editProduct.productUnit.setText(proddbTable.getValueAt(i, 2).toString());
-        editProduct.minQ.setText(minquan);
+            String minquan = String.valueOf(prodres.getInt("prodMinq"));
+            editProduct.productName.setText(proddbTable.getValueAt(i, 0).toString());
+            editProduct.productUnit.setText(proddbTable.getValueAt(i, 2).toString());
+            editProduct.minQ.setText(minquan);
        }
        }
        catch(Exception e){
            System.out.println(e);
        }
-    }//GEN-LAST:event_proddbTableMouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        printThis();
-        int i = proddbTable.getSelectedRow();
-//        System.out.println(Arrays.deepToString(adProdArr.get(i)));
-        int id = Integer.parseInt(adProdArr.get(i)[0]);
-        String pname = proddbTable.getValueAt(i, 0).toString();
-        String pun = proddbTable.getValueAt(i, 1).toString();
-        String pmq = proddbTable.getValueAt(i, 2).toString();
-        System.out.print(pname);
-        
+       SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
         try{
-            st = KsuFinal.con.prepareStatement("UPDATE producttable SET Active = 'FALSE' WHERE productID = "+id);
-            System.err.println(st);
-            st.executeUpdate();
-           // aprd.setVisible(false);
-           // aprd.setVisible(true);
+            fromDateChooser.setDate(dFormat.parse(adProdArr.get(i)[5]));
+            toDateChooser.setDate(dFormat.parse(adProdArr.get(i)[6]));
         }
         catch(Exception e){
             System.out.println(e);
         }
+       
+       
+       
+    }//GEN-LAST:event_proddbTableMouseClicked
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int yesNO = 0;
+        yesNO = JOptionPane.showConfirmDialog (null, "Do you really want to deactivate these products?","Warning",JOptionPane.YES_NO_OPTION);
         
-        deactivated.deacArr.add(adProdArr.get(i));
-        adProdArr.remove(i);
-        editActiveTable();
-        deactivated.editDeactiveTable();
+        
+        if (yesNO == JOptionPane.YES_OPTION){
+
+            int[] allSelected = proddbTable.getSelectedRows();
+            for (int x = allSelected.length-1; x > -1; x--){
+                int i = allSelected[x];
+                int id = Integer.parseInt(adProdArr.get(i)[0]);
+
+
+                try{
+                    st = KsuFinal.con.prepareStatement("UPDATE producttable SET Active = 'FALSE' WHERE productID = " + id);
+
+                    st.executeUpdate();
+
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                }
+
+                deactivated.deacArr.add(adProdArr.get(i));
+                adProdArr.remove(i);
+                editActiveTable();
+                deactivated.editDeactiveTable();
+            }
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
     public static void printThis(){
@@ -266,7 +337,95 @@ public class adProd extends javax.swing.JFrame {
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dec.setVisible(true);
+        dec.setDefaultCloseOperation(dec.HIDE_ON_CLOSE);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void SPBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SPBtnActionPerformed
+        
+        DefaultTableModel tModel = (DefaultTableModel)proddbTable.getModel();
+        int[] selectedRows = proddbTable.getSelectedRows();
+        for (int x = 0; x < selectedRows.length; x++){
+            try{
+                SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String fdate = dFormat.format(fromDateChooser.getDate()); 
+                String tdate = dFormat.format(toDateChooser.getDate());
+                int totQuant = 0;
+                float totPrice = 0;
+                int idx = selectedRows[x];
+                String prodId = adProdArr.get(idx)[0];
+                
+
+                    
+
+                String statement = "SELECT * FROM expenses.producttrans WHERE prodID = " + prodId + " AND Action = 'deposit'";
+
+                ResultSet prodres = KsuFinal.con.createStatement().executeQuery(statement);
+
+                while (prodres.next()){
+
+                    String currD = prodres.getString("Date");
+
+                    try{
+                        Date currdate = dFormat.parse(currD);
+                        Date fromDate = dFormat.parse(fdate);
+                        Date toDate = dFormat.parse(tdate);
+
+                        if (((currdate.after(fromDate) && currdate.before(toDate)) || currdate.equals(fromDate) || currdate.equals(toDate)) && (fromDate.before(toDate) || fromDate.equals(toDate))){
+    //                        System.out.println("In between");
+                            int prodQuan = prodres.getInt("Quantity");
+                            float prodPrice = prodres.getFloat("Price");
+
+                            totQuant += prodQuan;
+                            totPrice += (prodPrice * prodQuan);
+                        }
+                    }catch(Exception ex){
+
+                    }        
+                }
+                if (totQuant > 0){
+                    double sp = Math.round((totPrice / totQuant) * 100.0) / 100.0;
+
+                    try{
+
+                        st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET standardPrice = " + sp + " WHERE productID = " + prodId);
+                        st.executeUpdate();
+                        st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET dateFrom = '" + fdate + "' WHERE productID = " + prodId);
+                        st.executeUpdate();
+                        st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET dateTo = '" + tdate + "' WHERE productID = " + prodId);
+                        st.executeUpdate();
+                        
+                        tModel.setValueAt(sp, idx, 3);
+
+                        adProdArr.get(idx)[4] = String.valueOf(sp);
+                        adProdArr.get(idx)[5] = fdate;
+                        adProdArr.get(idx)[6] = tdate;
+                    
+                    
+                    
+                    
+                    }
+                
+                    catch(Exception e){
+                        System.out.println(e);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(this,"A product has 0 quantity so the standard price would be retained");
+                }
+
+
+
+
+
+
+            }catch(Exception ex){
+                System.out.println(ex);
+            }
+        }
+        
+        
+        
+    }//GEN-LAST:event_SPBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,9 +463,13 @@ public class adProd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SPBtn;
+    private com.toedter.calendar.JDateChooser fromDateChooser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -314,5 +477,6 @@ public class adProd extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable proddbTable;
+    private com.toedter.calendar.JDateChooser toDateChooser;
     // End of variables declaration//GEN-END:variables
 }
