@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static ksufinal.adProd.adProdArr;
 import static ksufinal.adProd.proddbTable;
@@ -52,11 +53,11 @@ PreparedStatement st = null;
 
             },
             new String [] {
-                "Name", "Qty", "UoM"
+                "Name", "Qty", "UoM", "SP"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -70,7 +71,7 @@ PreparedStatement st = null;
         });
         jScrollPane1.setViewportView(deacTable);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Reactivate Product");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -86,7 +87,7 @@ PreparedStatement st = null;
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
-                .addGap(273, 273, 273)
+                .addGap(259, 259, 259)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -95,7 +96,7 @@ PreparedStatement st = null;
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -130,7 +131,8 @@ PreparedStatement st = null;
                 String name = prodres.getString("productName");
                 String quan = String.valueOf(prodres.getInt("productQuantity"));
                 String unit = prodres.getString("productUnit");
-                String[] item = {name, quan, unit};
+                String stndrd = prodres.getString("standardPrice");
+                String[] item = {name, quan, unit, stndrd};
                 t.addRow(item);
 
                 
@@ -147,7 +149,10 @@ PreparedStatement st = null;
         
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-      try{
+        DefaultTableModel t = (DefaultTableModel)deacTable.getModel();
+        
+        t.setRowCount(0);
+        try{
         Statement prodstate = KsuFinal.con.createStatement();
         ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'FALSE'");
         
@@ -157,9 +162,13 @@ PreparedStatement st = null;
             String name = prodres.getString("productName");
             String quan = String.valueOf(prodres.getInt("productQuantity"));
             String unit = prodres.getString("productUnit");
-            String[] item = {name, quan, unit};
-            String[] item2 = {id, name, quan, unit};
-            DefaultTableModel t = (DefaultTableModel)deacTable.getModel();
+            String stndrd = prodres.getString("standardPrice");
+            String fromD = prodres.getString("dateFrom");
+            String toD = prodres.getString("dateTo");
+            
+            String[] item = {name, quan, unit, stndrd};
+            String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
+            
             
             t.addRow(item);
             
@@ -175,29 +184,38 @@ PreparedStatement st = null;
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       printThis();
-        int i = deacTable.getSelectedRow();
-       
-        int id = Integer.parseInt(deacArr.get(i)[0]);
-        String pname = deacTable.getValueAt(i, 0).toString();
-        String pun = deacTable.getValueAt(i, 1).toString();
-        String pmq = deacTable.getValueAt(i, 2).toString();
-        System.out.print(pname);
-        
-        try{
-            st = KsuFinal.con.prepareStatement("UPDATE producttable SET Active = 'TRUE' WHERE productID = "+id);
-            System.err.println(st);
-            st.executeUpdate();
+//       printThis();
+
+        int yesNO = 0;
+        yesNO = JOptionPane.showConfirmDialog (null, "Do you really want to reactivate these products?","Warning",JOptionPane.YES_NO_OPTION);
+
+        if (yesNO == JOptionPane.YES_OPTION){
+
+            int[] allSelected = deacTable.getSelectedRows();
+            for (int x = allSelected.length-1; x > -1; x--){
+                int i = allSelected[x];
+
+                int id = Integer.parseInt(deacArr.get(i)[0]);
+                String pname = deacTable.getValueAt(i, 0).toString();
+                String pun = deacTable.getValueAt(i, 1).toString();
+                String pmq = deacTable.getValueAt(i, 2).toString();
+        //        System.out.print(pname);
+
+                try{
+                    st = KsuFinal.con.prepareStatement("UPDATE producttable SET Active = 'TRUE' WHERE productID = "+id);
+                    st.executeUpdate();
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                }
+
+
+                adProd.adProdArr.add(deacArr.get(i));
+                deacArr.remove(i);
+                adProd.editActiveTable();
+                editDeactiveTable();
+            }
         }
-        catch(Exception e){
-            System.out.println(e);
-        }
-        
-        
-        adProd.adProdArr.add(deacArr.get(i));
-        deacArr.remove(i);
-        adProd.editActiveTable();
-        editDeactiveTable();
     }//GEN-LAST:event_jButton1ActionPerformed
     public static void printThis(){
         for (String[]x : deacArr){
