@@ -145,12 +145,13 @@ public class register extends javax.swing.JFrame {
         else{
         try{
             st = KsuFinal.con.prepareStatement("INSERT INTO usertable (Firstname, Lastname, Username,Password) VALUES (?,?,?,?)");
-           PreparedStatement state = KsuFinal.con.prepareStatement("Select Username from usertable where Username = ?");
+           PreparedStatement state = KsuFinal.con.prepareStatement("Select * from usertable where Username = ?");
            ResultSet rs = state.executeQuery();
             st.setString(1, fname.getText());
             st.setString(2, lname.getText());
             st.setString(3, uname.getText());
             st.setString(4, pass.getText());
+            state.setString(1, uname.getText());
             
 //            System.out.println(pass.getText());
 //            System.out.println(rpass.getText());
@@ -164,16 +165,16 @@ public class register extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Password does not match");
             }
             else if(rs.next()){
-               String user = rs.getString("Username");
-                  if(user.equals(uname.getText())){
-                      JOptionPane.showMessageDialog(this,"Nahh");
-                  }
-                else{
+              
+                   JOptionPane.showMessageDialog(this,"Username exist");
+                   pass.setText(" ");
+                   uname.setText(" ");
+                   rpass.setText(" ");
+                   
+                
+            }else{
                 st.executeUpdate();
                 JOptionPane.showMessageDialog(this,"Successfully registered");
-            }
-            }else{
-                
             }
             
         }

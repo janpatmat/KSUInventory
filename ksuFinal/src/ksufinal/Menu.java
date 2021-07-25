@@ -17,14 +17,14 @@ public class Menu extends javax.swing.JFrame {
     AddProduct addProductClass = new AddProduct();
     
     editProduct editProductClass = new editProduct();
-    adProd adProdClass = new adProd();
-    addSupplier addSupplierClass = new addSupplier();
     
+    addSupplier addSupplierClass = new addSupplier();
     prodDis prodDisClass = new prodDis();
     
     report reportClass = new report();
     addUnit addUnitClass = new addUnit();
-    disTrans disTransClass = new disTrans();
+    TransReport disTransClass = new TransReport();
+    adProd adProdClass = new adProd();
     
 
     /**
@@ -49,9 +49,14 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         NewProductMenu = new javax.swing.JMenuItem();
-        EditProductMenu = new javax.swing.JMenuItem();
         NewUnitMenu = new javax.swing.JMenuItem();
         newSupplierMenu = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        EditProductMenu = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         ReceiveWithdrawMenu = new javax.swing.JMenuItem();
         EditTransactionMenu = new javax.swing.JMenuItem();
@@ -75,7 +80,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setText("Welcome");
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
-        jLabel3.setText("jLabel3");
 
         jMenu1.setText("New Items");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,21 +88,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        NewProductMenu.setText("Enter new product");
+        NewProductMenu.setText("New product");
         NewProductMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NewProductMenuActionPerformed(evt);
             }
         });
         jMenu1.add(NewProductMenu);
-
-        EditProductMenu.setText("Edit Product");
-        EditProductMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditProductMenuActionPerformed(evt);
-            }
-        });
-        jMenu1.add(EditProductMenu);
 
         NewUnitMenu.setText("New unit");
         NewUnitMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +112,36 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(newSupplierMenu);
 
+        jMenuItem1.setText("New Branch");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
+
+        jMenu5.setText("Edit Items");
+
+        EditProductMenu.setText("Edit Product");
+        EditProductMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditProductMenuActionPerformed(evt);
+            }
+        });
+        jMenu5.add(EditProductMenu);
+
+        jMenuItem2.setText("Edit Unit");
+        jMenu5.add(jMenuItem2);
+
+        jMenuItem3.setText("Edit Supplier");
+        jMenu5.add(jMenuItem3);
+
+        jMenuItem4.setText("Edit Branch");
+        jMenu5.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu5);
 
         jMenu2.setText("Transaction");
 
@@ -135,7 +160,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu3.setText("View");
 
-        ViewTransactionMenu.setText("View Transaction");
+        ViewTransactionMenu.setText("View Transactions");
         ViewTransactionMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewTransactionMenuActionPerformed(evt);
@@ -197,7 +222,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         pack();
@@ -241,9 +266,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void EditProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductMenuActionPerformed
 
-        editProductClass.setVisible(true);
-        editProductClass.setDefaultCloseOperation(editProductClass.HIDE_ON_CLOSE);
-
+//        editProductClass.setVisible(true);
+//        editProductClass.setDefaultCloseOperation(editProductClass.HIDE_ON_CLOSE);
+//        adProd adProdClass = new adProd();
         adProdClass.setVisible(true);
         adProdClass.setDefaultCloseOperation(adProdClass.HIDE_ON_CLOSE);
 
@@ -276,6 +301,10 @@ public class Menu extends javax.swing.JFrame {
         reportClass.setVisible(true);
         reportClass.setDefaultCloseOperation(reportClass.HIDE_ON_CLOSE);
     }//GEN-LAST:event_CreateReportMenuActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,7 +357,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem newSupplierMenu;
     // End of variables declaration//GEN-END:variables
 }
