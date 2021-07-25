@@ -198,10 +198,13 @@ public class adProd extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(proddbTable.getSelectedRow() >= 0) 
+        if(proddbTable.getSelectedRow() >= 0){ 
             edprd.setVisible(true);
-        else
+            edprd.setDefaultCloseOperation(edprd.HIDE_ON_CLOSE);
+        }
+        else{
             JOptionPane.showMessageDialog(this,"Please select a row");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
