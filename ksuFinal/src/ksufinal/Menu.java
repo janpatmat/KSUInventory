@@ -11,20 +11,16 @@ package ksufinal;
  */
 public class Menu extends javax.swing.JFrame {
     login t = new login();
-
     Transaction transactionClass = new Transaction();
-    
     AddProduct addProductClass = new AddProduct();
-    
     editProduct editProductClass = new editProduct();
-    
     addSupplier addSupplierClass = new addSupplier();
     prodDis prodDisClass = new prodDis();
-    
     report reportClass = new report();
     addUnit addUnitClass = new addUnit();
     TransReport disTransClass = new TransReport();
     adProd adProdClass = new adProd();
+    editTransaction editTransactionClass = new editTransaction();
     
 
     /**
@@ -154,6 +150,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.add(ReceiveWithdrawMenu);
 
         EditTransactionMenu.setText("Edit Transaction");
+        EditTransactionMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditTransactionMenuActionPerformed(evt);
+            }
+        });
         jMenu2.add(EditTransactionMenu);
 
         jMenuBar1.add(jMenu2);
@@ -305,6 +306,12 @@ public class Menu extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void EditTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTransactionMenuActionPerformed
+        editTransactionClass.setVisible(true);
+        editTransactionClass.setDefaultCloseOperation(editTransactionClass.HIDE_ON_CLOSE);
+
+    }//GEN-LAST:event_EditTransactionMenuActionPerformed
 
     /**
      * @param args the command line arguments
