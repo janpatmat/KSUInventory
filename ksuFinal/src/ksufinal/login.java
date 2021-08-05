@@ -52,7 +52,7 @@ PreparedStatement st = null;
             }
         });
 
-        pass.setText("123456");
+        pass.setText("123");
 
         Login.setText("Login");
         Login.addActionListener(new java.awt.event.ActionListener() {

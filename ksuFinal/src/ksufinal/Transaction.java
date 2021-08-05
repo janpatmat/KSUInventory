@@ -26,7 +26,6 @@ public class Transaction extends javax.swing.JFrame {
     String currRadioBtn = "deposit";
     
     ArrayList <String> supplierArr = new ArrayList<>();
-    
     ArrayList <String> branchArr = new ArrayList<>();
 
     /**
