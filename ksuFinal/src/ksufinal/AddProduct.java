@@ -176,7 +176,7 @@ public String prdnm = null;
         st.setString(3,(String) unitCmb.getSelectedItem());
         st.setString(4, minQ.getText());
         st.setString(5,(String) catCmb.getSelectedItem());
-      
+        
         
         
        st.executeUpdate();
