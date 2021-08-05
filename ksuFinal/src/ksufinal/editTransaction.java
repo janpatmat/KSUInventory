@@ -5,9 +5,12 @@
  */
 package ksufinal;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -218,7 +221,7 @@ public class editTransaction extends javax.swing.JFrame {
                 String sb = rsTransaction.getString("SuppBranch");
                 Date dt = rsTransaction.getDate("Date");
                 String ac = rsTransaction.getString("Action");
-                String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(quant));
+                String tp = String.format("%.2f", Float.parseFloat(pr) * Float.parseFloat(quant));
                 
                 String[] row = {tn, pid, dt.toString(), nm, sub, pr, quant, tp, ut, sb, ac};
                 
@@ -302,6 +305,69 @@ public class editTransaction extends javax.swing.JFrame {
 
     private void ET_editBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ET_editBTNActionPerformed
         DefaultTableModel TransactionTableModel = (DefaultTableModel) ET_TransactionTable.getModel();
+        int idx = ET_TransactionTable.getSelectedRow(); 
+        
+        if (ET_TransactionTable.getSelectedRowCount() == 1){
+            
+            // Update the table
+            TransactionTableModel.setValueAt(ET_nameCB.getSelectedItem(), idx, 3);
+            TransactionTableModel.setValueAt(ET_PriceTF.getText(), idx, 5);
+            TransactionTableModel.setValueAt(ET_QuantTF.getText(), idx, 6);
+            String TotalPrice = String.format("%.2f",Float.parseFloat(ET_QuantTF.getText()) * Float.parseFloat(ET_PriceTF.getText()));
+            
+            TransactionTableModel.setValueAt(TotalPrice, idx, 7);
+            TransactionTableModel.setValueAt(ET_bsCB.getSelectedItem(), idx, 9);
+
+            try{
+                String editedDate = new SimpleDateFormat("yyyy-MM-dd").format(ET_DateChooser.getDate());
+                TransactionTableModel.setValueAt(editedDate, idx, 2);
+                transactionArr.get(idx)[2] = editedDate;
+
+            }catch(Exception ex){
+                System.out.println(ex);
+            }
+
+            // Update the Arrays
+            transactionArr.get(idx)[3] = ET_nameCB.getSelectedItem().toString();
+            transactionArr.get(idx)[5] = ET_PriceTF.getText();
+            transactionArr.get(idx)[6] = ET_QuantTF.getText();
+            transactionArr.get(idx)[7] = TotalPrice;
+            transactionArr.get(idx)[9] = ET_bsCB.getSelectedItem().toString();
+
+            
+            // Update Database
+            try{
+                PreparedStatement st = KsuFinal.con.prepareStatement("UPDATE producttrans SET Name = ?, Quantity = ?, Price = ?, SuppBranch = ?, Date = ? WHERE TransactionNo = ?");
+                
+                st.setString(1, transactionArr.get(idx)[3]);
+                st.setString(2, transactionArr.get(idx)[6]);
+                st.setString(3, transactionArr.get(idx)[5]);
+                st.setString(4, transactionArr.get(idx)[9]);
+                st.setString(5, transactionArr.get(idx)[2]);
+                st.setString(6, transactionArr.get(idx)[0]);
+                
+                st.executeUpdate();
+                
+            }catch(Exception ex){
+                
+            }
+            
+            
+            
+            
+        }else if (ET_TransactionTable.getSelectedRowCount() == 0){
+            JOptionPane.showMessageDialog(this,"Please Select a Row");
+            
+        }else{
+            JOptionPane.showMessageDialog(this,"Please Select only 1 Row");
+        }
+
+
+
+
+        
+        
+        
     }//GEN-LAST:event_ET_editBTNActionPerformed
 
     /**
