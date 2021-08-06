@@ -112,14 +112,20 @@ PreparedStatement st = null;
         PreparedStatement state = KsuFinal.con.prepareStatement("SELECT * FROM usertable where Username=? and Password =?");
          state.setString(1, uname.getText());
          state.setString(2, String.valueOf(pass.getPassword()));
-         
+        String passString = String.valueOf(pass.getPassword());
          ResultSet rs = state.executeQuery();
 
           
             
                  if (rs.next()){
+                    if(uname.getText().equals("Admin")&& passString.equals("Admin")){
                     Menu tra = new Menu();
                     tra.setVisible(true);
+                    }
+                    else{
+                        userMenu us = new userMenu();
+                        us.setVisible(true);
+                    }
                     id = rs.getString("userID");
                     String fn = rs.getString("Firstname");
                     String ln = rs.getString("Lastname");

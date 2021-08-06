@@ -29,11 +29,11 @@ public class KsuFinal {
 //        String user = "root";
 //        String pass = "Langgalangga1";
 
-//        String user = "root";
-//        String pass = "Naiskongmagpakalasingdahilwalakana14";
-        
         String user = "root";
-        String pass = "Langgalangga1";
+        String pass = "Naiskongmagpakalasingdahilwalakana14";
+        
+    //    String user = "root";
+      //  String pass = "Langgalangga1";
 
       //  String user = "root";
         //String pass = "123456789";
