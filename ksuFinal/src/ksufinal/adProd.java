@@ -17,11 +17,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class adProd extends javax.swing.JFrame {
    //adProd aprd = new adProd();
-    AddProduct adPrdct = new AddProduct();
-    editProduct edprd = new editProduct();
+    static AddProduct adPrdct = new AddProduct();
+    static editProduct edprd = new editProduct();
     PreparedStatement st = null;
     PreparedStatement del = null;
-    deactivated dec = new deactivated();
+    static deactivated dec = new deactivated();
     
     static ArrayList<String[]> adProdArr = new ArrayList<String[]>();
     /**
@@ -92,7 +92,7 @@ public class adProd extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(proddbTable);
 
-        jButton1.setText("Edit Product");
+        jButton1.setText("Edit Data");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -198,10 +198,13 @@ public class adProd extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(proddbTable.getSelectedRow() >= 0) 
-        edprd.setVisible(true);
-        else
-            System.out.println("haha");
+        if(proddbTable.getSelectedRow() >= 0){ 
+            edprd.setVisible(true);
+            edprd.setDefaultCloseOperation(edprd.HIDE_ON_CLOSE);
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Please select a row");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -211,10 +214,10 @@ public class adProd extends javax.swing.JFrame {
         
         try{
         Statement prodstate = KsuFinal.con.createStatement();
-        ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
+        ResultSet prodres = prodstate.executeQuery("SELECT * FROM expenses.producttable WHERE Active = 'TRUE'");
         
         while(prodres.next()){
-            
+            System.out.println("a");
             String id = prodres.getString("productID");
             String name = prodres.getString("productName");
             String quan = String.valueOf(prodres.getInt("productQuantity"));
@@ -301,32 +304,34 @@ public class adProd extends javax.swing.JFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int yesNO = 0;
-        yesNO = JOptionPane.showConfirmDialog (null, "Do you really want to deactivate these products?","Warning",JOptionPane.YES_NO_OPTION);
-        
-        
-        if (yesNO == JOptionPane.YES_OPTION){
+        if (proddbTable.getSelectedRow() >= 0){
+            yesNO = JOptionPane.showConfirmDialog (null, "Do you really want to deactivate these products?","Warning",JOptionPane.YES_NO_OPTION);
+            if (yesNO == JOptionPane.YES_OPTION){
 
-            int[] allSelected = proddbTable.getSelectedRows();
-            for (int x = allSelected.length-1; x > -1; x--){
-                int i = allSelected[x];
-                int id = Integer.parseInt(adProdArr.get(i)[0]);
+                int[] allSelected = proddbTable.getSelectedRows();
+                for (int x = allSelected.length-1; x > -1; x--){
+                    int i = allSelected[x];
+                    int id = Integer.parseInt(adProdArr.get(i)[0]);
 
 
-                try{
-                    st = KsuFinal.con.prepareStatement("UPDATE producttable SET Active = 'FALSE' WHERE productID = " + id);
+                    try{
+                        st = KsuFinal.con.prepareStatement("UPDATE producttable SET Active = 'FALSE' WHERE productID = " + id);
 
-                    st.executeUpdate();
+                        st.executeUpdate();
 
+                    }
+                    catch(Exception e){
+                        System.out.println(e);
+                    }
+
+                    deactivated.deacArr.add(adProdArr.get(i));
+                    adProdArr.remove(i);
+                    editActiveTable();
+                    deactivated.editDeactiveTable();
                 }
-                catch(Exception e){
-                    System.out.println(e);
-                }
-
-                deactivated.deacArr.add(adProdArr.get(i));
-                adProdArr.remove(i);
-                editActiveTable();
-                deactivated.editDeactiveTable();
             }
+        }else{
+            JOptionPane.showMessageDialog(this,"Please select a row");
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed

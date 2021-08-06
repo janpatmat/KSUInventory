@@ -9,7 +9,7 @@ package ksufinal;
  *
  * @author Ricky
  */
-public class Menu extends javax.swing.JFrame {
+public class userMenu extends javax.swing.JFrame {
     login t = new login();
     Transaction transactionClass = new Transaction();
     AddProduct addProductClass = new AddProduct();
@@ -21,12 +21,13 @@ public class Menu extends javax.swing.JFrame {
     TransReport disTransClass = new TransReport();
     adProd adProdClass = new adProd();
     editTransaction editTransactionClass = new editTransaction();
+    userdisTrans userdisTransClass = new userdisTrans();
     
 
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public userMenu() {
         initComponents();
     }
 
@@ -47,15 +48,8 @@ public class Menu extends javax.swing.JFrame {
         NewProductMenu = new javax.swing.JMenuItem();
         NewUnitMenu = new javax.swing.JMenuItem();
         newSupplierMenu = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        EditProductMenu = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         ReceiveWithdrawMenu = new javax.swing.JMenuItem();
-        EditTransactionMenu = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         ViewTransactionMenu = new javax.swing.JMenuItem();
         ViewProductsMenu = new javax.swing.JMenuItem();
@@ -108,36 +102,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(newSupplierMenu);
 
-        jMenuItem1.setText("New Branch");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
         jMenuBar1.add(jMenu1);
-
-        jMenu5.setText("Edit Items");
-
-        EditProductMenu.setText("Edit Product");
-        EditProductMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditProductMenuActionPerformed(evt);
-            }
-        });
-        jMenu5.add(EditProductMenu);
-
-        jMenuItem2.setText("Edit Unit");
-        jMenu5.add(jMenuItem2);
-
-        jMenuItem3.setText("Edit Supplier");
-        jMenu5.add(jMenuItem3);
-
-        jMenuItem4.setText("Edit Branch");
-        jMenu5.add(jMenuItem4);
-
-        jMenuBar1.add(jMenu5);
 
         jMenu2.setText("Transaction");
 
@@ -148,14 +113,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu2.add(ReceiveWithdrawMenu);
-
-        EditTransactionMenu.setText("Edit Transaction");
-        EditTransactionMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditTransactionMenuActionPerformed(evt);
-            }
-        });
-        jMenu2.add(EditTransactionMenu);
 
         jMenuBar1.add(jMenu2);
 
@@ -238,8 +195,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void ViewTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionMenuActionPerformed
         
-        disTransClass.setVisible(true);
-        disTransClass.setDefaultCloseOperation(disTransClass.HIDE_ON_CLOSE);
+        userdisTransClass.setVisible(true);
+        userdisTransClass.setDefaultCloseOperation(userdisTransClass.HIDE_ON_CLOSE);
     }//GEN-LAST:event_ViewTransactionMenuActionPerformed
 
     private void NewProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductMenuActionPerformed
@@ -264,16 +221,6 @@ public class Menu extends javax.swing.JFrame {
         addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
 
     }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void EditProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductMenuActionPerformed
-
-//        editProductClass.setVisible(true);
-//        editProductClass.setDefaultCloseOperation(editProductClass.HIDE_ON_CLOSE);
-//        adProd adProdClass = new adProd();
-        adProdClass.setVisible(true);
-        adProdClass.setDefaultCloseOperation(adProdClass.HIDE_ON_CLOSE);
-
-    }//GEN-LAST:event_EditProductMenuActionPerformed
 
     private void newSupplierMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplierMenuActionPerformed
        
@@ -303,16 +250,6 @@ public class Menu extends javax.swing.JFrame {
         reportClass.setDefaultCloseOperation(reportClass.HIDE_ON_CLOSE);
     }//GEN-LAST:event_CreateReportMenuActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void EditTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTransactionMenuActionPerformed
-        editTransactionClass.setVisible(true);
-        editTransactionClass.setDefaultCloseOperation(editTransactionClass.HIDE_ON_CLOSE);
-
-    }//GEN-LAST:event_EditTransactionMenuActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -330,28 +267,27 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(userMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new userMenu().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CreateReportMenu;
-    private javax.swing.JMenuItem EditProductMenu;
-    private javax.swing.JMenuItem EditTransactionMenu;
     private javax.swing.JMenuItem NewProductMenu;
     private javax.swing.JMenuItem NewUnitMenu;
     private javax.swing.JMenuItem ReceiveWithdrawMenu;
@@ -364,12 +300,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem newSupplierMenu;
     // End of variables declaration//GEN-END:variables
 }

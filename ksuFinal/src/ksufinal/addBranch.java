@@ -1,26 +1,25 @@
-package ksufinal;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package ksufinal;
 
 /**
  *
- * @author Ricky
+ * @author Rickyincld
  */
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-public class addUnit extends javax.swing.JFrame {
+public class addBranch extends javax.swing.JFrame {
 PreparedStatement st = null;
-ArrayList <String> tabar = new ArrayList <String>();    
-/**
-     * Creates new form addUnit
+ArrayList <String> tabar = new ArrayList <String>();
+    /**
+     * Creates new form addSupplier
      */
-    public addUnit() {
+    public addBranch() {
         initComponents();
     }
 
@@ -47,7 +46,7 @@ ArrayList <String> tabar = new ArrayList <String>();
             }
         });
 
-        jLabel1.setText("Unit Name");
+        jLabel1.setText("Branch name");
 
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +60,7 @@ ArrayList <String> tabar = new ArrayList <String>();
 
             },
             new String [] {
-                "Unit"
+                "Branches"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -79,36 +78,36 @@ ArrayList <String> tabar = new ArrayList <String>();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(109, 109, 109)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(36, 36, 36)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -116,30 +115,38 @@ ArrayList <String> tabar = new ArrayList <String>();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            if(jTextField1.getText().length() == 0){
+       if(jTextField1.getText().length() == 0){
             JOptionPane.showMessageDialog(this,"Missing fields");
         }
-            else{
-        try{
-            st = KsuFinal.con.prepareStatement("INSERT INTO unittable(Unit) VALUES(?)");
-            
-            st.setString(1, jTextField1.getText());
-            
-            st.executeUpdate();
-            jTextField1.setText("");
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-            }
+       else{
+       try{
+          
+        st = KsuFinal.con.prepareStatement("INSERT INTO branchtable(branchName) VALUE(?)");
+        
+        st.setString(1,jTextField1.getText());
+        
+        st.executeUpdate();
+        jTextField1.setText("");
+           
+       }
+       catch(Exception e){
+           System.out.println(e);
+       }
+       
+       String[] item = {jTextField1.getText()};
+      
+                 DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
+                 
+                 t.addRow(item);
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-              int index = jTable1.getSelectedRow();
+        int index = jTable1.getSelectedRow();
         int trudex = Integer.parseInt(tabar.get(index));
         
         try{
-            st = KsuFinal.con.prepareStatement("DELETE FROM  unittable WHERE unitID ="+ trudex);
+            st = KsuFinal.con.prepareStatement("DELETE FROM branchtable WHERE branchID ="+ trudex);
             st.executeUpdate();
         }
         catch(Exception e){
@@ -148,33 +155,37 @@ ArrayList <String> tabar = new ArrayList <String>();
          DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
                  
                  t.removeRow(index);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       try{
+public void addInfo(){
+    try{
              
              Statement state = KsuFinal.con.createStatement();
              System.out.println("x");
-            ResultSet rs = state.executeQuery("SELECT * FROM unittable");
+            ResultSet rs = state.executeQuery("SELECT * FROM branchtable");
             
             
             while(rs.next()){
-                String name = rs.getString("Unit");
-                 String id = String.valueOf(rs.getInt("unitID"));
+                String name = rs.getString("branchName");
+                 String id = String.valueOf(rs.getInt("branchID"));
                 
                 
                 String[] item = {name};
                 tabar.add(id);
                  DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
-                 
+                 t.setRowCount(0);
                  t.addRow(item);
             }
         }
         catch(Exception e){
             System.out.println(e);
         }
+}
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+           addInfo();
     }//GEN-LAST:event_formWindowOpened
 
+    
     /**
      * @param args the command line arguments
      */
@@ -192,20 +203,21 @@ ArrayList <String> tabar = new ArrayList <String>();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addUnit().setVisible(true);
+                new addBranch().setVisible(true);
             }
         });
     }

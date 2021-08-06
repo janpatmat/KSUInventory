@@ -66,11 +66,7 @@ public class register extends javax.swing.JFrame {
             }
         });
 
-        pass.setText("jPasswordField1");
-
         jLabel5.setText("Retype Passowrd");
-
-        rpass.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,20 +141,40 @@ public class register extends javax.swing.JFrame {
         else{
         try{
             st = KsuFinal.con.prepareStatement("INSERT INTO usertable (Firstname, Lastname, Username,Password) VALUES (?,?,?,?)");
-            
+            PreparedStatement state = KsuFinal.con.prepareStatement("Select * from usertable where Username = '" + uname.getText() + "'");
+           
             st.setString(1, fname.getText());
             st.setString(2, lname.getText());
             st.setString(3, uname.getText());
             st.setString(4, pass.getText());
             
-            if(pass.getText().equals(rpass.getText())){
-                st.executeUpdate();
-                JOptionPane.showMessageDialog(this,"Successfully registered");
+            ResultSet rs = state.executeQuery();
+//            System.out.println(pass.getText());
+//            System.out.println(rpass.getText());
+
+            
+            if (fname.getText().length() == 0 || lname.getText().length() == 0 || uname.getText().length() == 0 || pass.getText().length() == 0){
+                JOptionPane.showMessageDialog(this,"Incomplete fields"); 
             }
-            else{
-                System.out.println("Not done");
+            else if (!(pass.getText().equals(rpass.getText()))){
+                
                 JOptionPane.showMessageDialog(this,"Password does not match");
             }
+            else if(rs.next()){
+              
+                   JOptionPane.showMessageDialog(this,"Username exist");
+                   pass.setText(" ");
+                   uname.setText(" ");
+                   rpass.setText(" ");
+                   
+                
+            }else{
+                System.out.println("1");
+                st.executeUpdate();
+
+                JOptionPane.showMessageDialog(this,"Successfully registered");
+            }
+            
         }
         catch(Exception e){
             System.out.println(e);

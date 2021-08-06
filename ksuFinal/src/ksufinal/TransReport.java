@@ -84,6 +84,7 @@ public class TransReport extends javax.swing.JFrame {
             }
         });
 
+        TransactionTable.setAutoCreateRowSorter(true);
         TransactionTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         TransactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -565,9 +566,9 @@ public class TransReport extends javax.swing.JFrame {
     }//GEN-LAST:event_changePeriodBtnActionPerformed
     
     public static void updateTransReportTable(){
-        
+        System.out.println("1");
         DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
-        
+        System.out.println("2");
         TransactionTableModel.setRowCount(0);
         try{
             ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttrans;");
@@ -581,7 +582,7 @@ public class TransReport extends javax.swing.JFrame {
                 String ut = rs.getString("Unit");
                 String pr = rs.getString("Price");
                 String sb = rs.getString("SuppBranch");
-                String dt = rs.getString("Date");
+                String dt = rs.getDate("Date").toString();
                 String act = rs.getString("Action");
                 
                 if (Float.parseFloat(qty) < 0){
