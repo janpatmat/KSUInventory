@@ -146,15 +146,16 @@ public class register extends javax.swing.JFrame {
         try{
             st = KsuFinal.con.prepareStatement("INSERT INTO usertable (Firstname, Lastname, Username,Password) VALUES (?,?,?,?)");
            PreparedStatement state = KsuFinal.con.prepareStatement("Select * from usertable where Username = ?");
+           state.setString(1, uname.getText());
            ResultSet rs = state.executeQuery();
             st.setString(1, fname.getText());
             st.setString(2, lname.getText());
             st.setString(3, uname.getText());
             st.setString(4, pass.getText());
-            state.setString(1, uname.getText());
             
-//            System.out.println(pass.getText());
-//            System.out.println(rpass.getText());
+            
+            System.out.println(pass.getText());
+            System.out.println(rpass.getText());
 
             
             if (fname.getText().length() == 0 || lname.getText().length() == 0 || uname.getText().length() == 0 || pass.getText().length() == 0){
