@@ -47,7 +47,7 @@ public class userdisTrans extends javax.swing.JFrame {
 
             },
             new String [] {
-                "TransID", "ProdID", "Name", "Quantity", "Unit", "Price", "Supplier", "Date", "Action", "Sub-category", "Trans-by"
+                "TransID", "ProdID", "Name", "Quantity", "Unit", "Price", "Supplier", "Date", "Action", "Sub-category"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -77,7 +77,7 @@ public class userdisTrans extends javax.swing.JFrame {
         
         try{
           
-               sql = "SELECT * FROM producttrans WHERE Transby = " + t.full;
+            sql = "SELECT * FROM producttrans WHERE Transby = '" + t.full +"'";
           
             System.out.println("sql" + sql);
             Statement state = KsuFinal.con.createStatement();
@@ -95,12 +95,11 @@ public class userdisTrans extends javax.swing.JFrame {
                 String date = rs.getString("Date");
                 String action = rs.getString("Action");
                 String sub = rs.getString("Sub");
-                String trans = rs.getString("Transby");
                 
-               String item[] = {id, prodid, name, quan , unit , price , branch, date , action , sub , trans};
+                String item[] = {id, prodid, name, quan , unit , price , branch, date , action , sub};
                 DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
                  
-                 t.addRow(item);
+                t.addRow(item);
             }
         }
         catch(Exception e){

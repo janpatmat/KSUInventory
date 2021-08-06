@@ -23,6 +23,7 @@ public class userMenu extends javax.swing.JFrame {
     editTransaction editTransactionClass = new editTransaction();
     userdisTrans userdisTransClass = new userdisTrans();
 
+
     /**
      * Creates new form Menu
      */
