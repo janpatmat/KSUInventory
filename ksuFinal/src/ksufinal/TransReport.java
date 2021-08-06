@@ -582,7 +582,7 @@ public class TransReport extends javax.swing.JFrame {
                 String ut = rs.getString("Unit");
                 String pr = rs.getString("Price");
                 String sb = rs.getString("SuppBranch");
-                String dt = rs.getString("Date");
+                String dt = rs.getDate("Date").toString();
                 String act = rs.getString("Action");
                 
                 if (Float.parseFloat(qty) < 0){

@@ -89,7 +89,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="pass">
       <Properties>
-        <Property name="text" type="java.lang.String" value="123456"/>
+        <Property name="text" type="java.lang.String" value="123"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Login">

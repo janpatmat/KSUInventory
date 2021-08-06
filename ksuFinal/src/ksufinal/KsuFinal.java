@@ -32,8 +32,8 @@ public class KsuFinal {
 //        String user = "root";
 //        String pass = "Naiskongmagpakalasingdahilwalakana14";
         
-//        String user = "root";
-//        String pass = "Langgalangga1";
+    //    String user = "root";
+      //  String pass = "Langgalangga1";
 
       //  String user = "root";
         //String pass = "123456789";
@@ -48,7 +48,8 @@ public class KsuFinal {
         
         
         
-
+//        editUnit edun = new editUnit();
+//        edun.setVisible(true);
         login index = new login();
         index.setVisible(true);
 
