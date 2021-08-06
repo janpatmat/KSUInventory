@@ -21,7 +21,7 @@ public class userMenu extends javax.swing.JFrame {
     TransReport disTransClass = new TransReport();
     adProd adProdClass = new adProd();
     editTransaction editTransactionClass = new editTransaction();
-    
+    userdisTrans userdisTransClass = new userdisTrans();
 
     /**
      * Creates new form Menu
@@ -194,8 +194,8 @@ public class userMenu extends javax.swing.JFrame {
 
     private void ViewTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionMenuActionPerformed
         
-        disTransClass.setVisible(true);
-        disTransClass.setDefaultCloseOperation(disTransClass.HIDE_ON_CLOSE);
+        userdisTransClass.setVisible(true);
+        userdisTransClass.setDefaultCloseOperation(userdisTransClass.HIDE_ON_CLOSE);
     }//GEN-LAST:event_ViewTransactionMenuActionPerformed
 
     private void NewProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductMenuActionPerformed
