@@ -48,9 +48,10 @@ public class KsuFinal {
         
         
         
-
-        login index = new login();
-        index.setVisible(true);
+        editUnit edun = new editUnit();
+        edun.setVisible(true);
+       // login index = new login();
+        //index.setVisible(true);
 
 //        Menu index = new Menu();
 //        index.setVisible(true);

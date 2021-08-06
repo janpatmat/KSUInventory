@@ -1,25 +1,27 @@
+package ksufinal;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template file, choose Tools | Templatesun
  * and open the template in the editor.
  */
-package ksufinal;
 
 /**
  *
- * @author Rickyincld
+ * @author Ricky
  */
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-public class addBranch extends javax.swing.JFrame {
+public class editSupplier extends javax.swing.JFrame {
 PreparedStatement st = null;
-ArrayList <String> tabar = new ArrayList <String>();
-    /**
-     * Creates new form addSupplier
+ArrayList <String> tabar = new ArrayList <String>();    
+String curId;
+/**
+     * Creates new form addUnit
      */
-    public addBranch() {
+    public editSupplier() {
         initComponents();
     }
 
@@ -37,7 +39,6 @@ ArrayList <String> tabar = new ArrayList <String>();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -46,9 +47,9 @@ ArrayList <String> tabar = new ArrayList <String>();
             }
         });
 
-        jLabel1.setText("Branch name");
+        jLabel1.setText("Supplier Name");
 
-        jButton1.setText("Save");
+        jButton1.setText("Update");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -60,54 +61,45 @@ ArrayList <String> tabar = new ArrayList <String>();
 
             },
             new String [] {
-                "Branches"
+                "Supplier"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton2.setText("Delete");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(33, 33, 33)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -115,59 +107,36 @@ ArrayList <String> tabar = new ArrayList <String>();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if(jTextField1.getText().length() == 0){
+        DefaultTableModel t = (DefaultTableModel) jTable1.getModel();
+        if(jTextField1.getText().length() == 0){
             JOptionPane.showMessageDialog(this,"Missing fields");
         }
-       else{
-       try{
-          
-        st = KsuFinal.con.prepareStatement("INSERT INTO branchtable(branchName) VALUE(?)");
-        
-        st.setString(1,jTextField1.getText());
-        
-        st.executeUpdate();
-        jTextField1.setText("");
-           
-       }
-       catch(Exception e){
-           System.out.println(e);
-       }
-       
-       String[] item = {jTextField1.getText()};
-      
-                 DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
-                 
-                 t.addRow(item);
-       }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int index = jTable1.getSelectedRow();
-        int trudex = Integer.parseInt(tabar.get(index));
-        
+            else{
+            int i = jTable1.getSelectedRow();
+            t.setValueAt(jTextField1.getText(), i, 0);
         try{
-            st = KsuFinal.con.prepareStatement("DELETE FROM branchtable WHERE branchID ="+ trudex);
+            
+            st = KsuFinal.con.prepareStatement("Update suppliertable set supplierName = ? WHERE supplierID = " + tabar.get(i));
+            st.setString(1, jTextField1.getText());
             st.executeUpdate();
+            JOptionPane.showMessageDialog(this,"Updated");
         }
         catch(Exception e){
             System.out.println(e);
         }
-         DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
-                 
-                 t.removeRow(index);
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-public void addInfo(){
+            }
+    }//GEN-LAST:event_jButton1ActionPerformed
+public void getId(){
     try{
              
              Statement state = KsuFinal.con.createStatement();
              System.out.println("x");
-            ResultSet rs = state.executeQuery("SELECT * FROM branchtable");
+            ResultSet rs = state.executeQuery("SELECT * FROM suppliertable");
             
             
             while(rs.next()){
-                String name = rs.getString("branchName");
-                 String id = String.valueOf(rs.getInt("branchID"));
+                String name = rs.getString("supplierName");
+                 String id = String.valueOf(rs.getInt("supplierID"));
                 
                 
                 String[] item = {name};
@@ -182,10 +151,38 @@ public void addInfo(){
         }
 }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-           addInfo();
+       try{
+             
+             Statement state = KsuFinal.con.createStatement();
+             System.out.println("x");
+            ResultSet rs = state.executeQuery("SELECT * FROM suppliertable");
+            
+            
+            while(rs.next()){
+                String name = rs.getString("supplierName");
+                 String id = String.valueOf(rs.getInt("supplierID"));
+                
+                
+                String[] item = {name};
+                tabar.add(id);
+                 DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
+                 
+                 t.addRow(item);
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }//GEN-LAST:event_formWindowOpened
 
-    
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel t = (DefaultTableModel) jTable1.getModel();
+          int x = jTable1.getSelectedRow();
+          jTextField1.setText(jTable1.getValueAt(x, 0).toString());
+            System.out.println(x);
+    }//GEN-LAST:event_jTable1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -203,28 +200,29 @@ public void addInfo(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addBranch().setVisible(true);
+                new editSupplier().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
