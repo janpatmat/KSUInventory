@@ -120,8 +120,8 @@ PreparedStatement st = null;
             
                  if (rs.next()){
                     if(uname.getText().equals("Admin")&& passString.equals("Admin")){
-                    Menu tra = new Menu();
-                    tra.setVisible(true);
+                        Menu tra = new Menu();
+                        tra.setVisible(true);
                     }
                     else{
                         userMenu us = new userMenu();

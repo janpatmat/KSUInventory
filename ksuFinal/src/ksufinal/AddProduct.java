@@ -49,13 +49,26 @@ public String prdnm = null;
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+                formWindowLostFocus(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formFocusLost(evt);
+            }
+        });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Add Product");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -96,19 +109,11 @@ public String prdnm = null;
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minQ, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(productName, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(minQ, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -117,7 +122,15 @@ public String prdnm = null;
                                 .addComponent(Category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(catCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 44, Short.MAX_VALUE))))
+                        .addGap(143, 185, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(productName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,54 +151,57 @@ public String prdnm = null;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(unitCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try{
-           boolean checker = false;
-        st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq) VALUES (?,?,?,?,?,?)");
-      String nm = productName.getText();
-      Statement sta = KsuFinal.con.createStatement();
-      ResultSet rs = sta.executeQuery("SELECT productName from producttable");
-      while(rs.next()){
-          prdnm = rs.getString("productName");
-          if (prdnm.equals(nm)){
-              checker = true;
-              break;
-          }
-          else{
-              checker = false;
-          }
-          }
-      System.out.println("prdnm = " + prdnm);
-      System.out.println("nm = " + nm);
-      System.out.println("checker = " + checker);
-      if(checker == true){
-          JOptionPane.showMessageDialog(this,"Repeated");
-          
-      }
-      else{
-        st.setString(1, productName.getText());
-        st.setString(2, "0");
-        st.setString(3,(String) unitCmb.getSelectedItem());
-        st.setString(4, minQ.getText());
-        st.setString(5,(String) catCmb.getSelectedItem());
-      
-        
-        
-       st.executeUpdate();
-      }
-      }
-      
-       catch(Exception e){
-           System.out.println(e);
-       }
+        try{
+            boolean checker = false;
+            st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo) VALUES (?,?,?,?,?,?,?,?,?)");
+            String nm = productName.getText();
+            Statement sta = KsuFinal.con.createStatement();
+            ResultSet rs = sta.executeQuery("SELECT productName from producttable");
+            while(rs.next()){
+                prdnm = rs.getString("productName");
+                if (prdnm.equals(nm)){
+                    checker = true;
+                    break;
+                }
+                else{
+                    checker = false;
+                }
+                }
+            System.out.println("prdnm = " + prdnm);
+            System.out.println("nm = " + nm);
+            System.out.println("checker = " + checker);
+            if(checker == true){
+                JOptionPane.showMessageDialog(this,"Please select a new Product Name");
+
+            }
+            else{
+                st.setString(1, productName.getText());
+                st.setInt(2, 0);
+                st.setString(3,(String) unitCmb.getSelectedItem());
+                st.setInt(4, Integer.parseInt(minQ.getText()));
+                st.setString(5, "TRUE");
+                st.setString(6,(String) catCmb.getSelectedItem());
+                st.setFloat(7, 0);
+                st.setString(8, "0");
+                st.setString(9, "0");
+                st.executeUpdate();
+                
+                JOptionPane.showMessageDialog(this,"Successfully registered the product");
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -195,6 +211,8 @@ public String prdnm = null;
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        
         try{
             String unit;
             String category;
@@ -233,6 +251,14 @@ public String prdnm = null;
         addCategory adcat = new addCategory();
         adcat.setVisible(true);
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
+        
+    }//GEN-LAST:event_formFocusLost
+
+    private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowLostFocus
 
     /**
      * @param args the command line arguments

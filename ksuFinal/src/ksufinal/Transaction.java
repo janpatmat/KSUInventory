@@ -380,7 +380,8 @@ public class Transaction extends javax.swing.JFrame {
             }
             if (yesNO == JOptionPane.YES_OPTION){
                 String statement = "UPDATE expenses.producttable SET productQuantity = " + newQuan + " WHERE productName = '" + nm + "'";
-
+                transactionArr.get(idx)[0] = newQuan;
+                
                 try{
                     KsuFinal.con.prepareStatement(statement).executeUpdate(); 
                 }
