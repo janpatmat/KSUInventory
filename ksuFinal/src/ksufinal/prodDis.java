@@ -42,6 +42,7 @@ public class prodDis extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         proddbTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jMenu2.setText("File");
@@ -80,6 +81,12 @@ public class prodDis extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(proddbTable);
 
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,23 +94,55 @@ public class prodDis extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(307, 307, 307)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+public void refresh(){
+    try{
+        Statement prodstate = KsuFinal.con.createStatement();
+        ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
+        
+        while(prodres.next()){
+            
+            String id = prodres.getString("productID");
+            String name = prodres.getString("productName");
+            String quan = String.valueOf(prodres.getInt("productQuantity"));
+            String unit = prodres.getString("Unit");
+            String[] item = {name, quan, unit};
+            String[] item2 = {id, name, quan, unit};
+            DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
+            t.setRowCount(0);
+            t.addRow(item);
+            
+           
+            
+            
+         
+        }
+       }
+       catch(Exception e){
+           System.out.println(e);
+       }
+}
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       try{
+            try{
         Statement prodstate = KsuFinal.con.createStatement();
         ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
         
@@ -128,6 +167,7 @@ public class prodDis extends javax.swing.JFrame {
        catch(Exception e){
            System.out.println(e);
        }
+
     }//GEN-LAST:event_formWindowOpened
     public static void editActiveTable(){
         try{
@@ -174,6 +214,11 @@ public class prodDis extends javax.swing.JFrame {
            System.out.println(e);
        }
     }//GEN-LAST:event_proddbTableMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        refresh();
+    }//GEN-LAST:event_jButton1ActionPerformed
     public static void printThis(){
         for (String[]x : adProdArr){
             System.out.println(Arrays.deepToString(x));
@@ -216,6 +261,7 @@ public class prodDis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;

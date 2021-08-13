@@ -115,7 +115,9 @@ ArrayList <String> tabar = new ArrayList <String>();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if(jTextField1.getText().length() == 0){
+       DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
+        String[] item = {jTextField1.getText()};
+        if(jTextField1.getText().length() == 0){
             JOptionPane.showMessageDialog(this,"Missing fields");
         }
        else{
@@ -127,17 +129,18 @@ ArrayList <String> tabar = new ArrayList <String>();
         
         st.executeUpdate();
         jTextField1.setText("");
+        t.addRow(item);
            
        }
        catch(Exception e){
            System.out.println(e);
        }
        
-       String[] item = {jTextField1.getText()};
       
-                 DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
+      
+                
                  
-                 t.addRow(item);
+                 
        }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -55,7 +55,7 @@ public String prdnm = null;
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Add");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -149,7 +149,7 @@ public String prdnm = null;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        try{
            boolean checker = false;
-        st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq) VALUES (?,?,?,?,?,?)");
+        st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq,Active,standardPrice ,  sub) VALUES (?,?,?,?,?,?,?)");
       String nm = productName.getText();
       Statement sta = KsuFinal.con.createStatement();
       ResultSet rs = sta.executeQuery("SELECT productName from producttable");
@@ -175,8 +175,13 @@ public String prdnm = null;
         st.setString(2, "0");
         st.setString(3,(String) unitCmb.getSelectedItem());
         st.setString(4, minQ.getText());
-        st.setString(5,(String) catCmb.getSelectedItem());
       
+        st.setString(5,"TRUE");
+        st.setString(6,"0");
+      
+        st.setString(7, (String) catCmb.getSelectedItem());
+        
+        
         
         
        st.executeUpdate();

@@ -5,6 +5,8 @@
  */
 package ksufinal;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ricky
@@ -21,6 +23,11 @@ public class Menu extends javax.swing.JFrame {
     TransReport disTransClass = new TransReport();
     adProd adProdClass = new adProd();
     editTransaction editTransactionClass = new editTransaction();
+    editUnit editUnitClass = new editUnit();
+    editBranch editBranchClass = new editBranch();
+    editSupplier editSupplierClass = new editSupplier();
+    addCategory addCategoryClass = new addCategory();
+
     
 
     /**
@@ -42,12 +49,14 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         NewProductMenu = new javax.swing.JMenuItem();
         NewUnitMenu = new javax.swing.JMenuItem();
         newSupplierMenu = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         EditProductMenu = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -76,6 +85,13 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setText("Welcome");
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+
+        jButton1.setText("Log out");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("New Items");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +132,14 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem5.setText("New Category");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
+
         jMenuBar1.add(jMenu1);
 
         jMenu5.setText("Edit Items");
@@ -129,12 +153,27 @@ public class Menu extends javax.swing.JFrame {
         jMenu5.add(EditProductMenu);
 
         jMenuItem2.setText("Edit Unit");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem2);
 
         jMenuItem3.setText("Edit Supplier");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem3);
 
         jMenuItem4.setText("Edit Branch");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem4);
 
         jMenuBar1.add(jMenu5);
@@ -211,7 +250,10 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(jButton1)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -223,7 +265,9 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -313,6 +357,42 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_EditTransactionMenuActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        editUnitClass.setVisible(true);
+        editUnitClass.setDefaultCloseOperation(editUnitClass.HIDE_ON_CLOSE);
+
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        editSupplierClass.setVisible(true);
+        editSupplierClass.setDefaultCloseOperation(editSupplierClass.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        editBranchClass.setVisible(true);
+        editBranchClass.setDefaultCloseOperation(editBranchClass.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int log = 0;
+        log = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning",JOptionPane.YES_NO_OPTION);
+        if(log == JOptionPane.YES_OPTION){
+        this.dispose();
+        t.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        addCategoryClass.setVisible(true);
+        addCategoryClass.setDefaultCloseOperation(addCategoryClass.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -357,6 +437,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem ReceiveWithdrawMenu;
     private javax.swing.JMenuItem ViewProductsMenu;
     private javax.swing.JMenuItem ViewTransactionMenu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -370,6 +451,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem newSupplierMenu;
     // End of variables declaration//GEN-END:variables
 }
