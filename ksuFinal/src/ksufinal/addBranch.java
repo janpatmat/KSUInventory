@@ -160,30 +160,30 @@ ArrayList <String> tabar = new ArrayList <String>();
                  t.removeRow(index);
         
     }//GEN-LAST:event_jButton2ActionPerformed
-public void addInfo(){
-    try{
-             
-             Statement state = KsuFinal.con.createStatement();
-             System.out.println("x");
+    public void addInfo(){
+        try{
+
+            Statement state = KsuFinal.con.createStatement();
             ResultSet rs = state.executeQuery("SELECT * FROM branchtable");
-            
-            
+
+
             while(rs.next()){
+                System.out.println("h");
                 String name = rs.getString("branchName");
-                 String id = String.valueOf(rs.getInt("branchID"));
-                
-                
+                String id = String.valueOf(rs.getInt("branchID"));
+
+
                 String[] item = {name};
                 tabar.add(id);
-                 DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
-                 t.setRowCount(0);
-                 t.addRow(item);
+                DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
+                t.setRowCount(0);
+                t.addRow(item);
             }
         }
         catch(Exception e){
             System.out.println(e);
         }
-}
+    }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
            addInfo();
     }//GEN-LAST:event_formWindowOpened

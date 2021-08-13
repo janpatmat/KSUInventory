@@ -123,7 +123,12 @@ public class login extends javax.swing.JFrame {
           
             
                  if (rs.next()){
-                    if(uname.getText().equals("Admin")&& passString.equals("Admin")){
+                    id = rs.getString("userID");
+                    String fn = rs.getString("Firstname");
+                    String ln = rs.getString("Lastname");
+                    String ad = rs.getString("Admin");
+                     
+                    if(ad.equals("TRUE")){
                         
                         tra.setVisible(true);
                         admin = true;
@@ -133,9 +138,7 @@ public class login extends javax.swing.JFrame {
                         usm.setVisible(true);
                         admin = false;
                     }
-                    id = rs.getString("userID");
-                    String fn = rs.getString("Firstname");
-                    String ln = rs.getString("Lastname");
+
                     full = (fn + " " + ln);
                     System.out.println(full);
                     this.setVisible(false);

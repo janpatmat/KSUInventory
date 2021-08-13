@@ -41,6 +41,12 @@ public class KsuFinal {
         login index = new login();
         index.setVisible(true);
 
+
+
+//        editUser index = new editUser();
+//        index.setVisible(true);
+        
+
         
         
 

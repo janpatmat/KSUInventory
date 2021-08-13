@@ -27,6 +27,7 @@ public class Menu extends javax.swing.JFrame {
     editBranch editBranchClass = new editBranch();
     editSupplier editSupplierClass = new editSupplier();
     addCategory addCategoryClass = new addCategory();
+    addBranch addBranchClass = new addBranch();
 
     
 
@@ -362,6 +363,10 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        addBranchClass.setVisible(true);
+        addBranchClass.setDefaultCloseOperation(addBranchClass.HIDE_ON_CLOSE);
+        addBranchClass.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void EditTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTransactionMenuActionPerformed

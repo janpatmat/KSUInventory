@@ -66,11 +66,11 @@ public class prodDis extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Qty", "UoM"
+                "ProductID", "Name", "Qunatity", "UoM", "Minimum quantity", "Active", "Standard Price", "Sub"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                true, false, false, false, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -155,7 +155,11 @@ public void refresh(){
             String name = prodres.getString("productName");
             String quan = String.valueOf(prodres.getInt("productQuantity"));
             String unit = prodres.getString("Unit");
-            String[] item = {name, quan, unit};
+            String munit = prodres.getString("prodMinq");
+            String active = prodres.getString("Active");
+            String stp = prodres.getString("standardPrice");
+            String sub = prodres.getString("Sub");
+            String[] item = {id, name, quan, unit,munit, active, stp, sub};
             String[] item2 = {id, name, quan, unit};
             DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
             
