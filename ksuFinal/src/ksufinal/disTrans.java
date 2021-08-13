@@ -36,6 +36,9 @@ public class disTrans extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -77,6 +80,15 @@ public class disTrans extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        login.MenuClass.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         try{
           if(t.full.equals("Admin Admin")){
                sql = "SELECT * FROM producttrans";
@@ -92,16 +104,7 @@ public class disTrans extends javax.swing.JFrame {
         catch(Exception e){
             System.out.println(e);
         }
-    }//GEN-LAST:event_formWindowOpened
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        if (login.admin){
-            login.tra.setVisible(true);
-        }else{
-            login.usm.setVisible(true);
-        }
-    }//GEN-LAST:event_formWindowClosing
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

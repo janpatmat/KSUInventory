@@ -62,7 +62,17 @@ public class adProd extends javax.swing.JFrame {
         jMenuBar2.add(jMenu3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -197,40 +207,40 @@ public class adProd extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        
-        DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
-        t.setRowCount(0);
-        
-        try{
-        Statement prodstate = KsuFinal.con.createStatement();
-        ResultSet prodres = prodstate.executeQuery("SELECT * FROM expenses.producttable WHERE Active = 'TRUE'");
-        
-        while(prodres.next()){
-            System.out.println("a");
-            String id = prodres.getString("productID");
-            String name = prodres.getString("productName");
-            String quan = String.valueOf(prodres.getInt("productQuantity"));
-            String unit = prodres.getString("Unit");
-            String stndrd = prodres.getString("standardPrice");
-            String fromD = prodres.getString("dateFrom");
-            String toD = prodres.getString("dateTo");
-            
-            
-            
-            String[] item = {name, quan, unit, stndrd};
-            String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
-            
-            
-            t.addRow(item);
-            
-            adProdArr.add(item2);
-            
-            
-         
-        }
-       }
-       catch(Exception e){
-           System.out.println(e);
-       }
+//        DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
+//        t.setRowCount(0);
+//        
+//        try{
+//        Statement prodstate = KsuFinal.con.createStatement();
+//        ResultSet prodres = prodstate.executeQuery("SELECT * FROM expenses.producttable WHERE Active = 'TRUE'");
+//        
+//        while(prodres.next()){
+//            System.out.println("a");
+//            String id = prodres.getString("productID");
+//            String name = prodres.getString("productName");
+//            String quan = String.valueOf(prodres.getInt("productQuantity"));
+//            String unit = prodres.getString("Unit");
+//            String stndrd = prodres.getString("standardPrice");
+//            String fromD = prodres.getString("dateFrom");
+//            String toD = prodres.getString("dateTo");
+//            
+//            
+//            
+//            String[] item = {name, quan, unit, stndrd};
+//            String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
+//            
+//            
+//            t.addRow(item);
+//            
+//            adProdArr.add(item2);
+//            
+//            
+//         
+//        }
+//       }
+//       catch(Exception e){
+//           System.out.println(e);
+//       }
     }//GEN-LAST:event_formWindowOpened
     public static void editActiveTable(){
         try{
@@ -422,12 +432,49 @@ public class adProd extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        if (login.admin){
-            login.tra.setVisible(true);
-        }else{
-            login.usm.setVisible(true);
-        }
+        login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+ 
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
+        t.setRowCount(0);
+        
+        try{
+        Statement prodstate = KsuFinal.con.createStatement();
+        ResultSet prodres = prodstate.executeQuery("SELECT * FROM expenses.producttable WHERE Active = 'TRUE'");
+        
+        while(prodres.next()){
+            System.out.println("a");
+            String id = prodres.getString("productID");
+            String name = prodres.getString("productName");
+            String quan = String.valueOf(prodres.getInt("productQuantity"));
+            String unit = prodres.getString("Unit");
+            String stndrd = prodres.getString("standardPrice");
+            String fromD = prodres.getString("dateFrom");
+            String toD = prodres.getString("dateTo");
+            
+            
+            
+            String[] item = {name, quan, unit, stndrd};
+            String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
+            
+            
+            t.addRow(item);
+            
+            adProdArr.add(item2);
+            
+            
+         
+        }
+       }
+       catch(Exception e){
+           System.out.println(e);
+       }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

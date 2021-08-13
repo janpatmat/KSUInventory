@@ -65,7 +65,17 @@ public class Transaction extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -234,57 +244,57 @@ public class Transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_productComboBoxActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        try{
-            String supplier;
-            String branch;
-            String category;
-            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
-            ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
-            ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
-            ResultSet rsCategory = KsuFinal.con.createStatement().executeQuery("SELECT * FROM categorytable");
-           
-
-            while(rs.next()){
-                String id = rs.getString("productID");
-                String nm = rs.getString("productName");
-                String qt = rs.getString("productQuantity");
-//                String qt = "null";
-                String ut = rs.getString("Unit");
-                String mm = rs.getString("prodMinq");
-                String sp = rs.getString("standardPrice");
-                String sb = rs.getString("Sub");    
-                
-                productComboBox.addItem(nm);
-                String[] item = {qt, ut, nm, mm, id, sp, sb};
-                
-                transactionArr.add(item);
-                
-            }  
-            while(rsSupplier.next()){
-                supplier = rsSupplier.getString("supplierName");
-                supCmb.addItem(supplier);
-                supplierArr.add(supplier);
-          }
-            while(rsBranch.next()){
-                branch = rsBranch.getString("branchName");
-                branchArr.add(branch);
-          }
-            
-            ;
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-        
-        int idx = productComboBox.getSelectedIndex();
-//        String quan = quanAndUnitArr.get(idx)[0];
-        String unit = transactionArr.get(idx)[1];
-        categoryTF.setText(transactionArr.get(idx)[6]);
+//        try{
+//            String supplier;
+//            String branch;
+//            String category;
+//            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
+//            ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
+//            ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
+//            ResultSet rsCategory = KsuFinal.con.createStatement().executeQuery("SELECT * FROM categorytable");
+//           
+//
+//            while(rs.next()){
+//                String id = rs.getString("productID");
+//                String nm = rs.getString("productName");
+//                String qt = rs.getString("productQuantity");
+////                String qt = "null";
+//                String ut = rs.getString("Unit");
+//                String mm = rs.getString("prodMinq");
+//                String sp = rs.getString("standardPrice");
+//                String sb = rs.getString("Sub");    
+//                
+//                productComboBox.addItem(nm);
+//                String[] item = {qt, ut, nm, mm, id, sp, sb};
+//                
+//                transactionArr.add(item);
+//                
+//            }  
+//            while(rsSupplier.next()){
+//                supplier = rsSupplier.getString("supplierName");
+//                supCmb.addItem(supplier);
+//                supplierArr.add(supplier);
+//          }
+//            while(rsBranch.next()){
+//                branch = rsBranch.getString("branchName");
+//                branchArr.add(branch);
+//          }
+//            
+//            ;
+//        }
+//        catch(Exception e){
+//            System.out.println(e);
+//        }
 //        
-//        
-//        
-//        quantityShow.setText("Quantity in the Inverntory: " + quan + " " + unit);
-        unitShow.setText(unit);
+//        int idx = productComboBox.getSelectedIndex();
+////        String quan = quanAndUnitArr.get(idx)[0];
+//        String unit = transactionArr.get(idx)[1];
+//        categoryTF.setText(transactionArr.get(idx)[6]);
+////        
+////        
+////        
+////        quantityShow.setText("Quantity in the Inverntory: " + quan + " " + unit);
+//        unitShow.setText(unit);
        
     }//GEN-LAST:event_formWindowOpened
 
@@ -464,12 +474,61 @@ public class Transaction extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        if (login.admin){
-            login.tra.setVisible(true);
-        }else{
-            login.usm.setVisible(true);
-        }
+        login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+ 
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       try{
+            String supplier;
+            String branch;
+            String category;
+            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
+            ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
+            ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
+            ResultSet rsCategory = KsuFinal.con.createStatement().executeQuery("SELECT * FROM categorytable");
+           
+
+            while(rs.next()){
+                String id = rs.getString("productID");
+                String nm = rs.getString("productName");
+                String qt = rs.getString("productQuantity");
+//                String qt = "null";
+                String ut = rs.getString("Unit");
+                String mm = rs.getString("prodMinq");
+                String sp = rs.getString("standardPrice");
+                String sb = rs.getString("Sub");    
+                
+                productComboBox.addItem(nm);
+                String[] item = {qt, ut, nm, mm, id, sp, sb};
+                
+                transactionArr.add(item);
+                
+            }  
+            while(rsSupplier.next()){
+                supplier = rsSupplier.getString("supplierName");
+                supCmb.addItem(supplier);
+                supplierArr.add(supplier);
+          }
+            while(rsBranch.next()){
+                branch = rsBranch.getString("branchName");
+                branchArr.add(branch);
+          }
+            
+            ;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        
+        int idx = productComboBox.getSelectedIndex();
+        String unit = transactionArr.get(idx)[1];
+        categoryTF.setText(transactionArr.get(idx)[6]);
+        unitShow.setText(unit);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

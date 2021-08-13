@@ -40,7 +40,17 @@ ArrayList <String> tabar = new ArrayList <String>();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -165,7 +175,41 @@ ArrayList <String> tabar = new ArrayList <String>();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-           try{
+//           try{
+//             
+//             Statement state = KsuFinal.con.createStatement();
+//             System.out.println("x");
+//            ResultSet rs = state.executeQuery("SELECT * FROM suppliertable");
+//            
+//            
+//            while(rs.next()){
+//                String name = rs.getString("supplierName");
+//                 String id = String.valueOf(rs.getInt("supplierID"));
+//                
+//                
+//                String[] item = {name};
+//                tabar.add(id);
+//                 DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
+//                 
+//                 t.addRow(item);
+//            }
+//        }
+//        catch(Exception e){
+//            System.out.println(e);
+//        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        login.MenuClass.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        try{
              
              Statement state = KsuFinal.con.createStatement();
              System.out.println("x");
@@ -187,16 +231,7 @@ ArrayList <String> tabar = new ArrayList <String>();
         catch(Exception e){
             System.out.println(e);
         }
-    }//GEN-LAST:event_formWindowOpened
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        if (login.admin){
-            login.tra.setVisible(true);
-        }else{
-            login.usm.setVisible(true);
-        }
-    }//GEN-LAST:event_formWindowClosing
+    }//GEN-LAST:event_formWindowActivated
 
     
     /**

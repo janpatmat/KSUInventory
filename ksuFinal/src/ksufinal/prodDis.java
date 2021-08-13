@@ -14,11 +14,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class prodDis extends javax.swing.JFrame {
    //adProd aprd = new adProd();
-    AddProduct adPrdct = new AddProduct();
-    editProduct edprd = new editProduct();
     PreparedStatement st = null;
     PreparedStatement del = null;
-    deactivated dec = new deactivated();
     
     static ArrayList<String[]> adProdArr = new ArrayList<String[]>();
     /**
@@ -66,11 +63,11 @@ public class prodDis extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ProductID", "Name", "Qunatity", "UoM", "Minimum quantity", "Active", "Standard Price", "Sub"
+                "ProductID", "Name", "Qunatity", "UoM", "Minimum quantity", "Standard Price", "Sub"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, true, true, true, true
+                true, false, false, false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -97,22 +94,20 @@ public class prodDis extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(307, 307, 307)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -121,7 +116,8 @@ public void refresh(){
     try{
         Statement prodstate = KsuFinal.con.createStatement();
         ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
-        
+        DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
+        t.setRowCount(0);
         while(prodres.next()){
             
             String id = prodres.getString("productID");
@@ -130,8 +126,7 @@ public void refresh(){
             String unit = prodres.getString("Unit");
             String[] item = {name, quan, unit};
             String[] item2 = {id, name, quan, unit};
-            DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
-            t.setRowCount(0);
+
             t.addRow(item);
             
            
@@ -145,29 +140,29 @@ public void refresh(){
        }
 }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-            try{
-        Statement prodstate = KsuFinal.con.createStatement();
-        ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
-        
-        while(prodres.next()){
-            
-            String id = prodres.getString("productID");
-            String name = prodres.getString("productName");
-            String quan = String.valueOf(prodres.getInt("productQuantity"));
-            String unit = prodres.getString("Unit");
-            String munit = prodres.getString("prodMinq");
-            String active = prodres.getString("Active");
-            String stp = prodres.getString("standardPrice");
-            String sub = prodres.getString("Sub");
-            String[] item = {id, name, quan, unit,munit, active, stp, sub};
-            String[] item2 = {id, name, quan, unit};
-            DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
-            
-            t.addRow(item);
-            
-           
-            
-            
+        DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();   
+        try{
+            Statement prodstate = KsuFinal.con.createStatement();
+            ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
+
+            while(prodres.next()){
+
+                String id = prodres.getString("productID");
+                String name = prodres.getString("productName");
+                String quan = String.valueOf(prodres.getInt("productQuantity"));
+                String unit = prodres.getString("Unit");
+                String munit = prodres.getString("prodMinq");
+                String stp = prodres.getString("standardPrice");
+                String sub = prodres.getString("Sub");
+                String[] item = {id, name, quan, unit,munit, stp, sub};
+                String[] item2 = {id, name, quan, unit};
+
+                
+                t.addRow(item);
+
+
+
+
          
         }
        }
@@ -229,11 +224,7 @@ public void refresh(){
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        if (login.admin){
-            login.tra.setVisible(true);
-        }else{
-            login.usm.setVisible(true);
-        }
+        login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
     public static void printThis(){
         for (String[]x : adProdArr){

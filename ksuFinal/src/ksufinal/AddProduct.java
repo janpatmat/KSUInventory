@@ -57,12 +57,16 @@ public String prdnm = null;
         });
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
             }
             public void windowLostFocus(java.awt.event.WindowEvent evt) {
                 formWindowLostFocus(evt);
             }
         });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
@@ -272,12 +276,46 @@ public String prdnm = null;
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        if (login.admin){
-            login.tra.setVisible(true);
-        }else{
-            login.usm.setVisible(true);
-        }
+        login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+  
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        try{
+            String unit;
+            String category;
+            Statement state = KsuFinal.con.createStatement();
+            Statement des = KsuFinal.con.createStatement();
+         ResultSet rs = state.executeQuery("SELECT Unit FROM unittable");
+         ResultSet res = des.executeQuery("SELECT categoryName FROM categorytable");
+         System.out.println("1"); 
+          while(rs.next()){
+               unit = rs.getString("Unit");
+               System.out.println("e");
+               System.out.println(unit);
+               unitar.add(unit);
+          }
+          System.out.println("2"); 
+          while(res.next()){
+              category = res.getString("categoryName");
+              subar.add(category);
+          }
+          System.out.println("3"); 
+           for(int i = 0; i <unitar.size();i++){
+               unitCmb.addItem(unitar.get(i));
+           }
+           System.out.println("4"); 
+           for(int i = 0; i <subar.size();i++){
+               catCmb.addItem(subar.get(i));
+           }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     public void test(){
     }

@@ -13,7 +13,8 @@ import java.sql.DriverManager;
  * @author Ricky
  */
 public class KsuFinal {
-
+    
+//    static login loginClass = new login();
     /**
      * @param args the command line arguments
      */
@@ -38,9 +39,12 @@ public class KsuFinal {
             System.out.println(e);
         }
 
-        login index = new login();
-        index.setVisible(true);
-
+        
+        
+        
+        login loginClass = new login();
+        
+        loginClass.setVisible(true);
 
 
 //        editUser index = new editUser();

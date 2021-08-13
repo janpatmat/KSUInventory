@@ -42,7 +42,17 @@ PreparedStatement st = null;
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -149,38 +159,38 @@ PreparedStatement st = null;
         
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel t = (DefaultTableModel)deacTable.getModel();
-        
-        t.setRowCount(0);
-        try{
-        Statement prodstate = KsuFinal.con.createStatement();
-        ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'FALSE'");
-        
-        while(prodres.next()){
-            
-            String id = prodres.getString("productID");
-            String name = prodres.getString("productName");
-            String quan = String.valueOf(prodres.getInt("productQuantity"));
-            String unit = prodres.getString("productUnit");
-            String stndrd = prodres.getString("standardPrice");
-            String fromD = prodres.getString("dateFrom");
-            String toD = prodres.getString("dateTo");
-            
-            String[] item = {name, quan, unit, stndrd};
-            String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
-            
-            
-            t.addRow(item);
-            
-            deacArr.add(item2);
-            
-            
-         
-        }
-       }
-       catch(Exception e){
-           System.out.println(e);
-       }
+//        DefaultTableModel t = (DefaultTableModel)deacTable.getModel();
+//        
+//        t.setRowCount(0);
+//        try{
+//        Statement prodstate = KsuFinal.con.createStatement();
+//        ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'FALSE'");
+//        
+//        while(prodres.next()){
+//            
+//            String id = prodres.getString("productID");
+//            String name = prodres.getString("productName");
+//            String quan = String.valueOf(prodres.getInt("productQuantity"));
+//            String unit = prodres.getString("productUnit");
+//            String stndrd = prodres.getString("standardPrice");
+//            String fromD = prodres.getString("dateFrom");
+//            String toD = prodres.getString("dateTo");
+//            
+//            String[] item = {name, quan, unit, stndrd};
+//            String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
+//            
+//            
+//            t.addRow(item);
+//            
+//            deacArr.add(item2);
+//            
+//            
+//         
+//        }
+//       }
+//       catch(Exception e){
+//           System.out.println(e);
+//       }
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -217,6 +227,45 @@ PreparedStatement st = null;
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        DefaultTableModel t = (DefaultTableModel)deacTable.getModel();
+        
+        t.setRowCount(0);
+        try{
+        Statement prodstate = KsuFinal.con.createStatement();
+        ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'FALSE'");
+        
+        while(prodres.next()){
+            
+            String id = prodres.getString("productID");
+            String name = prodres.getString("productName");
+            String quan = String.valueOf(prodres.getInt("productQuantity"));
+            String unit = prodres.getString("productUnit");
+            String stndrd = prodres.getString("standardPrice");
+            String fromD = prodres.getString("dateFrom");
+            String toD = prodres.getString("dateTo");
+            
+            String[] item = {name, quan, unit, stndrd};
+            String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
+            
+            
+            t.addRow(item);
+            
+            deacArr.add(item2);
+            
+            
+         
+        }
+       }
+       catch(Exception e){
+           System.out.println(e);
+       }
+    }//GEN-LAST:event_formWindowActivated
     public static void printThis(){
         for (String[]x : deacArr){
             System.out.println(Arrays.deepToString(x));

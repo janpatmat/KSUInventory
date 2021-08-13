@@ -40,7 +40,17 @@ ArrayList <String> tabar = new ArrayList <String>();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -161,6 +171,8 @@ ArrayList <String> tabar = new ArrayList <String>();
         
     }//GEN-LAST:event_jButton2ActionPerformed
     public void addInfo(){
+        DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
+        t.setRowCount(0);   
         try{
 
             Statement state = KsuFinal.con.createStatement();
@@ -168,15 +180,14 @@ ArrayList <String> tabar = new ArrayList <String>();
 
 
             while(rs.next()){
-                System.out.println("h");
                 String name = rs.getString("branchName");
                 String id = String.valueOf(rs.getInt("branchID"));
 
 
                 String[] item = {name};
                 tabar.add(id);
-                DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
-                t.setRowCount(0);
+                
+                
                 t.addRow(item);
             }
         }
@@ -185,17 +196,21 @@ ArrayList <String> tabar = new ArrayList <String>();
         }
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-           addInfo();
+//           addInfo();
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        if (login.admin){
-            login.tra.setVisible(true);
-        }else{
-            login.usm.setVisible(true);
-        }
+        login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       addInfo();
+    }//GEN-LAST:event_formWindowActivated
 
     
     /**

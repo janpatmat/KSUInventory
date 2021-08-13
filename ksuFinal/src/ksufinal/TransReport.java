@@ -70,15 +70,22 @@ public class TransReport extends javax.swing.JFrame {
         CategoryBtn = new javax.swing.JButton();
         changePeriodBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
 
         button1.setLabel("button1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -187,31 +194,6 @@ public class TransReport extends javax.swing.JFrame {
                 changePeriodBtnActionPerformed(evt);
             }
         });
-
-        jMenu1.setText("Transaction");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
-            }
-        });
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMenu1);
-
-        jMenu3.setText("Products");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Edit transaction");
-        jMenuBar1.add(jMenu4);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -316,42 +298,27 @@ public class TransReport extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(BSSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BSBtn))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        
-    }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        transactionClass.setVisible(true);
-        transactionClass.setDefaultCloseOperation(transactionClass.HIDE_ON_CLOSE);
-        
-    }//GEN-LAST:event_jMenu1MouseClicked
-
-
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-        prodTrans.setVisible(true);
-        prodTrans.setDefaultCloseOperation(prodTrans.HIDE_ON_CLOSE);
-        
-    }//GEN-LAST:event_jMenu3MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel transactionTableModel = (DefaultTableModel) TransactionTable.getModel();
-
-        if (login.admin){
-            transactionTableModel.addColumn("User");
-        }
-        
-        updateTransReportTable();
-        deliveryCB.setSelected(true);
-        withdrawCB.setSelected(true);
-        fromDateChooser.setEnabled(false);
-        toDateChooser.setEnabled(false);  
-        changePeriodBtn.setEnabled(false);
+//        DefaultTableModel transactionTableModel = (DefaultTableModel) TransactionTable.getModel();
+//
+//        if (login.admin){
+//            transactionTableModel.addColumn("User");
+//            System.out.println("admin entered");
+//        }
+//        
+//        updateTransReportTable();
+//        deliveryCB.setSelected(true);
+//        withdrawCB.setSelected(true);
+//        fromDateChooser.setEnabled(false);
+//        toDateChooser.setEnabled(false);  
+//        changePeriodBtn.setEnabled(false);
 
         
     }//GEN-LAST:event_formWindowOpened
@@ -471,6 +438,10 @@ public class TransReport extends javax.swing.JFrame {
             notChange = false;
         }
         
+        if (!login.admin){
+            finalArr.add(" (Transby = '" + login.full + "') ");
+        }
+        
         if (notChange){
             
             String finalStatement = "SELECT * FROM expenses.producttrans";
@@ -479,7 +450,7 @@ public class TransReport extends javax.swing.JFrame {
                 finalStatement += " WHERE";
                 finalStatement += String.join("and", finalArr);
             }
-//            System.out.println(finalStatement);
+            System.out.println(finalStatement);
             
             if (editDateCB.isSelected()){
 
@@ -591,12 +562,29 @@ public class TransReport extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        if (login.admin){
-            login.tra.setVisible(true);
-        }else{
-            login.usm.setVisible(true);
-        }
+        login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        DefaultTableModel transactionTableModel = (DefaultTableModel) TransactionTable.getModel();
+
+        if (login.admin){
+            transactionTableModel.addColumn("User");
+            System.out.println("admin entered");
+        }
+        
+        updateTransReportTable();
+        deliveryCB.setSelected(true);
+        withdrawCB.setSelected(true);
+        fromDateChooser.setEnabled(false);
+        toDateChooser.setEnabled(false);  
+        changePeriodBtn.setEnabled(false);
+    }//GEN-LAST:event_formWindowActivated
     
     public static void updateTransReportTable(){
         System.out.println("1");
@@ -604,7 +592,13 @@ public class TransReport extends javax.swing.JFrame {
         System.out.println("2");
         TransactionTableModel.setRowCount(0);
         try{
-            ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttrans;");
+            String finalStatement = "SELECT * FROM expenses.producttrans";
+            
+            if (!login.admin){
+                System.out.println("User is admin");
+                finalStatement += " WHERE Transby = '" + login.full + "'";
+            }
+            ResultSet rs = KsuFinal.con.createStatement().executeQuery(finalStatement);
             while(rs.next()){
 
                 String id = rs.getString("prodID");
@@ -618,17 +612,20 @@ public class TransReport extends javax.swing.JFrame {
                 String dt = rs.getDate("Date").toString();
                 String act = rs.getString("Action");
                 String tb = rs.getString("Transby");
+     
                 
                 if (Float.parseFloat(qty) < 0){
                     qty = String.valueOf(Float.parseFloat(qty) * -1);
                 }
                 
                 String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
-
-                String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
+                    String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
+                    TransactionTableModel.addRow(item);
                 
                 
-                TransactionTableModel.addRow(item);
+                
+                
+                
 
             }  
         }
@@ -701,9 +698,6 @@ public class TransReport extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTextField prodSortTF;

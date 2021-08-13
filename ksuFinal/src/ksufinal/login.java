@@ -15,9 +15,8 @@ public class login extends javax.swing.JFrame {
     static String us;
     static String full;
     static String id;
-    static boolean admin = false;
-    public static Menu tra = new Menu();
-    public static userMenu usm = new userMenu();
+    static boolean admin;
+    public static Menu MenuClass = new Menu();
  
     /**
      * Creates new form login
@@ -42,7 +41,6 @@ public class login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        uname.setText("viv");
         uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unameActionPerformed(evt);
@@ -55,8 +53,6 @@ public class login extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        pass.setText("123");
 
         Login.setText("Login");
         Login.addActionListener(new java.awt.event.ActionListener() {
@@ -115,39 +111,37 @@ public class login extends javax.swing.JFrame {
      try{
          //us = uname.getText();
         PreparedStatement state = KsuFinal.con.prepareStatement("SELECT * FROM usertable where Username=? and Password =?");
-         state.setString(1, uname.getText());
-         state.setString(2, String.valueOf(pass.getPassword()));
+        state.setString(1, uname.getText());
+        state.setString(2, String.valueOf(pass.getPassword()));
         String passString = String.valueOf(pass.getPassword());
-         ResultSet rs = state.executeQuery();
+        ResultSet rs = state.executeQuery();
 
-          
+          System.out.println(uname.getText());
+          System.out.println(String.valueOf(pass.getPassword()));
             
-                 if (rs.next()){
-                    id = rs.getString("userID");
-                    String fn = rs.getString("Firstname");
-                    String ln = rs.getString("Lastname");
-                    String ad = rs.getString("Admin");
-                     
-                    if(ad.equals("TRUE")){
-                        
-                        tra.setVisible(true);
-                        admin = true;
-                    }
-                    else{
-                        
-                        usm.setVisible(true);
-                        admin = false;
-                    }
+        if (rs.next()){
+           id = rs.getString("userID");
+           String fn = rs.getString("Firstname");
+           String ln = rs.getString("Lastname");
+           String ad = rs.getString("Admin");
+           MenuClass.setVisible(true);
+           if(ad.equals("TRUE")){
+               admin = true;
 
-                    full = (fn + " " + ln);
-                    System.out.println(full);
-                    this.setVisible(false);
-                 }
-                 else{
-                     JOptionPane.showMessageDialog(this,"Invalid Username or Password");
-                 }
+           }
+           else{
+               admin = false;
+           }
+
+           full = (fn + " " + ln);
+           System.out.println(full);
+           this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Invalid Username or Password");
+        }
              
-
+         
      }
      catch(Exception e){
          System.out.println(e);
@@ -198,6 +192,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton Login;
     private javax.swing.JButton jButton1;
     private javax.swing.JPasswordField pass;
-    public static javax.swing.JTextField uname;
+    private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables
 }

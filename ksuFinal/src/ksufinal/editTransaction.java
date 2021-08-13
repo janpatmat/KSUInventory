@@ -62,7 +62,17 @@ public class editTransaction extends javax.swing.JFrame {
         ET_editBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -78,11 +88,11 @@ public class editTransaction extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Trans. ID", "Prod. ID", "Date", "Name", "Category", "Price", "Quantity", "Total Price", "Unit of measure", "Branch/Supplier", "Action"
+                "Trans. ID", "Prod. ID", "Date", "Name", "Category", "Price", "Quantity", "Total Price", "Unit of measure", "Branch/Supplier", "Action", "User"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -202,65 +212,65 @@ public class editTransaction extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel TransactionTableModel = (DefaultTableModel) ET_TransactionTable.getModel();
-        
-        
-        try{
-            String supplier;
-            String branch;
-            ResultSet rsTransaction = KsuFinal.con.createStatement().executeQuery("SELECT * FROM producttrans;");
-            ResultSet rsProduct = KsuFinal.con.createStatement().executeQuery("SELECT * FROM producttable;");
-            ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
-            ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
-            
-            while(rsTransaction.next()){
-                String tn = rsTransaction.getString("TransactionNo");
-                String pid = rsTransaction.getString("prodID");
-                String nm = rsTransaction.getString("Name");
-                String sub = rsTransaction.getString("Sub");
-                String quant = rsTransaction.getString("Quantity");
-                String ut = rsTransaction.getString("Unit");
-                String pr = rsTransaction.getString("Price");
-                String sb = rsTransaction.getString("SuppBranch");
-                Date dt = rsTransaction.getDate("Date");
-                String ac = rsTransaction.getString("Action");
-                String tp = String.format("%.2f", Float.parseFloat(pr) * Float.parseFloat(quant));
-                
-                String[] row = {tn, pid, dt.toString(), nm, sub, pr, quant, tp, ut, sb, ac};
-                
-                TransactionTableModel.addRow(row);
-                transactionArr.add(row);
-                dateArr.add(dt);
-                
-                
-                
-            }
-            
-           
-            while(rsProduct.next()){
-                String nm = rsProduct.getString("productName");
-                productArr.add(nm);
-                ET_nameCB.addItem(nm);
-            } 
-            
-            while(rsSupplier.next()){
-                supplier = rsSupplier.getString("supplierName");
-                supplierArr.add(supplier);
-            }
-            
-            while(rsBranch.next()){
-                branch = rsBranch.getString("branchName");
-                branchArr.add(branch);
-            }
-            
-            
-            
-            
-            
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
+//        DefaultTableModel TransactionTableModel = (DefaultTableModel) ET_TransactionTable.getModel();
+//        
+//        
+//        try{
+//            String supplier;
+//            String branch;
+//            ResultSet rsTransaction = KsuFinal.con.createStatement().executeQuery("SELECT * FROM producttrans;");
+//            ResultSet rsProduct = KsuFinal.con.createStatement().executeQuery("SELECT * FROM producttable;");
+//            ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
+//            ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
+//            
+//            while(rsTransaction.next()){
+//                String tn = rsTransaction.getString("TransactionNo");
+//                String pid = rsTransaction.getString("prodID");
+//                String nm = rsTransaction.getString("Name");
+//                String sub = rsTransaction.getString("Sub");
+//                String quant = rsTransaction.getString("Quantity");
+//                String ut = rsTransaction.getString("Unit");
+//                String pr = rsTransaction.getString("Price");
+//                String sb = rsTransaction.getString("SuppBranch");
+//                Date dt = rsTransaction.getDate("Date");
+//                String ac = rsTransaction.getString("Action");
+//                String tp = String.format("%.2f", Float.parseFloat(pr) * Float.parseFloat(quant));
+//                
+//                String[] row = {tn, pid, dt.toString(), nm, sub, pr, quant, tp, ut, sb, ac};
+//                
+//                TransactionTableModel.addRow(row);
+//                transactionArr.add(row);
+//                dateArr.add(dt);
+//                
+//                
+//                
+//            }
+//            
+//           
+//            while(rsProduct.next()){
+//                String nm = rsProduct.getString("productName");
+//                productArr.add(nm);
+//                ET_nameCB.addItem(nm);
+//            } 
+//            
+//            while(rsSupplier.next()){
+//                supplier = rsSupplier.getString("supplierName");
+//                supplierArr.add(supplier);
+//            }
+//            
+//            while(rsBranch.next()){
+//                branch = rsBranch.getString("branchName");
+//                branchArr.add(branch);
+//            }
+//            
+//            
+//            
+//            
+//            
+//        }
+//        catch(Exception e){
+//            System.out.println(e);
+//        }
     }//GEN-LAST:event_formWindowOpened
 
     private void ET_TransactionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ET_TransactionTableMouseClicked
@@ -375,12 +385,76 @@ public class editTransaction extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        if (login.admin){
-            login.tra.setVisible(true);
-        }else{
-            login.usm.setVisible(true);
-        }
+        login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        DefaultTableModel TransactionTableModel = (DefaultTableModel) ET_TransactionTable.getModel();
+        
+        
+        try{
+            String supplier;
+            String branch;
+            
+            ResultSet rsTransaction = KsuFinal.con.createStatement().executeQuery("SELECT * FROM producttrans;");
+            ResultSet rsProduct = KsuFinal.con.createStatement().executeQuery("SELECT * FROM producttable;");
+            ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
+            ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
+            
+            while(rsTransaction.next()){
+                String tn = rsTransaction.getString("TransactionNo");
+                String pid = rsTransaction.getString("prodID");
+                String nm = rsTransaction.getString("Name");
+                String sub = rsTransaction.getString("Sub");
+                String quant = rsTransaction.getString("Quantity");
+                String ut = rsTransaction.getString("Unit");
+                String pr = rsTransaction.getString("Price");
+                String sb = rsTransaction.getString("SuppBranch");
+                Date dt = rsTransaction.getDate("Date");
+                String ac = rsTransaction.getString("Action");
+                String tb = rsTransaction.getString("Transby");
+                String tp = String.format("%.2f", Float.parseFloat(pr) * Float.parseFloat(quant));
+                
+                String[] row = {tn, pid, dt.toString(), nm, sub, pr, quant, tp, ut, sb, ac, tb};
+                
+                TransactionTableModel.addRow(row);
+                transactionArr.add(row);
+                dateArr.add(dt);
+                
+                
+                
+            }
+            
+           
+            while(rsProduct.next()){
+                String nm = rsProduct.getString("productName");
+                productArr.add(nm);
+                ET_nameCB.addItem(nm);
+            } 
+            
+            while(rsSupplier.next()){
+                supplier = rsSupplier.getString("supplierName");
+                supplierArr.add(supplier);
+            }
+            
+            while(rsBranch.next()){
+                branch = rsBranch.getString("branchName");
+                branchArr.add(branch);
+            }
+            
+            
+            
+            
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

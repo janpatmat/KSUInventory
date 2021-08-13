@@ -12,18 +12,18 @@ import javax.swing.JOptionPane;
  * @author Ricky
  */
 public class userMenu extends javax.swing.JFrame {
-    login t = new login();
-    Transaction transactionClass = new Transaction();
-    AddProduct addProductClass = new AddProduct();
-    editProduct editProductClass = new editProduct();
-    addSupplier addSupplierClass = new addSupplier();
-    prodDis prodDisClass = new prodDis();
-    report reportClass = new report();
-    addUnit addUnitClass = new addUnit();
-    TransReport disTransClass = new TransReport();
-    adProd adProdClass = new adProd();
-    editTransaction editTransactionClass = new editTransaction();
-    userdisTrans userdisTransClass = new userdisTrans();
+//    login t = new login();
+//    Transaction transactionClass = new Transaction();
+//    AddProduct addProductClass = new AddProduct();
+//    editProduct editProductClass = new editProduct();
+//    addSupplier addSupplierClass = new addSupplier();
+//    prodDis prodDisClass = new prodDis();
+//    report reportClass = new report();
+//    addUnit addUnitClass = new addUnit();
+//    TransReport TransReportClass = new TransReport();
+//    adProd adProdClass = new adProd();
+//    editTransaction editTransactionClass = new editTransaction();
+//    userdisTrans userdisTransClass = new userdisTrans();
 
 
     /**
@@ -127,6 +127,11 @@ public class userMenu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("View");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
 
         ViewTransactionMenu.setText("View Transactions");
         ViewTransactionMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -203,66 +208,70 @@ public class userMenu extends javax.swing.JFrame {
 
     private void NewUnitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewUnitMenuActionPerformed
        
-        addUnitClass.setVisible(true);
-        addUnitClass.setDefaultCloseOperation(addUnitClass.HIDE_ON_CLOSE);
-        addUnitClass.setLocationRelativeTo(null);
-        this.setVisible(false);
+//        addUnitClass.setVisible(true);
+//        addUnitClass.setDefaultCloseOperation(addUnitClass.HIDE_ON_CLOSE);
+//        addUnitClass.setLocationRelativeTo(null);
+//        this.setVisible(false);
 
 
     }//GEN-LAST:event_NewUnitMenuActionPerformed
 
     private void ViewTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionMenuActionPerformed
         
-        userdisTransClass.setVisible(true);
-        userdisTransClass.setDefaultCloseOperation(userdisTransClass.HIDE_ON_CLOSE);
-        userdisTransClass.setLocationRelativeTo(null);
+//        TransReportClass.setVisible(true);
+//        TransReportClass.setDefaultCloseOperation(TransReportClass.HIDE_ON_CLOSE);
+//        TransReportClass.setLocationRelativeTo(null);
+//         this.setVisible(false);
     }//GEN-LAST:event_ViewTransactionMenuActionPerformed
 
     private void NewProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductMenuActionPerformed
         // TODO add your handling code here:
 //          AddProduct adPrdct = new AddProduct();
-        addProductClass.setVisible(true);
-        addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
-        addProductClass.setLocationRelativeTo(null);
-
+//        addProductClass.setVisible(true);
+//        addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
+//        addProductClass.setLocationRelativeTo(null);
+//        this.setVisible(false);
     }//GEN-LAST:event_NewProductMenuActionPerformed
 
     private void ReceiveWithdrawMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReceiveWithdrawMenuActionPerformed
         // TODO add your handling code here:
         
-        transactionClass.setVisible(true);
-        transactionClass.setDefaultCloseOperation(transactionClass.HIDE_ON_CLOSE);
-        transactionClass.setLocationRelativeTo(null);
+//        transactionClass.setVisible(true);
+//        transactionClass.setDefaultCloseOperation(transactionClass.HIDE_ON_CLOSE);
+//        transactionClass.setLocationRelativeTo(null);
+//         this.setVisible(false);
     }//GEN-LAST:event_ReceiveWithdrawMenuActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
         
-        addProductClass.setVisible(true);
-        addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
-        addProductClass.setLocationRelativeTo(null);
+//        addProductClass.setVisible(true);
+//        addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
+//        addProductClass.setLocationRelativeTo(null);
+//        this.setVisible(false);
 
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void newSupplierMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplierMenuActionPerformed
        
-        addSupplierClass.setVisible(true);
-        addSupplierClass.setDefaultCloseOperation(addSupplierClass.HIDE_ON_CLOSE);
-        addSupplierClass.setLocationRelativeTo(null);
+//        addSupplierClass.setVisible(true);
+//        addSupplierClass.setDefaultCloseOperation(addSupplierClass.HIDE_ON_CLOSE);
+//        addSupplierClass.setLocationRelativeTo(null);
+//        this.setVisible(false);
 
     }//GEN-LAST:event_newSupplierMenuActionPerformed
 
     private void ViewProductsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductsMenuActionPerformed
-        prodDisClass.setVisible(true);
-        prodDisClass.setDefaultCloseOperation(prodDisClass.HIDE_ON_CLOSE);
-        prodDisClass.setLocationRelativeTo(null);
-
+//        prodDisClass.setVisible(true);
+//        prodDisClass.setDefaultCloseOperation(prodDisClass.HIDE_ON_CLOSE);
+//        prodDisClass.setLocationRelativeTo(null);
+//        this.setVisible(false);
         
     }//GEN-LAST:event_ViewProductsMenuActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        jLabel3.setText(t.full);
+//        jLabel3.setText(t.full);
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
@@ -270,20 +279,24 @@ public class userMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu4ActionPerformed
 
     private void CreateReportMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateReportMenuActionPerformed
-        reportClass.setVisible(true);
-        reportClass.setDefaultCloseOperation(reportClass.HIDE_ON_CLOSE);
-        reportClass.setLocationRelativeTo(null);
+//        reportClass.setVisible(true);
+//        reportClass.setDefaultCloseOperation(reportClass.HIDE_ON_CLOSE);
+//        reportClass.setLocationRelativeTo(null);
     }//GEN-LAST:event_CreateReportMenuActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int log = 0;
-        log = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning",JOptionPane.YES_NO_OPTION);
-        if(log == JOptionPane.YES_OPTION){
-        this.dispose();
-        t.setVisible(true);
-        }
+//        int log = 0;
+//        log = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning",JOptionPane.YES_NO_OPTION);
+//        if(log == JOptionPane.YES_OPTION){
+//        this.dispose();
+//        t.setVisible(true);
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3ActionPerformed
 
     /**
      * @param args the command line arguments

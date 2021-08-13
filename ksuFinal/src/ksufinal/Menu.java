@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
  * @author Ricky
  */
 public class Menu extends javax.swing.JFrame {
-    login t = new login();
     Transaction transactionClass = new Transaction();
     AddProduct addProductClass = new AddProduct();
     editProduct editProductClass = new editProduct();
@@ -58,7 +57,7 @@ public class Menu extends javax.swing.JFrame {
         newSupplierMenu = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        EditItemsMenu = new javax.swing.JMenu();
         EditProductMenu = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -73,7 +72,17 @@ public class Menu extends javax.swing.JFrame {
         CreateReportMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -143,7 +152,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu5.setText("Edit Items");
+        EditItemsMenu.setText("Edit Items");
 
         EditProductMenu.setText("Edit Product");
         EditProductMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +160,7 @@ public class Menu extends javax.swing.JFrame {
                 EditProductMenuActionPerformed(evt);
             }
         });
-        jMenu5.add(EditProductMenu);
+        EditItemsMenu.add(EditProductMenu);
 
         jMenuItem2.setText("Edit Unit");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +168,7 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem2);
+        EditItemsMenu.add(jMenuItem2);
 
         jMenuItem3.setText("Edit Supplier");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +176,7 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem3);
+        EditItemsMenu.add(jMenuItem3);
 
         jMenuItem4.setText("Edit Branch");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -175,9 +184,9 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem4);
+        EditItemsMenu.add(jMenuItem4);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(EditItemsMenu);
 
         jMenu2.setText("Transaction");
 
@@ -347,7 +356,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        jLabel3.setText(t.full);
+//        jLabel3.setText(login.full);
+//        System.out.print("window opened");
+//        if (!login.admin){
+//            EditItemsMenu.setVisible(false);
+//        }
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
@@ -408,8 +421,9 @@ public class Menu extends javax.swing.JFrame {
         log = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning",JOptionPane.YES_NO_OPTION);
         if(log == JOptionPane.YES_OPTION){
             this.dispose();
-            transReportClass.dispose();
-            t.setVisible(true);
+            
+            login loginClass = new login();
+            loginClass.setVisible(true);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -421,6 +435,23 @@ public class Menu extends javax.swing.JFrame {
         addCategoryClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        jLabel3.setText(login.full);
+        System.out.print("window opened");
+        if (!login.admin){
+            EditItemsMenu.setVisible(false);
+            EditTransactionMenu.setVisible(false);
+        }else{
+            EditItemsMenu.setVisible(true);
+            EditTransactionMenu.setVisible(true);
+
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -459,6 +490,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CreateReportMenu;
+    private javax.swing.JMenu EditItemsMenu;
     private javax.swing.JMenuItem EditProductMenu;
     private javax.swing.JMenuItem EditTransactionMenu;
     private javax.swing.JMenuItem NewProductMenu;
@@ -474,7 +506,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
