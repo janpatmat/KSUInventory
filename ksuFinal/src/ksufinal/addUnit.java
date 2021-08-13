@@ -13,6 +13,7 @@ package ksufinal;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 public class addUnit extends javax.swing.JFrame {
 PreparedStatement st = null;
@@ -37,7 +38,7 @@ ArrayList <String> tabar = new ArrayList <String>();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        UnitTable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,7 +70,8 @@ ArrayList <String> tabar = new ArrayList <String>();
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        UnitTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        UnitTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -77,7 +79,8 @@ ArrayList <String> tabar = new ArrayList <String>();
                 "Unit"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        UnitTable.setRowHeight(25);
+        jScrollPane1.setViewportView(UnitTable);
 
         jButton2.setText("Delete");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -103,52 +106,58 @@ ArrayList <String> tabar = new ArrayList <String>();
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton2)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            if(jTextField1.getText().length() == 0){
+        DefaultTableModel UnitTableModel = (DefaultTableModel) UnitTable.getModel();
+        
+        
+        if(jTextField1.getText().length() == 0){
             JOptionPane.showMessageDialog(this,"Missing fields");
         }
-            else{
-        try{
-            st = KsuFinal.con.prepareStatement("INSERT INTO unittable(Unit) VALUES(?)");
-            
-            st.setString(1, jTextField1.getText());
-            
-            st.executeUpdate();
-            jTextField1.setText("");
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
+        else{
+            UnitTableModel.addRow(new String[]{jTextField1.getText()});
+            try{
+                st = KsuFinal.con.prepareStatement("INSERT INTO unittable(Unit) VALUES(?)");
+
+                st.setString(1, jTextField1.getText());
+
+                st.executeUpdate();
+                jTextField1.setText("");
+                
             }
+            catch(Exception e){
+                System.out.println(e);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-              int index = jTable1.getSelectedRow();
+              int index = UnitTable.getSelectedRow();
         int trudex = Integer.parseInt(tabar.get(index));
         
         try{
@@ -158,7 +167,7 @@ ArrayList <String> tabar = new ArrayList <String>();
         catch(Exception e){
             System.out.println(e);
         }
-         DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
+         DefaultTableModel t = (DefaultTableModel)UnitTable.getModel();
                  
                  t.removeRow(index);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -212,7 +221,7 @@ ArrayList <String> tabar = new ArrayList <String>();
                 
                 String[] item = {name};
                 tabar.add(id);
-                 DefaultTableModel t = (DefaultTableModel)jTable1.getModel();
+                 DefaultTableModel t = (DefaultTableModel)UnitTable.getModel();
                  
                  t.addRow(item);
             }
@@ -258,11 +267,11 @@ ArrayList <String> tabar = new ArrayList <String>();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable UnitTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
