@@ -85,6 +85,7 @@ public class userdisTrans extends javax.swing.JFrame {
             ResultSet rs = state.executeQuery(sql);
             
             while(rs.next()){
+                
                 String id = rs.getString(String.valueOf("TransactionNo"));
                 String prodid = rs.getString(String.valueOf("prodID"));
                 String name = rs.getString("Name");
