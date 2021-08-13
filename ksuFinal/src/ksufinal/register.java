@@ -163,15 +163,19 @@ public class register extends javax.swing.JFrame {
             else if(rs.next()){
               
                    JOptionPane.showMessageDialog(this,"Username exist");
-                   pass.setText(" ");
-                   uname.setText(" ");
-                   rpass.setText(" ");
+                   pass.setText(null);
+                   uname.setText(null);
+                   rpass.setText(null);
                    
                 
             }else{
                 System.out.println("1");
                 st.executeUpdate();
-
+                fname.setText(null);
+                lname.setText(null);
+                 pass.setText(null);
+                uname.setText(null);
+                rpass.setText(null);
                 JOptionPane.showMessageDialog(this,"Successfully registered");
             }
             

@@ -22,7 +22,7 @@ public class userMenu extends javax.swing.JFrame {
     adProd adProdClass = new adProd();
     editTransaction editTransactionClass = new editTransaction();
     userdisTrans userdisTransClass = new userdisTrans();
-    
+
 
     /**
      * Creates new form Menu
@@ -190,6 +190,7 @@ public class userMenu extends javax.swing.JFrame {
        
         addUnitClass.setVisible(true);
         addUnitClass.setDefaultCloseOperation(addUnitClass.HIDE_ON_CLOSE);
+        addUnitClass.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_NewUnitMenuActionPerformed
 
@@ -197,6 +198,7 @@ public class userMenu extends javax.swing.JFrame {
         
         userdisTransClass.setVisible(true);
         userdisTransClass.setDefaultCloseOperation(userdisTransClass.HIDE_ON_CLOSE);
+        userdisTransClass.setLocationRelativeTo(null);
     }//GEN-LAST:event_ViewTransactionMenuActionPerformed
 
     private void NewProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductMenuActionPerformed
@@ -204,6 +206,7 @@ public class userMenu extends javax.swing.JFrame {
 //          AddProduct adPrdct = new AddProduct();
         addProductClass.setVisible(true);
         addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
+        addProductClass.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_NewProductMenuActionPerformed
 
@@ -212,6 +215,7 @@ public class userMenu extends javax.swing.JFrame {
         
         transactionClass.setVisible(true);
         transactionClass.setDefaultCloseOperation(transactionClass.HIDE_ON_CLOSE);
+        transactionClass.setLocationRelativeTo(null);
     }//GEN-LAST:event_ReceiveWithdrawMenuActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -219,6 +223,7 @@ public class userMenu extends javax.swing.JFrame {
         
         addProductClass.setVisible(true);
         addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
+        addProductClass.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_jMenu1ActionPerformed
 
@@ -226,12 +231,14 @@ public class userMenu extends javax.swing.JFrame {
        
         addSupplierClass.setVisible(true);
         addSupplierClass.setDefaultCloseOperation(addSupplierClass.HIDE_ON_CLOSE);
+        addSupplierClass.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_newSupplierMenuActionPerformed
 
     private void ViewProductsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductsMenuActionPerformed
         prodDisClass.setVisible(true);
         prodDisClass.setDefaultCloseOperation(prodDisClass.HIDE_ON_CLOSE);
+        prodDisClass.setLocationRelativeTo(null);
 
         
     }//GEN-LAST:event_ViewProductsMenuActionPerformed
@@ -248,6 +255,7 @@ public class userMenu extends javax.swing.JFrame {
     private void CreateReportMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateReportMenuActionPerformed
         reportClass.setVisible(true);
         reportClass.setDefaultCloseOperation(reportClass.HIDE_ON_CLOSE);
+        reportClass.setLocationRelativeTo(null);
     }//GEN-LAST:event_CreateReportMenuActionPerformed
 
     /**

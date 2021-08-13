@@ -18,7 +18,8 @@ public class sortBS extends javax.swing.JFrame {
     
     
     ResultSet rs;
-    static ArrayList<String> selectedBS = new ArrayList<String>();
+    static ArrayList<String> selectedSupplier = new ArrayList<String>();
+    static ArrayList<String> selectedBranch = new ArrayList<String>();
     static String  BSSortStatement = "";
     private String location;
     
@@ -41,9 +42,12 @@ public class sortBS extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        sortBSTable = new javax.swing.JTable();
+        sortSupplierTable = new javax.swing.JTable();
         saveBSSortBtn = new javax.swing.JButton();
-        selectAllCBox = new javax.swing.JCheckBox();
+        selectAllSupplierCBox = new javax.swing.JCheckBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        sortBranchTable = new javax.swing.JTable();
+        selectAllBranchCBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -52,14 +56,14 @@ public class sortBS extends javax.swing.JFrame {
             }
         });
 
-        sortBSTable.setAutoCreateRowSorter(true);
-        sortBSTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        sortBSTable.setModel(new javax.swing.table.DefaultTableModel(
+        sortSupplierTable.setAutoCreateRowSorter(true);
+        sortSupplierTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        sortSupplierTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Branch/Supplier", "Select Here"
+                "Supplier", "Select Here"
             }
         ) {
             Class[] types = new Class [] {
@@ -70,8 +74,8 @@ public class sortBS extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        sortBSTable.setRowHeight(25);
-        jScrollPane1.setViewportView(sortBSTable);
+        sortSupplierTable.setRowHeight(25);
+        jScrollPane1.setViewportView(sortSupplierTable);
 
         saveBSSortBtn.setText("Save");
         saveBSSortBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -80,10 +84,38 @@ public class sortBS extends javax.swing.JFrame {
             }
         });
 
-        selectAllCBox.setText("Select All");
-        selectAllCBox.addActionListener(new java.awt.event.ActionListener() {
+        selectAllSupplierCBox.setText("Select All Supplier");
+        selectAllSupplierCBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectAllCBoxActionPerformed(evt);
+                selectAllSupplierCBoxActionPerformed(evt);
+            }
+        });
+
+        sortBranchTable.setAutoCreateRowSorter(true);
+        sortBranchTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        sortBranchTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Branch", "Select Here"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        sortBranchTable.setRowHeight(25);
+        jScrollPane2.setViewportView(sortBranchTable);
+
+        selectAllBranchCBox.setText("Select All Branch");
+        selectAllBranchCBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectAllBranchCBoxActionPerformed(evt);
             }
         });
 
@@ -94,34 +126,43 @@ public class sortBS extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(selectAllCBox)
+                    .addComponent(selectAllSupplierCBox)
+                    .addComponent(saveBSSortBtn)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saveBSSortBtn))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectAllBranchCBox))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(selectAllCBox)
+                .addComponent(selectAllSupplierCBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(selectAllBranchCBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(saveBSSortBtn)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveBSSortBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBSSortBtnActionPerformed
+        DefaultTableModel t2 = (DefaultTableModel)sortBranchTable.getModel();
         
-        
-        selectedBS.clear();
+        selectedSupplier.clear();
+        selectedBranch.clear();
         
         BSSortStatement = "";
+        int l = sortSupplierTable.getRowCount();
+        int l2 = sortBranchTable.getRowCount();
 
-        if (selectAllCBox.isSelected()){
+        if (selectAllSupplierCBox.isSelected() && selectAllBranchCBox.isSelected()){
             
             if (location.equals("TransReport")){
                 TransReport.BSSortTF.setText("All");
@@ -131,14 +172,23 @@ public class sortBS extends javax.swing.JFrame {
             }
         }
         else{
-            int l = sortBSTable.getRowCount();
 
             for (int x = 0; x < l; x++){
-                if (sortBSTable.getValueAt(x, 1).toString().equals("true")){
-                    selectedBS.add(sortBSTable.getValueAt(x, 0).toString());
+                if (sortSupplierTable.getValueAt(x, 1).toString().equals("true")){
+                    selectedSupplier.add(sortSupplierTable.getValueAt(x, 0).toString());
                 }
             }
-            String jointArray = String.join(", ", selectedBS);
+            
+            for (int x = 0; x < l2; x++){
+                if (sortBranchTable.getValueAt(x, 1).toString().equals("true")){
+                    selectedBranch.add(sortBranchTable.getValueAt(x, 0).toString());
+                }
+            }
+            
+            selectedSupplier.addAll(selectedBranch);
+            
+            String jointArray = String.join(", ", selectedSupplier);
+            
             
             if (location.equals("TransReport")){
                 TransReport.BSSortTF.setText(jointArray);
@@ -149,7 +199,7 @@ public class sortBS extends javax.swing.JFrame {
             
             ArrayList<String> strArr = new ArrayList<String>();
             
-            for (String x: selectedBS){
+            for (String x: selectedSupplier){
                 strArr.add("SuppBranch = '" + x + "'");
             }
             
@@ -169,40 +219,75 @@ public class sortBS extends javax.swing.JFrame {
         //        System.out.println(jointArray);
     }//GEN-LAST:event_saveBSSortBtnActionPerformed
 
-    private void selectAllCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllCBoxActionPerformed
+    private void selectAllSupplierCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllSupplierCBoxActionPerformed
         //        DefaultTableModel t = (DefaultTableModel)sortProdTable.getModel();
-        if (selectAllCBox.isSelected()){
-            sortBSTable.setRowSelectionAllowed(false);
-            sortBSTable.setEnabled(false);
-            sortBSTable.setForeground(Color.LIGHT_GRAY);
-            sortBSTable.setBackground(new Color(236, 236, 236));
+        int l = sortSupplierTable.getRowCount();
+        DefaultTableModel t = (DefaultTableModel)sortSupplierTable.getModel();
+        
+        if (selectAllSupplierCBox.isSelected()){
+            for (int x = 0; x < l; x++){
+                t.setValueAt(true , x, 1);
+            }
+            sortSupplierTable.setRowSelectionAllowed(false);
+            sortSupplierTable.setEnabled(false);
+            sortSupplierTable.setForeground(Color.LIGHT_GRAY);
+            sortSupplierTable.setBackground(new Color(236, 236, 236));
         }
         else{
-            sortBSTable.setRowSelectionAllowed(true);
-            sortBSTable.setEnabled(true);
-            sortBSTable.setForeground(Color.black);
-            sortBSTable.setBackground(Color.white);
+            sortSupplierTable.setRowSelectionAllowed(true);
+            sortSupplierTable.setEnabled(true);
+            sortSupplierTable.setForeground(Color.black);
+            sortSupplierTable.setBackground(Color.white);
         }
-    }//GEN-LAST:event_selectAllCBoxActionPerformed
+    }//GEN-LAST:event_selectAllSupplierCBoxActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel t = (DefaultTableModel)sortBSTable.getModel();
+        DefaultTableModel t = (DefaultTableModel)sortSupplierTable.getModel();
+        DefaultTableModel t2 = (DefaultTableModel)sortBranchTable.getModel();
         
         
         try{
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.suppliertable;");
+            ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.branchtable;");
             while(rs.next()){
                 String nm = rs.getString("supplierName");
                 Object [] nmArr = {nm,false};
-                
                 t.addRow(nmArr);
-                
-            }  
+            }
+            
+            while (rs2.next()){
+                String nm = rs2.getString("branchName");
+                Object [] nmArr = {nm,false};
+                t2.addRow(nmArr);
+            }
         }
         catch(Exception e){
             System.out.println(e);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void selectAllBranchCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllBranchCBoxActionPerformed
+        int l = sortBranchTable.getRowCount();
+        DefaultTableModel t = (DefaultTableModel)sortBranchTable.getModel();
+        
+        if (selectAllBranchCBox.isSelected()){
+        if (selectAllBranchCBox.isSelected()){
+            for (int x = 0; x < l; x++){
+                t.setValueAt(true , x, 1);
+            }
+        }
+            sortBranchTable.setRowSelectionAllowed(false);
+            sortBranchTable.setEnabled(false);
+            sortBranchTable.setForeground(Color.LIGHT_GRAY);
+            sortBranchTable.setBackground(new Color(236, 236, 236));
+        }
+        else{
+            sortBranchTable.setRowSelectionAllowed(true);
+            sortBranchTable.setEnabled(true);
+            sortBranchTable.setForeground(Color.black);
+            sortBranchTable.setBackground(Color.white);
+        }
+    }//GEN-LAST:event_selectAllBranchCBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,8 +326,11 @@ public class sortBS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton saveBSSortBtn;
-    private javax.swing.JCheckBox selectAllCBox;
-    private javax.swing.JTable sortBSTable;
+    private javax.swing.JCheckBox selectAllBranchCBox;
+    private javax.swing.JCheckBox selectAllSupplierCBox;
+    private javax.swing.JTable sortBranchTable;
+    private javax.swing.JTable sortSupplierTable;
     // End of variables declaration//GEN-END:variables
 }

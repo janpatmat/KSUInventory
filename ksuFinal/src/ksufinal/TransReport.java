@@ -501,7 +501,13 @@ public class TransReport extends javax.swing.JFrame {
 
                             if (((currdate.after(fromDate) && currdate.before(toDate)) || currdate.equals(fromDate) || currdate.equals(toDate)) && (fromDate.before(toDate) || fromDate.equals(toDate))){
 
-                                String[] item = {TranNo, id, dt, nm, ct, pr, qty, ut, sb, act};
+                                if (Float.parseFloat(qty) < 0){
+                                    qty = String.valueOf(Float.parseFloat(qty) * -1);
+                                }
+
+                                String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
+                                
+                                String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act};
                                 TransactionTableModel.addRow(item);
                             }
 
@@ -531,8 +537,14 @@ public class TransReport extends javax.swing.JFrame {
                         String sb = rs.getString("SuppBranch");
                         String dt = rs.getString("Date");
                         String act = rs.getString("Action");
+                        
+                        if (Float.parseFloat(qty) < 0){
+                            qty = String.valueOf(Float.parseFloat(qty) * -1);
+                        }
 
-                        String[] item = {TranNo, id, dt, nm, ct, pr, qty, ut, sb, act};
+                        String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
+
+                        String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act};
                         TransactionTableModel.addRow(item);
 
                         
