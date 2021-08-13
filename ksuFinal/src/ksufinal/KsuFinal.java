@@ -47,11 +47,11 @@ public class KsuFinal {
         
 //        editUnit edun = new editUnit();
 //        edun.setVisible(true);
-        login index = new login();
-        index.setVisible(true);
-
-//        Menu index = new Menu();
+//        login index = new login();
 //        index.setVisible(true);
+
+        editUser index = new editUser();
+        index.setVisible(true);
         
 //        TransReport a = new TransReport();
 //        a.setVisible(true);
