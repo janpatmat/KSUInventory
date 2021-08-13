@@ -44,6 +44,9 @@ ArrayList <String> tabar = new ArrayList <String>();
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -92,7 +95,7 @@ ArrayList <String> tabar = new ArrayList <String>();
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
                             .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
@@ -190,6 +193,16 @@ ArrayList <String> tabar = new ArrayList <String>();
             System.out.println(e);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        if (login.admin){
+            login.tra.setVisible(true);
+        }else{
+            login.usm.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

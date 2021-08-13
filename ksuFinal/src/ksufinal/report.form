@@ -15,6 +15,7 @@
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
     <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
   </Events>
   <AuxValues>
@@ -97,6 +98,7 @@
                                   <Component id="SupplierBranchCB" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="ActionCB" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="UnitOfMeasureCB" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UserCB" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -194,9 +196,12 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="PriceCB" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ProductNameCB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="PriceCB" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ProductNameCB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="UserCB" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -230,7 +235,7 @@
               <Component id="editDateCB" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="fromDateChooser" alignment="1" max="32767" attributes="0"/>
+                  <Component id="fromDateChooser" alignment="1" pref="22" max="32767" attributes="0"/>
                   <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="toDateChooser" max="32767" attributes="0"/>
                   <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -625,6 +630,17 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="UserCB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="User"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UserCBActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

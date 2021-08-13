@@ -66,6 +66,9 @@ public class Transaction extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -458,6 +461,15 @@ public class Transaction extends javax.swing.JFrame {
         addSupplier adup = new addSupplier();
         adup.setVisible(true);
     }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        if (login.admin){
+            login.tra.setVisible(true);
+        }else{
+            login.usm.setVisible(true);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

@@ -11,10 +11,14 @@ import javax.swing.JOptionPane;
  * @author Ricky
  */
 public class login extends javax.swing.JFrame {
-PreparedStatement st = null;
- static String us;
- static String full;
- static String id;
+    PreparedStatement st = null;
+    static String us;
+    static String full;
+    static String id;
+    static boolean admin = false;
+    public static Menu tra = new Menu();
+    public static userMenu usm = new userMenu();
+ 
     /**
      * Creates new form login
      */
@@ -120,12 +124,14 @@ PreparedStatement st = null;
             
                  if (rs.next()){
                     if(uname.getText().equals("Admin")&& passString.equals("Admin")){
-                        Menu tra = new Menu();
+                        
                         tra.setVisible(true);
+                        admin = true;
                     }
                     else{
-                        userMenu us = new userMenu();
-                        us.setVisible(true);
+                        
+                        usm.setVisible(true);
+                        admin = false;
                     }
                     id = rs.getString("userID");
                     String fn = rs.getString("Firstname");

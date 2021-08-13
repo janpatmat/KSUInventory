@@ -79,6 +79,9 @@ public class TransReport extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -337,12 +340,19 @@ public class TransReport extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        DefaultTableModel transactionTableModel = (DefaultTableModel) TransactionTable.getModel();
+
+        if (login.admin){
+            transactionTableModel.addColumn("User");
+        }
+        
         updateTransReportTable();
         deliveryCB.setSelected(true);
         withdrawCB.setSelected(true);
         fromDateChooser.setEnabled(false);
         toDateChooser.setEnabled(false);  
         changePeriodBtn.setEnabled(false);
+
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -493,6 +503,7 @@ public class TransReport extends javax.swing.JFrame {
                             String sb = rs.getString("SuppBranch");
                             String dt = rs.getString("Date");
                             String act = rs.getString("Action");
+                            String tb = rs.getString("Transby");
 
 
                             Date currdate = dFormat.parse(dt);
@@ -507,7 +518,7 @@ public class TransReport extends javax.swing.JFrame {
 
                                 String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
                                 
-                                String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act};
+                                String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
                                 TransactionTableModel.addRow(item);
                             }
 
@@ -537,6 +548,7 @@ public class TransReport extends javax.swing.JFrame {
                         String sb = rs.getString("SuppBranch");
                         String dt = rs.getString("Date");
                         String act = rs.getString("Action");
+                        String tb = rs.getString("Transby");
                         
                         if (Float.parseFloat(qty) < 0){
                             qty = String.valueOf(Float.parseFloat(qty) * -1);
@@ -544,7 +556,7 @@ public class TransReport extends javax.swing.JFrame {
 
                         String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
 
-                        String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act};
+                        String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
                         TransactionTableModel.addRow(item);
 
                         
@@ -576,6 +588,15 @@ public class TransReport extends javax.swing.JFrame {
     private void changePeriodBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePeriodBtnActionPerformed
         filterFunction();
     }//GEN-LAST:event_changePeriodBtnActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        if (login.admin){
+            login.tra.setVisible(true);
+        }else{
+            login.usm.setVisible(true);
+        }
+    }//GEN-LAST:event_formWindowClosing
     
     public static void updateTransReportTable(){
         System.out.println("1");
@@ -596,6 +617,7 @@ public class TransReport extends javax.swing.JFrame {
                 String sb = rs.getString("SuppBranch");
                 String dt = rs.getDate("Date").toString();
                 String act = rs.getString("Action");
+                String tb = rs.getString("Transby");
                 
                 if (Float.parseFloat(qty) < 0){
                     qty = String.valueOf(Float.parseFloat(qty) * -1);
@@ -603,7 +625,7 @@ public class TransReport extends javax.swing.JFrame {
                 
                 String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
 
-                String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act};
+                String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
                 
                 
                 TransactionTableModel.addRow(item);

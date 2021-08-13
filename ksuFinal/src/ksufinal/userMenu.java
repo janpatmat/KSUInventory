@@ -191,6 +191,8 @@ public class userMenu extends javax.swing.JFrame {
         addUnitClass.setVisible(true);
         addUnitClass.setDefaultCloseOperation(addUnitClass.HIDE_ON_CLOSE);
         addUnitClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+
 
     }//GEN-LAST:event_NewUnitMenuActionPerformed
 

@@ -100,9 +100,13 @@ public class report extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         changePeriodBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        UserCB = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -329,6 +333,13 @@ public class report extends javax.swing.JFrame {
             }
         });
 
+        UserCB.setText("User");
+        UserCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserCBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -384,7 +395,8 @@ public class report extends javax.swing.JFrame {
                                     .addComponent(TotalPriceCB)
                                     .addComponent(SupplierBranchCB)
                                     .addComponent(ActionCB)
-                                    .addComponent(UnitOfMeasureCB))))
+                                    .addComponent(UnitOfMeasureCB)
+                                    .addComponent(UserCB))))
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -459,9 +471,11 @@ public class report extends javax.swing.JFrame {
                                     .addComponent(StandardPriceCB)
                                     .addComponent(ActionCB))))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PriceCB)
-                            .addComponent(ProductNameCB))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(PriceCB)
+                                .addComponent(ProductNameCB))
+                            .addComponent(UserCB))))
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
@@ -488,7 +502,7 @@ public class report extends javax.swing.JFrame {
                 .addComponent(editDateCB)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(fromDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fromDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                     .addComponent(jLabel7)
                     .addComponent(toDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8)
@@ -644,6 +658,10 @@ public class report extends javax.swing.JFrame {
         
         databaseTableName = "producttrans";
         setColumnInTable();
+        
+        if (!login.admin){
+            UserCB.setVisible(false);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void filterProdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterProdBtnActionPerformed
@@ -710,6 +728,20 @@ public class report extends javax.swing.JFrame {
     private void BSSortTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSSortTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BSSortTFActionPerformed
+
+    private void UserCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserCBActionPerformed
+        setColumnInTable();
+        sortFunction();
+    }//GEN-LAST:event_UserCBActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        if (login.admin){
+            login.tra.setVisible(true);
+        }else{
+            login.usm.setVisible(true);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     
     
@@ -844,6 +876,11 @@ public class report extends javax.swing.JFrame {
             prodSortTF.setText("All");
         }
         
+        if (login.admin && UserCB.isSelected() && databaseTableName.equals("producttrans")){
+            reportTableModel.addColumn("User");
+            columnArr.add("Transby");
+        }
+        
 //        System.out.println(Arrays.deepToString(columnArr.toArray(new String[columnArr.size()])));
     }
     
@@ -859,7 +896,7 @@ public class report extends javax.swing.JFrame {
             strArr.add("Action = 'withdraw'");
         }
         
-        deliveryWithdrawStatement = " (" + String.join(" or ", strArr) + ")";
+        deliveryWithdrawStatement = " (" + String.join(" or ", strArr) + ") ";
         
         ArrayList<String> finalArr = new ArrayList<String>();
         
@@ -923,6 +960,11 @@ public class report extends javax.swing.JFrame {
             notChange = false;
         }
         
+        if (!login.admin){
+            finalArr.add(" (Transby = '" + login.full + "') ");
+        }
+        
+        
         if (notChange){
 
             String finalStatement = "SELECT * FROM expenses." + databaseTableName;
@@ -931,7 +973,7 @@ public class report extends javax.swing.JFrame {
                 finalStatement += " WHERE";
                 finalStatement += String.join("and", finalArr);
             }
-//            System.out.println(finalStatement);
+            System.out.println(finalStatement);
             
             if (editDateCB.isSelected()){
                 try{
@@ -1057,20 +1099,16 @@ public class report extends javax.swing.JFrame {
             
             createcell(texts, "Date Issued: " + currentDate, Element.ALIGN_RIGHT, pdfWidth, text12, 0, 255, 255, 255);       
             
-            createcell(texts, "REPORT", Element.ALIGN_CENTER, pdfWidth, textInvoice, 0, 255, 255, 255);
+            createcell(texts, "REPORT", Element.ALIGN_CENTER, pdfWidth, textBilledTo, 0, 255, 255, 255);
             createcell(texts, "Branch Name", Element.ALIGN_CENTER, pdfWidth, textBold12, 0, 255, 255, 255);
-            createcell(texts, "Street of Branch", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
-            createcell(texts, "City of Branch", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
+            createcell(texts, "Street of Branch, City of Branch", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
             createcell(texts, "Contact#: 123456789", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
             
             createcell(texts, "______________________________________________________________________________________", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
             
-            createcell(texts, "PRINTED BY", Element.ALIGN_LEFT, pdfWidth, textBilledTo, 0, 255, 255, 255);     
+            createcell(texts, "PRINTED BY " + login.full, Element.ALIGN_LEFT, pdfWidth, textBold12, 0, 255, 255, 255);     
             createSpace(texts, pdfWidth);
             
-            createcell(texts, "LASTNAME, FIRSTNAME", Element.ALIGN_LEFT, pdfWidth, textBold12, 0, 255, 255, 255);
-            createSpace(texts, pdfWidth);
-            createSpace(texts, pdfWidth);
             
             
             
@@ -1196,6 +1234,7 @@ public class report extends javax.swing.JFrame {
     public static javax.swing.JCheckBox TransactionNoCB;
     public static javax.swing.JTextField UOMSortTF;
     public static javax.swing.JCheckBox UnitOfMeasureCB;
+    public static javax.swing.JCheckBox UserCB;
     private javax.swing.JButton changePeriodBtn;
     public static javax.swing.JCheckBox deliveryCB;
     public static javax.swing.JCheckBox editDateCB;

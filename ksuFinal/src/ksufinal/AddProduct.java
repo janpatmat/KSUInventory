@@ -50,6 +50,11 @@ public String prdnm = null;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formFocusLost(evt);
+            }
+        });
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
             }
@@ -58,13 +63,14 @@ public String prdnm = null;
             }
         });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
-            }
-        });
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                formFocusLost(evt);
             }
         });
 
@@ -260,6 +266,21 @@ public String prdnm = null;
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowLostFocus
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        if (login.admin){
+            login.tra.setVisible(true);
+        }else{
+            login.usm.setVisible(true);
+        }
+    }//GEN-LAST:event_formWindowClosing
+
+    public void test(){
+    }
     /**
      * @param args the command line arguments
      */

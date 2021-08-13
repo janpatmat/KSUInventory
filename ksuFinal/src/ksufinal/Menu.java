@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -20,7 +20,7 @@ public class Menu extends javax.swing.JFrame {
     prodDis prodDisClass = new prodDis();
     report reportClass = new report();
     addUnit addUnitClass = new addUnit();
-    TransReport disTransClass = new TransReport();
+    TransReport transReportClass = new TransReport();
     adProd adProdClass = new adProd();
     editTransaction editTransactionClass = new editTransaction();
     editUnit editUnitClass = new editUnit();
@@ -278,14 +278,16 @@ public class Menu extends javax.swing.JFrame {
         addUnitClass.setVisible(true);
         addUnitClass.setDefaultCloseOperation(addUnitClass.HIDE_ON_CLOSE);
         addUnitClass.setLocationRelativeTo(null);
+        this.setVisible(false);
 
     }//GEN-LAST:event_NewUnitMenuActionPerformed
 
     private void ViewTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionMenuActionPerformed
         
-        disTransClass.setVisible(true);
-        disTransClass.setDefaultCloseOperation(disTransClass.HIDE_ON_CLOSE);
-        disTransClass.setLocationRelativeTo(null);
+        transReportClass.setVisible(true);
+        transReportClass.setDefaultCloseOperation(transReportClass.HIDE_ON_CLOSE);
+        transReportClass.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_ViewTransactionMenuActionPerformed
 
     private void NewProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductMenuActionPerformed
@@ -294,7 +296,7 @@ public class Menu extends javax.swing.JFrame {
         addProductClass.setVisible(true);
         addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
         addProductClass.setLocationRelativeTo(null);
-
+        this.setVisible(false);
     }//GEN-LAST:event_NewProductMenuActionPerformed
 
     private void ReceiveWithdrawMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReceiveWithdrawMenuActionPerformed
@@ -303,6 +305,7 @@ public class Menu extends javax.swing.JFrame {
         transactionClass.setVisible(true);
         transactionClass.setDefaultCloseOperation(transactionClass.HIDE_ON_CLOSE);
         transactionClass.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_ReceiveWithdrawMenuActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -311,7 +314,7 @@ public class Menu extends javax.swing.JFrame {
         addProductClass.setVisible(true);
         addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
         addProductClass.setLocationRelativeTo(null);
-
+        this.setVisible(false);
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void EditProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductMenuActionPerformed
@@ -322,7 +325,7 @@ public class Menu extends javax.swing.JFrame {
         adProdClass.setVisible(true);
         adProdClass.setDefaultCloseOperation(adProdClass.HIDE_ON_CLOSE);
         adProdClass.setLocationRelativeTo(null);
-
+        this.setVisible(false);
     }//GEN-LAST:event_EditProductMenuActionPerformed
 
     private void newSupplierMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplierMenuActionPerformed
@@ -330,14 +333,14 @@ public class Menu extends javax.swing.JFrame {
         addSupplierClass.setVisible(true);
         addSupplierClass.setDefaultCloseOperation(addSupplierClass.HIDE_ON_CLOSE);
         addSupplierClass.setLocationRelativeTo(null);
-
+        this.setVisible(false);
     }//GEN-LAST:event_newSupplierMenuActionPerformed
 
     private void ViewProductsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductsMenuActionPerformed
         prodDisClass.setVisible(true);
         prodDisClass.setDefaultCloseOperation(prodDisClass.HIDE_ON_CLOSE);
         prodDisClass.setLocationRelativeTo(null);
-
+        this.setVisible(false);
         
     }//GEN-LAST:event_ViewProductsMenuActionPerformed
 
@@ -354,6 +357,7 @@ public class Menu extends javax.swing.JFrame {
         reportClass.setVisible(true);
         reportClass.setDefaultCloseOperation(reportClass.HIDE_ON_CLOSE);
         reportClass.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_CreateReportMenuActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -364,6 +368,7 @@ public class Menu extends javax.swing.JFrame {
         editTransactionClass.setVisible(true);
         editTransactionClass.setDefaultCloseOperation(editTransactionClass.HIDE_ON_CLOSE);
         editTransactionClass.setLocationRelativeTo(null);
+        this.setVisible(false);
 
     }//GEN-LAST:event_EditTransactionMenuActionPerformed
 
@@ -371,6 +376,8 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         editUnitClass.setVisible(true);
         editUnitClass.setDefaultCloseOperation(editUnitClass.HIDE_ON_CLOSE);
+        editUnitClass.setLocationRelativeTo(null);
+        this.setVisible(false);
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -378,12 +385,16 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         editSupplierClass.setVisible(true);
         editSupplierClass.setDefaultCloseOperation(editSupplierClass.HIDE_ON_CLOSE);
+        editSupplierClass.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         editBranchClass.setVisible(true);
         editBranchClass.setDefaultCloseOperation(editBranchClass.HIDE_ON_CLOSE);
+        editBranchClass.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -391,8 +402,9 @@ public class Menu extends javax.swing.JFrame {
         int log = 0;
         log = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning",JOptionPane.YES_NO_OPTION);
         if(log == JOptionPane.YES_OPTION){
-        this.dispose();
-        t.setVisible(true);
+            this.dispose();
+            transReportClass.dispose();
+            t.setVisible(true);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -401,6 +413,8 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         addCategoryClass.setVisible(true);
         addCategoryClass.setDefaultCloseOperation(addCategoryClass.HIDE_ON_CLOSE);
+        addCategoryClass.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
