@@ -35,26 +35,48 @@ public String prdnm = null;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        instructionDialogue = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
         productName = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        label1 = new java.awt.Label();
-        label2 = new java.awt.Label();
-        label3 = new java.awt.Label();
         minQ = new javax.swing.JTextField();
         unitCmb = new javax.swing.JComboBox();
         catCmb = new javax.swing.JComboBox();
-        Category = new java.awt.Label();
+        questionMarkIcon = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+
+        instructionDialogue.setBackground(new java.awt.Color(240, 240, 240));
+        instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
+        instructionDialogue.setResizable(false);
+        instructionDialogue.setType(java.awt.Window.Type.POPUP);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("INSTRUCTIONS");
+
+        javax.swing.GroupLayout instructionDialogueLayout = new javax.swing.GroupLayout(instructionDialogue.getContentPane());
+        instructionDialogue.getContentPane().setLayout(instructionDialogueLayout);
+        instructionDialogueLayout.setHorizontalGroup(
+            instructionDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(instructionDialogueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(181, Short.MAX_VALUE))
+        );
+        instructionDialogueLayout.setVerticalGroup(
+            instructionDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(instructionDialogueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(182, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                formFocusLost(evt);
-            }
-        });
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -77,6 +99,11 @@ public String prdnm = null;
                 formWindowOpened(evt);
             }
         });
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formFocusLost(evt);
+            }
+        });
 
         jButton1.setText("Add Product");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,30 +112,29 @@ public String prdnm = null;
             }
         });
 
-        label1.setText("Product Name");
-
-        label2.setText("Unit");
-
-        label3.setText("Minimum Quantity");
-
-        Category.setText("Category");
-
-        jMenu1.setText("Add Unit");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+        questionMarkIcon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        questionMarkIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ksufinal/Daco_2943438.png"))); // NOI18N
+        questionMarkIcon.setMaximumSize(new java.awt.Dimension(880, 800));
+        questionMarkIcon.setMinimumSize(new java.awt.Dimension(880, 800));
+        questionMarkIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                questionMarkIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                questionMarkIconMouseExited(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Add Category");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu2);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("ADD PRODUCT MENU");
 
+        jLabel4.setText("Category");
+
+        jLabel5.setText("Product Name");
+
+        jLabel6.setText("Minimum Quantity");
+
+        jLabel7.setText("Unit of Measure");
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,27 +145,32 @@ public String prdnm = null;
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minQ, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(unitCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(catCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(143, 185, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(52, 52, 52)
+                        .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(productName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(catCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel5))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(productName)
+                                        .addComponent(unitCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(minQ, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -147,23 +178,27 @@ public String prdnm = null;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
                     .addComponent(catCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(minQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(unitCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unitCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
 
         pack();
@@ -171,96 +206,57 @@ public String prdnm = null;
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-            boolean checker = false;
-            st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo) VALUES (?,?,?,?,?,?,?,?,?)");
-            String nm = productName.getText();
-            Statement sta = KsuFinal.con.createStatement();
-            ResultSet rs = sta.executeQuery("SELECT productName from producttable");
-            while(rs.next()){
-                prdnm = rs.getString("productName");
-                if (prdnm.equals(nm)){
-                    checker = true;
-                    break;
+        if (productName.getText().length() > 0 && minQ.getText().length() > 0){    
+            try{
+                boolean checker = false;
+                st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo) VALUES (?,?,?,?,?,?,?,?,?)");
+                String nm = productName.getText();
+                Statement sta = KsuFinal.con.createStatement();
+                ResultSet rs = sta.executeQuery("SELECT productName from producttable");
+                while(rs.next()){
+                    prdnm = rs.getString("productName");
+                    if (prdnm.equals(nm)){
+                        checker = true;
+                        break;
+                    }
+                    else{
+                        checker = false;
+                    }
+                }
+                if(checker == true){
+                    JOptionPane.showMessageDialog(this,"Please select a new Product Name", "Error", JOptionPane.ERROR_MESSAGE);
+
                 }
                 else{
-                    checker = false;
-                }
-                }
-            System.out.println("prdnm = " + prdnm);
-            System.out.println("nm = " + nm);
-            System.out.println("checker = " + checker);
-            if(checker == true){
-                JOptionPane.showMessageDialog(this,"Please select a new Product Name");
+                    st.setString(1, productName.getText());
+                    st.setInt(2, 0);
+                    st.setString(3,(String) unitCmb.getSelectedItem());
+                    st.setInt(4, Integer.parseInt(minQ.getText()));
+                    st.setString(5, "TRUE");
+                    st.setString(6,(String) catCmb.getSelectedItem());
+                    st.setFloat(7, 0);
+                    st.setString(8, "0");
+                    st.setString(9, "0");
+                    st.executeUpdate();
 
+                    JOptionPane.showMessageDialog(this,"Successfully registered the product");
+                }
             }
-            else{
-                st.setString(1, productName.getText());
-                st.setInt(2, 0);
-                st.setString(3,(String) unitCmb.getSelectedItem());
-                st.setInt(4, Integer.parseInt(minQ.getText()));
-                st.setString(5, "TRUE");
-                st.setString(6,(String) catCmb.getSelectedItem());
-                st.setFloat(7, 0);
-                st.setString(8, "0");
-                st.setString(9, "0");
-                st.executeUpdate();
-                
-                JOptionPane.showMessageDialog(this,"Successfully registered the product");
+            catch(Exception ex){
+                if (ex instanceof NumberFormatException){
+                    JOptionPane.showMessageDialog(this,"Please put a numeric value in the Minimum Quantity Field", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
-        }
-        catch(Exception e){
-            System.out.println(e);
+        }else{
+            JOptionPane.showMessageDialog(this,"There are missing inputs", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        addUnit au = new addUnit();
-        au.setVisible(true);
-        
-    }//GEN-LAST:event_jMenu1MouseClicked
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-        
-        try{
-            String unit;
-            String category;
-            Statement state = KsuFinal.con.createStatement();
-            Statement des = KsuFinal.con.createStatement();
-         ResultSet rs = state.executeQuery("SELECT Unit FROM unittable");
-         ResultSet res = des.executeQuery("SELECT categoryName FROM categorytable");
-         System.out.println("1"); 
-          while(rs.next()){
-               unit = rs.getString("Unit");
-               System.out.println("e");
-               System.out.println(unit);
-               unitar.add(unit);
-          }
-          System.out.println("2"); 
-          while(res.next()){
-              category = res.getString("categoryName");
-              subar.add(category);
-          }
-          System.out.println("3"); 
-           for(int i = 0; i <unitar.size();i++){
-               unitCmb.addItem(unitar.get(i));
-           }
-           System.out.println("4"); 
-           for(int i = 0; i <subar.size();i++){
-               catCmb.addItem(subar.get(i));
-           }
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-        
+        instructionDialogue.setLocationRelativeTo(this);
+        System.out.println("AddProduct Opened");
+       
     }//GEN-LAST:event_formWindowOpened
-
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        addCategory adcat = new addCategory();
-        adcat.setVisible(true);
-    }//GEN-LAST:event_jMenu2MouseClicked
 
     private void formFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusLost
         
@@ -275,8 +271,10 @@ public String prdnm = null;
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
+
         login.MenuClass.setVisible(true);
+        productName.setText("");
+        minQ.setText("");
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -284,38 +282,42 @@ public String prdnm = null;
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        unitar.clear();
+        subar.clear();
+        unitCmb.removeAllItems();
+        catCmb.removeAllItems();
+        
         try{
             String unit;
             String category;
             Statement state = KsuFinal.con.createStatement();
             Statement des = KsuFinal.con.createStatement();
-         ResultSet rs = state.executeQuery("SELECT Unit FROM unittable");
-         ResultSet res = des.executeQuery("SELECT categoryName FROM categorytable");
-         System.out.println("1"); 
-          while(rs.next()){
-               unit = rs.getString("Unit");
-               System.out.println("e");
-               System.out.println(unit);
-               unitar.add(unit);
-          }
-          System.out.println("2"); 
-          while(res.next()){
-              category = res.getString("categoryName");
-              subar.add(category);
-          }
-          System.out.println("3"); 
-           for(int i = 0; i <unitar.size();i++){
-               unitCmb.addItem(unitar.get(i));
-           }
-           System.out.println("4"); 
-           for(int i = 0; i <subar.size();i++){
-               catCmb.addItem(subar.get(i));
-           }
+            ResultSet rs = state.executeQuery("SELECT Unit FROM unittable");
+            ResultSet res = des.executeQuery("SELECT categoryName FROM categorytable");
+            while(rs.next()){
+                unit = rs.getString("Unit");
+                unitar.add(unit);
+                unitCmb.addItem(unit);
+            }
+            while(res.next()){
+                category = res.getString("categoryName");
+                subar.add(category);
+                catCmb.addItem(category);
+            }
         }
         catch(Exception e){
             System.out.println(e);
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void questionMarkIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_questionMarkIconMouseExited
+        instructionDialogue.setVisible(false);
+    }//GEN-LAST:event_questionMarkIconMouseExited
+
+    private void questionMarkIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_questionMarkIconMouseEntered
+        instructionDialogue.setVisible(true);
+
+    }//GEN-LAST:event_questionMarkIconMouseEntered
 
     public void test(){
     }
@@ -355,17 +357,19 @@ public String prdnm = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Label Category;
     private javax.swing.JComboBox catCmb;
+    private javax.swing.JDialog instructionDialogue;
     private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
-    private java.awt.Label label1;
-    private java.awt.Label label2;
-    private java.awt.Label label3;
     private javax.swing.JTextField minQ;
     private javax.swing.JTextField productName;
+    private javax.swing.JLabel questionMarkIcon;
     private javax.swing.JComboBox unitCmb;
     // End of variables declaration//GEN-END:variables
 }

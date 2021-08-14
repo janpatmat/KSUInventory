@@ -125,7 +125,7 @@ public class sortUOM extends javax.swing.JFrame {
 
         if (selectAllCBox.isSelected()){
             if (location.equals("TransReport")){
-                TransReport.UOMSortTF.setText("All");
+                ViewTransactions.UOMSortTF.setText("All");
             }
             else if (location.equals("report")){
                 report.UOMSortTF.setText("All");
@@ -142,7 +142,7 @@ public class sortUOM extends javax.swing.JFrame {
             String jointArray = String.join(", ", selectedUOM);
             
             if (location.equals("TransReport")){
-                TransReport.UOMSortTF.setText(jointArray);
+                ViewTransactions.UOMSortTF.setText(jointArray);
             }
             else if (location.equals("report")){
                 report.UOMSortTF.setText(jointArray);
@@ -168,7 +168,7 @@ public class sortUOM extends javax.swing.JFrame {
             report.sortFunction();
         }
         else if (location.equals("TransReport")){
-            TransReport.filterFunction();
+            ViewTransactions.filterFunction();
         }
         
 

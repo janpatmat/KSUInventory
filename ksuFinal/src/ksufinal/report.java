@@ -46,6 +46,7 @@ public class report extends javax.swing.JFrame {
     static int onceOnly = 0;
     
     
+    
     public report() {
         initComponents();
     }
@@ -655,24 +656,22 @@ public class report extends javax.swing.JFrame {
     }//GEN-LAST:event_ActionCBActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-//            
-//        //disabled checkbox
-//        BelowMinimumCB.setEnabled(false);
-//        StandardPriceCB.setEnabled(false);
-//        MinimumCB.setEnabled(false);
-//        
-//        //disable date
-//        fromDateChooser.setEnabled(false);
-//        toDateChooser.setEnabled(false);
-//        
-//        changePeriodBtn.setEnabled(false);
-//        
-//        databaseTableName = "producttrans";
-//        setColumnInTable();
-//        
-//        if (!login.admin){
-//            UserCB.setVisible(false);
-//        }
+        
+        //disabled checkbox
+        BelowMinimumCB.setEnabled(false);
+        StandardPriceCB.setEnabled(false);
+        MinimumCB.setEnabled(false);
+        
+        //disable date
+        fromDateChooser.setEnabled(false);
+        toDateChooser.setEnabled(false);
+        
+        changePeriodBtn.setEnabled(false);
+        
+        databaseTableName = "producttrans";
+        setColumnInTable();
+        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void filterProdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterProdBtnActionPerformed
@@ -750,7 +749,6 @@ public class report extends javax.swing.JFrame {
         
         login.MenuClass.setVisible(true);
         reportTableModel.setColumnCount(0);
-        reportTableModel.setColumnCount(0);
         
         TransactionNoCB.setSelected(false);
         ProductNoCB.setSelected(false);
@@ -778,6 +776,8 @@ public class report extends javax.swing.JFrame {
         
         toDateChooser.setDate(null);
         fromDateChooser.setDate(null);
+        
+        databaseTableName = "producttrans";
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -786,28 +786,29 @@ public class report extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
-        TransactionCB.setSelected(true);
-        
-        //disabled checkbox
-        BelowMinimumCB.setEnabled(false);
-        StandardPriceCB.setEnabled(false);
-        MinimumCB.setEnabled(false);
-        
-        //disable date
-        fromDateChooser.setEnabled(false);
-        toDateChooser.setEnabled(false);
-        
-        changePeriodBtn.setEnabled(false);
-        
-        databaseTableName = "producttrans";
-        setColumnInTable();
-        
+//        TransactionCB.setSelected(true);
+//        
+//        //disabled checkbox
+//        BelowMinimumCB.setEnabled(false);
+//        StandardPriceCB.setEnabled(false);
+//        MinimumCB.setEnabled(false);
+//        
+//        //disable date
+//        fromDateChooser.setEnabled(false);
+//        toDateChooser.setEnabled(false);
+//        
+//        changePeriodBtn.setEnabled(false);
+//        
+//        databaseTableName = "producttrans";
+//        setColumnInTable();
+//        
         if (!login.admin){
             UserCB.setVisible(false);
         }
         else{
             UserCB.setVisible(true);
         }
+        
     }//GEN-LAST:event_formWindowActivated
 
     
@@ -1028,7 +1029,7 @@ public class report extends javax.swing.JFrame {
         }
         
         if (!login.admin && databaseTableName.equals("producttrans")){
-            finalArr.add(" (Transby = '" + login.full + "') ");
+            finalArr.add(" (Transby = '" + login.fullName + "') ");
         }
 //        
         
@@ -1082,7 +1083,7 @@ public class report extends javax.swing.JFrame {
                                 }
                                 else{
                                     String[] item = tempArr.toArray(new String[tempArr.size()]);
-                                    ReportTableModel.addRow(item);  
+                                    ReportTableModel.addRow(item);
                                 }
                             }
 
@@ -1118,12 +1119,14 @@ public class report extends javax.swing.JFrame {
                         if (BelowMinimumCB.isSelected()){
                             if (Integer.parseInt(rs.getString("productQuantity")) <= Integer.parseInt(rs.getString("prodMinq"))){
                                 String[] item = tempArr.toArray(new String[tempArr.size()]);
+                                System.out.println("Below Minimum Selected" + Arrays.deepToString(item));
                                 ReportTableModel.addRow(item);
                             }
                         }
                         else{
                             String[] item = tempArr.toArray(new String[tempArr.size()]);
-                            ReportTableModel.addRow(item);  
+                            System.out.println("Below Minimum Not Selected" + Arrays.deepToString(item));
+                            ReportTableModel.addRow(item);
                         }
                     }
 //                    JOptionPane.showMessageDialog(this,"Filtered Successfully!");
@@ -1173,7 +1176,7 @@ public class report extends javax.swing.JFrame {
             
             createcell(texts, "______________________________________________________________________________________", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
             
-            createcell(texts, "PRINTED BY " + login.full, Element.ALIGN_LEFT, pdfWidth, textBold12, 0, 255, 255, 255);     
+            createcell(texts, "PRINTED BY " + login.fullName, Element.ALIGN_LEFT, pdfWidth, textBold12, 0, 255, 255, 255);     
             createSpace(texts, pdfWidth);
             
             

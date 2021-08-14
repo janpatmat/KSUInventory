@@ -19,7 +19,7 @@ import static ksufinal.sortProduct.selectedProducts;
  *
  * @author Ricky
  */
-public class TransReport extends javax.swing.JFrame {
+public class ViewTransactions extends javax.swing.JFrame {
 
     Transaction transactionClass = new Transaction();
     adProd prodTrans = new adProd();
@@ -33,7 +33,7 @@ public class TransReport extends javax.swing.JFrame {
     static ResultSet rs;
 //    Withdraw withdrawClass = new Withdraw();
     
-    public TransReport() {
+    public ViewTransactions() {
         initComponents();
     }
 
@@ -439,7 +439,7 @@ public class TransReport extends javax.swing.JFrame {
         }
         
         if (!login.admin){
-            finalArr.add(" (Transby = '" + login.full + "') ");
+            finalArr.add(" (Transby = '" + login.fullName + "') ");
         }
         
         if (notChange){
@@ -562,6 +562,15 @@ public class TransReport extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+        deliveryCB.setSelected(true);
+        withdrawCB.setSelected(true);
+        fromDateChooser.setEnabled(false);
+        toDateChooser.setEnabled(false);  
+        changePeriodBtn.setEnabled(false);
+        prodSortTF.setText("All");
+        CategorySortTF.setText("All");
+        UOMSortTF.setText("All");
+        BSSortTF.setText("All");
         login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
@@ -572,18 +581,13 @@ public class TransReport extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         DefaultTableModel transactionTableModel = (DefaultTableModel) TransactionTable.getModel();
-
+        transactionTableModel.setColumnCount(11);
         if (login.admin){
             transactionTableModel.addColumn("User");
             System.out.println("admin entered");
         }
         
         updateTransReportTable();
-        deliveryCB.setSelected(true);
-        withdrawCB.setSelected(true);
-        fromDateChooser.setEnabled(false);
-        toDateChooser.setEnabled(false);  
-        changePeriodBtn.setEnabled(false);
     }//GEN-LAST:event_formWindowActivated
     
     public static void updateTransReportTable(){
@@ -596,7 +600,7 @@ public class TransReport extends javax.swing.JFrame {
             
             if (!login.admin){
                 System.out.println("User is admin");
-                finalStatement += " WHERE Transby = '" + login.full + "'";
+                finalStatement += " WHERE Transby = '" + login.fullName + "'";
             }
             ResultSet rs = KsuFinal.con.createStatement().executeQuery(finalStatement);
             while(rs.next()){
@@ -660,20 +664,21 @@ public class TransReport extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TransReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewTransactions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TransReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewTransactions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TransReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewTransactions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TransReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewTransactions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TransReport().setVisible(true);
+                new ViewTransactions().setVisible(true);
             }
         });
     }

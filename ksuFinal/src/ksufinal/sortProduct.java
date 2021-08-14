@@ -153,7 +153,7 @@ public class sortProduct extends javax.swing.JFrame {
         
         if (selectAllCBox.isSelected()){
             if (location.equals("TransReport")){
-                TransReport.prodSortTF.setText("All");
+                ViewTransactions.prodSortTF.setText("All");
             }
             else if (location.equals("report")){
                 report.prodSortTF.setText("All");
@@ -169,7 +169,7 @@ public class sortProduct extends javax.swing.JFrame {
             String jointArray = String.join(", ", selectedProducts);
             
             if (location.equals("TransReport")){
-                TransReport.prodSortTF.setText(jointArray);
+                ViewTransactions.prodSortTF.setText(jointArray);
             }
             else if (location.equals("report")){
                 report.prodSortTF.setText(jointArray);
@@ -185,18 +185,19 @@ public class sortProduct extends javax.swing.JFrame {
             
         }
         
-        this.setVisible(false);
+        
         
 //        System.out.println(prodSortStatement);
         
         if (location.equals("report")){
             report.sortFunction();
+            
         }
         else if (location.equals("TransReport")){
-            TransReport.filterFunction();
+            ViewTransactions.filterFunction();
         }
         
-        
+        this.setVisible(false);
     }//GEN-LAST:event_saveprodSortBtnActionPerformed
 
     /**

@@ -138,7 +138,7 @@ public class sortCategory extends javax.swing.JFrame {
 
         if (selectAllCBox.isSelected()){
             if (location.equals("TransReport")){
-                TransReport.CategorySortTF.setText("All");
+                ViewTransactions.CategorySortTF.setText("All");
             }
             else if (location.equals("report")){
                 report.CategorySortTF.setText("All");
@@ -156,7 +156,7 @@ public class sortCategory extends javax.swing.JFrame {
             String jointArray = String.join(", ", selectedCategories);
             
             if (location.equals("TransReport")){
-                TransReport.CategorySortTF.setText(jointArray);
+                ViewTransactions.CategorySortTF.setText(jointArray);
             }
             else if (location.equals("report")){
                 report.CategorySortTF.setText(jointArray);
@@ -180,7 +180,7 @@ public class sortCategory extends javax.swing.JFrame {
             report.sortFunction();
         }
         else if (location.equals("TransReport")){
-            TransReport.filterFunction();
+            ViewTransactions.filterFunction();
         }
         
         

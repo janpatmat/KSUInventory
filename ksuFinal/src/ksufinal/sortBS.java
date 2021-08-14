@@ -165,7 +165,7 @@ public class sortBS extends javax.swing.JFrame {
         if (selectAllSupplierCBox.isSelected() && selectAllBranchCBox.isSelected()){
             
             if (location.equals("TransReport")){
-                TransReport.BSSortTF.setText("All");
+                ViewTransactions.BSSortTF.setText("All");
             }
             else if (location.equals("report")){
                 report.BSSortTF.setText("All");
@@ -191,7 +191,7 @@ public class sortBS extends javax.swing.JFrame {
             
             
             if (location.equals("TransReport")){
-                TransReport.BSSortTF.setText(jointArray);
+                ViewTransactions.BSSortTF.setText(jointArray);
             }
             else if (location.equals("report")){
                 report.BSSortTF.setText(jointArray);
@@ -211,7 +211,7 @@ public class sortBS extends javax.swing.JFrame {
             report.sortFunction();
         }
         else if (location.equals("TransReport")){
-            TransReport.filterFunction();
+            ViewTransactions.filterFunction();
         }
 
         this.setVisible(false);

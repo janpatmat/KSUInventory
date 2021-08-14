@@ -19,7 +19,7 @@ public class Menu extends javax.swing.JFrame {
     prodDis prodDisClass = new prodDis();
     report reportClass = new report();
     addUnit addUnitClass = new addUnit();
-    TransReport transReportClass = new TransReport();
+    ViewTransactions transReportClass = new ViewTransactions();
     adProd adProdClass = new adProd();
     editTransaction editTransactionClass = new editTransaction();
     editUnit editUnitClass = new editUnit();
@@ -48,8 +48,12 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        usernameTF = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        firstNameTF = new javax.swing.JLabel();
+        lastNameTF = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         NewProductMenu = new javax.swing.JMenuItem();
@@ -91,10 +95,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
         jLabel1.setText("KSU INVENTORY SYSTEM");
 
-        jLabel2.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
-        jLabel2.setText("Welcome");
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel2.setText("Username:");
 
-        jLabel3.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        usernameTF.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        usernameTF.setText("Text Here");
 
         jButton1.setText("Log out");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +107,18 @@ public class Menu extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel6.setText("First Name:");
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel7.setText("Last Name:");
+
+        firstNameTF.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        firstNameTF.setText("Text Here");
+
+        lastNameTF.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lastNameTF.setText("Text Here");
 
         jMenu1.setText("New Items");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -252,18 +269,20 @@ public class Menu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lastNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -271,13 +290,21 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(usernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(firstNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(lastNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(jButton1)
-                .addGap(47, 47, 47))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -286,7 +313,7 @@ public class Menu extends javax.swing.JFrame {
     private void NewUnitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewUnitMenuActionPerformed
        
         addUnitClass.setVisible(true);
-        addUnitClass.setDefaultCloseOperation(addUnitClass.HIDE_ON_CLOSE);
+        addUnitClass.setDefaultCloseOperation(addUnitClass.DISPOSE_ON_CLOSE);
         addUnitClass.setLocationRelativeTo(null);
         this.setVisible(false);
 
@@ -295,7 +322,7 @@ public class Menu extends javax.swing.JFrame {
     private void ViewTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionMenuActionPerformed
         
         transReportClass.setVisible(true);
-        transReportClass.setDefaultCloseOperation(transReportClass.HIDE_ON_CLOSE);
+        transReportClass.setDefaultCloseOperation(transReportClass.DISPOSE_ON_CLOSE);
         transReportClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_ViewTransactionMenuActionPerformed
@@ -304,7 +331,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
 //          AddProduct adPrdct = new AddProduct();
         addProductClass.setVisible(true);
-        addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
+        addProductClass.setDefaultCloseOperation(addProductClass.DISPOSE_ON_CLOSE);
         addProductClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_NewProductMenuActionPerformed
@@ -313,16 +340,17 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         transactionClass.setVisible(true);
-        transactionClass.setDefaultCloseOperation(transactionClass.HIDE_ON_CLOSE);
+        transactionClass.setDefaultCloseOperation(transactionClass.DISPOSE_ON_CLOSE);
         transactionClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        transactionClass.openWindowAction();
     }//GEN-LAST:event_ReceiveWithdrawMenuActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
         
         addProductClass.setVisible(true);
-        addProductClass.setDefaultCloseOperation(addProductClass.HIDE_ON_CLOSE);
+        addProductClass.setDefaultCloseOperation(addProductClass.DISPOSE_ON_CLOSE);
         addProductClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_jMenu1ActionPerformed
@@ -333,7 +361,7 @@ public class Menu extends javax.swing.JFrame {
 //        editProductClass.setDefaultCloseOperation(editProductClass.HIDE_ON_CLOSE);
 //        adProd adProdClass = new adProd();
         adProdClass.setVisible(true);
-        adProdClass.setDefaultCloseOperation(adProdClass.HIDE_ON_CLOSE);
+        adProdClass.setDefaultCloseOperation(adProdClass.DISPOSE_ON_CLOSE);
         adProdClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_EditProductMenuActionPerformed
@@ -341,26 +369,21 @@ public class Menu extends javax.swing.JFrame {
     private void newSupplierMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplierMenuActionPerformed
        
         addSupplierClass.setVisible(true);
-        addSupplierClass.setDefaultCloseOperation(addSupplierClass.HIDE_ON_CLOSE);
+        addSupplierClass.setDefaultCloseOperation(addSupplierClass.DISPOSE_ON_CLOSE);
         addSupplierClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_newSupplierMenuActionPerformed
 
     private void ViewProductsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductsMenuActionPerformed
         prodDisClass.setVisible(true);
-        prodDisClass.setDefaultCloseOperation(prodDisClass.HIDE_ON_CLOSE);
+        prodDisClass.setDefaultCloseOperation(prodDisClass.DISPOSE_ON_CLOSE);
         prodDisClass.setLocationRelativeTo(null);
         this.setVisible(false);
         
     }//GEN-LAST:event_ViewProductsMenuActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-//        jLabel3.setText(login.full);
-//        System.out.print("window opened");
-//        if (!login.admin){
-//            EditItemsMenu.setVisible(false);
-//        }
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
@@ -369,7 +392,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void CreateReportMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateReportMenuActionPerformed
         reportClass.setVisible(true);
-        reportClass.setDefaultCloseOperation(reportClass.HIDE_ON_CLOSE);
+        reportClass.setDefaultCloseOperation(reportClass.DISPOSE_ON_CLOSE);
         reportClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_CreateReportMenuActionPerformed
@@ -377,14 +400,14 @@ public class Menu extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         addBranchClass.setVisible(true);
-        addBranchClass.setDefaultCloseOperation(addBranchClass.HIDE_ON_CLOSE);
+        addBranchClass.setDefaultCloseOperation(addBranchClass.DISPOSE_ON_CLOSE);
         addBranchClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void EditTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTransactionMenuActionPerformed
         editTransactionClass.setVisible(true);
-        editTransactionClass.setDefaultCloseOperation(editTransactionClass.HIDE_ON_CLOSE);
+        editTransactionClass.setDefaultCloseOperation(editTransactionClass.DISPOSE_ON_CLOSE);
         editTransactionClass.setLocationRelativeTo(null);
         this.setVisible(false);
 
@@ -393,7 +416,7 @@ public class Menu extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         editUnitClass.setVisible(true);
-        editUnitClass.setDefaultCloseOperation(editUnitClass.HIDE_ON_CLOSE);
+        editUnitClass.setDefaultCloseOperation(editUnitClass.DISPOSE_ON_CLOSE);
         editUnitClass.setLocationRelativeTo(null);
         this.setVisible(false);
 
@@ -402,7 +425,7 @@ public class Menu extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         editSupplierClass.setVisible(true);
-        editSupplierClass.setDefaultCloseOperation(editSupplierClass.HIDE_ON_CLOSE);
+        editSupplierClass.setDefaultCloseOperation(editSupplierClass.DISPOSE_ON_CLOSE);
         editSupplierClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -410,7 +433,7 @@ public class Menu extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         editBranchClass.setVisible(true);
-        editBranchClass.setDefaultCloseOperation(editBranchClass.HIDE_ON_CLOSE);
+        editBranchClass.setDefaultCloseOperation(editBranchClass.DISPOSE_ON_CLOSE);
         editBranchClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -431,7 +454,7 @@ public class Menu extends javax.swing.JFrame {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         addCategoryClass.setVisible(true);
-        addCategoryClass.setDefaultCloseOperation(addCategoryClass.HIDE_ON_CLOSE);
+        addCategoryClass.setDefaultCloseOperation(addCategoryClass.DISPOSE_ON_CLOSE);
         addCategoryClass.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
@@ -441,8 +464,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        jLabel3.setText(login.full);
-        System.out.print("window opened");
+        usernameTF.setText(login.userName);
+        firstNameTF.setText(login.firstName);
+        lastNameTF.setText(login.lastName);
+        
+//        System.out.print("window opened");
         if (!login.admin){
             EditItemsMenu.setVisible(false);
             EditTransactionMenu.setVisible(false);
@@ -498,10 +524,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem ReceiveWithdrawMenu;
     private javax.swing.JMenuItem ViewProductsMenu;
     private javax.swing.JMenuItem ViewTransactionMenu;
+    private javax.swing.JLabel firstNameTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -512,6 +540,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JLabel lastNameTF;
     private javax.swing.JMenuItem newSupplierMenu;
+    private javax.swing.JLabel usernameTF;
     // End of variables declaration//GEN-END:variables
 }

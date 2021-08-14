@@ -45,24 +45,52 @@ public class Transaction extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        instructionDialogue = new javax.swing.JDialog();
+        jLabel7 = new javax.swing.JLabel();
         depositRadioBtn = new javax.swing.JRadioButton();
         withdrawRadioBtn = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        productComboBox = new javax.swing.JComboBox<>();
+        productComboBox = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
         unitShow = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         transactionQtyTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         transactionPriceTF = new javax.swing.JTextField();
-        quantityShow = new javax.swing.JLabel();
         transactionBtn = new javax.swing.JButton();
         suppBranchLabel = new javax.swing.JLabel();
         supCmb = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         categoryTF = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        questionMarkIcon = new javax.swing.JLabel();
+        quantityShow = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+
+        instructionDialogue.setBackground(new java.awt.Color(240, 240, 240));
+        instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
+        instructionDialogue.setResizable(false);
+        instructionDialogue.setType(java.awt.Window.Type.POPUP);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("INSTRUCTIONS");
+
+        javax.swing.GroupLayout instructionDialogueLayout = new javax.swing.GroupLayout(instructionDialogue.getContentPane());
+        instructionDialogue.getContentPane().setLayout(instructionDialogueLayout);
+        instructionDialogueLayout.setHorizontalGroup(
+            instructionDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(instructionDialogueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(181, Short.MAX_VALUE))
+        );
+        instructionDialogueLayout.setVerticalGroup(
+            instructionDialogueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(instructionDialogueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(182, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -130,14 +158,24 @@ public class Transaction extends javax.swing.JFrame {
 
         categoryTF.setEditable(false);
 
-        jMenu1.setText("Add suplier");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("TRANSACTION MENU");
+
+        questionMarkIcon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        questionMarkIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ksufinal/Daco_2943438.png"))); // NOI18N
+        questionMarkIcon.setMaximumSize(new java.awt.Dimension(880, 800));
+        questionMarkIcon.setMinimumSize(new java.awt.Dimension(880, 800));
+        questionMarkIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                questionMarkIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                questionMarkIconMouseExited(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
 
+        quantityShow.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        quantityShow.setText("text");
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,57 +186,62 @@ public class Transaction extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(depositRadioBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(withdrawRadioBtn))
-                            .addComponent(transactionBtn))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(depositRadioBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(withdrawRadioBtn)
+                        .addGap(382, 382, 382))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel1))
-                                .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(productComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                                        .addComponent(quantityShow, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(categoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(155, 155, 155)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(suppBranchLabel)
-                                    .addComponent(jLabel4))
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(transactionPriceTF)
-                                        .addComponent(supCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(unitShow)
-                                        .addComponent(transactionQtyTF, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3)
+                                            .addComponent(suppBranchLabel)
+                                            .addComponent(jLabel4))
+                                        .addGap(30, 30, 30)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(unitShow)
+                                            .addComponent(transactionQtyTF)
+                                            .addComponent(transactionPriceTF)
+                                            .addComponent(supCmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel1))
+                                        .addGap(61, 61, 61)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(productComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(categoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(quantityShow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(transactionBtn)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
+                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel6)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(depositRadioBtn)
                     .addComponent(withdrawRadioBtn))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(productComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quantityShow, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quantityShow, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -211,91 +254,44 @@ public class Transaction extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(transactionQtyTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(transactionPriceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(transactionPriceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(supCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(suppBranchLabel))
-                .addGap(135, 135, 135)
+                .addGap(40, 40, 40)
                 .addComponent(transactionBtn)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void productComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productComboBoxActionPerformed
-        if (transactionArr.size() > 0){
-            int idx = productComboBox.getSelectedIndex();
-            String quan = transactionArr.get(idx)[0];
-            String unit = transactionArr.get(idx)[1];
-            
-            if (currRadioBtn.equals("withdraw")){
-                quantityShow.setText("Current stocks: " + quan +  " " + transactionArr.get(idx)[1]);
-                transactionPriceTF.setText(transactionArr.get(idx)[5]);
-                categoryTF.setText(transactionArr.get(idx)[6]);
+        System.out.print("product clicked");
+        try{    
+            if (transactionArr.size() > 0){
+                int idx = productComboBox.getSelectedIndex();
+                String quan = transactionArr.get(idx)[0];
+                String unit = transactionArr.get(idx)[1];
+
+                if (currRadioBtn.equals("withdraw")){
+                    quantityShow.setText("Current stocks: " + quan +  " " + transactionArr.get(idx)[1]);
+                    transactionPriceTF.setText(transactionArr.get(idx)[5]);
+                    categoryTF.setText(transactionArr.get(idx)[6]);
+                }
+                unitShow.setText(unit);
             }
-//            quantityShow.setText("Quantity in the Inverntory: " + quan + " " + unit);
-            unitShow.setText(unit);
+        }catch (Exception ex){
+            
         }
     }//GEN-LAST:event_productComboBoxActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-//        try{
-//            String supplier;
-//            String branch;
-//            String category;
-//            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
-//            ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
-//            ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
-//            ResultSet rsCategory = KsuFinal.con.createStatement().executeQuery("SELECT * FROM categorytable");
-//           
-//
-//            while(rs.next()){
-//                String id = rs.getString("productID");
-//                String nm = rs.getString("productName");
-//                String qt = rs.getString("productQuantity");
-////                String qt = "null";
-//                String ut = rs.getString("Unit");
-//                String mm = rs.getString("prodMinq");
-//                String sp = rs.getString("standardPrice");
-//                String sb = rs.getString("Sub");    
-//                
-//                productComboBox.addItem(nm);
-//                String[] item = {qt, ut, nm, mm, id, sp, sb};
-//                
-//                transactionArr.add(item);
-//                
-//            }  
-//            while(rsSupplier.next()){
-//                supplier = rsSupplier.getString("supplierName");
-//                supCmb.addItem(supplier);
-//                supplierArr.add(supplier);
-//          }
-//            while(rsBranch.next()){
-//                branch = rsBranch.getString("branchName");
-//                branchArr.add(branch);
-//          }
-//            
-//            ;
-//        }
-//        catch(Exception e){
-//            System.out.println(e);
-//        }
-//        
-//        int idx = productComboBox.getSelectedIndex();
-////        String quan = quanAndUnitArr.get(idx)[0];
-//        String unit = transactionArr.get(idx)[1];
-//        categoryTF.setText(transactionArr.get(idx)[6]);
-////        
-////        
-////        
-////        quantityShow.setText("Quantity in the Inverntory: " + quan + " " + unit);
-//        unitShow.setText(unit);
-       
+        instructionDialogue.setLocationRelativeTo(this);
     }//GEN-LAST:event_formWindowOpened
 
     private void depositRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositRadioBtnActionPerformed
@@ -309,7 +305,6 @@ public class Transaction extends javax.swing.JFrame {
         transactionQtyTF.setText("");
         transactionPriceTF.setText("");
         transactionBtn.setText("Deposit");
-        
         currRadioBtn = "deposit";
         
         
@@ -334,7 +329,8 @@ public class Transaction extends javax.swing.JFrame {
         int idx = productComboBox.getSelectedIndex();
         quantityShow.setText("Current stocks: " + transactionArr.get(idx)[0] + " " + transactionArr.get(idx)[1]); 
         suppBranchLabel.setText("Branch");
-       // transSuppBranchTF.setText("");
+        
+
         transactionQtyTF.setText("");
         transactionPriceTF.setText(transactionArr.get(idx)[5]);
         transactionBtn.setText("Withdraw");
@@ -357,124 +353,92 @@ public class Transaction extends javax.swing.JFrame {
 
     private void transactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionBtnActionPerformed
         if (transactionPriceTF.getText().length() == 0 ||transactionQtyTF.getText().length() == 0){
-            JOptionPane.showMessageDialog(this,"Missing fields");
+            JOptionPane.showMessageDialog(this,"Missing fields", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else{
-        
-        
-            //Edit the table in the products table
-            int idx = productComboBox.getSelectedIndex();
-            String nm = transactionArr.get(idx)[2];
-            int quan = Integer.parseInt(transactionArr.get(idx)[0]);
-            int inputQuan = Integer.parseInt(transactionQtyTF.getText());
-            String newQuan = "";
             int yesNO = 0;
+            try{
+                //Edit the table in the products table
+                int idx = productComboBox.getSelectedIndex();
+                String nm = transactionArr.get(idx)[2];
+                int quan = Integer.parseInt(transactionArr.get(idx)[0]);
+                int inputQuan = Integer.parseInt(transactionQtyTF.getText());
+                String newQuan = "";
 
-            if (currRadioBtn.equals("deposit")){
-                newQuan = String.valueOf(quan + inputQuan);
 
-            }else{
-                newQuan = String.valueOf(quan - inputQuan);
-                int intNewQuan = Integer.parseInt(newQuan);
-                int intMin = Integer.parseInt(transactionArr.get(idx)[3]);
-                if (intNewQuan >= 0){
-                    if (intNewQuan < intMin){
-                        // display Warning if below minimum
+                if (currRadioBtn.equals("deposit")){
+                    newQuan = String.valueOf(quan + inputQuan);
 
-                        yesNO = JOptionPane.showConfirmDialog (null, "You product is now below the minimum, Would you still like to proceed?","Warning",JOptionPane.YES_NO_OPTION);
-
-                    }
                 }else{
+                    newQuan = String.valueOf(quan - inputQuan);
+                    int intNewQuan = Integer.parseInt(newQuan);
+                    int intMin = Integer.parseInt(transactionArr.get(idx)[3]);
+                    if (intNewQuan >= 0){
+                        if (intNewQuan < intMin){
+                            // display Warning if below minimum
+                            yesNO = JOptionPane.showConfirmDialog (null, "You product is now below the minimum, Would you still like to proceed?","Warning",JOptionPane.YES_NO_OPTION);
 
-                    yesNO = JOptionPane.NO_OPTION;
-                    JOptionPane.showMessageDialog(this,"You cannot withdraw this quantity");
+                        }
+                    }else{
+
+                        yesNO = JOptionPane.NO_OPTION;
+                        JOptionPane.showMessageDialog(this,"You cannot withdraw this quantity");
+                    }
+                    inputQuan *= (-1); // put negative sign when withdrawing
                 }
-                inputQuan *= (-1); // put negative sign when withdrawing
-            }
-            if (yesNO == JOptionPane.YES_OPTION){
-                String statement = "UPDATE expenses.producttable SET productQuantity = " + newQuan + " WHERE productName = '" + nm + "'";
-                transactionArr.get(idx)[0] = newQuan;
-                
-                try{
+                if (yesNO == JOptionPane.YES_OPTION){
+                    String statement = "UPDATE expenses.producttable SET productQuantity = " + newQuan + " WHERE productName = '" + nm + "'";
+                    transactionArr.get(idx)[0] = newQuan;
                     KsuFinal.con.prepareStatement(statement).executeUpdate(); 
-                }
-                catch(Exception e){
-                    System.out.println(e);
-                }      
 
-
-
-
-                //Edit the table in the transactions table
-                try{
-
+                    //Edit the table in the transactions table
                     PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID,Name,Quantity,Unit,Price,SuppBranch,Date, Action, Sub , Transby)VALUES(?,?,?,?,?,?,?,?,?,?)");
 
-                    st.setString(1, transactionArr.get(idx)[4]);
-                    st.setString(2, transactionArr.get(idx)[2]);
-                    st.setString(3, String.valueOf(inputQuan));
-                    st.setString(4, transactionArr.get(idx)[1]);
-                    st.setString(5, transactionPriceTF.getText());
-                    st.setString(6, (String) supCmb.getSelectedItem());
-                    st.setString(7, java.time.LocalDate.now().toString());
-                    if (currRadioBtn.equals("deposit")){
+                    st.setInt(1, Integer.parseInt(transactionArr.get(idx)[4])); // ProdID
+                    st.setString(2, transactionArr.get(idx)[2]); // Name
+                    st.setInt(3, inputQuan); // Quantity
+                    st.setString(4, transactionArr.get(idx)[1]); // Unit
+                    st.setDouble(5, Double.parseDouble(transactionPriceTF.getText())); // Price
+                    st.setString(6, (String) supCmb.getSelectedItem()); // SuppBranch
+                    st.setString(7, java.time.LocalDate.now().toString()); // Date
+                    if (currRadioBtn.equals("deposit")){ // Action
                         st.setString(8, "deposit");
                     }else{
                         st.setString(8, "withdraw");
                     }
-                    st.setString(9, categoryTF.getText());
-                    st.setString(10, t.full);
+                    st.setString(9, categoryTF.getText()); // Sub
+                    st.setString(10, t.fullName); // Transby
 
-                    st.executeUpdate();
+                    st.executeUpdate();            
+                    ViewTransactions.updateTransReportTable();
+                    if (currRadioBtn.equals("deposit")){
+                        JOptionPane.showMessageDialog(this,"Successfully deposited the product");
+                    }else{
+                        JOptionPane.showMessageDialog(this,"Successfully withdrawn the product");
+                        quantityShow.setText("Current stocks: " + newQuan +  " " + transactionArr.get(idx)[1]); // Update the Quantity text field
+                    }
+                    yesNO = JOptionPane.showConfirmDialog (this, "Do you have anymore transactions?","Message",JOptionPane.YES_NO_OPTION);
 
+                    if (yesNO != JOptionPane.YES_OPTION){
+                        closeWindowAction();
+                    }
                 }
-                catch(Exception e){
-                    System.out.println(e);
+            }    
+            catch(Exception ex){
+                if (ex instanceof NumberFormatException){
+                    if (currRadioBtn.equals("deposit")){
+                        JOptionPane.showMessageDialog(this,"Please input a numeric value in the Quantity Field and Price Field ", "Error", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        JOptionPane.showMessageDialog(this,"Please input a numeric value in the Quantity Field ", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
-                
-                try{
-                    
-                    TransReport.updateTransReportTable();
-                }catch(Exception e){
-                    
-                }
-
-
-                if (currRadioBtn.equals("deposit")){
-                    JOptionPane.showMessageDialog(this,"Successfully deposited the product");
-                }else{
-                    JOptionPane.showMessageDialog(this,"Successfully withdrawn the product");
-                    quantityShow.setText("Current stocks: " + newQuan +  " " + transactionArr.get(idx)[1]); // Update the Quantity text field
-                }
-
             }
-            
-            yesNO = JOptionPane.showConfirmDialog (this, "Do you have anymore transactions?","Message",JOptionPane.YES_NO_OPTION);
-            
-            if (yesNO != JOptionPane.YES_OPTION){
-                this.setVisible(false);
-            }
-        
         }
-
-
-        
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_transactionBtnActionPerformed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        addSupplier adup = new addSupplier();
-        adup.setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        login.MenuClass.setVisible(true);
+        closeWindowAction();
+
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -482,14 +446,31 @@ public class Transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-       try{
+
+    }//GEN-LAST:event_formWindowActivated
+    public void closeWindowAction(){
+        login.MenuClass.setVisible(true);
+        this.setVisible(false);
+        quantityShow.setText("");
+        supCmb.removeAllItems();
+        supplierArr.clear();
+        productComboBox.removeAllItems();
+        transactionArr.clear();
+        branchArr.clear();
+        depositRadioBtn.setSelected(true);
+        transactionPriceTF.setText("");
+        transactionPriceTF.setEditable(true);
+    }
+    
+    
+    public void openWindowAction(){
+        quantityShow.setText("");
+        try{
             String supplier;
             String branch;
-            String category;
             rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
             ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
             ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
-            ResultSet rsCategory = KsuFinal.con.createStatement().executeQuery("SELECT * FROM categorytable");
            
 
             while(rs.next()){
@@ -528,7 +509,14 @@ public class Transaction extends javax.swing.JFrame {
         String unit = transactionArr.get(idx)[1];
         categoryTF.setText(transactionArr.get(idx)[6]);
         unitShow.setText(unit);
-    }//GEN-LAST:event_formWindowActivated
+    }
+    private void questionMarkIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_questionMarkIconMouseEntered
+        instructionDialogue.setVisible(true);
+    }//GEN-LAST:event_questionMarkIconMouseEntered
+
+    private void questionMarkIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_questionMarkIconMouseExited
+        instructionDialogue.setVisible(false);
+    }//GEN-LAST:event_questionMarkIconMouseExited
 
     /**
      * @param args the command line arguments
@@ -569,18 +557,21 @@ public class Transaction extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField categoryTF;
     private javax.swing.JRadioButton depositRadioBtn;
+    private javax.swing.JDialog instructionDialogue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JComboBox<String> productComboBox;
     private javax.swing.JLabel quantityShow;
+    private javax.swing.JLabel questionMarkIcon;
     private javax.swing.JComboBox supCmb;
     private javax.swing.JLabel suppBranchLabel;
-    public static javax.swing.JButton transactionBtn;
+    private javax.swing.JButton transactionBtn;
     private javax.swing.JTextField transactionPriceTF;
     private javax.swing.JTextField transactionQtyTF;
     private javax.swing.JTextField unitShow;

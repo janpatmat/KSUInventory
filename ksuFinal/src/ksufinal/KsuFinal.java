@@ -43,11 +43,10 @@ public class KsuFinal {
         
         
         login loginClass = new login();
-        
         loginClass.setVisible(true);
 
 
-//        editUser index = new editUser();
+//        AddProduct index = new AddProduct();
 //        index.setVisible(true);
         
 

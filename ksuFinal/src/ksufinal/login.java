@@ -13,8 +13,11 @@ import javax.swing.JOptionPane;
 public class login extends javax.swing.JFrame {
     PreparedStatement st = null;
     static String us;
-    static String full;
+    static String fullName;
     static String id;
+    static String userName;
+    static String firstName;
+    static String lastName;
     static boolean admin;
     public static Menu MenuClass = new Menu();
  
@@ -132,9 +135,11 @@ public class login extends javax.swing.JFrame {
            else{
                admin = false;
            }
-
-           full = (fn + " " + ln);
-           System.out.println(full);
+           firstName = fn;
+           lastName = ln;
+           userName = uname.getText();
+           fullName = (fn + " " + ln);
+           System.out.println(fullName);
            this.dispose();
         }
         else{
