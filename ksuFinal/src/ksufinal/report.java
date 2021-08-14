@@ -813,7 +813,7 @@ public class report extends javax.swing.JFrame {
     
     
     
-    private void setColumnInTable(){
+    public static void setColumnInTable(){
         DefaultTableModel reportTableModel = (DefaultTableModel) reportTable.getModel();
         
         reportTableModel.setColumnCount(0);
@@ -1305,10 +1305,10 @@ public class report extends javax.swing.JFrame {
     private javax.swing.JButton changePeriodBtn;
     public static javax.swing.JCheckBox deliveryCB;
     public static javax.swing.JCheckBox editDateCB;
-    private javax.swing.JButton filterBSBtn;
-    private javax.swing.JButton filterCategoryBtn;
-    private javax.swing.JButton filterProdBtn;
-    private javax.swing.JButton filterUOMBtn;
+    public static javax.swing.JButton filterBSBtn;
+    public static javax.swing.JButton filterCategoryBtn;
+    public static javax.swing.JButton filterProdBtn;
+    private static javax.swing.JButton filterUOMBtn;
     public static com.toedter.calendar.JDateChooser fromDateChooser;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
