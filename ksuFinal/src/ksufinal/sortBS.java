@@ -22,6 +22,7 @@ public class sortBS extends javax.swing.JFrame {
     static ArrayList<String> selectedBranch = new ArrayList<String>();
     static String  BSSortStatement = "";
     private String location;
+    static String currentUser = "";
     
     
     /**
@@ -242,30 +243,50 @@ public class sortBS extends javax.swing.JFrame {
     }//GEN-LAST:event_selectAllSupplierCBoxActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel t = (DefaultTableModel)sortSupplierTable.getModel();
-        DefaultTableModel t2 = (DefaultTableModel)sortBranchTable.getModel();
-        
-        
-        try{
-            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.suppliertable;");
-            ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.branchtable;");
-            while(rs.next()){
-                String nm = rs.getString("supplierName");
-                Object [] nmArr = {nm,false};
-                t.addRow(nmArr);
-            }
-            
-            while (rs2.next()){
-                String nm = rs2.getString("branchName");
-                Object [] nmArr = {nm,false};
-                t2.addRow(nmArr);
-            }
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }//GEN-LAST:event_formWindowOpened
 
+    }//GEN-LAST:event_formWindowOpened
+    
+    public void openWindowAction(){
+        if (!currentUser.equals(login.fullName)){
+            
+            DefaultTableModel sortSupplierTableModel = (DefaultTableModel)sortSupplierTable.getModel();
+            DefaultTableModel sortBranchTableModel = (DefaultTableModel)sortBranchTable.getModel();
+            sortSupplierTableModel.setRowCount(0);
+            sortBranchTableModel.setRowCount(0);
+            
+            selectAllSupplierCBox.setSelected(true);
+            sortSupplierTable.setRowSelectionAllowed(false);
+            sortSupplierTable.setEnabled(false);
+            sortSupplierTable.setForeground(Color.LIGHT_GRAY);
+            sortSupplierTable.setBackground(new Color(236, 236, 236));
+            
+            selectAllBranchCBox.setSelected(true);
+            sortBranchTable.setRowSelectionAllowed(false);
+            sortBranchTable.setEnabled(false);
+            sortBranchTable.setForeground(Color.LIGHT_GRAY);
+            sortBranchTable.setBackground(new Color(236, 236, 236));
+            
+            try{
+                rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.suppliertable;");
+                ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.branchtable;");
+                while(rs.next()){
+                    String nm = rs.getString("supplierName");
+                    Object [] nmArr = {nm,true};
+                    sortSupplierTableModel.addRow(nmArr);
+                }
+
+                while (rs2.next()){
+                    String nm = rs2.getString("branchName");
+                    Object [] nmArr = {nm,true};
+                    sortBranchTableModel.addRow(nmArr);
+                }
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
+            currentUser = login.fullName;
+        }
+    }
     private void selectAllBranchCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllBranchCBoxActionPerformed
         int l = sortBranchTable.getRowCount();
         DefaultTableModel t = (DefaultTableModel)sortBranchTable.getModel();

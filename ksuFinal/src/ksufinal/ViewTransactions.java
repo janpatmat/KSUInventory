@@ -29,7 +29,7 @@ public class ViewTransactions extends javax.swing.JFrame {
     static sortBS sortBSClass = new sortBS("TransReport");
     static sortCategory sortCategoryClass = new sortCategory("TransReport");
     static String deliveryWithdrawStatement = "";
-    
+    static String currentUser = "";
     static ResultSet rs;
 //    Withdraw withdrawClass = new Withdraw();
     
@@ -115,6 +115,7 @@ public class ViewTransactions extends javax.swing.JFrame {
         TransactionTable.setRowHeight(20);
         jScrollPane1.setViewportView(TransactionTable);
 
+        deliveryCB.setSelected(true);
         deliveryCB.setText("Delivery");
         deliveryCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,12 +123,17 @@ public class ViewTransactions extends javax.swing.JFrame {
             }
         });
 
+        withdrawCB.setSelected(true);
         withdrawCB.setText("Withdraw");
         withdrawCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 withdrawCBActionPerformed(evt);
             }
         });
+
+        fromDateChooser.setEnabled(false);
+
+        toDateChooser.setEnabled(false);
 
         jLabel2.setText("From");
 
@@ -306,23 +312,38 @@ public class ViewTransactions extends javax.swing.JFrame {
 
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-//        DefaultTableModel transactionTableModel = (DefaultTableModel) TransactionTable.getModel();
-//
-//        if (login.admin){
-//            transactionTableModel.addColumn("User");
-//            System.out.println("admin entered");
-//        }
-//        
-//        updateTransReportTable();
-//        deliveryCB.setSelected(true);
-//        withdrawCB.setSelected(true);
-//        fromDateChooser.setEnabled(false);
-//        toDateChooser.setEnabled(false);  
-//        changePeriodBtn.setEnabled(false);
-
-        
+ 
     }//GEN-LAST:event_formWindowOpened
-
+    public void openWindowAction(){
+        
+        DefaultTableModel transactionTableModel = (DefaultTableModel) TransactionTable.getModel();
+        transactionTableModel.setColumnCount(11);
+        if (login.admin){
+            transactionTableModel.addColumn("User");
+        }
+        
+        if (!currentUser.equals(login.fullName)){
+            deliveryCB.setSelected(true);
+            withdrawCB.setSelected(true);
+            fromDateChooser.setDate(null);
+            toDateChooser.setDate(null);
+            fromDateChooser.setEnabled(false);
+            toDateChooser.setEnabled(false);  
+            changePeriodBtn.setEnabled(false);
+            prodSortTF.setText("All");
+            CategorySortTF.setText("All");
+            UOMSortTF.setText("All");
+            BSSortTF.setText("All");
+            editDateCB.setSelected(false);
+            currentUser = login.fullName;
+        }
+        
+        updateTransReportTable();
+        filterFunction();
+        
+    }
+    
+    
     private void editDateCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDateCBActionPerformed
         if (editDateCB.isSelected()){
             fromDateChooser.setEnabled(true);
@@ -339,17 +360,20 @@ public class ViewTransactions extends javax.swing.JFrame {
     private void filterProdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterProdBtnActionPerformed
         sortproductClass.setVisible(true);
         sortproductClass.setDefaultCloseOperation(sortproductClass.HIDE_ON_CLOSE);
+        sortproductClass.openWindowAction();
         
     }//GEN-LAST:event_filterProdBtnActionPerformed
 
     private void UOMBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UOMBtnActionPerformed
          sortUOMClass.setVisible(true);
          sortUOMClass.setDefaultCloseOperation(sortUOMClass.HIDE_ON_CLOSE);
+         sortUOMClass.openWindowAction();
     }//GEN-LAST:event_UOMBtnActionPerformed
 
     private void BSBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSBtnActionPerformed
          sortBSClass.setVisible(true);
          sortBSClass.setDefaultCloseOperation(sortUOMClass.HIDE_ON_CLOSE);
+         sortBSClass.openWindowAction();
     }//GEN-LAST:event_BSBtnActionPerformed
 
     public static void filterFunction(){
@@ -382,7 +406,7 @@ public class ViewTransactions extends javax.swing.JFrame {
         }
         else{
             TransactionTableModel.setRowCount(0);
-            JOptionPane.showMessageDialog(null,"Please select a product");
+            JOptionPane.showMessageDialog(null,"Please select a product", "Error", JOptionPane.ERROR_MESSAGE);
             notChange = false;
         }
 
@@ -396,7 +420,7 @@ public class ViewTransactions extends javax.swing.JFrame {
         }
         else{
             TransactionTableModel.setRowCount(0);
-            JOptionPane.showMessageDialog(null,"Please select a Unit of Measure");
+            JOptionPane.showMessageDialog(null,"Please select a Unit of Measure", "Error", JOptionPane.ERROR_MESSAGE);
             notChange = false;
         }
         
@@ -410,7 +434,7 @@ public class ViewTransactions extends javax.swing.JFrame {
         }
         else{
             TransactionTableModel.setRowCount(0);
-            JOptionPane.showMessageDialog(null,"Please select a Branch or Supplier");
+            JOptionPane.showMessageDialog(null,"Please select a Branch or Supplier", "Error", JOptionPane.ERROR_MESSAGE);
             notChange = false;
         }
         
@@ -424,7 +448,7 @@ public class ViewTransactions extends javax.swing.JFrame {
         }
         else{
             TransactionTableModel.setRowCount(0);
-            JOptionPane.showMessageDialog(null,"Please select a Category");
+            JOptionPane.showMessageDialog(null,"Please select a Category", "Error", JOptionPane.ERROR_MESSAGE);
             notChange = false;
         }
  
@@ -434,7 +458,7 @@ public class ViewTransactions extends javax.swing.JFrame {
         }
         else{
             TransactionTableModel.setRowCount(0);
-            JOptionPane.showMessageDialog(null,"Please select if either withdraw or deposit");
+            JOptionPane.showMessageDialog(null,"Please select if either withdraw or deposit", "Error", JOptionPane.ERROR_MESSAGE);
             notChange = false;
         }
         
@@ -500,7 +524,7 @@ public class ViewTransactions extends javax.swing.JFrame {
                         System.out.println(e);
                     }
                 }catch(NullPointerException ex){
-                    JOptionPane.showMessageDialog(null,"Please input a period or uncheck the Edit Period checkbox");
+                    JOptionPane.showMessageDialog(null,"Please input a period or uncheck the Edit Period checkbox", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 
             }else{
@@ -546,6 +570,7 @@ public class ViewTransactions extends javax.swing.JFrame {
     private void CategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryBtnActionPerformed
         sortCategoryClass.setVisible(true);
         sortCategoryClass.setDefaultCloseOperation(sortCategoryClass.HIDE_ON_CLOSE);
+        sortCategoryClass.openWindowAction();
     }//GEN-LAST:event_CategoryBtnActionPerformed
 
     private void withdrawCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawCBActionPerformed
@@ -562,15 +587,6 @@ public class ViewTransactions extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        deliveryCB.setSelected(true);
-        withdrawCB.setSelected(true);
-        fromDateChooser.setEnabled(false);
-        toDateChooser.setEnabled(false);  
-        changePeriodBtn.setEnabled(false);
-        prodSortTF.setText("All");
-        CategorySortTF.setText("All");
-        UOMSortTF.setText("All");
-        BSSortTF.setText("All");
         login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
@@ -580,20 +596,12 @@ public class ViewTransactions extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        DefaultTableModel transactionTableModel = (DefaultTableModel) TransactionTable.getModel();
-        transactionTableModel.setColumnCount(11);
-        if (login.admin){
-            transactionTableModel.addColumn("User");
-            System.out.println("admin entered");
-        }
-        
-        updateTransReportTable();
+//        DefaultTableModel transactionTableModel = (DefaultTableModel) TransactionTable.getModel();    
+//        updateTransReportTable();
     }//GEN-LAST:event_formWindowActivated
     
     public static void updateTransReportTable(){
-        System.out.println("1");
         DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
-        System.out.println("2");
         TransactionTableModel.setRowCount(0);
         try{
             String finalStatement = "SELECT * FROM expenses.producttrans";
@@ -625,26 +633,11 @@ public class ViewTransactions extends javax.swing.JFrame {
                 String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
                     String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
                     TransactionTableModel.addRow(item);
-                
-                
-                
-                
-                
-
             }  
         }
         catch(Exception e){
             System.out.println(e);
         }
-    }
-    
-    
-    
-    public static void changeTable(String[] items){
-        DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
-        TransactionTableModel.addRow(items);
-        
-          
     }
     
     /**

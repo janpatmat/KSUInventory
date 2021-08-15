@@ -18,7 +18,7 @@ public class Menu extends javax.swing.JFrame {
     prodDis prodDisClass = new prodDis();
     report reportClass = new report();
     addUnit addUnitClass = new addUnit();
-    ViewTransactions transReportClass = new ViewTransactions();
+    ViewTransactions ViewTransactionsClass = new ViewTransactions();
     EditProduct EditProductClass = new EditProduct();
     editTransaction editTransactionClass = new editTransaction();
     editUnit editUnitClass = new editUnit();
@@ -320,10 +320,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void ViewTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionMenuActionPerformed
         
-        transReportClass.setVisible(true);
-        transReportClass.setDefaultCloseOperation(transReportClass.DISPOSE_ON_CLOSE);
-        transReportClass.setLocationRelativeTo(null);
+        ViewTransactionsClass.setVisible(true);
+        ViewTransactionsClass.setDefaultCloseOperation(ViewTransactionsClass.HIDE_ON_CLOSE);
+        ViewTransactionsClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        ViewTransactionsClass.openWindowAction();
     }//GEN-LAST:event_ViewTransactionMenuActionPerformed
 
     private void NewProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductMenuActionPerformed

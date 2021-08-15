@@ -273,6 +273,7 @@
     </Container>
     <Component class="javax.swing.JCheckBox" name="deliveryCB">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Delivery"/>
       </Properties>
       <Events>
@@ -284,6 +285,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="withdrawCB">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Withdraw"/>
       </Properties>
       <Events>
@@ -294,11 +296,17 @@
       </AuxValues>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="fromDateChooser">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="toDateChooser">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>

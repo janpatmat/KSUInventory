@@ -19,7 +19,7 @@ public class sortProduct extends javax.swing.JFrame {
     
     static ArrayList<String> selectedProducts = new ArrayList<String>();
     static String prodSortStatement = "";
-    
+    static String currentUser = "";
     private String location;
     /**
      * Creates new form sortProduct
@@ -113,26 +113,45 @@ public class sortProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel t = (DefaultTableModel)sortProdTable.getModel();
         
-        try{
-            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
-            while(rs.next()){
-                String nm = rs.getString("productName");
-                Object [] nmArr = {nm, false};
-                
-                t.addRow(nmArr);
-                
-            }  
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
     }//GEN-LAST:event_formWindowOpened
 
+    public void openWindowAction(){
+        if (!currentUser.equals(login.fullName)){
+            DefaultTableModel sortProdTableModel = (DefaultTableModel)sortProdTable.getModel();
+            sortProdTableModel.setRowCount(0);
+            
+            selectAllCBox.setSelected(true);
+            sortProdTable.setRowSelectionAllowed(false);
+            sortProdTable.setEnabled(false);
+            sortProdTable.setForeground(Color.LIGHT_GRAY);
+            sortProdTable.setBackground(new Color(236, 236, 236));
+
+            try{
+                rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
+                while(rs.next()){
+                    String nm = rs.getString("productName");
+                    Object [] nmArr = {nm, true};
+
+                    sortProdTableModel.addRow(nmArr);
+
+                }  
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
+            
+            currentUser = login.fullName;
+        }
+        
+        
+    }
     private void selectAllCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllCBoxActionPerformed
-//        DefaultTableModel t = (DefaultTableModel)sortProdTable.getModel();
+        DefaultTableModel sortProdTableModel = (DefaultTableModel)sortProdTable.getModel();
         if (selectAllCBox.isSelected()){
+            for (int x = 0; x < sortProdTableModel.getRowCount(); x ++){
+                sortProdTableModel.setValueAt(true, x, 1);
+            }
             sortProdTable.setRowSelectionAllowed(false);
             sortProdTable.setEnabled(false);
             sortProdTable.setForeground(Color.LIGHT_GRAY);

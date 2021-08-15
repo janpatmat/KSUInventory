@@ -21,6 +21,7 @@ public class sortUOM extends javax.swing.JFrame {
     static String UOMSortStatement = "";
     
     private String location;
+    static String currentUser = "";
     
     
     
@@ -175,8 +176,11 @@ public class sortUOM extends javax.swing.JFrame {
     }//GEN-LAST:event_saveUOMSortBtnActionPerformed
 
     private void selectAllCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllCBoxActionPerformed
-        //        DefaultTableModel t = (DefaultTableModel)sortProdTable.getModel();
+        DefaultTableModel sortUOMTableModel = (DefaultTableModel)sortUOMTable.getModel();
         if (selectAllCBox.isSelected()){
+            for (int x = 0; x < sortUOMTableModel.getRowCount(); x ++){
+                sortUOMTableModel.setValueAt(true, x, 1);
+            }
             sortUOMTable.setRowSelectionAllowed(false);
             sortUOMTable.setEnabled(false);
             sortUOMTable.setForeground(Color.LIGHT_GRAY);
@@ -191,24 +195,39 @@ public class sortUOM extends javax.swing.JFrame {
     }//GEN-LAST:event_selectAllCBoxActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel t = (DefaultTableModel)sortUOMTable.getModel();
-        
-        
-        try{
-            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.unittable;");
-            while(rs.next()){
-                String nm = rs.getString("Unit");
-                Object [] nmArr = {nm, false};
-                
-                t.addRow(nmArr);
-                
-            }  
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
+
     }//GEN-LAST:event_formWindowOpened
 
+    public void openWindowAction(){
+        
+        if (!currentUser.equals(login.fullName)){
+            DefaultTableModel sortUOMTableModel = (DefaultTableModel)sortUOMTable.getModel();
+            sortUOMTableModel.setRowCount(0);
+            selectAllCBox.setSelected(true);
+
+            sortUOMTable.setRowSelectionAllowed(false);
+            sortUOMTable.setEnabled(false);
+            sortUOMTable.setForeground(Color.LIGHT_GRAY);
+            sortUOMTable.setBackground(new Color(236, 236, 236));
+
+
+            try{
+                rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.unittable;");
+                while(rs.next()){
+                    String nm = rs.getString("Unit");
+                    Object [] nmArr = {nm, true};
+
+                    sortUOMTableModel.addRow(nmArr);
+
+                }  
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
+            
+            currentUser = login.fullName;
+        }
+    }
     /**
      * @param args the command line arguments
      */

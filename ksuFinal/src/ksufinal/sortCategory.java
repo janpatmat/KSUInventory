@@ -21,6 +21,8 @@ public class sortCategory extends javax.swing.JFrame {
     static ArrayList<String> selectedCategories = new ArrayList<String>();
     static String categorySortStatement = "";
     
+    static String currentUser = "";
+    
     
     private String location;
     /**
@@ -115,12 +117,18 @@ public class sortCategory extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectAllCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllCBoxActionPerformed
-        //        DefaultTableModel t = (DefaultTableModel)sortProdTable.getModel();
+        DefaultTableModel sortCategoryTableModel = (DefaultTableModel)sortCategoryTable.getModel();
+                
         if (selectAllCBox.isSelected()){
+            for (int x = 0; x < sortCategoryTable.getRowCount(); x ++){
+                sortCategoryTableModel.setValueAt(true, x, 1);
+            }
+            
             sortCategoryTable.setRowSelectionAllowed(false);
             sortCategoryTable.setEnabled(false);
             sortCategoryTable.setForeground(Color.LIGHT_GRAY);
             sortCategoryTable.setBackground(new Color(236, 236, 236));
+            
         }
         else{
             sortCategoryTable.setRowSelectionAllowed(true);
@@ -146,7 +154,6 @@ public class sortCategory extends javax.swing.JFrame {
             
         }
         else{
-//            int[] sr = sortCategoryTable.getSelectedRows();
             int l = sortCategoryTable.getRowCount();
             for (int x = 0; x < l; x++){
                 if (sortCategoryTable.getValueAt(x, 1).toString().equals("true")){
@@ -174,40 +181,46 @@ public class sortCategory extends javax.swing.JFrame {
 
         this.setVisible(false);
         
-//        System.out.println(categorySortStatement);
-        
         if (location.equals("report")){
             report.sortFunction();
         }
         else if (location.equals("TransReport")){
             ViewTransactions.filterFunction();
         }
-        
-        
-        
-
-        //        System.out.println(jointArray);
 
     }//GEN-LAST:event_saveprodSortBtnActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel t = (DefaultTableModel)sortCategoryTable.getModel();
-        
-        try{
-            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.categorytable;");
-            while(rs.next()){
-                String nm = rs.getString("categoryName");
-                Object [] nmArr = {nm, false};
-                
-                t.addRow(nmArr);
-                
-            }  
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
+
     }//GEN-LAST:event_formWindowOpened
 
+    public void openWindowAction(){
+        
+        if (!currentUser.equals(login.fullName)){
+            DefaultTableModel sortCategoryTableModel = (DefaultTableModel)sortCategoryTable.getModel();
+            sortCategoryTableModel.setRowCount(0);
+            selectAllCBox.setSelected(true);
+            sortCategoryTable.setRowSelectionAllowed(false);
+            sortCategoryTable.setEnabled(false);
+            sortCategoryTable.setForeground(Color.LIGHT_GRAY);
+            sortCategoryTable.setBackground(new Color(236, 236, 236));
+
+            try{
+                rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.categorytable;");
+                while(rs.next()){
+                    String nm = rs.getString("categoryName");
+                    Object [] nmArr = {nm, true};
+
+                    sortCategoryTableModel.addRow(nmArr);
+
+                }  
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
+            currentUser = login.fullName;
+        }
+    }
     /**
      * @param args the command line arguments
      */
