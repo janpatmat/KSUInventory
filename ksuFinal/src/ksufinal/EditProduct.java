@@ -16,12 +16,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Ricky
  */
 public class EditProduct extends javax.swing.JFrame {
-   //adProd aprd = new EditProduct();
-    static NewProduct adPrdct = new NewProduct();
-    static EditData edprd = new EditData();
     PreparedStatement st = null;
     PreparedStatement del = null;
-    static deactivated dec = new deactivated();
+    static DeactivatedProducts dec = new DeactivatedProducts();
     
     static ArrayList<String[]> adProdArr = new ArrayList<String[]>();
     /**
@@ -368,11 +365,11 @@ public class EditProduct extends javax.swing.JFrame {
             
                 int i = proddbTable.getSelectedRow();
                 String nm = productNameTF.getText();
-                String id = adProdArr.get(i)[0];
+                String id = proddbTable.getValueAt(i, 0).toString();
                 
-                ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * from producttable WHERE productName = " + nm);
+                ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * from producttable WHERE productName = '" + nm + "'");
                 
-                if(rs.next()){ 
+                if(rs.next() && (!productNameTF.getText().equals(proddbTable.getValueAt(i, 1)))){ 
                     JOptionPane.showMessageDialog(this,"Product Name already exists", "Error", JOptionPane.ERROR_MESSAGE);
                    
                 }else{
@@ -400,25 +397,26 @@ public class EditProduct extends javax.swing.JFrame {
         instructionDialogue.setLocationRelativeTo(this);
     }//GEN-LAST:event_formWindowOpened
     public static void editActiveTable(){
+        adProdArr.clear();
         try{
             Statement prodstate = KsuFinal.con.createStatement();
-            ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'");
+            ResultSet prodRs = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'");
             DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
             t.setRowCount(0);
-            while(prodres.next()){
-
-
-                String name = prodres.getString("productName");
-                String quan = String.valueOf(prodres.getInt("productQuantity"));
-                String unit = prodres.getString("Unit");
-                String stndrd = prodres.getString("standardPrice");
-                String[] item = {name, quan, unit, stndrd};
+            while(prodRs.next()){
+                String id = prodRs.getString("productID");
+                String name = prodRs.getString("productName");
+                String quan = String.valueOf(prodRs.getInt("productQuantity"));
+                String unit = prodRs.getString("Unit");
+                String cat = prodRs.getString("Sub");
+                String min = prodRs.getString("prodMinq");
+                String stndrd = prodRs.getString("standardPrice");
+                String fromD = prodRs.getString("dateFrom");
+                String toD = prodRs.getString("dateTo");
+                String[] item = {id, name, cat, unit, quan, min, stndrd};
+                String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
                 t.addRow(item);
-
-
-
-
-
+                adProdArr.add(item2);
             }
        }
        catch(Exception e){
@@ -430,21 +428,21 @@ public class EditProduct extends javax.swing.JFrame {
     }
     private void proddbTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_proddbTableMouseClicked
         int i = proddbTable.getSelectedRow();
-        
-        
-        
         SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+        
+        productNameTF.setText(proddbTable.getValueAt(i, 1).toString());
+        categoryCB.setSelectedItem(proddbTable.getValueAt(i, 2));
+        uomCB.setSelectedItem(proddbTable.getValueAt(i, 3));
+        minimumTF.setText(proddbTable.getValueAt(i, 5).toString());
+        
         try{
             if (adProdArr.get(i)[5].equals("0")){
                 fromDateChooser.setDate(null);
-                toDateChooser.setDate(null); 
+                toDateChooser.setDate(null);
             }else{
                 fromDateChooser.setDate(dFormat.parse(adProdArr.get(i)[5]));
                 toDateChooser.setDate(dFormat.parse(adProdArr.get(i)[6]));
             }
-            
-            
-            
         }
         catch(Exception e){
             System.out.println(e);
@@ -456,14 +454,14 @@ public class EditProduct extends javax.swing.JFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int yesNO = 0;
-        if (proddbTable.getSelectedRow() >= 0){
+        if (proddbTable.getSelectedRowCount() > 0){
             yesNO = JOptionPane.showConfirmDialog (null, "Do you really want to deactivate these products?","Warning",JOptionPane.YES_NO_OPTION);
             if (yesNO == JOptionPane.YES_OPTION){
 
                 int[] allSelected = proddbTable.getSelectedRows();
-                for (int x = allSelected.length-1; x > -1; x--){
-                    int i = allSelected[x];
-                    int id = Integer.parseInt(adProdArr.get(i)[0]);
+                for (int i : allSelected){
+                    
+                    int id = Integer.parseInt(proddbTable.getValueAt(i, 0).toString());
 
 
                     try{
@@ -475,12 +473,9 @@ public class EditProduct extends javax.swing.JFrame {
                     catch(Exception e){
                         System.out.println(e);
                     }
-
-                    deactivated.deacArr.add(adProdArr.get(i));
-                    adProdArr.remove(i);
-                    editActiveTable();
-                    deactivated.editDeactiveTable();
                 }
+                editActiveTable();
+                DeactivatedProducts.editDeactiveTable();
             }
         }else{
             JOptionPane.showMessageDialog(this,"Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
@@ -498,90 +493,77 @@ public class EditProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void SPBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SPBtnActionPerformed
-        
-        DefaultTableModel tModel = (DefaultTableModel)proddbTable.getModel();
-        int[] selectedRows = proddbTable.getSelectedRows();
-        for (int x = 0; x < selectedRows.length; x++){
-            try{
-                SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String fdate = dFormat.format(fromDateChooser.getDate()); 
-                String tdate = dFormat.format(toDateChooser.getDate());
-                int totQuant = 0;
-                float totPrice = 0;
-                int idx = selectedRows[x];
-                String prodId = adProdArr.get(idx)[0];
-                
+        if (proddbTable.getSelectedRowCount() > 0){
+            DefaultTableModel tModel = (DefaultTableModel)proddbTable.getModel();
+            int[] selectedRows = proddbTable.getSelectedRows();
+            for (int x = 0; x < selectedRows.length; x++){
+                try{
+                    SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String fdate = dFormat.format(fromDateChooser.getDate()); 
+                    String tdate = dFormat.format(toDateChooser.getDate());
+                    int totQuant = 0;
+                    float totPrice = 0;
+                    int idx = selectedRows[x];
+                    String prodId = adProdArr.get(idx)[0];
 
-                    
+                    String statement = "SELECT * FROM expenses.producttrans WHERE prodID = " + prodId + " AND Action = 'deposit'";
 
-                String statement = "SELECT * FROM expenses.producttrans WHERE prodID = " + prodId + " AND Action = 'deposit'";
+                    ResultSet prodres = KsuFinal.con.createStatement().executeQuery(statement);
 
-                ResultSet prodres = KsuFinal.con.createStatement().executeQuery(statement);
+                    while (prodres.next()){
 
-                while (prodres.next()){
+                        String currD = prodres.getString("Date");
 
-                    String currD = prodres.getString("Date");
+                        try{
+                            Date currdate = dFormat.parse(currD);
+                            Date fromDate = dFormat.parse(fdate);
+                            Date toDate = dFormat.parse(tdate);
 
-                    try{
-                        Date currdate = dFormat.parse(currD);
-                        Date fromDate = dFormat.parse(fdate);
-                        Date toDate = dFormat.parse(tdate);
+                            if (((currdate.after(fromDate) && currdate.before(toDate)) || currdate.equals(fromDate) || currdate.equals(toDate)) && (fromDate.before(toDate) || fromDate.equals(toDate))){
+        //                        System.out.println("In between");
+                                int prodQuan = prodres.getInt("Quantity");
+                                float prodPrice = prodres.getFloat("Price");
 
-                        if (((currdate.after(fromDate) && currdate.before(toDate)) || currdate.equals(fromDate) || currdate.equals(toDate)) && (fromDate.before(toDate) || fromDate.equals(toDate))){
-    //                        System.out.println("In between");
-                            int prodQuan = prodres.getInt("Quantity");
-                            float prodPrice = prodres.getFloat("Price");
+                                totQuant += prodQuan;
+                                totPrice += (prodPrice * prodQuan);
+                            }
+                        }catch(Exception ex){
 
-                            totQuant += prodQuan;
-                            totPrice += (prodPrice * prodQuan);
+                        }        
+                    }
+                    if (totQuant > 0){
+                        double sp = Math.round((totPrice / totQuant) * 100.0) / 100.0;
+
+                        try{
+
+                            st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET standardPrice = " + sp + " WHERE productID = " + prodId);
+                            st.executeUpdate();
+                            st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET dateFrom = '" + fdate + "' WHERE productID = " + prodId);
+                            st.executeUpdate();
+                            st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET dateTo = '" + tdate + "' WHERE productID = " + prodId);
+                            st.executeUpdate();
+
+                            tModel.setValueAt(sp, idx, 3);
+
+                            adProdArr.get(idx)[4] = String.valueOf(sp);
+                            adProdArr.get(idx)[5] = fdate;
+                            adProdArr.get(idx)[6] = tdate;                 
                         }
-                    }catch(Exception ex){
 
-                    }        
-                }
-                if (totQuant > 0){
-                    double sp = Math.round((totPrice / totQuant) * 100.0) / 100.0;
-
-                    try{
-
-                        st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET standardPrice = " + sp + " WHERE productID = " + prodId);
-                        st.executeUpdate();
-                        st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET dateFrom = '" + fdate + "' WHERE productID = " + prodId);
-                        st.executeUpdate();
-                        st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET dateTo = '" + tdate + "' WHERE productID = " + prodId);
-                        st.executeUpdate();
-                        
-                        tModel.setValueAt(sp, idx, 3);
-
-                        adProdArr.get(idx)[4] = String.valueOf(sp);
-                        adProdArr.get(idx)[5] = fdate;
-                        adProdArr.get(idx)[6] = tdate;
-                    
-                    
-                    
-                    
+                        catch(Exception e){
+                            System.out.println(e);
+                        }
                     }
-                
-                    catch(Exception e){
-                        System.out.println(e);
+                    else{
+                        JOptionPane.showMessageDialog(this,"A product has 0 quantity so the standard price would be retained");
                     }
+                }catch(Exception ex){
+                    System.out.println(ex);
                 }
-                else{
-                    JOptionPane.showMessageDialog(this,"A product has 0 quantity so the standard price would be retained");
-                }
-
-
-
-
-
-
-            }catch(Exception ex){
-                System.out.println(ex);
             }
+        }else{
+            JOptionPane.showMessageDialog(this,"Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
-        
     }//GEN-LAST:event_SPBtnActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

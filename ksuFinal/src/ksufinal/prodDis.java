@@ -200,21 +200,7 @@ public void refresh(){
         
     }
     private void proddbTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_proddbTableMouseClicked
-       try{
-           Statement prodstate = KsuFinal.con.createStatement();
-        ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable");
-        
-        while(prodres.next()){
-        String minquan = String.valueOf(prodres.getInt("prodMinq"));
-        int i = proddbTable.getSelectedRow();
-        EditData.productName.setText(proddbTable.getValueAt(i, 0).toString());
-        EditData.productUnit.setText(proddbTable.getValueAt(i, 2).toString());
-        EditData.minQ.setText(minquan);
-       }
-       }
-       catch(Exception e){
-           System.out.println(e);
-       }
+
     }//GEN-LAST:event_proddbTableMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

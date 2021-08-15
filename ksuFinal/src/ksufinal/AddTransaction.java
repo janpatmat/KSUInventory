@@ -307,10 +307,6 @@ public class AddTransaction extends javax.swing.JFrame {
         transactionBtn.setText("Deposit");
         currRadioBtn = "deposit";
         
-        
-        
-//        supCmb.setModel(new String[10]);
-
        supCmb.removeAllItems();   
        for (String x: supplierArr){
            supCmb.addItem(x);
@@ -460,6 +456,11 @@ public class AddTransaction extends javax.swing.JFrame {
         depositRadioBtn.setSelected(true);
         transactionPriceTF.setText("");
         transactionPriceTF.setEditable(true);
+        suppBranchLabel.setText("Supplier");
+        transactionBtn.setText("Deposit");
+        currRadioBtn = "deposit";
+        
+        
     }
     
     
@@ -468,7 +469,7 @@ public class AddTransaction extends javax.swing.JFrame {
         try{
             String supplier;
             String branch;
-            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable;");
+            rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable WHERE Active = 'TRUE';");
             ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
             ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
            
