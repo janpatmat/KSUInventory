@@ -207,9 +207,9 @@ public void refresh(){
         while(prodres.next()){
         String minquan = String.valueOf(prodres.getInt("prodMinq"));
         int i = proddbTable.getSelectedRow();
-        editProduct.productName.setText(proddbTable.getValueAt(i, 0).toString());
-        editProduct.productUnit.setText(proddbTable.getValueAt(i, 2).toString());
-        editProduct.minQ.setText(minquan);
+        EditData.productName.setText(proddbTable.getValueAt(i, 0).toString());
+        EditData.productUnit.setText(proddbTable.getValueAt(i, 2).toString());
+        EditData.minQ.setText(minquan);
        }
        }
        catch(Exception e){

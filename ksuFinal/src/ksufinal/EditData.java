@@ -12,15 +12,15 @@ import javax.swing.JOptionPane;
  *
  * @author Ricky
  */
-public class editProduct extends javax.swing.JFrame {
+public class EditData extends javax.swing.JFrame {
 PreparedStatement st = null;
 public String prdnm = null;
-//adProd adprodclass = new adProd();
+//adProd adprodclass = new EditProduct();
 
     /**
      * Creates new form AddProduct
      */
-    public editProduct() {
+    public EditData() {
         initComponents();
     }
 
@@ -106,20 +106,20 @@ public String prdnm = null;
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      if(adProd.proddbTable.getSelectedRowCount()== 0){
+      if(EditProduct.proddbTable.getSelectedRowCount()== 0){
           System.out.print("hehe");
       }
       else{
         try{
             
-            int i = adProd.proddbTable.getSelectedRow();
+            int i = EditProduct.proddbTable.getSelectedRow();
             //update new fields
             
             //update db except ID
             
             //check if same
            boolean checker = false;
-           String id = adProd.adProdArr.get(i)[0];
+           String id = EditProduct.adProdArr.get(i)[0];
            String sql = "UPDATE producttable SET productName = '"+productName.getText()+"' WHERE (productID = '"+ id +"')";
            
         st = KsuFinal.con.prepareStatement(sql);
@@ -151,7 +151,7 @@ public String prdnm = null;
         
        st.executeUpdate();
        this.setVisible(false);
-       adProd.editActiveTable();
+       EditProduct.editActiveTable();
        JOptionPane.showMessageDialog(null,"Successfully edit the product");
        
        
@@ -190,21 +190,23 @@ public String prdnm = null;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(editProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(editProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(editProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(editProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new editProduct().setVisible(true);
+                new EditData().setVisible(true);
             }
         });
     }

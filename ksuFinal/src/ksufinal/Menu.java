@@ -1,5 +1,5 @@
-    /*
- * To change this license header, choose License Headers in Project Properties.
+    /*                                           
+ * To change this license header, choose License Headers in Project Properties.                                          
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -12,15 +12,14 @@ import javax.swing.JOptionPane;
  * @author Ricky
  */
 public class Menu extends javax.swing.JFrame {
-    Transaction transactionClass = new Transaction();
-    AddProduct addProductClass = new AddProduct();
-    editProduct editProductClass = new editProduct();
+    AddTransaction transactionClass = new AddTransaction();
+    NewProduct addProductClass = new NewProduct();
     addSupplier addSupplierClass = new addSupplier();
     prodDis prodDisClass = new prodDis();
     report reportClass = new report();
     addUnit addUnitClass = new addUnit();
     ViewTransactions transReportClass = new ViewTransactions();
-    adProd adProdClass = new adProd();
+    EditProduct EditProductClass = new EditProduct();
     editTransaction editTransactionClass = new editTransaction();
     editUnit editUnitClass = new editUnit();
     editBranch editBranchClass = new editBranch();
@@ -334,6 +333,7 @@ public class Menu extends javax.swing.JFrame {
         addProductClass.setDefaultCloseOperation(addProductClass.DISPOSE_ON_CLOSE);
         addProductClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        addProductClass.openWindowAction();
     }//GEN-LAST:event_NewProductMenuActionPerformed
 
     private void ReceiveWithdrawMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReceiveWithdrawMenuActionPerformed
@@ -357,13 +357,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void EditProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductMenuActionPerformed
 
-//        editProductClass.setVisible(true);
-//        editProductClass.setDefaultCloseOperation(editProductClass.HIDE_ON_CLOSE);
-//        adProd adProdClass = new adProd();
-        adProdClass.setVisible(true);
-        adProdClass.setDefaultCloseOperation(adProdClass.DISPOSE_ON_CLOSE);
-        adProdClass.setLocationRelativeTo(null);
+        EditProductClass.setVisible(true);
+        EditProductClass.setDefaultCloseOperation(EditProductClass.DISPOSE_ON_CLOSE);
+        EditProductClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        EditProductClass.openWindowAction();
     }//GEN-LAST:event_EditProductMenuActionPerformed
 
     private void newSupplierMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplierMenuActionPerformed
@@ -504,6 +502,9 @@ public class Menu extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

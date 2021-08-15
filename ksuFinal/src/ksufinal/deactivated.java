@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static ksufinal.adProd.adProdArr;
-import static ksufinal.adProd.proddbTable;
+import static ksufinal.EditProduct.adProdArr;
+import static ksufinal.EditProduct.proddbTable;
 
 /**
  *
@@ -122,9 +122,9 @@ PreparedStatement st = null;
             while(prodres.next()){
                 String minquan = String.valueOf(prodres.getInt("prodMinq"));
                 int i = deacTable.getSelectedRow();
-                editProduct.productName.setText(deacTable.getValueAt(i, 0).toString());
-                editProduct.productUnit.setText(deacTable.getValueAt(i, 2).toString());
-                editProduct.minQ.setText(minquan);
+                EditData.productName.setText(deacTable.getValueAt(i, 0).toString());
+                EditData.productUnit.setText(deacTable.getValueAt(i, 2).toString());
+                EditData.minQ.setText(minquan);
             }
         }
         catch(Exception e){
@@ -220,9 +220,9 @@ PreparedStatement st = null;
                 }
 
 
-                adProd.adProdArr.add(deacArr.get(i));
+                EditProduct.adProdArr.add(deacArr.get(i));
                 deacArr.remove(i);
-                adProd.editActiveTable();
+                EditProduct.editActiveTable();
                 editDeactiveTable();
             }
         }

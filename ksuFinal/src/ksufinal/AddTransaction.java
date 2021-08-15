@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author ADMIN
  */
-public class Transaction extends javax.swing.JFrame {
+public class AddTransaction extends javax.swing.JFrame {
 
     
     login t = new login();
@@ -31,7 +31,7 @@ public class Transaction extends javax.swing.JFrame {
     /**
      * Creates new form Transaction
      */
-    public Transaction() {
+    public AddTransaction() {
         initComponents();
     }
 
@@ -162,7 +162,7 @@ public class Transaction extends javax.swing.JFrame {
         jLabel6.setText("TRANSACTION MENU");
 
         questionMarkIcon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        questionMarkIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ksufinal/Daco_2943438.png"))); // NOI18N
+        questionMarkIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ksufinal/QuestionMark.png"))); // NOI18N
         questionMarkIcon.setMaximumSize(new java.awt.Dimension(880, 800));
         questionMarkIcon.setMinimumSize(new java.awt.Dimension(880, 800));
         questionMarkIcon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,14 +264,14 @@ public class Transaction extends javax.swing.JFrame {
                     .addComponent(suppBranchLabel))
                 .addGap(40, 40, 40)
                 .addComponent(transactionBtn)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void productComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productComboBoxActionPerformed
-        System.out.print("product clicked");
+
         try{    
             if (transactionArr.size() > 0){
                 int idx = productComboBox.getSelectedIndex();
@@ -535,20 +535,21 @@ public class Transaction extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTransaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Transaction().setVisible(true);
+                new AddTransaction().setVisible(true);
             }
         });
     }

@@ -21,8 +21,8 @@ import static ksufinal.sortProduct.selectedProducts;
  */
 public class ViewTransactions extends javax.swing.JFrame {
 
-    Transaction transactionClass = new Transaction();
-    adProd prodTrans = new adProd();
+    AddTransaction transactionClass = new AddTransaction();
+    EditProduct prodTrans = new EditProduct();
     
     static sortProduct sortproductClass = new sortProduct("TransReport");
     static sortUOM sortUOMClass = new sortUOM("TransReport");
