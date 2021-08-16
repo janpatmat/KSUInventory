@@ -13,19 +13,20 @@ import javax.swing.JOptionPane;
  */
 public class Menu extends javax.swing.JFrame {
     AddTransaction transactionClass = new AddTransaction();
-    NewProduct addProductClass = new NewProduct();
-    NewSupplier addSupplierClass = new NewSupplier();
+    NewProduct NewProductClass = new NewProduct();
+    NewSupplier NewSupplierClass = new NewSupplier();
+    NewUnit NewUnitClass = new NewUnit();
+    NewCategory NewCategoryClass = new NewCategory();
+    NewBranch NewBranchClass = new NewBranch();
     prodDis prodDisClass = new prodDis();
     report reportClass = new report();
-    NewUnit addUnitClass = new NewUnit();
     ViewTransactions ViewTransactionsClass = new ViewTransactions();
     EditProduct EditProductClass = new EditProduct();
     editTransaction editTransactionClass = new editTransaction();
     editUnit editUnitClass = new editUnit();
     EditBranch EditBranchClass = new EditBranch();
     editSupplier editSupplierClass = new editSupplier();
-    NewCategory addCategoryClass = new NewCategory();
-    NewBranch NewBranchClass = new NewBranch();
+
 
     
 
@@ -311,10 +312,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void NewUnitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewUnitMenuActionPerformed
        
-        addUnitClass.setVisible(true);
-        addUnitClass.setDefaultCloseOperation(addUnitClass.DISPOSE_ON_CLOSE);
-        addUnitClass.setLocationRelativeTo(null);
+        NewUnitClass.setVisible(true);
+        NewUnitClass.setDefaultCloseOperation(NewUnitClass.DISPOSE_ON_CLOSE);
+        NewUnitClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        NewUnitClass.openWindowAction();
 
     }//GEN-LAST:event_NewUnitMenuActionPerformed
 
@@ -330,11 +332,11 @@ public class Menu extends javax.swing.JFrame {
     private void NewProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductMenuActionPerformed
         // TODO add your handling code here:
 //          AddProduct adPrdct = new AddProduct();
-        addProductClass.setVisible(true);
-        addProductClass.setDefaultCloseOperation(addProductClass.DISPOSE_ON_CLOSE);
-        addProductClass.setLocationRelativeTo(null);
+        NewProductClass.setVisible(true);
+        NewProductClass.setDefaultCloseOperation(NewProductClass.DISPOSE_ON_CLOSE);
+        NewProductClass.setLocationRelativeTo(null);
         this.setVisible(false);
-        addProductClass.openWindowAction();
+        NewProductClass.openWindowAction();
     }//GEN-LAST:event_NewProductMenuActionPerformed
 
     private void ReceiveWithdrawMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReceiveWithdrawMenuActionPerformed
@@ -350,10 +352,6 @@ public class Menu extends javax.swing.JFrame {
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
         
-        addProductClass.setVisible(true);
-        addProductClass.setDefaultCloseOperation(addProductClass.DISPOSE_ON_CLOSE);
-        addProductClass.setLocationRelativeTo(null);
-        this.setVisible(false);
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void EditProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductMenuActionPerformed
@@ -367,10 +365,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void newSupplierMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplierMenuActionPerformed
        
-        addSupplierClass.setVisible(true);
-        addSupplierClass.setDefaultCloseOperation(addSupplierClass.DISPOSE_ON_CLOSE);
-        addSupplierClass.setLocationRelativeTo(null);
+        NewSupplierClass.setVisible(true);
+        NewSupplierClass.setDefaultCloseOperation(NewSupplierClass.DISPOSE_ON_CLOSE);
+        NewSupplierClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        NewSupplierClass.openWindowAction();
     }//GEN-LAST:event_newSupplierMenuActionPerformed
 
     private void ViewProductsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductsMenuActionPerformed
@@ -454,10 +453,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        addCategoryClass.setVisible(true);
-        addCategoryClass.setDefaultCloseOperation(addCategoryClass.DISPOSE_ON_CLOSE);
-        addCategoryClass.setLocationRelativeTo(null);
+        NewCategoryClass.setVisible(true);
+        NewCategoryClass.setDefaultCloseOperation(NewCategoryClass.DISPOSE_ON_CLOSE);
+        NewCategoryClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        NewCategoryClass.openWindowAction();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
