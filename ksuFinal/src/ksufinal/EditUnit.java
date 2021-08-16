@@ -14,18 +14,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-public class EditBranch extends javax.swing.JFrame {
+public class EditUnit extends javax.swing.JFrame {
     PreparedStatement st = null;
-    ArrayList <String> branchID = new ArrayList <String>();    
-    String curId;
-    String currentUser = "";
-    
-    
+    ArrayList <String> unitID = new ArrayList <String>();    
+    static String currentUser = "";
 /**
      * Creates new form addUnit
      */
-    public EditBranch() {
+    public EditUnit() {
         initComponents();
     }
 
@@ -40,14 +36,14 @@ public class EditBranch extends javax.swing.JFrame {
 
         instructionDialogue = new javax.swing.JDialog();
         jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        unitNameTF = new javax.swing.JTextField();
         updateBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        branchTable = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        deleteBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        branchNameTF = new javax.swing.JTextField();
+        unitTable = new javax.swing.JTable();
         questionMarkIcon = new javax.swing.JLabel();
+        deleteBtn = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         instructionDialogue.setBackground(new java.awt.Color(240, 240, 240));
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
@@ -94,6 +90,9 @@ public class EditBranch extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Unit Name");
+
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,39 +100,22 @@ public class EditBranch extends javax.swing.JFrame {
             }
         });
 
-        branchTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        branchTable.setModel(new javax.swing.table.DefaultTableModel(
+        unitTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        unitTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Branches"
+                "Units"
             }
         ));
-        branchTable.setRowHeight(25);
-        jScrollPane1.setViewportView(branchTable);
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("EDIT BRANCH MENU");
-
-        deleteBtn.setText("Delete");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+        unitTable.setRowHeight(25);
+        unitTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                unitTableMouseClicked(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Branch name");
-
-        branchNameTF.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                branchNameTFFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                branchNameTFFocusLost(evt);
-            }
-        });
+        jScrollPane1.setViewportView(unitTable);
 
         questionMarkIcon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         questionMarkIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ksufinal/QuestionMark.png"))); // NOI18N
@@ -148,31 +130,43 @@ public class EditBranch extends javax.swing.JFrame {
             }
         });
 
+        deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("EDIT UNIT MENU");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(branchNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(unitNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 11, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(122, 122, 122)
-                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(124, 124, 124)
+                        .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -180,14 +174,14 @@ public class EditBranch extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(57, 57, 57)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(branchNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(unitNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(updateBtn)
                         .addGap(18, 18, 18)
@@ -195,32 +189,31 @@ public class EditBranch extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-  
-        if(branchNameTF.getText().length() == 0){
-            JOptionPane.showMessageDialog(this,"Please input a Branch Name", "Error", JOptionPane.ERROR_MESSAGE);
+        if(unitNameTF.getText().length() == 0){
+            JOptionPane.showMessageDialog(this,"Please input a Unit Name", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else{
-            if (branchTable.getSelectedRowCount() != 0){
-                if (branchTable.getSelectedRowCount() == 1){
-                    int i = branchTable.getSelectedRow();
+            if (unitTable.getSelectedRowCount() != 0){
+                if (unitTable.getSelectedRowCount() == 1){
+                    int i = unitTable.getSelectedRow();
                     try{
-                        ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable WHERE branchName = '" + branchNameTF.getText() + "'");
+                        ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM unittable WHERE Unit = '" + unitNameTF.getText() + "'");
                         if (rs.next()){
-                            JOptionPane.showMessageDialog(this,"Branch Name already exist", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this,"Unit Name already exist", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
-                            st = KsuFinal.con.prepareStatement("UPDATE branchtable SET branchName = ? WHERE branchID = " + branchID.get(i));
-                            st.setString(1, branchNameTF.getText());
+                            st = KsuFinal.con.prepareStatement("UPDATE unittable SET Unit = ? WHERE unitID = " + unitID.get(i));
+                            st.setString(1, unitNameTF.getText());
                             st.executeUpdate();
                             updateTable();
-                            JOptionPane.showMessageDialog(this,"Successfully updated the branch");
-                            branchNameTF.setText("");
+                            JOptionPane.showMessageDialog(this,"Successfully updated the Unit");
+                            unitNameTF.setText("");
                         }
                     }
                     catch(Exception e){
@@ -235,9 +228,14 @@ public class EditBranch extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_updateBtnActionPerformed
 
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        instructionDialogue.setLocationRelativeTo(this);
+        
     }//GEN-LAST:event_formWindowOpened
+
+    private void unitTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unitTableMouseClicked
+        instructionDialogue.setLocationRelativeTo(this);
+    }//GEN-LAST:event_unitTableMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
@@ -252,37 +250,6 @@ public class EditBranch extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowActivated
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-
-        if (branchTable.getSelectedRowCount() > 0){
-
-            for (int index: branchTable.getSelectedRows()){
-                int trudex = Integer.parseInt(branchID.get(index));
-
-                try{
-                    st = KsuFinal.con.prepareStatement("DELETE FROM branchtable WHERE branchID = " + trudex);
-                    st.executeUpdate();
-                }
-                catch(Exception e){
-                    System.out.println(e);
-                }
-            }
-            updateTable();
-            JOptionPane.showMessageDialog(this,"Successfully deleted the branch");
-
-        }else{
-            JOptionPane.showMessageDialog(this,"Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_deleteBtnActionPerformed
-
-    private void branchNameTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_branchNameTFFocusGained
-
-    }//GEN-LAST:event_branchNameTFFocusGained
-
-    private void branchNameTFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_branchNameTFFocusLost
-
-    }//GEN-LAST:event_branchNameTFFocusLost
-
     private void questionMarkIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_questionMarkIconMouseEntered
         instructionDialogue.setVisible(true);
     }//GEN-LAST:event_questionMarkIconMouseEntered
@@ -291,39 +258,60 @@ public class EditBranch extends javax.swing.JFrame {
         // TODO add your handling code here:
         instructionDialogue.setVisible(false);
     }//GEN-LAST:event_questionMarkIconMouseExited
-    
-    public void updateTable(){
-        
-        DefaultTableModel t = (DefaultTableModel) branchTable.getModel();
-        t.setRowCount(0);
-        branchID.clear();
-        
-        try{
 
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        if (unitTable.getSelectedRowCount() > 0){
+
+            for (int index: unitTable.getSelectedRows()){
+                int trudex = Integer.parseInt(unitID.get(index));
+
+                try{
+                    st = KsuFinal.con.prepareStatement("DELETE FROM unittable WHERE unitID = " + trudex);
+                    st.executeUpdate();
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                }
+            }
+            updateTable();
+            JOptionPane.showMessageDialog(this,"Successfully deleted the Unit");
+
+        }else{
+            JOptionPane.showMessageDialog(this,"Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+    public void updateTable(){
+
+        DefaultTableModel t = (DefaultTableModel) unitTable.getModel();
+        t.setRowCount(0);
+        unitID.clear();
+
+        try{
             Statement state = KsuFinal.con.createStatement();
-            ResultSet rs = state.executeQuery("SELECT * FROM branchtable");
+            ResultSet rs = state.executeQuery("SELECT * FROM unittable");
             while(rs.next()){
-                String name = rs.getString("branchName");
-                String id = String.valueOf(rs.getInt("branchID"));
+                String name = rs.getString("Unit");
+                String id = String.valueOf(rs.getInt("unitID"));
 
                 t.addRow(new String[]{name});
-                
-                branchID.add(id);
+
+                unitID.add(id);
             }
         }
         catch(Exception e){
             System.out.println(e);
         }
     }
-    
     public void openWindowAction(){
         updateTable();
+        
         if (!currentUser.equals(login.fullName)){
-            branchNameTF.setText("");
+            unitNameTF.setText("");
             currentUser = login.fullName;
         }
         
     }
+    
     
     /**
      * @param args the command line arguments
@@ -342,18 +330,14 @@ public class EditBranch extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -362,14 +346,12 @@ public class EditBranch extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditBranch().setVisible(true);
+                new EditUnit().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField branchNameTF;
-    private javax.swing.JTable branchTable;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JDialog instructionDialogue;
     private javax.swing.JLabel jLabel1;
@@ -377,6 +359,8 @@ public class EditBranch extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel questionMarkIcon;
+    private javax.swing.JTextField unitNameTF;
+    private javax.swing.JTable unitTable;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }

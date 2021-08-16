@@ -23,9 +23,9 @@ public class Menu extends javax.swing.JFrame {
     ViewTransactions ViewTransactionsClass = new ViewTransactions();
     EditProduct EditProductClass = new EditProduct();
     editTransaction editTransactionClass = new editTransaction();
-    editUnit editUnitClass = new editUnit();
+    EditUnit EditUnitClass = new EditUnit();
     EditBranch EditBranchClass = new EditBranch();
-    editSupplier editSupplierClass = new editSupplier();
+    EditSupplier EditSupplierClass = new EditSupplier();
 
 
     
@@ -414,19 +414,21 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        editUnitClass.setVisible(true);
-        editUnitClass.setDefaultCloseOperation(editUnitClass.DISPOSE_ON_CLOSE);
-        editUnitClass.setLocationRelativeTo(null);
+        EditUnitClass.setVisible(true);
+        EditUnitClass.setDefaultCloseOperation(EditUnitClass.DISPOSE_ON_CLOSE);
+        EditUnitClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        EditUnitClass.openWindowAction();
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        editSupplierClass.setVisible(true);
-        editSupplierClass.setDefaultCloseOperation(editSupplierClass.DISPOSE_ON_CLOSE);
-        editSupplierClass.setLocationRelativeTo(null);
+        EditSupplierClass.setVisible(true);
+        EditSupplierClass.setDefaultCloseOperation(EditSupplierClass.DISPOSE_ON_CLOSE);
+        EditSupplierClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        EditSupplierClass.openWindowAction();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed

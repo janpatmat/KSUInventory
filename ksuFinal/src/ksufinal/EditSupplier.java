@@ -2,7 +2,7 @@ package ksufinal;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template file, choose Tools | Templatesun
  * and open the template in the editor.
  */
 
@@ -14,18 +14,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-public class EditBranch extends javax.swing.JFrame {
+public class EditSupplier extends javax.swing.JFrame {
     PreparedStatement st = null;
-    ArrayList <String> branchID = new ArrayList <String>();    
-    String curId;
-    String currentUser = "";
-    
-    
+    ArrayList <String> supplierID = new ArrayList <String>();    
+    static String currentUser = "";
 /**
      * Creates new form addUnit
      */
-    public EditBranch() {
+    public EditSupplier() {
         initComponents();
     }
 
@@ -40,14 +36,14 @@ public class EditBranch extends javax.swing.JFrame {
 
         instructionDialogue = new javax.swing.JDialog();
         jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        supplierNameTF = new javax.swing.JTextField();
         updateBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        branchTable = new javax.swing.JTable();
+        supplierTable = new javax.swing.JTable();
+        questionMarkIcon = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         deleteBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        branchNameTF = new javax.swing.JTextField();
-        questionMarkIcon = new javax.swing.JLabel();
 
         instructionDialogue.setBackground(new java.awt.Color(240, 240, 240));
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
@@ -94,6 +90,9 @@ public class EditBranch extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Supplier Name");
+
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,39 +100,22 @@ public class EditBranch extends javax.swing.JFrame {
             }
         });
 
-        branchTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        branchTable.setModel(new javax.swing.table.DefaultTableModel(
+        supplierTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        supplierTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Branches"
+                "Suppliers"
             }
         ));
-        branchTable.setRowHeight(25);
-        jScrollPane1.setViewportView(branchTable);
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("EDIT BRANCH MENU");
-
-        deleteBtn.setText("Delete");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+        supplierTable.setRowHeight(25);
+        supplierTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                supplierTableMouseClicked(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Branch name");
-
-        branchNameTF.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                branchNameTFFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                branchNameTFFocusLost(evt);
-            }
-        });
+        jScrollPane1.setViewportView(supplierTable);
 
         questionMarkIcon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         questionMarkIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ksufinal/QuestionMark.png"))); // NOI18N
@@ -148,53 +130,64 @@ public class EditBranch extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("EDIT SUPPLIER MENU");
+
+        deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(branchNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addGap(122, 122, 122)
+                .addGap(116, 116, 116)
                 .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel1))
+                            .addComponent(supplierNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(branchNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(supplierNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(updateBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(deleteBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(deleteBtn)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -202,25 +195,24 @@ public class EditBranch extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-  
-        if(branchNameTF.getText().length() == 0){
-            JOptionPane.showMessageDialog(this,"Please input a Branch Name", "Error", JOptionPane.ERROR_MESSAGE);
+        if(supplierNameTF.getText().length() == 0){
+            JOptionPane.showMessageDialog(this,"Please input a Supplier Name", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else{
-            if (branchTable.getSelectedRowCount() != 0){
-                if (branchTable.getSelectedRowCount() == 1){
-                    int i = branchTable.getSelectedRow();
+            if (supplierTable.getSelectedRowCount() != 0){
+                if (supplierTable.getSelectedRowCount() == 1){
+                    int i = supplierTable.getSelectedRow();
                     try{
-                        ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable WHERE branchName = '" + branchNameTF.getText() + "'");
+                        ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable WHERE supplierName = '" + supplierNameTF.getText() + "'");
                         if (rs.next()){
-                            JOptionPane.showMessageDialog(this,"Branch Name already exist", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this,"Supplier Name already exist", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
-                            st = KsuFinal.con.prepareStatement("UPDATE branchtable SET branchName = ? WHERE branchID = " + branchID.get(i));
-                            st.setString(1, branchNameTF.getText());
+                            st = KsuFinal.con.prepareStatement("UPDATE suppliertable SET supplierName = ? WHERE supplierID = " + supplierID.get(i));
+                            st.setString(1, supplierNameTF.getText());
                             st.executeUpdate();
                             updateTable();
-                            JOptionPane.showMessageDialog(this,"Successfully updated the branch");
-                            branchNameTF.setText("");
+                            JOptionPane.showMessageDialog(this,"Successfully updated the supplier");
+                            supplierNameTF.setText("");
                         }
                     }
                     catch(Exception e){
@@ -239,6 +231,10 @@ public class EditBranch extends javax.swing.JFrame {
         instructionDialogue.setLocationRelativeTo(this);
     }//GEN-LAST:event_formWindowOpened
 
+    private void supplierTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplierTableMouseClicked
+
+    }//GEN-LAST:event_supplierTableMouseClicked
+
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         login.MenuClass.setVisible(true);
@@ -252,37 +248,6 @@ public class EditBranch extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowActivated
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-
-        if (branchTable.getSelectedRowCount() > 0){
-
-            for (int index: branchTable.getSelectedRows()){
-                int trudex = Integer.parseInt(branchID.get(index));
-
-                try{
-                    st = KsuFinal.con.prepareStatement("DELETE FROM branchtable WHERE branchID = " + trudex);
-                    st.executeUpdate();
-                }
-                catch(Exception e){
-                    System.out.println(e);
-                }
-            }
-            updateTable();
-            JOptionPane.showMessageDialog(this,"Successfully deleted the branch");
-
-        }else{
-            JOptionPane.showMessageDialog(this,"Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_deleteBtnActionPerformed
-
-    private void branchNameTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_branchNameTFFocusGained
-
-    }//GEN-LAST:event_branchNameTFFocusGained
-
-    private void branchNameTFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_branchNameTFFocusLost
-
-    }//GEN-LAST:event_branchNameTFFocusLost
-
     private void questionMarkIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_questionMarkIconMouseEntered
         instructionDialogue.setVisible(true);
     }//GEN-LAST:event_questionMarkIconMouseEntered
@@ -291,40 +256,61 @@ public class EditBranch extends javax.swing.JFrame {
         // TODO add your handling code here:
         instructionDialogue.setVisible(false);
     }//GEN-LAST:event_questionMarkIconMouseExited
-    
-    public void updateTable(){
-        
-        DefaultTableModel t = (DefaultTableModel) branchTable.getModel();
-        t.setRowCount(0);
-        branchID.clear();
-        
-        try{
 
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        
+        if (supplierTable.getSelectedRowCount() > 0){
+
+            for (int index: supplierTable.getSelectedRows()){
+                int trudex = Integer.parseInt(supplierID.get(index));
+
+                try{
+                    st = KsuFinal.con.prepareStatement("DELETE FROM suppliertable WHERE supplierID = " + trudex);
+                    st.executeUpdate();
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                }
+            }
+            updateTable();
+            JOptionPane.showMessageDialog(this,"Successfully deleted the Supplier");
+
+        }else{
+            JOptionPane.showMessageDialog(this,"Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    public void updateTable(){
+
+        DefaultTableModel t = (DefaultTableModel) supplierTable.getModel();
+        t.setRowCount(0);
+        supplierID.clear();
+
+        try{
             Statement state = KsuFinal.con.createStatement();
-            ResultSet rs = state.executeQuery("SELECT * FROM branchtable");
+            ResultSet rs = state.executeQuery("SELECT * FROM suppliertable");
             while(rs.next()){
-                String name = rs.getString("branchName");
-                String id = String.valueOf(rs.getInt("branchID"));
+                String name = rs.getString("supplierName");
+                String id = String.valueOf(rs.getInt("supplierID"));
 
                 t.addRow(new String[]{name});
-                
-                branchID.add(id);
+
+                supplierID.add(id);
             }
         }
         catch(Exception e){
             System.out.println(e);
         }
     }
-    
     public void openWindowAction(){
         updateTable();
+        
         if (!currentUser.equals(login.fullName)){
-            branchNameTF.setText("");
+            supplierNameTF.setText("");
             currentUser = login.fullName;
         }
         
     }
-    
     /**
      * @param args the command line arguments
      */
@@ -342,13 +328,13 @@ public class EditBranch extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSupplier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -362,14 +348,12 @@ public class EditBranch extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditBranch().setVisible(true);
+                new EditSupplier().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField branchNameTF;
-    private javax.swing.JTable branchTable;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JDialog instructionDialogue;
     private javax.swing.JLabel jLabel1;
@@ -377,6 +361,8 @@ public class EditBranch extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel questionMarkIcon;
+    private javax.swing.JTextField supplierNameTF;
+    private javax.swing.JTable supplierTable;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
