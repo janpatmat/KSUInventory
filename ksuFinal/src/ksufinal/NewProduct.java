@@ -126,7 +126,7 @@ public String prdnm = null;
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("ADD PRODUCT MENU");
+        jLabel2.setText("NEW PRODUCT MENU");
 
         jLabel4.setText("Category");
 
@@ -142,7 +142,7 @@ public String prdnm = null;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(52, 52, 52)
                 .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

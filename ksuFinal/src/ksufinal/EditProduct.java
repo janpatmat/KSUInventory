@@ -360,7 +360,7 @@ public class EditProduct extends javax.swing.JFrame {
 
     private void editDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDataBtnActionPerformed
 
-        if(proddbTable.getSelectedRow() > 0){ 
+        if(proddbTable.getSelectedRowCount() > 0){ 
             try{
             
                 int i = proddbTable.getSelectedRow();

@@ -22,10 +22,10 @@ public class Menu extends javax.swing.JFrame {
     EditProduct EditProductClass = new EditProduct();
     editTransaction editTransactionClass = new editTransaction();
     editUnit editUnitClass = new editUnit();
-    editBranch editBranchClass = new editBranch();
+    EditBranch EditBranchClass = new EditBranch();
     editSupplier editSupplierClass = new editSupplier();
     addCategory addCategoryClass = new addCategory();
-    addBranch addBranchClass = new addBranch();
+    NewBranch NewBranchClass = new NewBranch();
 
     
 
@@ -398,10 +398,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        addBranchClass.setVisible(true);
-        addBranchClass.setDefaultCloseOperation(addBranchClass.DISPOSE_ON_CLOSE);
-        addBranchClass.setLocationRelativeTo(null);
+        NewBranchClass.setVisible(true);
+        NewBranchClass.setDefaultCloseOperation(NewBranchClass.DISPOSE_ON_CLOSE);
+        NewBranchClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        NewBranchClass.openWindowAction();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void EditTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTransactionMenuActionPerformed
@@ -431,10 +432,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        editBranchClass.setVisible(true);
-        editBranchClass.setDefaultCloseOperation(editBranchClass.DISPOSE_ON_CLOSE);
-        editBranchClass.setLocationRelativeTo(null);
+        EditBranchClass.setVisible(true);
+        EditBranchClass.setDefaultCloseOperation(EditBranchClass.DISPOSE_ON_CLOSE);
+        EditBranchClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        EditBranchClass.openWindowAction();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
