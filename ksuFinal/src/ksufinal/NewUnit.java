@@ -1,27 +1,28 @@
+package ksufinal;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ksufinal;
 
 /**
  *
- * @author Rickyincld
+ * @author Ricky
  */
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
-public class NewBranch extends javax.swing.JFrame {
+public class NewUnit extends javax.swing.JFrame {
     PreparedStatement st = null;
     static String currentUser = "";
-    
-    /**
-     * Creates new form addSupplier
+
+/**
+     * Creates new form addUnit
      */
-    public NewBranch() {
+    public NewUnit() {
         initComponents();
     }
 
@@ -37,9 +38,8 @@ public class NewBranch extends javax.swing.JFrame {
         instructionDialogue = new javax.swing.JDialog();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        branchNameTF = new javax.swing.JTextField();
+        unitNameTF = new javax.swing.JTextField();
         saveBtn = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         questionMarkIcon = new javax.swing.JLabel();
 
         instructionDialogue.setBackground(new java.awt.Color(240, 240, 240));
@@ -87,17 +87,7 @@ public class NewBranch extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Branch name");
-
-        branchNameTF.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                branchNameTFFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                branchNameTFFocusLost(evt);
-            }
-        });
+        jLabel1.setText("Unit Name");
 
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -105,9 +95,6 @@ public class NewBranch extends javax.swing.JFrame {
                 saveBtnActionPerformed(evt);
             }
         });
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("NEW BRANCH MENU");
 
         questionMarkIcon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         questionMarkIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ksufinal/QuestionMark.png"))); // NOI18N
@@ -127,70 +114,62 @@ public class NewBranch extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(branchNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(unitNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(saveBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(branchNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(unitNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addComponent(saveBtn)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        
-        if (branchNameTF.getText().length() == 0){
-            JOptionPane.showMessageDialog(this,"Please input a Branch Name", "Error", JOptionPane.ERROR_MESSAGE);
+
+        if(unitNameTF.getText().length() == 0){
+            JOptionPane.showMessageDialog(this,"Please input a Unit Name", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else{
             try{
-                ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable WHERE branchName = '" + branchNameTF.getText() + "'");
+                ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM unittable WHERE Unit = '" + unitNameTF.getText() + "'");
                 
                 if (rs.next()){
-                    JOptionPane.showMessageDialog(this,"Branch Name already exist", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this,"Unit Name already exist", "Error", JOptionPane.ERROR_MESSAGE);
                     
                 }else{
-                    
-                    st = KsuFinal.con.prepareStatement("INSERT INTO branchtable (branchName) VALUES (?)");
-                    st.setString(1, branchNameTF.getText());
+                    st = KsuFinal.con.prepareStatement("INSERT INTO unittable(Unit) VALUES(?)");
+
+                    st.setString(1, unitNameTF.getText());
+
                     st.executeUpdate();
-                    
-                    branchNameTF.setText("");
-                    JOptionPane.showMessageDialog(this,"Successfully added the Branch");
+                    unitNameTF.setText("");  
+                    JOptionPane.showMessageDialog(this,"Successfully added the Unit");  
                 }
+                
             }
             catch(Exception e){
                 System.out.println(e);
             }
-
-
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
@@ -204,23 +183,13 @@ public class NewBranch extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        
+
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
     }//GEN-LAST:event_formWindowActivated
 
-    public void openWindowAction(){
-        
-        if (!currentUser.equals(login.fullName)){
-            branchNameTF.setText("");
-            currentUser = login.fullName;
-        }
-        
-        
-    }
-    
     private void questionMarkIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_questionMarkIconMouseEntered
         instructionDialogue.setVisible(true);
     }//GEN-LAST:event_questionMarkIconMouseEntered
@@ -230,15 +199,13 @@ public class NewBranch extends javax.swing.JFrame {
         instructionDialogue.setVisible(false);
     }//GEN-LAST:event_questionMarkIconMouseExited
 
-    private void branchNameTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_branchNameTFFocusGained
-              
-    }//GEN-LAST:event_branchNameTFFocusGained
-
-    private void branchNameTFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_branchNameTFFocusLost
-         
-    }//GEN-LAST:event_branchNameTFFocusLost
-
-    
+    public void openWindowAction(){
+        
+        if (!currentUser.equals(login.fullName)){
+            unitNameTF.setText("");
+            currentUser = login.fullName;
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -256,34 +223,31 @@ public class NewBranch extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewBranch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewUnit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewBranch().setVisible(true);
+                new NewUnit().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField branchNameTF;
     private javax.swing.JDialog instructionDialogue;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel questionMarkIcon;
     private javax.swing.JButton saveBtn;
+    private javax.swing.JTextField unitNameTF;
     // End of variables declaration//GEN-END:variables
 }

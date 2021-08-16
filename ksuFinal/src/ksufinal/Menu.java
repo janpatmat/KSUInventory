@@ -14,17 +14,17 @@ import javax.swing.JOptionPane;
 public class Menu extends javax.swing.JFrame {
     AddTransaction transactionClass = new AddTransaction();
     NewProduct addProductClass = new NewProduct();
-    addSupplier addSupplierClass = new addSupplier();
+    NewSupplier addSupplierClass = new NewSupplier();
     prodDis prodDisClass = new prodDis();
     report reportClass = new report();
-    addUnit addUnitClass = new addUnit();
+    NewUnit addUnitClass = new NewUnit();
     ViewTransactions ViewTransactionsClass = new ViewTransactions();
     EditProduct EditProductClass = new EditProduct();
     editTransaction editTransactionClass = new editTransaction();
     editUnit editUnitClass = new editUnit();
     EditBranch EditBranchClass = new EditBranch();
     editSupplier editSupplierClass = new editSupplier();
-    addCategory addCategoryClass = new addCategory();
+    NewCategory addCategoryClass = new NewCategory();
     NewBranch NewBranchClass = new NewBranch();
 
     
