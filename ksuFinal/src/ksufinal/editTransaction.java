@@ -212,65 +212,7 @@ public class editTransaction extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-//        DefaultTableModel TransactionTableModel = (DefaultTableModel) ET_TransactionTable.getModel();
-//        
-//        
-//        try{
-//            String supplier;
-//            String branch;
-//            ResultSet rsTransaction = KsuFinal.con.createStatement().executeQuery("SELECT * FROM producttrans;");
-//            ResultSet rsProduct = KsuFinal.con.createStatement().executeQuery("SELECT * FROM producttable;");
-//            ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
-//            ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
-//            
-//            while(rsTransaction.next()){
-//                String tn = rsTransaction.getString("TransactionNo");
-//                String pid = rsTransaction.getString("prodID");
-//                String nm = rsTransaction.getString("Name");
-//                String sub = rsTransaction.getString("Sub");
-//                String quant = rsTransaction.getString("Quantity");
-//                String ut = rsTransaction.getString("Unit");
-//                String pr = rsTransaction.getString("Price");
-//                String sb = rsTransaction.getString("SuppBranch");
-//                Date dt = rsTransaction.getDate("Date");
-//                String ac = rsTransaction.getString("Action");
-//                String tp = String.format("%.2f", Float.parseFloat(pr) * Float.parseFloat(quant));
-//                
-//                String[] row = {tn, pid, dt.toString(), nm, sub, pr, quant, tp, ut, sb, ac};
-//                
-//                TransactionTableModel.addRow(row);
-//                transactionArr.add(row);
-//                dateArr.add(dt);
-//                
-//                
-//                
-//            }
-//            
-//           
-//            while(rsProduct.next()){
-//                String nm = rsProduct.getString("productName");
-//                productArr.add(nm);
-//                ET_nameCB.addItem(nm);
-//            } 
-//            
-//            while(rsSupplier.next()){
-//                supplier = rsSupplier.getString("supplierName");
-//                supplierArr.add(supplier);
-//            }
-//            
-//            while(rsBranch.next()){
-//                branch = rsBranch.getString("branchName");
-//                branchArr.add(branch);
-//            }
-//            
-//            
-//            
-//            
-//            
-//        }
-//        catch(Exception e){
-//            System.out.println(e);
-//        }
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void ET_TransactionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ET_TransactionTableMouseClicked
