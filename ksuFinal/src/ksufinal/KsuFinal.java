@@ -14,7 +14,7 @@ import java.sql.DriverManager;
  */
 public class KsuFinal {
     
-//    static login loginClass = new login();
+//    static Login loginClass = new Login();
     /**
      * @param args the command line arguments
      */
@@ -42,8 +42,9 @@ public class KsuFinal {
         
         
         
-        login loginClass = new login();
+        Login loginClass = new Login();
         loginClass.setVisible(true);
+        loginClass.setLocationRelativeTo(null);
 
 
 //        AddProduct index = new AddProduct();

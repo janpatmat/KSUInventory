@@ -118,7 +118,7 @@ public class sortUser extends javax.swing.JFrame {
                 ViewTransactions.UserSortTF.setText("All");
             }
             else if (location.equals("report")){
-                report.UserSortTF.setText("All");
+                Report.UserSortTF.setText("All");
             }
             System.out.println("past here");
         }
@@ -135,7 +135,7 @@ public class sortUser extends javax.swing.JFrame {
                 ViewTransactions.UserSortTF.setText(jointArray);
             }
             else if (location.equals("report")){
-                report.UserSortTF.setText(jointArray);
+                Report.UserSortTF.setText(jointArray);
             }
 
             ArrayList<String> strArr = new ArrayList<String>();
@@ -155,7 +155,7 @@ public class sortUser extends javax.swing.JFrame {
 //        System.out.println(UserSortStatement);
 
         if (location.equals("report")){
-            report.sortFunction();
+            Report.sortFunction();
         }
         else if (location.equals("TransReport")){
             ViewTransactions.filterFunction();
@@ -167,7 +167,7 @@ public class sortUser extends javax.swing.JFrame {
         DefaultTableModel sortUserTableModel = (DefaultTableModel)sortUserTable.getModel();
         if (selectAllCBox.isSelected()){
             for (int x = 0; x < sortUserTableModel.getRowCount(); x ++){
-                sortUserTableModel.setValueAt(true, x, 1);
+                sortUserTableModel.setValueAt(true, x, 2);
             }
             sortUserTable.setRowSelectionAllowed(false);
             sortUserTable.setEnabled(false);
@@ -184,7 +184,7 @@ public class sortUser extends javax.swing.JFrame {
 
     public void openWindowAction(){
         
-        if (!currentUser.equals(login.fullName)){
+        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortUserTableModel = (DefaultTableModel)sortUserTable.getModel();
             sortUserTableModel.setRowCount(0);
             selectAllCBox.setSelected(true);
@@ -212,7 +212,7 @@ public class sortUser extends javax.swing.JFrame {
                 System.out.println(e);
             }
             
-            currentUser = login.fullName;
+            currentUser = Login.fullName;
         }
     }
     

@@ -239,7 +239,7 @@ public class EditUnit extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        login.MenuClass.setVisible(true);
+        Login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -305,9 +305,9 @@ public class EditUnit extends javax.swing.JFrame {
     public void openWindowAction(){
         updateTable();
         
-        if (!currentUser.equals(login.fullName)){
+        if (!currentUser.equals(Login.fullName)){
             unitNameTF.setText("");
-            currentUser = login.fullName;
+            currentUser = Login.fullName;
         }
         
     }

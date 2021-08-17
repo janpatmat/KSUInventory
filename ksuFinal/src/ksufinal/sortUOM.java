@@ -129,7 +129,7 @@ public class sortUOM extends javax.swing.JFrame {
                 ViewTransactions.UOMSortTF.setText("All");
             }
             else if (location.equals("report")){
-                report.UOMSortTF.setText("All");
+                Report.UOMSortTF.setText("All");
             }
             System.out.println("past here");
         }
@@ -146,7 +146,7 @@ public class sortUOM extends javax.swing.JFrame {
                 ViewTransactions.UOMSortTF.setText(jointArray);
             }
             else if (location.equals("report")){
-                report.UOMSortTF.setText(jointArray);
+                Report.UOMSortTF.setText(jointArray);
             }
             
             ArrayList<String> strArr = new ArrayList<String>();
@@ -166,7 +166,7 @@ public class sortUOM extends javax.swing.JFrame {
 //        System.out.println(UOMSortStatement);
         
         if (location.equals("report")){
-            report.sortFunction();
+            Report.sortFunction();
         }
         else if (location.equals("TransReport")){
             ViewTransactions.filterFunction();
@@ -200,7 +200,7 @@ public class sortUOM extends javax.swing.JFrame {
 
     public void openWindowAction(){
         
-        if (!currentUser.equals(login.fullName)){
+        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortUOMTableModel = (DefaultTableModel)sortUOMTable.getModel();
             sortUOMTableModel.setRowCount(0);
             selectAllCBox.setSelected(true);
@@ -225,7 +225,7 @@ public class sortUOM extends javax.swing.JFrame {
                 System.out.println(e);
             }
             
-            currentUser = login.fullName;
+            currentUser = Login.fullName;
         }
     }
     /**

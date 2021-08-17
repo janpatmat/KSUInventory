@@ -117,7 +117,7 @@ public class sortProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     public void openWindowAction(){
-        if (!currentUser.equals(login.fullName)){
+        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortProdTableModel = (DefaultTableModel)sortProdTable.getModel();
             sortProdTableModel.setRowCount(0);
             
@@ -141,7 +141,7 @@ public class sortProduct extends javax.swing.JFrame {
                 System.out.println(e);
             }
             
-            currentUser = login.fullName;
+            currentUser = Login.fullName;
         }
         
         
@@ -175,7 +175,7 @@ public class sortProduct extends javax.swing.JFrame {
                 ViewTransactions.prodSortTF.setText("All");
             }
             else if (location.equals("report")){
-                report.prodSortTF.setText("All");
+                Report.prodSortTF.setText("All");
             }
         }
         else{
@@ -191,7 +191,7 @@ public class sortProduct extends javax.swing.JFrame {
                 ViewTransactions.prodSortTF.setText(jointArray);
             }
             else if (location.equals("report")){
-                report.prodSortTF.setText(jointArray);
+                Report.prodSortTF.setText(jointArray);
             }
             
             ArrayList<String> strArr = new ArrayList<String>();
@@ -209,7 +209,7 @@ public class sortProduct extends javax.swing.JFrame {
 //        System.out.println(prodSortStatement);
         
         if (location.equals("report")){
-            report.sortFunction();
+            Report.sortFunction();
             
         }
         else if (location.equals("TransReport")){

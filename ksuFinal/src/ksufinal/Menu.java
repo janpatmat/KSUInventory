@@ -18,14 +18,15 @@ public class Menu extends javax.swing.JFrame {
     NewUnit NewUnitClass = new NewUnit();
     NewCategory NewCategoryClass = new NewCategory();
     NewBranch NewBranchClass = new NewBranch();
-    prodDis prodDisClass = new prodDis();
-    report reportClass = new report();
+    ViewProducts ViewProductsClass = new ViewProducts();
+    Report ReportClass = new Report();
     ViewTransactions ViewTransactionsClass = new ViewTransactions();
     EditProduct EditProductClass = new EditProduct();
-    editTransaction editTransactionClass = new editTransaction();
+    EditTransaction EditTransactionClass = new EditTransaction();
     EditUnit EditUnitClass = new EditUnit();
     EditBranch EditBranchClass = new EditBranch();
     EditSupplier EditSupplierClass = new EditSupplier();
+    EditUser EditUserClass = new EditUser();
 
 
     
@@ -74,6 +75,8 @@ public class Menu extends javax.swing.JFrame {
         ViewProductsMenu = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         CreateReportMenu = new javax.swing.JMenuItem();
+        UsersMainMenu = new javax.swing.JMenu();
+        editUserMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -262,6 +265,18 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        UsersMainMenu.setText("Users");
+
+        editUserMenu.setText("Edit Users");
+        editUserMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editUserMenuActionPerformed(evt);
+            }
+        });
+        UsersMainMenu.add(editUserMenu);
+
+        jMenuBar1.add(UsersMainMenu);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -373,9 +388,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_newSupplierMenuActionPerformed
 
     private void ViewProductsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductsMenuActionPerformed
-        prodDisClass.setVisible(true);
-        prodDisClass.setDefaultCloseOperation(prodDisClass.DISPOSE_ON_CLOSE);
-        prodDisClass.setLocationRelativeTo(null);
+        ViewProductsClass.setVisible(true);
+        ViewProductsClass.setDefaultCloseOperation(ViewProductsClass.DISPOSE_ON_CLOSE);
+        ViewProductsClass.setLocationRelativeTo(null);
         this.setVisible(false);
         
     }//GEN-LAST:event_ViewProductsMenuActionPerformed
@@ -389,10 +404,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu4ActionPerformed
 
     private void CreateReportMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateReportMenuActionPerformed
-        reportClass.setVisible(true);
-        reportClass.setDefaultCloseOperation(reportClass.DISPOSE_ON_CLOSE);
-        reportClass.setLocationRelativeTo(null);
+        ReportClass.setVisible(true);
+        ReportClass.setDefaultCloseOperation(ReportClass.DISPOSE_ON_CLOSE);
+        ReportClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        ReportClass.openWindowAction();
     }//GEN-LAST:event_CreateReportMenuActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -405,10 +421,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void EditTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTransactionMenuActionPerformed
-        editTransactionClass.setVisible(true);
-        editTransactionClass.setDefaultCloseOperation(editTransactionClass.DISPOSE_ON_CLOSE);
-        editTransactionClass.setLocationRelativeTo(null);
+        EditTransactionClass.setVisible(true);
+        EditTransactionClass.setDefaultCloseOperation(EditTransactionClass.DISPOSE_ON_CLOSE);
+        EditTransactionClass.setLocationRelativeTo(null);
         this.setVisible(false);
+        EditTransactionClass.openWindowAction();
 
     }//GEN-LAST:event_EditTransactionMenuActionPerformed
 
@@ -447,8 +464,9 @@ public class Menu extends javax.swing.JFrame {
         if(log == JOptionPane.YES_OPTION){
             this.dispose();
             
-            login loginClass = new login();
+            Login loginClass = new Login();
             loginClass.setVisible(true);
+            loginClass.setLocationRelativeTo(null);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -467,20 +485,31 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        usernameTF.setText(login.userName);
-        firstNameTF.setText(login.firstName);
-        lastNameTF.setText(login.lastName);
+        usernameTF.setText(Login.userName);
+        firstNameTF.setText(Login.firstName);
+        lastNameTF.setText(Login.lastName);
         
 //        System.out.print("window opened");
-        if (!login.admin){
+        if (!Login.admin){
             EditItemsMenu.setVisible(false);
             EditTransactionMenu.setVisible(false);
+            UsersMainMenu.setVisible(false);
         }else{
             EditItemsMenu.setVisible(true);
             EditTransactionMenu.setVisible(true);
+            UsersMainMenu.setVisible(true);
 
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void editUserMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUserMenuActionPerformed
+
+        EditUserClass.setVisible(true);
+        EditUserClass.setDefaultCloseOperation(EditUserClass.DISPOSE_ON_CLOSE);
+        EditUserClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        EditUserClass.openWindowAction();       
+    }//GEN-LAST:event_editUserMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -528,8 +557,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem NewProductMenu;
     private javax.swing.JMenuItem NewUnitMenu;
     private javax.swing.JMenuItem ReceiveWithdrawMenu;
+    private javax.swing.JMenu UsersMainMenu;
     private javax.swing.JMenuItem ViewProductsMenu;
     private javax.swing.JMenuItem ViewTransactionMenu;
+    private javax.swing.JMenuItem editUserMenu;
     private javax.swing.JLabel firstNameTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

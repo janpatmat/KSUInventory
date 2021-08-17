@@ -442,14 +442,14 @@ public class ViewTransactions extends javax.swing.JFrame {
         userBtn.setVisible(false);
         UserSortTF.setVisible(false);
             
-        if (login.admin){
+        if (Login.admin){
             transactionTableModel.addColumn("User");
             userLabel.setVisible(true);
             userBtn.setVisible(true);
             UserSortTF.setVisible(true);
         }
         
-        if (!currentUser.equals(login.fullName)){
+        if (!currentUser.equals(Login.fullName)){
             deliveryCB.setSelected(true);
             withdrawCB.setSelected(true);
             fromDateChooser.setDate(null);
@@ -462,7 +462,7 @@ public class ViewTransactions extends javax.swing.JFrame {
             UOMSortTF.setText("All");
             BSSortTF.setText("All");
             editDateCB.setSelected(false);
-            currentUser = login.fullName;
+            currentUser = Login.fullName;
         }
         
         updateTransReportTable();
@@ -579,7 +579,7 @@ public class ViewTransactions extends javax.swing.JFrame {
             notChange = false;
         }
         
-        if (login.admin){
+        if (Login.admin){
             if (UserSortTF.getText().equals("All")){
                 //do Nothing
             }
@@ -604,8 +604,8 @@ public class ViewTransactions extends javax.swing.JFrame {
             notChange = false;
         }
         
-        if (!login.admin){
-            finalArr.add(" (Transby = '" + login.fullName + "') ");
+        if (!Login.admin){
+            finalArr.add(" (Transby = '" + Login.fullName + "') ");
         }
         
         if (notChange){
@@ -729,7 +729,7 @@ public class ViewTransactions extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        login.MenuClass.setVisible(true);
+        Login.MenuClass.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -763,9 +763,9 @@ public class ViewTransactions extends javax.swing.JFrame {
         try{
             String finalStatement = "SELECT * FROM expenses.producttrans";
             
-            if (!login.admin){
+            if (!Login.admin){
                 System.out.println("User is admin");
-                finalStatement += " WHERE Transby = '" + login.fullName + "'";
+                finalStatement += " WHERE Transby = '" + Login.fullName + "'";
             }
             ResultSet rs = KsuFinal.con.createStatement().executeQuery(finalStatement);
             while(rs.next()){

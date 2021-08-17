@@ -169,7 +169,7 @@ public class sortBS extends javax.swing.JFrame {
                 ViewTransactions.BSSortTF.setText("All");
             }
             else if (location.equals("report")){
-                report.BSSortTF.setText("All");
+                Report.BSSortTF.setText("All");
             }
         }
         else{
@@ -195,7 +195,7 @@ public class sortBS extends javax.swing.JFrame {
                 ViewTransactions.BSSortTF.setText(jointArray);
             }
             else if (location.equals("report")){
-                report.BSSortTF.setText(jointArray);
+                Report.BSSortTF.setText(jointArray);
             }
             
             ArrayList<String> strArr = new ArrayList<String>();
@@ -209,7 +209,7 @@ public class sortBS extends javax.swing.JFrame {
 //        System.out.println(BSSortStatement);
 
         if (location.equals("report")){
-            report.sortFunction();
+            Report.sortFunction();
         }
         else if (location.equals("TransReport")){
             ViewTransactions.filterFunction();
@@ -247,7 +247,7 @@ public class sortBS extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
     
     public void openWindowAction(){
-        if (!currentUser.equals(login.fullName)){
+        if (!currentUser.equals(Login.fullName)){
             
             DefaultTableModel sortSupplierTableModel = (DefaultTableModel)sortSupplierTable.getModel();
             DefaultTableModel sortBranchTableModel = (DefaultTableModel)sortBranchTable.getModel();
@@ -284,7 +284,7 @@ public class sortBS extends javax.swing.JFrame {
             catch(Exception e){
                 System.out.println(e);
             }
-            currentUser = login.fullName;
+            currentUser = Login.fullName;
         }
     }
     private void selectAllBranchCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllBranchCBoxActionPerformed

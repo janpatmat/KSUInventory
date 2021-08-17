@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class AddTransaction extends javax.swing.JFrame {
 
     
-    login t = new login();
+    Login t = new Login();
     ResultSet rs;
     PreparedStatement st = null;
     ArrayList<String[]> transactionArr = new ArrayList<String[]>();
@@ -445,7 +445,7 @@ public class AddTransaction extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowActivated
     public void closeWindowAction(){
-        login.MenuClass.setVisible(true);
+        Login.MenuClass.setVisible(true);
         this.setVisible(false);
         quantityShow.setText("");
         supCmb.removeAllItems();

@@ -149,7 +149,7 @@ public class sortCategory extends javax.swing.JFrame {
                 ViewTransactions.CategorySortTF.setText("All");
             }
             else if (location.equals("report")){
-                report.CategorySortTF.setText("All");
+                Report.CategorySortTF.setText("All");
             }
             
         }
@@ -166,7 +166,7 @@ public class sortCategory extends javax.swing.JFrame {
                 ViewTransactions.CategorySortTF.setText(jointArray);
             }
             else if (location.equals("report")){
-                report.CategorySortTF.setText(jointArray);
+                Report.CategorySortTF.setText(jointArray);
             }
 
             ArrayList<String> strArr = new ArrayList<String>();
@@ -182,7 +182,7 @@ public class sortCategory extends javax.swing.JFrame {
         this.setVisible(false);
         
         if (location.equals("report")){
-            report.sortFunction();
+            Report.sortFunction();
         }
         else if (location.equals("TransReport")){
             ViewTransactions.filterFunction();
@@ -196,7 +196,7 @@ public class sortCategory extends javax.swing.JFrame {
 
     public void openWindowAction(){
         
-        if (!currentUser.equals(login.fullName)){
+        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortCategoryTableModel = (DefaultTableModel)sortCategoryTable.getModel();
             sortCategoryTableModel.setRowCount(0);
             selectAllCBox.setSelected(true);
@@ -218,7 +218,7 @@ public class sortCategory extends javax.swing.JFrame {
             catch(Exception e){
                 System.out.println(e);
             }
-            currentUser = login.fullName;
+            currentUser = Login.fullName;
         }
     }
     /**

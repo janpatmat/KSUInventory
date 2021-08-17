@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Ricky
  */
-public class prodDis extends javax.swing.JFrame {
+public class ViewProducts extends javax.swing.JFrame {
    //adProd aprd = new adProd();
     PreparedStatement st = null;
     PreparedStatement del = null;
@@ -21,7 +21,7 @@ public class prodDis extends javax.swing.JFrame {
     /**
      * Creates new form adProd
      */
-    public prodDis() {
+    public ViewProducts() {
         initComponents();
     }
 
@@ -39,7 +39,7 @@ public class prodDis extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         proddbTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jMenu2.setText("File");
@@ -50,6 +50,9 @@ public class prodDis extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -63,7 +66,7 @@ public class prodDis extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ProductID", "Name", "Qunatity", "UoM", "Minimum quantity", "Standard Price", "Sub"
+                "Product ID", "Name", "Quantity", "Unit of Measure", "Minimum Quantity", "Standard Price", "Category"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -81,69 +84,54 @@ public class prodDis extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(proddbTable);
 
-        jButton1.setText("Refresh");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("VIEW PRODUCTS MENU");
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(423, 423, 423)
+                .addComponent(jLabel6)
+                .addContainerGap(431, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void refresh(){
-    try{
-        Statement prodstate = KsuFinal.con.createStatement();
-        ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
-        DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
-        t.setRowCount(0);
-        while(prodres.next()){
-            
-            String id = prodres.getString("productID");
-            String name = prodres.getString("productName");
-            String quan = String.valueOf(prodres.getInt("productQuantity"));
-            String unit = prodres.getString("Unit");
-            String[] item = {name, quan, unit};
-            String[] item2 = {id, name, quan, unit};
 
-            t.addRow(item);
-            
-           
-            
-            
-         
-        }
-       }
-       catch(Exception e){
-           System.out.println(e);
-       }
-}
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void proddbTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_proddbTableMouseClicked
+
+    }//GEN-LAST:event_proddbTableMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        Login.MenuClass.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();   
         try{
             Statement prodstate = KsuFinal.con.createStatement();
-            ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
+            ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'");
 
             while(prodres.next()){
 
@@ -156,67 +144,14 @@ public void refresh(){
                 String sub = prodres.getString("Sub");
                 String[] item = {id, name, quan, unit,munit, stp, sub};
                 String[] item2 = {id, name, quan, unit};
-
-                
                 t.addRow(item);
-
-
-
-
-         
-        }
-       }
-       catch(Exception e){
-           System.out.println(e);
-       }
-
-    }//GEN-LAST:event_formWindowOpened
-    public static void editActiveTable(){
-        try{
-            Statement prodstate = KsuFinal.con.createStatement();
-            ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE Active = 'TRUE'    ");
-            DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
-            t.setRowCount(0);
-            while(prodres.next()){
-
-
-                String name = prodres.getString("productName");
-                String quan = String.valueOf(prodres.getInt("productQuantity"));
-                String unit = prodres.getString("productUnit");
-                String[] item = {name, quan, unit};
-                t.addRow(item);
-
-
-
-
-
             }
        }
        catch(Exception e){
            System.out.println(e);
-       }   
-        
-        
-        
-    }
-    private void proddbTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_proddbTableMouseClicked
+       }
+    }//GEN-LAST:event_formWindowActivated
 
-    }//GEN-LAST:event_proddbTableMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        refresh();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        login.MenuClass.setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
-    public static void printThis(){
-        for (String[]x : adProdArr){
-            System.out.println(Arrays.deepToString(x));
-        }
-    }
     /**
      * @param args the command line arguments
      */
@@ -234,27 +169,29 @@ public void refresh(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(prodDis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(prodDis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(prodDis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(prodDis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new prodDis().setVisible(true);
+                new ViewProducts().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
