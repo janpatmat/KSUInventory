@@ -323,21 +323,31 @@ public class EditTransaction extends javax.swing.JFrame {
         try{
             if (ET_TransactionTable.getSelectedRowCount() == 1){
                 
-                editedDate = new SimpleDateFormat("yyyy-MM-dd").format(ET_DateChooser.getDate());
-                
-                PreparedStatement st = KsuFinal.con.prepareStatement("UPDATE producttrans SET Name = ?, Quantity = ?, Price = ?, SuppBranch = ?, Date = ? WHERE TransactionNo = ?");
-                st.setString(1, ET_nameCB.getSelectedItem().toString());
-                st.setString(2, ET_QuantTF.getText());
-                st.setString(3, ET_PriceTF.getText());
-                st.setString(4, ET_bsCB.getSelectedItem().toString());
-                st.setString(5, editedDate);
-                st.setString(6, transactionArr.get(idx)[0]);
+                if (ET_DateChooser.getDate() != null && ET_QuantTF.getText().length() > 0 && ET_PriceTF.getText().length() > 0 && ET_nameCB.getSelectedItem().toString().length() > 0 && ET_bsCB.getSelectedItem().toString().length() > 0){
+                    editedDate = new SimpleDateFormat("yyyy-MM-dd").format(ET_DateChooser.getDate());
 
-                st.executeUpdate();
+                    PreparedStatement st = KsuFinal.con.prepareStatement("UPDATE producttrans SET Name = ?, Quantity = ?, Price = ?, SuppBranch = ?, Date = ? WHERE TransactionNo = ?");
+                    st.setString(1, ET_nameCB.getSelectedItem().toString());
+                    st.setString(2, ET_QuantTF.getText());
+                    st.setString(3, ET_PriceTF.getText());
+                    st.setString(4, ET_bsCB.getSelectedItem().toString());
+                    st.setString(5, editedDate);
+                    st.setString(6, transactionArr.get(idx)[0]);
 
-                updateTable();
-                
-                JOptionPane.showMessageDialog(null,"Successfully edited the Transaction");
+                    st.executeUpdate();
+
+                    updateTable();
+
+                    ET_QuantTF.setText("");
+                    ET_PriceTF.setText("");
+                    ET_nameCB.setSelectedItem("");
+                    ET_bsCB.setSelectedItem("");
+                    ET_DateChooser.setDate(null);
+
+                    JOptionPane.showMessageDialog(null,"Successfully edited the Transaction");
+                }else{
+                    JOptionPane.showMessageDialog(this,"There are missing inputs", "Error", JOptionPane.ERROR_MESSAGE);
+                }
                 
             }else if (ET_TransactionTable.getSelectedRowCount() == 0){
                 JOptionPane.showMessageDialog(this,"Please Select a Row", "Error", JOptionPane.ERROR_MESSAGE);
@@ -371,13 +381,16 @@ public class EditTransaction extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
     public void openWindowAction(){
         
-        if (!currentUser.equals(Login.fullName)){
+//        if (!currentUser.equals(Login.fullName)){
             ET_nameCB.removeAllItems();
             supplierArr.clear();
             branchArr.clear();
             ET_PriceTF.setText("");
             ET_DateChooser.setDate(null);
             ET_QuantTF.setText("");
+            
+            ET_nameCB.addItem("");
+            ET_bsCB.addItem("");
             try{
                 String supplier;
                 String branch;
@@ -402,13 +415,17 @@ public class EditTransaction extends javax.swing.JFrame {
 
 
                 updateTable();
+                
+                ET_nameCB.setSelectedItem("");
+                ET_bsCB.setSelectedItem("");
+
             }
             catch(Exception e){
                 System.out.println(e);
             }
             
             currentUser = Login.fullName;
-        }
+//        }
     }
     
     public void updateTable(){

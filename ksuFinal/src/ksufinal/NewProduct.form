@@ -106,12 +106,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jButton1" pref="109" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="unitCmb" alignment="0" pref="109" max="32767" attributes="0"/>
-                      <Component id="catCmb" alignment="0" max="32767" attributes="0"/>
-                      <Component id="productName" alignment="0" max="32767" attributes="0"/>
-                      <Component id="minQ" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="unitCmb" alignment="0" pref="109" max="32767" attributes="0"/>
+                  <Component id="catCmb" alignment="0" max="32767" attributes="0"/>
+                  <Component id="productName" alignment="0" max="32767" attributes="0"/>
+                  <Component id="minQ" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>

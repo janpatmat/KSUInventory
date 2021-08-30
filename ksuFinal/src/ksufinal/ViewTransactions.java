@@ -57,18 +57,13 @@ public class ViewTransactions extends javax.swing.JFrame {
         withdrawCB = new javax.swing.JCheckBox();
         deliveryCB = new javax.swing.JCheckBox();
         filterProdBtn = new javax.swing.JButton();
-        prodSortTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        CategorySortTF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         CategoryBtn = new javax.swing.JButton();
         userBtn = new javax.swing.JButton();
-        UserSortTF = new javax.swing.JTextField();
         userLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        BSSortTF = new javax.swing.JTextField();
-        UOMSortTF = new javax.swing.JTextField();
         UOMBtn = new javax.swing.JButton();
         BSBtn = new javax.swing.JButton();
         toDateChooser = new com.toedter.calendar.JDateChooser();
@@ -182,39 +177,30 @@ public class ViewTransactions extends javax.swing.JFrame {
             }
         });
 
-        filterProdBtn.setText("Edit");
+        filterProdBtn.setText("Select Filter");
         filterProdBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filterProdBtnActionPerformed(evt);
             }
         });
 
-        prodSortTF.setEditable(false);
-        prodSortTF.setText("All");
-
         jLabel1.setText("Products");
-
-        CategorySortTF.setEditable(false);
-        CategorySortTF.setText("All");
 
         jLabel6.setText("Category");
 
-        CategoryBtn.setText("Edit");
+        CategoryBtn.setText("Select Filter");
         CategoryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CategoryBtnActionPerformed(evt);
             }
         });
 
-        userBtn.setText("Edit");
+        userBtn.setText("Select Filter");
         userBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userBtnActionPerformed(evt);
             }
         });
-
-        UserSortTF.setEditable(false);
-        UserSortTF.setText("All");
 
         userLabel.setText("User");
 
@@ -222,20 +208,14 @@ public class ViewTransactions extends javax.swing.JFrame {
 
         jLabel5.setText("Branch/Supplier");
 
-        BSSortTF.setEditable(false);
-        BSSortTF.setText("All");
-
-        UOMSortTF.setEditable(false);
-        UOMSortTF.setText("All");
-
-        UOMBtn.setText("Edit");
+        UOMBtn.setText("Select Filter");
         UOMBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UOMBtnActionPerformed(evt);
             }
         });
 
-        BSBtn.setText("Edit");
+        BSBtn.setText("Select Filter");
         BSBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSBtnActionPerformed(evt);
@@ -273,57 +253,37 @@ public class ViewTransactions extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(userLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filterProdBtn)
+                            .addComponent(userBtn)
+                            .addComponent(BSBtn)
+                            .addComponent(CategoryBtn)
+                            .addComponent(UOMBtn))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(10, 10, 10)
-                                .addComponent(BSSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(BSBtn))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(userLabel)
-                                .addGap(63, 63, 63)
-                                .addComponent(UserSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(userBtn))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(10, 10, 10)
-                                .addComponent(UOMSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(UOMBtn))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(41, 41, 41)
-                                        .addComponent(CategorySortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(CategoryBtn))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(prodSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(filterProdBtn)))
-                                .addGap(31, 31, 31)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(editDateCB)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
-                                        .addComponent(jLabel3)
-                                        .addGap(8, 8, 8)
-                                        .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(21, 21, 21)
-                                        .addComponent(changePeriodBtn))))))
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel3)
+                                .addGap(8, 8, 8)
+                                .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)
+                                .addComponent(changePeriodBtn))
+                            .addComponent(editDateCB)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(deliveryCB)
                         .addGap(18, 18, 18)
                         .addComponent(withdrawCB)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,60 +295,41 @@ public class ViewTransactions extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel1))
-                            .addComponent(prodSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(filterProdBtn))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jLabel6))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(CategorySortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(CategoryBtn)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(editDateCB)
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1)
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel6)
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(changePeriodBtn)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(UOMSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(UOMBtn))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(BSSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(BSBtn))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addComponent(jLabel5)
+                        .addGap(20, 20, 20)
                         .addComponent(userLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(UserSortTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(userBtn))
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(CategoryBtn))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(filterProdBtn)
+                                    .addComponent(editDateCB))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(changePeriodBtn)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(7, 7, 7)
+                        .addComponent(UOMBtn)
+                        .addGap(9, 9, 9)
+                        .addComponent(BSBtn)
+                        .addGap(11, 11, 11)
+                        .addComponent(userBtn)))
+                .addGap(13, 13, 13))
         );
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -404,13 +345,15 @@ public class ViewTransactions extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(495, 495, 495)
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 446, Short.MAX_VALUE)
                         .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))))
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -440,13 +383,13 @@ public class ViewTransactions extends javax.swing.JFrame {
         transactionTableModel.setColumnCount(11);
         userLabel.setVisible(false);
         userBtn.setVisible(false);
-        UserSortTF.setVisible(false);
+//        UserSortTF.setVisible(false);
             
         if (Login.admin){
             transactionTableModel.addColumn("User");
             userLabel.setVisible(true);
             userBtn.setVisible(true);
-            UserSortTF.setVisible(true);
+//            UserSortTF.setVisible(true);
         }
         
         if (!currentUser.equals(Login.fullName)){
@@ -457,10 +400,10 @@ public class ViewTransactions extends javax.swing.JFrame {
             fromDateChooser.setEnabled(false);
             toDateChooser.setEnabled(false);  
             changePeriodBtn.setEnabled(false);
-            prodSortTF.setText("All");
-            CategorySortTF.setText("All");
-            UOMSortTF.setText("All");
-            BSSortTF.setText("All");
+//            prodSortTF.setText("All");
+//            CategorySortTF.setText("All");
+//            UOMSortTF.setText("All");
+//            BSSortTF.setText("All");
             editDateCB.setSelected(false);
             currentUser = Login.fullName;
         }
@@ -524,10 +467,10 @@ public class ViewTransactions extends javax.swing.JFrame {
         
         ArrayList<String> finalArr = new ArrayList<String>();
         
-        if(prodSortTF.getText().equals("All")){
-            //do Nothing
-        }
-        else if(sortproductClass.prodSortStatement.length() > 5){
+//        if(prodSortTF.getText().equals("All")){
+//            //do Nothing
+//        }
+        if(sortproductClass.prodSortStatement.length() > 5){
             finalArr.add(sortproductClass.prodSortStatement);
             
         }
@@ -538,10 +481,10 @@ public class ViewTransactions extends javax.swing.JFrame {
         }
 
         
-        if (UOMSortTF.getText().equals("All")){
-            //do Nothing
-        }
-        else if(sortUOMClass.UOMSortStatement.length() > 5){
+//        if (UOMSortTF.getText().equals("All")){
+//            //do Nothing
+//        }
+        if(sortUOMClass.UOMSortStatement.length() > 5){
             
             finalArr.add(sortUOMClass.UOMSortStatement);
         }
@@ -552,10 +495,10 @@ public class ViewTransactions extends javax.swing.JFrame {
         }
         
         
-        if (BSSortTF.getText().equals("All")){
-            //do Nothing
-        }
-        else if(sortBSClass.BSSortStatement.length() > 5){
+//        if (BSSortTF.getText().equals("All")){
+//            //do Nothing
+//        }
+        if(sortBSClass.BSSortStatement.length() > 5){
             
             finalArr.add(sortBSClass.BSSortStatement);
         }
@@ -566,10 +509,10 @@ public class ViewTransactions extends javax.swing.JFrame {
         }
         
         
-        if (CategorySortTF.getText().equals("All")){
-            //do Nothing
-        }
-        else if(sortCategoryClass.categorySortStatement.length() > 5){
+//        if (CategorySortTF.getText().equals("All")){
+//            //do Nothing
+//        }
+        if(sortCategoryClass.categorySortStatement.length() > 5){
             
             finalArr.add(sortCategoryClass.categorySortStatement);
         }
@@ -580,10 +523,10 @@ public class ViewTransactions extends javax.swing.JFrame {
         }
         
         if (Login.admin){
-            if (UserSortTF.getText().equals("All")){
-                //do Nothing
-            }
-            else if(sortUserClass.UserSortStatement.length() > 5){
+//            if (UserSortTF.getText().equals("All")){
+//                //do Nothing
+//            }
+            if(sortUserClass.UserSortStatement.length() > 5){
 
                 finalArr.add(sortUserClass.UserSortStatement);
             }
@@ -835,13 +778,9 @@ public class ViewTransactions extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BSBtn;
-    public static javax.swing.JTextField BSSortTF;
     private javax.swing.JButton CategoryBtn;
-    public static javax.swing.JTextField CategorySortTF;
     public static javax.swing.JTable TransactionTable;
     private javax.swing.JButton UOMBtn;
-    public static javax.swing.JTextField UOMSortTF;
-    public static javax.swing.JTextField UserSortTF;
     private java.awt.Button button1;
     private javax.swing.JButton changePeriodBtn;
     public static javax.swing.JCheckBox deliveryCB;
@@ -860,7 +799,6 @@ public class ViewTransactions extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTextField prodSortTF;
     private javax.swing.JLabel questionMarkIcon;
     public static com.toedter.calendar.JDateChooser toDateChooser;
     private javax.swing.JButton userBtn;

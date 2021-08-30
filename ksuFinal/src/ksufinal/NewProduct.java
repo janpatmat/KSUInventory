@@ -201,7 +201,7 @@ public String prdnm = null;
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (productName.getText().length() > 0 && minQ.getText().length() > 0){    
+        if (productName.getText().length() > 0 && minQ.getText().length() > 0 && unitCmb.getSelectedItem().toString().length() > 0 && catCmb.getSelectedItem().toString().length() > 0){    
             try{
                 boolean checker = false;
                 st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo) VALUES (?,?,?,?,?,?,?,?,?)");
@@ -234,6 +234,10 @@ public String prdnm = null;
                     st.setString(9, "0");
                     st.executeUpdate();
 
+                    productName.setText("");
+                    minQ.setText("");
+                    unitCmb.setSelectedItem("");
+                    catCmb.setSelectedItem("");
                     JOptionPane.showMessageDialog(this,"Successfully registered the product");
                 }
             }
@@ -283,6 +287,9 @@ public String prdnm = null;
         unitCmb.removeAllItems();
         catCmb.removeAllItems();
         
+        unitCmb.addItem("");
+        catCmb.addItem("");
+        
         try{
             String unit;
             String category;
@@ -297,6 +304,9 @@ public String prdnm = null;
                 category = res.getString("categoryName");
                 catCmb.addItem(category);
             }
+            
+            unitCmb.setSelectedItem("");
+            catCmb.setSelectedItem("");
         }
         catch(Exception e){
             System.out.println(e);
