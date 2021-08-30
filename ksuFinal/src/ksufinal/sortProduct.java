@@ -149,15 +149,16 @@ public class sortProduct extends javax.swing.JFrame {
     private void selectAllCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllCBoxActionPerformed
         DefaultTableModel sortProdTableModel = (DefaultTableModel)sortProdTable.getModel();
         if (selectAllCBox.isSelected()){
-            for (int x = 0; x < sortProdTableModel.getRowCount(); x ++){
-                sortProdTableModel.setValueAt(true, x, 1);
-            }
+
             sortProdTable.setRowSelectionAllowed(false);
             sortProdTable.setEnabled(false);
             sortProdTable.setForeground(Color.LIGHT_GRAY);
             sortProdTable.setBackground(new Color(236, 236, 236));
         }
         else{
+            for (int x = 0; x < sortProdTableModel.getRowCount(); x ++){
+                sortProdTableModel.setValueAt(true, x, 1);
+            }
             sortProdTable.setRowSelectionAllowed(true);
             sortProdTable.setEnabled(true);
             sortProdTable.setForeground(Color.black);

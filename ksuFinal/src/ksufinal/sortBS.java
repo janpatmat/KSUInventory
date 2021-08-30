@@ -78,7 +78,7 @@ public class sortBS extends javax.swing.JFrame {
         sortSupplierTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortSupplierTable);
 
-        saveBSSortBtn.setText("Save");
+        saveBSSortBtn.setText("Ok");
         saveBSSortBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveBSSortBtnActionPerformed(evt);
@@ -226,15 +226,16 @@ public class sortBS extends javax.swing.JFrame {
         DefaultTableModel t = (DefaultTableModel)sortSupplierTable.getModel();
         
         if (selectAllSupplierCBox.isSelected()){
-            for (int x = 0; x < l; x++){
-                t.setValueAt(true , x, 1);
-            }
+
             sortSupplierTable.setRowSelectionAllowed(false);
             sortSupplierTable.setEnabled(false);
             sortSupplierTable.setForeground(Color.LIGHT_GRAY);
             sortSupplierTable.setBackground(new Color(236, 236, 236));
         }
         else{
+            for (int x = 0; x < l; x++){
+                t.setValueAt(false , x, 1);
+            }
             sortSupplierTable.setRowSelectionAllowed(true);
             sortSupplierTable.setEnabled(true);
             sortSupplierTable.setForeground(Color.black);

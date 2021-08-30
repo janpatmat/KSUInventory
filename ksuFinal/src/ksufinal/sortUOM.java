@@ -76,7 +76,7 @@ public class sortUOM extends javax.swing.JFrame {
         sortUOMTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortUOMTable);
 
-        saveUOMSortBtn.setText("Save");
+        saveUOMSortBtn.setText("Ok");
         saveUOMSortBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveUOMSortBtnActionPerformed(evt);
@@ -178,15 +178,16 @@ public class sortUOM extends javax.swing.JFrame {
     private void selectAllCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllCBoxActionPerformed
         DefaultTableModel sortUOMTableModel = (DefaultTableModel)sortUOMTable.getModel();
         if (selectAllCBox.isSelected()){
-            for (int x = 0; x < sortUOMTableModel.getRowCount(); x ++){
-                sortUOMTableModel.setValueAt(true, x, 1);
-            }
+
             sortUOMTable.setRowSelectionAllowed(false);
             sortUOMTable.setEnabled(false);
             sortUOMTable.setForeground(Color.LIGHT_GRAY);
             sortUOMTable.setBackground(new Color(236, 236, 236));
         }
         else{
+            for (int x = 0; x < sortUOMTableModel.getRowCount(); x ++){
+                sortUOMTableModel.setValueAt(false, x, 1);
+            }
             sortUOMTable.setRowSelectionAllowed(true);
             sortUOMTable.setEnabled(true);
             sortUOMTable.setForeground(Color.black);

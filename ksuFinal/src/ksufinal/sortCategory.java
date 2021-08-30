@@ -82,7 +82,7 @@ public class sortCategory extends javax.swing.JFrame {
         sortCategoryTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortCategoryTable);
 
-        saveprodSortBtn.setText("Save");
+        saveprodSortBtn.setText("Ok");
         saveprodSortBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveprodSortBtnActionPerformed(evt);
@@ -120,9 +120,6 @@ public class sortCategory extends javax.swing.JFrame {
         DefaultTableModel sortCategoryTableModel = (DefaultTableModel)sortCategoryTable.getModel();
                 
         if (selectAllCBox.isSelected()){
-            for (int x = 0; x < sortCategoryTable.getRowCount(); x ++){
-                sortCategoryTableModel.setValueAt(true, x, 1);
-            }
             
             sortCategoryTable.setRowSelectionAllowed(false);
             sortCategoryTable.setEnabled(false);
@@ -131,6 +128,9 @@ public class sortCategory extends javax.swing.JFrame {
             
         }
         else{
+            for (int x = 0; x < sortCategoryTable.getRowCount(); x ++){
+                sortCategoryTableModel.setValueAt(false, x, 1);
+            }
             sortCategoryTable.setRowSelectionAllowed(true);
             sortCategoryTable.setEnabled(true);
             sortCategoryTable.setForeground(Color.black);

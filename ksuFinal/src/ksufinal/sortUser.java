@@ -67,7 +67,7 @@ public class sortUser extends javax.swing.JFrame {
         sortUserTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortUserTable);
 
-        saveUserSortBtn.setText("Save");
+        saveUserSortBtn.setText("Ok");
         saveUserSortBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveUserSortBtnActionPerformed(evt);
@@ -166,15 +166,16 @@ public class sortUser extends javax.swing.JFrame {
     private void selectAllCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllCBoxActionPerformed
         DefaultTableModel sortUserTableModel = (DefaultTableModel)sortUserTable.getModel();
         if (selectAllCBox.isSelected()){
-            for (int x = 0; x < sortUserTableModel.getRowCount(); x ++){
-                sortUserTableModel.setValueAt(true, x, 2);
-            }
+
             sortUserTable.setRowSelectionAllowed(false);
             sortUserTable.setEnabled(false);
             sortUserTable.setForeground(Color.LIGHT_GRAY);
             sortUserTable.setBackground(new Color(236, 236, 236));
         }
         else{
+            for (int x = 0; x < sortUserTableModel.getRowCount(); x ++){
+                sortUserTableModel.setValueAt(false, x, 2);
+            }
             sortUserTable.setRowSelectionAllowed(true);
             sortUserTable.setEnabled(true);
             sortUserTable.setForeground(Color.black);
