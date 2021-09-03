@@ -82,7 +82,7 @@ public class sortCategory extends javax.swing.JFrame {
         sortCategoryTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortCategoryTable);
 
-        saveprodSortBtn.setText("Save");
+        saveprodSortBtn.setText("Ok");
         saveprodSortBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveprodSortBtnActionPerformed(evt);
@@ -123,7 +123,6 @@ public class sortCategory extends javax.swing.JFrame {
             for (int x = 0; x < sortCategoryTable.getRowCount(); x ++){
                 sortCategoryTableModel.setValueAt(true, x, 1);
             }
-            
             sortCategoryTable.setRowSelectionAllowed(false);
             sortCategoryTable.setEnabled(false);
             sortCategoryTable.setForeground(Color.LIGHT_GRAY);
@@ -131,6 +130,9 @@ public class sortCategory extends javax.swing.JFrame {
             
         }
         else{
+            for (int x = 0; x < sortCategoryTable.getRowCount(); x ++){
+                sortCategoryTableModel.setValueAt(false, x, 1);
+            }
             sortCategoryTable.setRowSelectionAllowed(true);
             sortCategoryTable.setEnabled(true);
             sortCategoryTable.setForeground(Color.black);
@@ -144,30 +146,30 @@ public class sortCategory extends javax.swing.JFrame {
         categorySortStatement = "";
         
 
-        if (selectAllCBox.isSelected()){
-            if (location.equals("TransReport")){
-                ViewTransactions.CategorySortTF.setText("All");
-            }
-            else if (location.equals("report")){
-                Report.CategorySortTF.setText("All");
-            }
+//        if (selectAllCBox.isSelected()){
+//            if (location.equals("TransReport")){
+//                ViewTransactions.CategorySortTF.setText("All");
+//            }
+//            else if (location.equals("report")){
+//                Report.CategorySortTF.setText("All");
+//            }
             
-        }
-        else{
+//        }
+//        else{
             int l = sortCategoryTable.getRowCount();
             for (int x = 0; x < l; x++){
                 if (sortCategoryTable.getValueAt(x, 1).toString().equals("true")){
                     selectedCategories.add(sortCategoryTable.getValueAt(x, 0).toString());
                 }
             }
-            String jointArray = String.join(", ", selectedCategories);
+//            String jointArray = String.join(", ", selectedCategories);
             
-            if (location.equals("TransReport")){
-                ViewTransactions.CategorySortTF.setText(jointArray);
-            }
-            else if (location.equals("report")){
-                Report.CategorySortTF.setText(jointArray);
-            }
+//            if (location.equals("TransReport")){
+//                ViewTransactions.CategorySortTF.setText(jointArray);
+//            }
+//            else if (location.equals("report")){
+//                Report.CategorySortTF.setText(jointArray);
+//            }
 
             ArrayList<String> strArr = new ArrayList<String>();
 
@@ -177,7 +179,7 @@ public class sortCategory extends javax.swing.JFrame {
 
             categorySortStatement = " (" + String.join(" or ", strArr) + ") ";
 
-        }
+//        }
 
         this.setVisible(false);
         
@@ -196,7 +198,7 @@ public class sortCategory extends javax.swing.JFrame {
 
     public void openWindowAction(){
         
-        if (!currentUser.equals(Login.fullName)){
+//        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortCategoryTableModel = (DefaultTableModel)sortCategoryTable.getModel();
             sortCategoryTableModel.setRowCount(0);
             selectAllCBox.setSelected(true);
@@ -218,8 +220,8 @@ public class sortCategory extends javax.swing.JFrame {
             catch(Exception e){
                 System.out.println(e);
             }
-            currentUser = Login.fullName;
-        }
+//            currentUser = Login.fullName;
+//        }
     }
     /**
      * @param args the command line arguments

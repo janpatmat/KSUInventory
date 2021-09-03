@@ -117,7 +117,7 @@ public class sortProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     public void openWindowAction(){
-        if (!currentUser.equals(Login.fullName)){
+//        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortProdTableModel = (DefaultTableModel)sortProdTable.getModel();
             sortProdTableModel.setRowCount(0);
             
@@ -142,7 +142,7 @@ public class sortProduct extends javax.swing.JFrame {
             }
             
             currentUser = Login.fullName;
-        }
+//        }
         
         
     }
@@ -158,6 +158,9 @@ public class sortProduct extends javax.swing.JFrame {
             sortProdTable.setBackground(new Color(236, 236, 236));
         }
         else{
+            for (int x = 0; x < sortProdTableModel.getRowCount(); x ++){
+                sortProdTableModel.setValueAt(false, x, 1);
+            }
             sortProdTable.setRowSelectionAllowed(true);
             sortProdTable.setEnabled(true);
             sortProdTable.setForeground(Color.black);
@@ -170,29 +173,29 @@ public class sortProduct extends javax.swing.JFrame {
         selectedProducts.clear();
         prodSortStatement = "";
         
-        if (selectAllCBox.isSelected()){
-            if (location.equals("TransReport")){
-                ViewTransactions.prodSortTF.setText("All");
-            }
-            else if (location.equals("report")){
-                Report.prodSortTF.setText("All");
-            }
-        }
-        else{
+//        if (selectAllCBox.isSelected()){
+//            if (location.equals("TransReport")){
+//                ViewTransactions.prodSortTF.setText("All");
+//            }
+//            else if (location.equals("report")){
+//                Report.prodSortTF.setText("All");
+//            }
+//        }
+//        else{
             int l = sortProdTable.getRowCount();
             for (int x = 0; x < l; x++){
                 if (sortProdTable.getValueAt(x, 1).toString().equals("true")){
                     selectedProducts.add(sortProdTable.getValueAt(x, 0).toString());
                 }
             }
-            String jointArray = String.join(", ", selectedProducts);
+//            String jointArray = String.join(", ", selectedProducts);
             
-            if (location.equals("TransReport")){
-                ViewTransactions.prodSortTF.setText(jointArray);
-            }
-            else if (location.equals("report")){
-                Report.prodSortTF.setText(jointArray);
-            }
+//            if (location.equals("TransReport")){
+//                ViewTransactions.prodSortTF.setText(jointArray);
+//            }
+//            else if (location.equals("report")){
+//                Report.prodSortTF.setText(jointArray);
+//            }
             
             ArrayList<String> strArr = new ArrayList<String>();
             
@@ -202,7 +205,7 @@ public class sortProduct extends javax.swing.JFrame {
             
             prodSortStatement = " (" + String.join(" or ", strArr) + ") ";
             
-        }
+//        }
         
         
         

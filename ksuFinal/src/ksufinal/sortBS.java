@@ -78,7 +78,7 @@ public class sortBS extends javax.swing.JFrame {
         sortSupplierTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortSupplierTable);
 
-        saveBSSortBtn.setText("Save");
+        saveBSSortBtn.setText("Ok");
         saveBSSortBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveBSSortBtnActionPerformed(evt);
@@ -163,16 +163,16 @@ public class sortBS extends javax.swing.JFrame {
         int l = sortSupplierTable.getRowCount();
         int l2 = sortBranchTable.getRowCount();
 
-        if (selectAllSupplierCBox.isSelected() && selectAllBranchCBox.isSelected()){
+//        if (selectAllSupplierCBox.isSelected() && selectAllBranchCBox.isSelected()){
             
-            if (location.equals("TransReport")){
-                ViewTransactions.BSSortTF.setText("All");
-            }
-            else if (location.equals("report")){
-                Report.BSSortTF.setText("All");
-            }
-        }
-        else{
+//            if (location.equals("TransReport")){
+//                ViewTransactions.BSSortTF.setText("All");
+//            }
+//            else if (location.equals("report")){
+//                Report.BSSortTF.setText("All");
+//            }
+//        }
+//        else{
 
             for (int x = 0; x < l; x++){
                 if (sortSupplierTable.getValueAt(x, 1).toString().equals("true")){
@@ -188,15 +188,15 @@ public class sortBS extends javax.swing.JFrame {
             
             selectedSupplier.addAll(selectedBranch);
             
-            String jointArray = String.join(", ", selectedSupplier);
+//            String jointArray = String.join(", ", selectedSupplier);
             
             
-            if (location.equals("TransReport")){
-                ViewTransactions.BSSortTF.setText(jointArray);
-            }
-            else if (location.equals("report")){
-                Report.BSSortTF.setText(jointArray);
-            }
+//            if (location.equals("TransReport")){
+//                ViewTransactions.BSSortTF.setText(jointArray);
+//            }
+//            else if (location.equals("report")){
+//                Report.BSSortTF.setText(jointArray);
+//            }
             
             ArrayList<String> strArr = new ArrayList<String>();
             
@@ -205,7 +205,7 @@ public class sortBS extends javax.swing.JFrame {
             }
             
             BSSortStatement = " (" + String.join(" or ", strArr) + ") "; 
-        }
+//        }
 //        System.out.println(BSSortStatement);
 
         if (location.equals("report")){
@@ -226,6 +226,7 @@ public class sortBS extends javax.swing.JFrame {
         DefaultTableModel t = (DefaultTableModel)sortSupplierTable.getModel();
         
         if (selectAllSupplierCBox.isSelected()){
+
             for (int x = 0; x < l; x++){
                 t.setValueAt(true , x, 1);
             }
@@ -235,6 +236,9 @@ public class sortBS extends javax.swing.JFrame {
             sortSupplierTable.setBackground(new Color(236, 236, 236));
         }
         else{
+            for (int x = 0; x < l; x++){
+                t.setValueAt(false , x, 1);
+            }
             sortSupplierTable.setRowSelectionAllowed(true);
             sortSupplierTable.setEnabled(true);
             sortSupplierTable.setForeground(Color.black);
@@ -243,11 +247,11 @@ public class sortBS extends javax.swing.JFrame {
     }//GEN-LAST:event_selectAllSupplierCBoxActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        
     }//GEN-LAST:event_formWindowOpened
     
     public void openWindowAction(){
-        if (!currentUser.equals(Login.fullName)){
+//        if (!currentUser.equals(Login.fullName)){
             
             DefaultTableModel sortSupplierTableModel = (DefaultTableModel)sortSupplierTable.getModel();
             DefaultTableModel sortBranchTableModel = (DefaultTableModel)sortBranchTable.getModel();
@@ -284,25 +288,28 @@ public class sortBS extends javax.swing.JFrame {
             catch(Exception e){
                 System.out.println(e);
             }
-            currentUser = Login.fullName;
-        }
+//            currentUser = Login.fullName;
+//        }
     }
     private void selectAllBranchCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllBranchCBoxActionPerformed
         int l = sortBranchTable.getRowCount();
         DefaultTableModel t = (DefaultTableModel)sortBranchTable.getModel();
         
         if (selectAllBranchCBox.isSelected()){
-        if (selectAllBranchCBox.isSelected()){
+
             for (int x = 0; x < l; x++){
                 t.setValueAt(true , x, 1);
             }
-        }
+
             sortBranchTable.setRowSelectionAllowed(false);
             sortBranchTable.setEnabled(false);
             sortBranchTable.setForeground(Color.LIGHT_GRAY);
             sortBranchTable.setBackground(new Color(236, 236, 236));
         }
         else{
+            for (int x = 0; x < l; x++){
+                t.setValueAt(false , x, 1);
+            }
             sortBranchTable.setRowSelectionAllowed(true);
             sortBranchTable.setEnabled(true);
             sortBranchTable.setForeground(Color.black);

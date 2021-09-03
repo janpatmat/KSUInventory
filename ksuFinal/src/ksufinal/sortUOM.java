@@ -76,7 +76,7 @@ public class sortUOM extends javax.swing.JFrame {
         sortUOMTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortUOMTable);
 
-        saveUOMSortBtn.setText("Save");
+        saveUOMSortBtn.setText("Ok");
         saveUOMSortBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveUOMSortBtnActionPerformed(evt);
@@ -124,30 +124,29 @@ public class sortUOM extends javax.swing.JFrame {
         selectedUOM.clear();
         UOMSortStatement = "";
 
-        if (selectAllCBox.isSelected()){
-            if (location.equals("TransReport")){
-                ViewTransactions.UOMSortTF.setText("All");
-            }
-            else if (location.equals("report")){
-                Report.UOMSortTF.setText("All");
-            }
-            System.out.println("past here");
-        }
-        else{
+//        if (selectAllCBox.isSelected()){
+//            if (location.equals("TransReport")){
+//                ViewTransactions.UOMSortTF.setText("All");
+//            }
+//            else if (location.equals("report")){
+//                Report.UOMSortTF.setText("All");
+//            }
+//        }
+//        else{
             int l = sortUOMTable.getRowCount();
             for (int x = 0; x < l; x++){
                 if(sortUOMTable.getValueAt(x, 1).toString().equals("true")){
                     selectedUOM.add(sortUOMTable.getValueAt(x, 0).toString());
                 }
             }
-            String jointArray = String.join(", ", selectedUOM);
-            
-            if (location.equals("TransReport")){
-                ViewTransactions.UOMSortTF.setText(jointArray);
-            }
-            else if (location.equals("report")){
-                Report.UOMSortTF.setText(jointArray);
-            }
+//            String jointArray = String.join(", ", selectedUOM);
+//            
+//            if (location.equals("TransReport")){
+//                ViewTransactions.UOMSortTF.setText(jointArray);
+//            }
+//            else if (location.equals("report")){
+//                Report.UOMSortTF.setText(jointArray);
+//            }
             
             ArrayList<String> strArr = new ArrayList<String>();
             
@@ -157,7 +156,7 @@ public class sortUOM extends javax.swing.JFrame {
             
             UOMSortStatement = " (" + String.join(" or ", strArr) + ") ";
             
-        }
+//        }
 
         this.setVisible(false);
         
@@ -187,6 +186,9 @@ public class sortUOM extends javax.swing.JFrame {
             sortUOMTable.setBackground(new Color(236, 236, 236));
         }
         else{
+            for (int x = 0; x < sortUOMTableModel.getRowCount(); x ++){
+                sortUOMTableModel.setValueAt(false, x, 1);
+            }
             sortUOMTable.setRowSelectionAllowed(true);
             sortUOMTable.setEnabled(true);
             sortUOMTable.setForeground(Color.black);
@@ -200,7 +202,7 @@ public class sortUOM extends javax.swing.JFrame {
 
     public void openWindowAction(){
         
-        if (!currentUser.equals(Login.fullName)){
+//        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortUOMTableModel = (DefaultTableModel)sortUOMTable.getModel();
             sortUOMTableModel.setRowCount(0);
             selectAllCBox.setSelected(true);
@@ -226,7 +228,7 @@ public class sortUOM extends javax.swing.JFrame {
             }
             
             currentUser = Login.fullName;
-        }
+//        }
     }
     /**
      * @param args the command line arguments

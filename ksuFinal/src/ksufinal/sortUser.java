@@ -67,7 +67,7 @@ public class sortUser extends javax.swing.JFrame {
         sortUserTable.setRowHeight(25);
         jScrollPane1.setViewportView(sortUserTable);
 
-        saveUserSortBtn.setText("Save");
+        saveUserSortBtn.setText("Ok");
         saveUserSortBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveUserSortBtnActionPerformed(evt);
@@ -113,30 +113,30 @@ public class sortUser extends javax.swing.JFrame {
         selectedUser.clear();
         UserSortStatement = "";
 
-        if (selectAllCBox.isSelected()){
-            if (location.equals("TransReport")){
-                ViewTransactions.UserSortTF.setText("All");
-            }
-            else if (location.equals("report")){
-                Report.UserSortTF.setText("All");
-            }
-            System.out.println("past here");
-        }
-        else{
+//        if (selectAllCBox.isSelected()){
+//            if (location.equals("TransReport")){
+//                ViewTransactions.UserSortTF.setText("All");
+//            }
+//            else if (location.equals("report")){
+//                Report.UserSortTF.setText("All");
+//            }
+
+//        }
+//        else{
             int l = sortUserTable.getRowCount();
             for (int x = 0; x < l; x++){
                 if(sortUserTable.getValueAt(x, 2).toString().equals("true")){
                     selectedUser.add(sortUserTable.getValueAt(x, 1).toString());
                 }
             }
-            String jointArray = String.join(", ", selectedUser);
-
-            if (location.equals("TransReport")){
-                ViewTransactions.UserSortTF.setText(jointArray);
-            }
-            else if (location.equals("report")){
-                Report.UserSortTF.setText(jointArray);
-            }
+//            String jointArray = String.join(", ", selectedUser);
+//
+//            if (location.equals("TransReport")){
+//                ViewTransactions.UserSortTF.setText(jointArray);
+//            }
+//            else if (location.equals("report")){
+//                Report.UserSortTF.setText(jointArray);
+//            }
 
             ArrayList<String> strArr = new ArrayList<String>();
 
@@ -146,7 +146,7 @@ public class sortUser extends javax.swing.JFrame {
 
             UserSortStatement = " (" + String.join(" or ", strArr) + ") ";
             
-        }
+//        }
 
         this.setVisible(false);
 
@@ -175,6 +175,9 @@ public class sortUser extends javax.swing.JFrame {
             sortUserTable.setBackground(new Color(236, 236, 236));
         }
         else{
+            for (int x = 0; x < sortUserTableModel.getRowCount(); x ++){
+                sortUserTableModel.setValueAt(false, x, 2);
+            }
             sortUserTable.setRowSelectionAllowed(true);
             sortUserTable.setEnabled(true);
             sortUserTable.setForeground(Color.black);
@@ -184,7 +187,7 @@ public class sortUser extends javax.swing.JFrame {
 
     public void openWindowAction(){
         
-        if (!currentUser.equals(Login.fullName)){
+//        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortUserTableModel = (DefaultTableModel)sortUserTable.getModel();
             sortUserTableModel.setRowCount(0);
             selectAllCBox.setSelected(true);
@@ -213,7 +216,7 @@ public class sortUser extends javax.swing.JFrame {
             }
             
             currentUser = Login.fullName;
-        }
+//        }
     }
     
     

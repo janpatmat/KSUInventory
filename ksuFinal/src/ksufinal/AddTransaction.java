@@ -301,18 +301,24 @@ public class AddTransaction extends javax.swing.JFrame {
         quantityShow.setText("");
         transactionPriceTF.setEditable(true);
         suppBranchLabel.setText("Supplier");
-        //transSuppBranchTF.setText("");
-        transactionQtyTF.setText("");
-        transactionPriceTF.setText("");
         transactionBtn.setText("Deposit");
         currRadioBtn = "deposit";
         
-       supCmb.removeAllItems();   
+        
+       supCmb.removeAllItems();
+       supCmb.addItem("");
        for (String x: supplierArr){
            supCmb.addItem(x);
        }
+       
+        transactionQtyTF.setText("");
+        transactionPriceTF.setText("");
+        categoryTF.setText("");
+        unitShow.setText("");
+        productComboBox.setSelectedItem("");
+        supCmb.setSelectedItem("");
         int idx = productComboBox.getSelectedIndex();
-        categoryTF.setText(transactionArr.get(idx)[6]);
+//        categoryTF.setText(transactionArr.get(idx)[6]);
         
         
         
@@ -330,25 +336,32 @@ public class AddTransaction extends javax.swing.JFrame {
         transactionQtyTF.setText("");
         transactionPriceTF.setText(transactionArr.get(idx)[5]);
         transactionBtn.setText("Withdraw");
-       
+        categoryTF.setText("");
+        unitShow.setText("");
         currRadioBtn = "withdraw";
        
        //Get standard price from the product table and setText to priceTF
        transactionPriceTF.setEditable(false);
        
-       supCmb.removeAllItems();   
+
+
+       
+       supCmb.removeAllItems();
+       supCmb.addItem("");
        for (String x: branchArr){
            supCmb.addItem(x);
        }
+        productComboBox.setSelectedItem("");
+        supCmb.setSelectedItem("");
 
-        categoryTF.setText(transactionArr.get(idx)[6]);
+//        categoryTF.setText(transactionArr.get(idx)[6]);
 
         
 
     }//GEN-LAST:event_withdrawRadioBtnActionPerformed
 
     private void transactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionBtnActionPerformed
-        if (transactionPriceTF.getText().length() == 0 ||transactionQtyTF.getText().length() == 0){
+        if (transactionPriceTF.getText().length() == 0 ||transactionQtyTF.getText().length() == 0 || productComboBox.getSelectedItem().toString().length() == 0 || supCmb.getSelectedItem().toString().length() == 0){
             JOptionPane.showMessageDialog(this,"Missing fields", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else{
@@ -372,7 +385,7 @@ public class AddTransaction extends javax.swing.JFrame {
                     if (intNewQuan >= 0){
                         if (intNewQuan < intMin){
                             // display Warning if below minimum
-                            yesNO = JOptionPane.showConfirmDialog (null, "You product is now below the minimum, Would you still like to proceed?","Warning",JOptionPane.YES_NO_OPTION);
+                            yesNO = JOptionPane.showConfirmDialog (null, "Your product is now below the minimum, Would you still like to proceed?","Warning",JOptionPane.YES_NO_OPTION);
 
                         }
                     }else{
@@ -407,6 +420,12 @@ public class AddTransaction extends javax.swing.JFrame {
 
                     st.executeUpdate();            
                     ViewTransactions.updateTransReportTable();
+                    transactionQtyTF.setText("");
+                    transactionPriceTF.setText("");
+                    categoryTF.setText("");
+                    unitShow.setText("");
+                    productComboBox.setSelectedItem("");
+                    supCmb.setSelectedItem("");
                     if (currRadioBtn.equals("deposit")){
                         JOptionPane.showMessageDialog(this,"Successfully deposited the product");
                     }else{
@@ -473,7 +492,7 @@ public class AddTransaction extends javax.swing.JFrame {
             ResultSet rsSupplier = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable");
             ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
            
-
+            productComboBox.addItem("");
             while(rs.next()){
                 String id = rs.getString("productID");
                 String nm = rs.getString("productName");
@@ -489,7 +508,8 @@ public class AddTransaction extends javax.swing.JFrame {
                 
                 transactionArr.add(item);
                 
-            }  
+            }
+            supCmb.addItem("");
             while(rsSupplier.next()){
                 supplier = rsSupplier.getString("supplierName");
                 supCmb.addItem(supplier);
@@ -500,7 +520,12 @@ public class AddTransaction extends javax.swing.JFrame {
                 branchArr.add(branch);
           }
             
-            ;
+            transactionQtyTF.setText("");
+            transactionPriceTF.setText("");
+            categoryTF.setText("");
+            unitShow.setText("");
+            productComboBox.setSelectedItem("");
+            supCmb.setSelectedItem("");
         }
         catch(Exception e){
             System.out.println(e);

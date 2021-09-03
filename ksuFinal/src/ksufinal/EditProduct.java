@@ -369,19 +369,28 @@ public class EditProduct extends javax.swing.JFrame {
                 
                 ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * from producttable WHERE productName = '" + nm + "'");
                 
-                if(rs.next() && (!productNameTF.getText().equals(proddbTable.getValueAt(i, 1)))){ 
-                    JOptionPane.showMessageDialog(this,"Product Name already exists", "Error", JOptionPane.ERROR_MESSAGE);
-                   
+                if (productNameTF.getText().length() > 0 && minimumTF.getText().length() > 0 && uomCB.getSelectedItem().toString().length() > 0 && categoryCB.getSelectedItem().toString().length() > 0){
+                    if(rs.next() && (!productNameTF.getText().equals(proddbTable.getValueAt(i, 1)))){ 
+                        JOptionPane.showMessageDialog(this,"Product Name already exists", "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }else{
+                        String query = "UPDATE producttable SET productName = ?, Unit = ?, prodMinq = ?, Sub = ? WHERE (productID = " + id + ")";
+                        st = KsuFinal.con.prepareStatement(query);
+                        st.setString(1, nm);
+                        st.setString(2, uomCB.getSelectedItem().toString());
+                        st.setString(3, minimumTF.getText());
+                        st.setString(4, categoryCB.getSelectedItem().toString());
+                        st.executeUpdate();
+                        editActiveTable();
+
+                        productNameTF.setText("");
+                        minimumTF.setText("");
+                        uomCB.setSelectedItem("");
+                        categoryCB.setSelectedItem("");
+                        JOptionPane.showMessageDialog(this,"Successfully edited the Product");
+                    }
                 }else{
-                    String query = "UPDATE producttable SET productName = ?, Unit = ?, prodMinq = ?, Sub = ? WHERE (productID = " + id + ")";
-                    st = KsuFinal.con.prepareStatement(query);
-                    st.setString(1, nm);
-                    st.setString(2, uomCB.getSelectedItem().toString());
-                    st.setString(3, minimumTF.getText());
-                    st.setString(4, categoryCB.getSelectedItem().toString());
-                    st.executeUpdate();
-                    editActiveTable();
-                    JOptionPane.showMessageDialog(this,"Successfully edited the Product");
+                    JOptionPane.showMessageDialog(this,"There are missing inputs", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 
             }catch(Exception e){
@@ -594,6 +603,8 @@ public class EditProduct extends javax.swing.JFrame {
         adProdArr.clear();
         uomCB.removeAllItems();
         categoryCB.removeAllItems();
+        uomCB.addItem("");
+        categoryCB.addItem("");
         
         try{
 //            Statement state = KsuFinal.con.createStatement();
@@ -629,7 +640,8 @@ public class EditProduct extends javax.swing.JFrame {
             }
             
             
-            
+            uomCB.setSelectedItem("");
+            categoryCB.setSelectedItem("");
             
         }
         catch(Exception e){
