@@ -247,7 +247,7 @@ public class EditUser extends javax.swing.JFrame {
         try{
             if (userTable.getSelectedRowCount() > 0){
 
-                for (int index: userTable.getSelectedRows()){
+                    for (int index: userTable.getSelectedRows()){
                     String id = userTable.getValueAt(index, 0).toString();
                     if (userTable.getValueAt(index, 4).toString().equals("FALSE")){
                         

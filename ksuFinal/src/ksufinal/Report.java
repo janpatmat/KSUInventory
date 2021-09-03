@@ -113,7 +113,6 @@ public class Report extends javax.swing.JFrame {
         filterUserBtn = new javax.swing.JButton();
         questionMarkIcon = new javax.swing.JLabel();
 
-        instructionDialogue.setBackground(new java.awt.Color(240, 240, 240));
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
         instructionDialogue.setResizable(false);
         instructionDialogue.setType(java.awt.Window.Type.POPUP);
