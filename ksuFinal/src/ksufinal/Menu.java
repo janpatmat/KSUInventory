@@ -47,38 +47,49 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        usernameTF = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jButton16 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jButton17 = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         firstNameTF = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         lastNameTF = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        NewProductMenu = new javax.swing.JMenuItem();
-        NewUnitMenu = new javax.swing.JMenuItem();
-        newSupplierMenu = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        EditItemsMenu = new javax.swing.JMenu();
-        EditProductMenu = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        ReceiveWithdrawMenu = new javax.swing.JMenuItem();
-        EditTransactionMenu = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        ViewTransactionMenu = new javax.swing.JMenuItem();
-        ViewProductsMenu = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        CreateReportMenu = new javax.swing.JMenuItem();
-        UsersMainMenu = new javax.swing.JMenu();
-        editUserMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -95,14 +106,22 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
-        jLabel1.setText("KSU INVENTORY SYSTEM");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel2.setText("Username:");
+        jPanel2.setBackground(new java.awt.Color(45, 52, 54));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        usernameTF.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        usernameTF.setText("Text Here");
+        jLabel3.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel3.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("KSU INVENTORY SYSTEM");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 90));
+
+        jPanel3.setBackground(new java.awt.Color(99, 110, 114));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Log out");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -110,352 +129,355 @@ public class Menu extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel6.setText("First Name:");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+        });
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel7.setText("Last Name:");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gTrans.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+        });
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
-        firstNameTF.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        firstNameTF.setText("Text Here");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gUsers.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+        });
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
 
-        lastNameTF.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        lastNameTF.setText("Text Here");
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gView.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
-        jMenu1.setText("New Items");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gReport.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gNewitems.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
+            }
+        });
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 170, 480));
+
+        jTabbedPane1.setBackground(new java.awt.Color(99, 110, 114));
+        jTabbedPane1.setForeground(new java.awt.Color(99, 110, 114));
+
+        jPanel4.setBackground(new java.awt.Color(178, 190, 195));
+
+        jButton2.setText("New Product");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        NewProductMenu.setText("New product");
-        NewProductMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewProductMenuActionPerformed(evt);
-            }
-        });
-        jMenu1.add(NewProductMenu);
+        jButton3.setText("New Unit");
 
-        NewUnitMenu.setText("New unit");
-        NewUnitMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewUnitMenuActionPerformed(evt);
-            }
-        });
-        jMenu1.add(NewUnitMenu);
+        jButton4.setText("New Supplier");
 
-        newSupplierMenu.setText("New Supplier");
-        newSupplierMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newSupplierMenuActionPerformed(evt);
-            }
-        });
-        jMenu1.add(newSupplierMenu);
+        jButton5.setText("New Branch");
 
-        jMenuItem1.setText("New Branch");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
+        jButton6.setText("New Category");
 
-        jMenuItem5.setText("New Category");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem5);
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6)
+                    .addComponent(jButton5)
+                    .addComponent(jButton4)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2))
+                .addContainerGap(444, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addGap(33, 33, 33)
+                .addComponent(jButton5)
+                .addGap(37, 37, 37)
+                .addComponent(jButton6)
+                .addContainerGap(180, Short.MAX_VALUE))
+        );
 
-        jMenuBar1.add(jMenu1);
+        jTabbedPane1.addTab("tab1", jPanel4);
 
-        EditItemsMenu.setText("Edit Items");
+        jPanel5.setBackground(new java.awt.Color(178, 190, 195));
 
-        EditProductMenu.setText("Edit Product");
-        EditProductMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditProductMenuActionPerformed(evt);
-            }
-        });
-        EditItemsMenu.add(EditProductMenu);
+        jButton7.setText("Edit Product");
 
-        jMenuItem2.setText("Edit Unit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        EditItemsMenu.add(jMenuItem2);
+        jButton8.setText("Edit Unit");
 
-        jMenuItem3.setText("Edit Supplier");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        EditItemsMenu.add(jMenuItem3);
+        jButton9.setText("Edit Inventory Info");
 
-        jMenuItem4.setText("Edit Branch");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        EditItemsMenu.add(jMenuItem4);
+        jButton10.setText("Edit Supplier");
 
-        jMenuBar1.add(EditItemsMenu);
+        jButton11.setText("Edit Branch");
 
-        jMenu2.setText("Transaction");
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton11)
+                    .addComponent(jButton10)
+                    .addComponent(jButton9)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8))
+                .addContainerGap(425, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jButton7)
+                .addGap(29, 29, 29)
+                .addComponent(jButton8)
+                .addGap(18, 18, 18)
+                .addComponent(jButton10)
+                .addGap(18, 18, 18)
+                .addComponent(jButton11)
+                .addGap(29, 29, 29)
+                .addComponent(jButton9)
+                .addContainerGap(196, Short.MAX_VALUE))
+        );
 
-        ReceiveWithdrawMenu.setText("Recieve/Withdraw items");
-        ReceiveWithdrawMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReceiveWithdrawMenuActionPerformed(evt);
-            }
-        });
-        jMenu2.add(ReceiveWithdrawMenu);
+        jTabbedPane1.addTab("tab2", jPanel5);
 
-        EditTransactionMenu.setText("Edit Transaction");
-        EditTransactionMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditTransactionMenuActionPerformed(evt);
-            }
-        });
-        jMenu2.add(EditTransactionMenu);
+        jPanel6.setBackground(new java.awt.Color(178, 190, 195));
 
-        jMenuBar1.add(jMenu2);
+        jButton12.setText("Recieve/Withdraw items");
 
-        jMenu3.setText("View");
+        jButton13.setText("Edit Transaction");
 
-        ViewTransactionMenu.setText("View Transactions");
-        ViewTransactionMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewTransactionMenuActionPerformed(evt);
-            }
-        });
-        jMenu3.add(ViewTransactionMenu);
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(jButton12)
+                .addGap(98, 98, 98)
+                .addComponent(jButton13)
+                .addContainerGap(163, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton12)
+                    .addComponent(jButton13))
+                .addContainerGap(271, Short.MAX_VALUE))
+        );
 
-        ViewProductsMenu.setText("View Products");
-        ViewProductsMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewProductsMenuActionPerformed(evt);
-            }
-        });
-        jMenu3.add(ViewProductsMenu);
+        jTabbedPane1.addTab("tab3", jPanel6);
 
-        jMenuBar1.add(jMenu3);
+        jPanel7.setBackground(new java.awt.Color(178, 190, 195));
 
-        jMenu4.setText("Report");
-        jMenu4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu4ActionPerformed(evt);
-            }
-        });
+        jButton14.setText("View Products");
 
-        CreateReportMenu.setText("Create Report");
-        CreateReportMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CreateReportMenuActionPerformed(evt);
-            }
-        });
-        jMenu4.add(CreateReportMenu);
+        jButton15.setText("View Transaction");
 
-        jMenuBar1.add(jMenu4);
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jButton14)
+                .addContainerGap(438, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(67, 67, 67)
+                    .addComponent(jButton15)
+                    .addContainerGap(425, Short.MAX_VALUE)))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(jButton14)
+                .addContainerGap(294, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(74, 74, 74)
+                    .addComponent(jButton15)
+                    .addContainerGap(345, Short.MAX_VALUE)))
+        );
 
-        UsersMainMenu.setText("Users");
+        jTabbedPane1.addTab("tab4", jPanel7);
 
-        editUserMenu.setText("Edit Users");
-        editUserMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editUserMenuActionPerformed(evt);
-            }
-        });
-        UsersMainMenu.add(editUserMenu);
+        jPanel8.setBackground(new java.awt.Color(178, 190, 195));
 
-        jMenuBar1.add(UsersMainMenu);
+        jButton16.setText("Create Report");
 
-        setJMenuBar(jMenuBar1);
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(217, 217, 217)
+                .addComponent(jButton16)
+                .addContainerGap(287, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(jButton16)
+                .addContainerGap(242, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("tab5", jPanel8);
+
+        jPanel9.setBackground(new java.awt.Color(178, 190, 195));
+
+        jButton17.setText("Edit User");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(196, 196, 196)
+                .addComponent(jButton17)
+                .addContainerGap(334, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(jButton17)
+                .addContainerGap(261, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("tab6", jPanel9);
+
+        jPanel10.setBackground(new java.awt.Color(178, 190, 195));
+
+        jLabel2.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel2.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        jLabel2.setText("Last Name:");
+
+        jLabel9.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel9.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Welcome to the KSU Inventory System");
+
+        firstNameTF.setBackground(new java.awt.Color(153, 153, 153));
+        firstNameTF.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        firstNameTF.setText("Hello");
+
+        jLabel11.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel11.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        jLabel11.setText("First Name:");
+
+        lastNameTF.setBackground(new java.awt.Color(153, 153, 153));
+        lastNameTF.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        lastNameTF.setText("Hello");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel2))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lastNameTF)
+                    .addComponent(firstNameTF))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(26, 26, 26))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel9)
+                .addGap(97, 97, 97)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(firstNameTF))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lastNameTF))
+                .addContainerGap(178, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("tab7", jPanel10);
+
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 610, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lastNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(firstNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(18, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(usernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(firstNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(lastNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NewUnitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewUnitMenuActionPerformed
-       
-        NewUnitClass.setVisible(true);
-        NewUnitClass.setDefaultCloseOperation(NewUnitClass.DISPOSE_ON_CLOSE);
-        NewUnitClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        NewUnitClass.openWindowAction();
-
-    }//GEN-LAST:event_NewUnitMenuActionPerformed
-
-    private void ViewTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewTransactionMenuActionPerformed
-        
-        ViewTransactionsClass.setVisible(true);
-        ViewTransactionsClass.setDefaultCloseOperation(ViewTransactionsClass.HIDE_ON_CLOSE);
-        ViewTransactionsClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        ViewTransactionsClass.openWindowAction();
-    }//GEN-LAST:event_ViewTransactionMenuActionPerformed
-
-    private void NewProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProductMenuActionPerformed
-        // TODO add your handling code here:
-//          AddProduct adPrdct = new AddProduct();
-        NewProductClass.setVisible(true);
-        NewProductClass.setDefaultCloseOperation(NewProductClass.DISPOSE_ON_CLOSE);
-        NewProductClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        NewProductClass.openWindowAction();
-    }//GEN-LAST:event_NewProductMenuActionPerformed
-
-    private void ReceiveWithdrawMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReceiveWithdrawMenuActionPerformed
-        // TODO add your handling code here:
-        
-        transactionClass.setVisible(true);
-        transactionClass.setDefaultCloseOperation(transactionClass.DISPOSE_ON_CLOSE);
-        transactionClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        transactionClass.openWindowAction();
-    }//GEN-LAST:event_ReceiveWithdrawMenuActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void EditProductMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductMenuActionPerformed
-
-        EditProductClass.setVisible(true);
-        EditProductClass.setDefaultCloseOperation(EditProductClass.DISPOSE_ON_CLOSE);
-        EditProductClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        EditProductClass.openWindowAction();
-    }//GEN-LAST:event_EditProductMenuActionPerformed
-
-    private void newSupplierMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSupplierMenuActionPerformed
-       
-        NewSupplierClass.setVisible(true);
-        NewSupplierClass.setDefaultCloseOperation(NewSupplierClass.DISPOSE_ON_CLOSE);
-        NewSupplierClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        NewSupplierClass.openWindowAction();
-    }//GEN-LAST:event_newSupplierMenuActionPerformed
-
-    private void ViewProductsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductsMenuActionPerformed
-        ViewProductsClass.setVisible(true);
-        ViewProductsClass.setDefaultCloseOperation(ViewProductsClass.DISPOSE_ON_CLOSE);
-        ViewProductsClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_ViewProductsMenuActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
-
-    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
-        
-    }//GEN-LAST:event_jMenu4ActionPerformed
-
-    private void CreateReportMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateReportMenuActionPerformed
-        ReportClass.setVisible(true);
-        ReportClass.setDefaultCloseOperation(ReportClass.DISPOSE_ON_CLOSE);
-        ReportClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        ReportClass.openWindowAction();
-    }//GEN-LAST:event_CreateReportMenuActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        NewBranchClass.setVisible(true);
-        NewBranchClass.setDefaultCloseOperation(NewBranchClass.DISPOSE_ON_CLOSE);
-        NewBranchClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        NewBranchClass.openWindowAction();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void EditTransactionMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditTransactionMenuActionPerformed
-        EditTransactionClass.setVisible(true);
-        EditTransactionClass.setDefaultCloseOperation(EditTransactionClass.DISPOSE_ON_CLOSE);
-        EditTransactionClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        EditTransactionClass.openWindowAction();
-
-    }//GEN-LAST:event_EditTransactionMenuActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        EditUnitClass.setVisible(true);
-        EditUnitClass.setDefaultCloseOperation(EditUnitClass.DISPOSE_ON_CLOSE);
-        EditUnitClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        EditUnitClass.openWindowAction();
-
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        EditSupplierClass.setVisible(true);
-        EditSupplierClass.setDefaultCloseOperation(EditSupplierClass.DISPOSE_ON_CLOSE);
-        EditSupplierClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        EditSupplierClass.openWindowAction();
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        EditBranchClass.setVisible(true);
-        EditBranchClass.setDefaultCloseOperation(EditBranchClass.DISPOSE_ON_CLOSE);
-        EditBranchClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        EditBranchClass.openWindowAction();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -471,45 +493,122 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-        NewCategoryClass.setVisible(true);
-        NewCategoryClass.setDefaultCloseOperation(NewCategoryClass.DISPOSE_ON_CLOSE);
-        NewCategoryClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        NewCategoryClass.openWindowAction();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
 
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        usernameTF.setText(Login.userName);
+        //usernameTF.setText(Login.userName);
         firstNameTF.setText(Login.firstName);
         lastNameTF.setText(Login.lastName);
-        
+        jTabbedPane1.setSelectedIndex(6);
 //        System.out.print("window opened");
-        if (!Login.admin){
-            EditItemsMenu.setVisible(false);
-            EditTransactionMenu.setVisible(false);
-            UsersMainMenu.setVisible(false);
-        }else{
-            EditItemsMenu.setVisible(true);
-            EditTransactionMenu.setVisible(true);
-            UsersMainMenu.setVisible(true);
-
-        }
+//        if (!Login.admin){
+//            EditItemsMenu.setVisible(false);
+//            EditTransactionMenu.setVisible(false);
+//            UsersMainMenu.setVisible(false);
+//        }else{
+//            EditItemsMenu.setVisible(true);
+//            EditTransactionMenu.setVisible(true);
+//            UsersMainMenu.setVisible(true);
+//
+//        }
     }//GEN-LAST:event_formWindowActivated
 
-    private void editUserMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUserMenuActionPerformed
-
-        EditUserClass.setVisible(true);
-        EditUserClass.setDefaultCloseOperation(EditUserClass.DISPOSE_ON_CLOSE);
-        EditUserClass.setLocationRelativeTo(null);
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         NewProductClass.setVisible(true);
+        NewProductClass.setDefaultCloseOperation(NewProductClass.DISPOSE_ON_CLOSE);
+        NewProductClass.setLocationRelativeTo(null);
         this.setVisible(false);
-        EditUserClass.openWindowAction();       
-    }//GEN-LAST:event_editUserMenuActionPerformed
+        NewProductClass.openWindowAction();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+                        jTabbedPane1.setSelectedIndex(1);
+                        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/wEdititems.png")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gTrans.png")));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gUsers.png")));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gView.png")));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gReport.png")));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gNewitems.png")));
+
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(2);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/wTrans.png")));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gUsers.png")));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gView.png")));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gReport.png")));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gNewitems.png")));
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(0);
+         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gTrans.png")));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gUsers.png")));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gView.png")));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gReport.png")));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/wNewitems.png")));
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(3);
+         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gTrans.png")));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gUsers.png")));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/wView.png")));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gReport.png")));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gNewitems.png")));
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(4);
+         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gTrans.png")));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gUsers.png")));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gView.png")));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/wReport.png")));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gNewitems.png")));
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(5);
+         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gTrans.png")));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/wUsers.png")));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gView.png")));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gReport.png")));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gNewitems.png")));
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MouseEntered
 
     /**
      * @param args the command line arguments
@@ -550,35 +649,45 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem CreateReportMenu;
-    private javax.swing.JMenu EditItemsMenu;
-    private javax.swing.JMenuItem EditProductMenu;
-    private javax.swing.JMenuItem EditTransactionMenu;
-    private javax.swing.JMenuItem NewProductMenu;
-    private javax.swing.JMenuItem NewUnitMenu;
-    private javax.swing.JMenuItem ReceiveWithdrawMenu;
-    private javax.swing.JMenu UsersMainMenu;
-    private javax.swing.JMenuItem ViewProductsMenu;
-    private javax.swing.JMenuItem ViewTransactionMenu;
-    private javax.swing.JMenuItem editUserMenu;
     private javax.swing.JLabel firstNameTF;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lastNameTF;
-    private javax.swing.JMenuItem newSupplierMenu;
-    private javax.swing.JLabel usernameTF;
     // End of variables declaration//GEN-END:variables
 }
