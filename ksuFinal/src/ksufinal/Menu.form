@@ -22,7 +22,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="NewUnitMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="New unit"/>
+                <Property name="text" type="java.lang.String" value="New Unit"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewUnitMenuActionPerformed"/>
@@ -89,6 +89,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="editInventoryMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Edit Inventory Info"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editInventoryMenuActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

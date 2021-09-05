@@ -27,6 +27,7 @@ public class Menu extends javax.swing.JFrame {
     EditBranch EditBranchClass = new EditBranch();
     EditSupplier EditSupplierClass = new EditSupplier();
     EditUser EditUserClass = new EditUser();
+    EditInventoryInfo EditInventoryInfoClass = new EditInventoryInfo();
 
 
     
@@ -67,6 +68,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        editInventoryMenu = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         ReceiveWithdrawMenu = new javax.swing.JMenuItem();
         EditTransactionMenu = new javax.swing.JMenuItem();
@@ -138,7 +140,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(NewProductMenu);
 
-        NewUnitMenu.setText("New unit");
+        NewUnitMenu.setText("New Unit");
         NewUnitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NewUnitMenuActionPerformed(evt);
@@ -205,6 +207,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         EditItemsMenu.add(jMenuItem4);
+
+        editInventoryMenu.setText("Edit Inventory Info");
+        editInventoryMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editInventoryMenuActionPerformed(evt);
+            }
+        });
+        EditItemsMenu.add(editInventoryMenu);
 
         jMenuBar1.add(EditItemsMenu);
 
@@ -511,6 +521,16 @@ public class Menu extends javax.swing.JFrame {
         EditUserClass.openWindowAction();       
     }//GEN-LAST:event_editUserMenuActionPerformed
 
+    private void editInventoryMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editInventoryMenuActionPerformed
+        // TODO add your handling code here:
+        
+        EditInventoryInfoClass.setVisible(true);
+        EditInventoryInfoClass.setDefaultCloseOperation(EditUserClass.DISPOSE_ON_CLOSE);
+        EditInventoryInfoClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        EditInventoryInfoClass.openWindowAction();
+    }//GEN-LAST:event_editInventoryMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -560,6 +580,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu UsersMainMenu;
     private javax.swing.JMenuItem ViewProductsMenu;
     private javax.swing.JMenuItem ViewTransactionMenu;
+    private javax.swing.JMenuItem editInventoryMenu;
     private javax.swing.JMenuItem editUserMenu;
     private javax.swing.JLabel firstNameTF;
     private javax.swing.JButton jButton1;

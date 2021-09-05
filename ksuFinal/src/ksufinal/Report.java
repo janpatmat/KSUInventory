@@ -48,7 +48,16 @@ public class Report extends javax.swing.JFrame {
     
     static String currentUser = "";
     
+    static boolean BSSelectedAll = true;
+    static boolean CategorySelectedAll = true;
+    static boolean ProductSelectedAll = true;
+    static boolean UOMSelectedAll = true;
+    static boolean UserSelectedAll = true;
     
+    static String title;
+    static String street;
+    static String city;
+    static String contactNum;
     
     public Report() {
         initComponents();
@@ -828,6 +837,14 @@ public class Report extends javax.swing.JFrame {
 //            UOMSortTF.setText("All");
 //            prodSortTF.setText("All");
 
+            BSSelectedAll = true;
+            CategorySelectedAll = true;
+            ProductSelectedAll = true;
+            UOMSelectedAll = true;
+            UserSelectedAll = true;
+
+
+
             toDateChooser.setDate(null);
             fromDateChooser.setDate(null);
             
@@ -839,6 +856,23 @@ public class Report extends javax.swing.JFrame {
             
             setColumnInTable();
             currentUser = Login.fullName;
+            
+            
+            
+            try{
+                
+                ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.inventoryinfo;");
+
+                rs.next();
+
+                title = rs.getString("title");
+                street = rs.getString("street");
+                city = rs.getString("city");
+                contactNum = rs.getString("contactNum");
+                
+            }catch (Exception ex){
+                
+            }
 //        }
     }
     
@@ -1030,10 +1064,13 @@ public class Report extends javax.swing.JFrame {
         
         ArrayList<String> finalArr = new ArrayList<String>();
         
+        if (ProductSelectedAll){
+            
+        }
 //        if(prodSortTF.getText().equals("All")){
 //            //do Nothing
 //        }
-        if(sortProductClass2.prodSortStatement.length() > 5){
+        else if(sortProductClass2.prodSortStatement.length() > 5){
             finalArr.add(sortProductClass2.prodSortStatement);
         }
         else{
@@ -1042,10 +1079,13 @@ public class Report extends javax.swing.JFrame {
             notChange = false;
         }
         
+        if (UOMSelectedAll){
+            
+        }
 //        if (UOMSortTF.getText().equals("All")){
 //            //do Nothing
 //        }
-        if(sortUOMClass2.UOMSortStatement.length() > 5){
+        else if(sortUOMClass2.UOMSortStatement.length() > 5){
             finalArr.add(sortUOMClass2.UOMSortStatement);
         }
         else{
@@ -1054,10 +1094,13 @@ public class Report extends javax.swing.JFrame {
             notChange = false;
         }
         
+        if (BSSelectedAll){
+            
+        }
 //        if (BSSortTF.getText().equals("All")){
 //            //do Nothing
 //        }
-        if(sortBSClass2.BSSortStatement.length() > 5){
+        else if(sortBSClass2.BSSortStatement.length() > 5){
             finalArr.add(sortBSClass2.BSSortStatement);
         }
         else{
@@ -1066,10 +1109,13 @@ public class Report extends javax.swing.JFrame {
             notChange = false;
         }
         
+        if (CategorySelectedAll){
+            
+        }
 //        if (CategorySortTF.getText().equals("All")){
 //            //do Nothing
 //        }
-        if(sortCategoryClass2.categorySortStatement.length() > 5){
+        else if(sortCategoryClass2.categorySortStatement.length() > 5){
             finalArr.add(sortCategoryClass2.categorySortStatement);
         }
         else{
@@ -1079,10 +1125,13 @@ public class Report extends javax.swing.JFrame {
         }
         
         if (Login.admin){
+            if (UserSelectedAll){
+                
+            }
 //            if (UserSortTF.getText().equals("All")){
 //                //do Nothing
 //            }
-            if(sortUserClass2.UserSortStatement.length() > 5){
+            else if(sortUserClass2.UserSortStatement.length() > 5){
 
                 finalArr.add(sortUserClass2.UserSortStatement);
             }
@@ -1105,9 +1154,9 @@ public class Report extends javax.swing.JFrame {
             notChange = false;
         }
         
-        if (!Login.admin && databaseTableName.equals("producttrans")){
-            finalArr.add(" (Transby = '" + Login.fullName + "') ");
-        }
+//        if (!Login.admin && databaseTableName.equals("producttrans")){
+//            finalArr.add(" (Transby = '" + Login.fullName + "') ");
+//        }
 //        
         
         if (notChange){
@@ -1247,9 +1296,9 @@ public class Report extends javax.swing.JFrame {
             createcell(texts, "Date Issued: " + currentDate, Element.ALIGN_RIGHT, pdfWidth, text12, 0, 255, 255, 255);       
             
             createcell(texts, "REPORT", Element.ALIGN_CENTER, pdfWidth, textBilledTo, 0, 255, 255, 255);
-            createcell(texts, "Branch Name", Element.ALIGN_CENTER, pdfWidth, textBold12, 0, 255, 255, 255);
-            createcell(texts, "Street of Branch, City of Branch", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
-            createcell(texts, "Contact#: 123456789", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
+            createcell(texts, title , Element.ALIGN_CENTER, pdfWidth, textBold12, 0, 255, 255, 255);
+            createcell(texts, street + " St., " + city + " City", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
+            createcell(texts, "Contact#: " + contactNum, Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
             
             createcell(texts, "______________________________________________________________________________________", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
             

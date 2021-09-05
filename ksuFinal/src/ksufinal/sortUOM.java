@@ -124,15 +124,17 @@ public class sortUOM extends javax.swing.JFrame {
         selectedUOM.clear();
         UOMSortStatement = "";
 
-//        if (selectAllCBox.isSelected()){
-//            if (location.equals("TransReport")){
+        if (selectAllCBox.isSelected()){
+            if (location.equals("TransReport")){
 //                ViewTransactions.UOMSortTF.setText("All");
-//            }
-//            else if (location.equals("report")){
+                ViewTransactions.UOMSelectedAll = true;
+            }
+            else if (location.equals("report")){
 //                Report.UOMSortTF.setText("All");
-//            }
-//        }
-//        else{
+                Report.UOMSelectedAll = true;
+            }
+        }
+        else{
             int l = sortUOMTable.getRowCount();
             for (int x = 0; x < l; x++){
                 if(sortUOMTable.getValueAt(x, 1).toString().equals("true")){
@@ -141,12 +143,14 @@ public class sortUOM extends javax.swing.JFrame {
             }
 //            String jointArray = String.join(", ", selectedUOM);
 //            
-//            if (location.equals("TransReport")){
+            if (location.equals("TransReport")){
 //                ViewTransactions.UOMSortTF.setText(jointArray);
-//            }
-//            else if (location.equals("report")){
+                ViewTransactions.UOMSelectedAll = false;
+            }
+            else if (location.equals("report")){
 //                Report.UOMSortTF.setText(jointArray);
-//            }
+                Report.UOMSelectedAll = false;
+            }
             
             ArrayList<String> strArr = new ArrayList<String>();
             
@@ -156,7 +160,7 @@ public class sortUOM extends javax.swing.JFrame {
             
             UOMSortStatement = " (" + String.join(" or ", strArr) + ") ";
             
-//        }
+        }
 
         this.setVisible(false);
         
@@ -205,19 +209,19 @@ public class sortUOM extends javax.swing.JFrame {
 //        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortUOMTableModel = (DefaultTableModel)sortUOMTable.getModel();
             sortUOMTableModel.setRowCount(0);
-            selectAllCBox.setSelected(true);
+            selectAllCBox.setSelected(false);
 
             sortUOMTable.setRowSelectionAllowed(false);
-            sortUOMTable.setEnabled(false);
-            sortUOMTable.setForeground(Color.LIGHT_GRAY);
-            sortUOMTable.setBackground(new Color(236, 236, 236));
+//            sortUOMTable.setEnabled(false);
+//            sortUOMTable.setForeground(Color.LIGHT_GRAY);
+//            sortUOMTable.setBackground(new Color(236, 236, 236));
 
 
             try{
                 rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.unittable;");
                 while(rs.next()){
                     String nm = rs.getString("Unit");
-                    Object [] nmArr = {nm, true};
+                    Object [] nmArr = {nm, false};
 
                     sortUOMTableModel.addRow(nmArr);
 

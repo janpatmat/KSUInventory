@@ -163,17 +163,19 @@ public class sortBS extends javax.swing.JFrame {
         int l = sortSupplierTable.getRowCount();
         int l2 = sortBranchTable.getRowCount();
 
-//        if (selectAllSupplierCBox.isSelected() && selectAllBranchCBox.isSelected()){
+        if (selectAllSupplierCBox.isSelected() && selectAllBranchCBox.isSelected()){
             
-//            if (location.equals("TransReport")){
+            if (location.equals("TransReport")){
 //                ViewTransactions.BSSortTF.setText("All");
-//            }
-//            else if (location.equals("report")){
+                ViewTransactions.BSSelectedAll = true;
+            }
+            else if (location.equals("report")){
 //                Report.BSSortTF.setText("All");
-//            }
-//        }
-//        else{
-
+                Report.BSSelectedAll = true;
+            }
+        }
+        else{
+            
             for (int x = 0; x < l; x++){
                 if (sortSupplierTable.getValueAt(x, 1).toString().equals("true")){
                     selectedSupplier.add(sortSupplierTable.getValueAt(x, 0).toString());
@@ -191,12 +193,14 @@ public class sortBS extends javax.swing.JFrame {
 //            String jointArray = String.join(", ", selectedSupplier);
             
             
-//            if (location.equals("TransReport")){
+            if (location.equals("TransReport")){
 //                ViewTransactions.BSSortTF.setText(jointArray);
-//            }
-//            else if (location.equals("report")){
+                ViewTransactions.BSSelectedAll = false;
+            }
+            else if (location.equals("report")){
 //                Report.BSSortTF.setText(jointArray);
-//            }
+                Report.BSSelectedAll = false;
+            }
             
             ArrayList<String> strArr = new ArrayList<String>();
             
@@ -205,7 +209,7 @@ public class sortBS extends javax.swing.JFrame {
             }
             
             BSSortStatement = " (" + String.join(" or ", strArr) + ") "; 
-//        }
+        }
 //        System.out.println(BSSortStatement);
 
         if (location.equals("report")){
@@ -258,30 +262,30 @@ public class sortBS extends javax.swing.JFrame {
             sortSupplierTableModel.setRowCount(0);
             sortBranchTableModel.setRowCount(0);
             
-            selectAllSupplierCBox.setSelected(true);
-            sortSupplierTable.setRowSelectionAllowed(false);
-            sortSupplierTable.setEnabled(false);
-            sortSupplierTable.setForeground(Color.LIGHT_GRAY);
-            sortSupplierTable.setBackground(new Color(236, 236, 236));
+            selectAllSupplierCBox.setSelected(false);
+//            sortSupplierTable.setRowSelectionAllowed(false);
+//            sortSupplierTable.setEnabled(false);
+//            sortSupplierTable.setForeground(Color.LIGHT_GRAY);
+//            sortSupplierTable.setBackground(new Color(236, 236, 236));
             
-            selectAllBranchCBox.setSelected(true);
-            sortBranchTable.setRowSelectionAllowed(false);
-            sortBranchTable.setEnabled(false);
-            sortBranchTable.setForeground(Color.LIGHT_GRAY);
-            sortBranchTable.setBackground(new Color(236, 236, 236));
+            selectAllBranchCBox.setSelected(false);
+//            sortBranchTable.setRowSelectionAllowed(false);
+//            sortBranchTable.setEnabled(false);
+//            sortBranchTable.setForeground(Color.LIGHT_GRAY);
+//            sortBranchTable.setBackground(new Color(236, 236, 236));
             
             try{
                 rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.suppliertable;");
                 ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.branchtable;");
                 while(rs.next()){
                     String nm = rs.getString("supplierName");
-                    Object [] nmArr = {nm,true};
+                    Object [] nmArr = {nm,false};
                     sortSupplierTableModel.addRow(nmArr);
                 }
 
                 while (rs2.next()){
                     String nm = rs2.getString("branchName");
-                    Object [] nmArr = {nm,true};
+                    Object [] nmArr = {nm,false};
                     sortBranchTableModel.addRow(nmArr);
                 }
             }

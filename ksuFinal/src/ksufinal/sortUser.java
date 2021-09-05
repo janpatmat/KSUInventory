@@ -113,16 +113,18 @@ public class sortUser extends javax.swing.JFrame {
         selectedUser.clear();
         UserSortStatement = "";
 
-//        if (selectAllCBox.isSelected()){
-//            if (location.equals("TransReport")){
+        if (selectAllCBox.isSelected()){
+            if (location.equals("TransReport")){
 //                ViewTransactions.UserSortTF.setText("All");
-//            }
-//            else if (location.equals("report")){
+                ViewTransactions.UserSelectedAll = true;
+            }
+            else if (location.equals("report")){
 //                Report.UserSortTF.setText("All");
-//            }
+                Report.UserSelectedAll = true;
+            }
 
-//        }
-//        else{
+        }
+        else{
             int l = sortUserTable.getRowCount();
             for (int x = 0; x < l; x++){
                 if(sortUserTable.getValueAt(x, 2).toString().equals("true")){
@@ -131,12 +133,14 @@ public class sortUser extends javax.swing.JFrame {
             }
 //            String jointArray = String.join(", ", selectedUser);
 //
-//            if (location.equals("TransReport")){
+            if (location.equals("TransReport")){
 //                ViewTransactions.UserSortTF.setText(jointArray);
-//            }
-//            else if (location.equals("report")){
+                ViewTransactions.UserSelectedAll = false;
+            }
+            else if (location.equals("report")){
 //                Report.UserSortTF.setText(jointArray);
-//            }
+                Report.UserSelectedAll = false;
+            }
 
             ArrayList<String> strArr = new ArrayList<String>();
 
@@ -146,7 +150,7 @@ public class sortUser extends javax.swing.JFrame {
 
             UserSortStatement = " (" + String.join(" or ", strArr) + ") ";
             
-//        }
+        }
 
         this.setVisible(false);
 
@@ -190,12 +194,12 @@ public class sortUser extends javax.swing.JFrame {
 //        if (!currentUser.equals(Login.fullName)){
             DefaultTableModel sortUserTableModel = (DefaultTableModel)sortUserTable.getModel();
             sortUserTableModel.setRowCount(0);
-            selectAllCBox.setSelected(true);
+            selectAllCBox.setSelected(false);
 
-            sortUserTable.setRowSelectionAllowed(false);
-            sortUserTable.setEnabled(false);
-            sortUserTable.setForeground(Color.LIGHT_GRAY);
-            sortUserTable.setBackground(new Color(236, 236, 236));
+//            sortUserTable.setRowSelectionAllowed(false);
+//            sortUserTable.setEnabled(false);
+//            sortUserTable.setForeground(Color.LIGHT_GRAY);
+//            sortUserTable.setBackground(new Color(236, 236, 236));
 
 
             try{
@@ -205,7 +209,7 @@ public class sortUser extends javax.swing.JFrame {
                     String first = rs.getString("Firstname");
                     String last = rs.getString("Lastname");
                     String fn = first + " " + last;
-                    Object [] nmArr = {un, fn, true};
+                    Object [] nmArr = {un, fn, false};
 
                     sortUserTableModel.addRow(nmArr);
 
