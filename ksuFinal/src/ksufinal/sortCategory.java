@@ -206,6 +206,11 @@ public class sortCategory extends javax.swing.JFrame {
             DefaultTableModel sortCategoryTableModel = (DefaultTableModel)sortCategoryTable.getModel();
             sortCategoryTableModel.setRowCount(0);
             selectAllCBox.setSelected(false);
+            
+            sortCategoryTable.setRowSelectionAllowed(true);
+            sortCategoryTable.setEnabled(true);
+            sortCategoryTable.setForeground(Color.black);
+            sortCategoryTable.setBackground(Color.white);
 //            sortCategoryTable.setRowSelectionAllowed(false);
 //            sortCategoryTable.setEnabled(false);
 //            sortCategoryTable.setForeground(Color.LIGHT_GRAY);

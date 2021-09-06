@@ -122,6 +122,11 @@ public class sortProduct extends javax.swing.JFrame {
             sortProdTableModel.setRowCount(0);
             
             selectAllCBox.setSelected(false);
+            
+            sortProdTable.setRowSelectionAllowed(true);
+            sortProdTable.setEnabled(true);
+            sortProdTable.setForeground(Color.black);
+            sortProdTable.setBackground(Color.white);
 //            sortProdTable.setRowSelectionAllowed(false);
 //            sortProdTable.setEnabled(false);
 //            sortProdTable.setForeground(Color.LIGHT_GRAY);

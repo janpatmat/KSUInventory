@@ -196,6 +196,10 @@ public class sortUser extends javax.swing.JFrame {
             sortUserTableModel.setRowCount(0);
             selectAllCBox.setSelected(false);
 
+            sortUserTable.setRowSelectionAllowed(true);
+            sortUserTable.setEnabled(true);
+            sortUserTable.setForeground(Color.black);
+            sortUserTable.setBackground(Color.white);
 //            sortUserTable.setRowSelectionAllowed(false);
 //            sortUserTable.setEnabled(false);
 //            sortUserTable.setForeground(Color.LIGHT_GRAY);

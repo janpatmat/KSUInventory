@@ -262,6 +262,16 @@ public class sortBS extends javax.swing.JFrame {
             sortSupplierTableModel.setRowCount(0);
             sortBranchTableModel.setRowCount(0);
             
+            sortSupplierTable.setEnabled(true);
+            sortSupplierTable.setRowSelectionAllowed(true);
+            sortSupplierTable.setForeground(Color.black);
+            sortSupplierTable.setBackground(Color.white);        
+            
+            sortBranchTable.setEnabled(true);
+            sortBranchTable.setRowSelectionAllowed(true);
+            sortBranchTable.setForeground(Color.black);
+            sortBranchTable.setBackground(Color.white);
+            
             selectAllSupplierCBox.setSelected(false);
 //            sortSupplierTable.setRowSelectionAllowed(false);
 //            sortSupplierTable.setEnabled(false);

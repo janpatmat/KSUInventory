@@ -212,6 +212,11 @@ public class sortUOM extends javax.swing.JFrame {
             selectAllCBox.setSelected(false);
 
             sortUOMTable.setRowSelectionAllowed(false);
+            
+            sortUOMTable.setRowSelectionAllowed(true);
+            sortUOMTable.setEnabled(true);
+            sortUOMTable.setForeground(Color.black);
+            sortUOMTable.setBackground(Color.white);
 //            sortUOMTable.setEnabled(false);
 //            sortUOMTable.setForeground(Color.LIGHT_GRAY);
 //            sortUOMTable.setBackground(new Color(236, 236, 236));

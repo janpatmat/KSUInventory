@@ -155,31 +155,32 @@ public class Login extends javax.swing.JFrame {
         MenuClass.setLocationRelativeTo(null);
         try{
          //us = uname.getText();
-        PreparedStatement state = KsuFinal.con.prepareStatement("SELECT * FROM usertable WHERE Username = ? and Password = ? and Active = 'TRUE'");
-        state.setString(1, uname.getText());
-        state.setString(2, String.valueOf(pass.getPassword()));
-        ResultSet rs = state.executeQuery();
+            PreparedStatement state = KsuFinal.con.prepareStatement("SELECT * FROM usertable WHERE Username = ? and Password = ? and Active = 'TRUE'");
+            state.setString(1, uname.getText());
+            state.setString(2, String.valueOf(pass.getPassword()));
+            ResultSet rs = state.executeQuery();
 
-          System.out.println(uname.getText());
-          System.out.println(String.valueOf(pass.getPassword()));
+            System.out.println(uname.getText());
+            System.out.println(String.valueOf(pass.getPassword()));
             
         if (rs.next()){
-           id = rs.getString("userID");
-           String fn = rs.getString("Firstname");
-           String ln = rs.getString("Lastname");
-           String ad = rs.getString("Admin");
-           MenuClass.setVisible(true);
-           if(ad.equals("TRUE")){
-               admin = true;
-           }
-           else{
-               admin = false;
-           }
-           firstName = fn;
-           lastName = ln;
-           userName = uname.getText();
-           fullName = (fn + " " + ln);
-           this.dispose();
+            updateStandardPrice();
+            id = rs.getString("userID");
+            String fn = rs.getString("Firstname");
+            String ln = rs.getString("Lastname");
+            String ad = rs.getString("Admin");
+            MenuClass.setVisible(true);
+            if(ad.equals("TRUE")){
+                admin = true;
+            }
+            else{
+                admin = false;
+            }
+            firstName = fn;
+            lastName = ln;
+            userName = uname.getText();
+            fullName = (fn + " " + ln);
+            this.dispose();
         }
         else{
             JOptionPane.showMessageDialog(this,"Invalid Username or Password", "Error", JOptionPane.ERROR_MESSAGE);
@@ -192,7 +193,26 @@ public class Login extends javax.swing.JFrame {
      }
 
     }//GEN-LAST:event_LoginActionPerformed
-
+    public void updateStandardPrice(){
+        String statement = 
+            "UPDATE producttable " +
+            "INNER JOIN (SELECT SUM(Price*Quantity) / SUM(Quantity) as sd, Name FROM producttrans WHERE Action = 'deposit' AND Date BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 3 MONTH) AND CURRENT_DATE() GROUP BY Name) trans " +
+            "ON productName = trans.Name " +
+            "SET producttable.standardPrice = trans.sd, producttable.dateTo = CURRENT_DATE(), producttable.dateFrom = DATE_SUB(CURRENT_DATE(), INTERVAL 3 MONTH);";
+        
+        try{
+            PreparedStatement ps = KsuFinal.con.prepareStatement(statement);
+            ps.executeUpdate();
+            
+        }catch(Exception ex){
+            
+        }
+        
+        
+        
+    }
+    
+    
     private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_unameActionPerformed
