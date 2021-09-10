@@ -554,11 +554,12 @@ public class EditProduct extends javax.swing.JFrame {
                             st = KsuFinal.con.prepareStatement("UPDATE expenses.producttable SET dateTo = '" + tdate + "' WHERE productID = " + prodId);
                             st.executeUpdate();
 
-                            tModel.setValueAt(sp, idx, 3);
+//                            tModel.setValueAt(sp, idx, 3);
 
                             adProdArr.get(idx)[4] = String.valueOf(sp);
                             adProdArr.get(idx)[5] = fdate;
-                            adProdArr.get(idx)[6] = tdate;                 
+                            adProdArr.get(idx)[6] = tdate;    
+                            editActiveTable();
                         }
 
                         catch(Exception e){
