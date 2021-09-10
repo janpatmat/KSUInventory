@@ -453,6 +453,8 @@ public class ViewTransactions extends javax.swing.JFrame {
             UserSelectedAll = true;
 //            editDateCB.setSelected(false);
 //            currentUser = Login.fullName;
+
+            dateCB.setSelectedItem("This Week");
 //        }
             
         LocalDate currentDate = LocalDate.now();

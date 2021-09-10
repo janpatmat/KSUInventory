@@ -434,11 +434,12 @@ public class AddTransaction extends javax.swing.JFrame {
                     unitShow.setText("");
                     productComboBox.setSelectedItem("");
                     supCmb.setSelectedItem("");
+                    quantityShow.setText("");
                     if (currRadioBtn.equals("deposit")){
                         JOptionPane.showMessageDialog(this,"Successfully deposited the product");
                     }else{
                         JOptionPane.showMessageDialog(this,"Successfully withdrawn the product");
-                        quantityShow.setText("Current stocks: " + newQuan +  " " + transactionArr.get(idx)[1]); // Update the Quantity text field
+                        quantityShow.setText("");
                     }
                     yesNO = JOptionPane.showConfirmDialog (this, "Do you have anymore transactions?","Message",JOptionPane.YES_NO_OPTION);
 
