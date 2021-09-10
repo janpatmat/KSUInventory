@@ -27,7 +27,7 @@ public class Menu extends javax.swing.JFrame {
     EditBranch EditBranchClass = new EditBranch();
     EditSupplier EditSupplierClass = new EditSupplier();
     EditUser EditUserClass = new EditUser();
-
+     viewSup viewSupClass = new viewSup();
 
     
 
@@ -66,17 +66,17 @@ public class Menu extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
+        jButton26 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jButton16 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
@@ -123,13 +123,22 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(99, 110, 114));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setBackground(new java.awt.Color(99, 110, 114));
         jButton1.setText("Log out");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -195,6 +204,7 @@ public class Menu extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(99, 110, 114));
         jTabbedPane1.setForeground(new java.awt.Color(99, 110, 114));
+        jTabbedPane1.setEnabled(false);
 
         jPanel4.setBackground(new java.awt.Color(178, 190, 195));
 
@@ -327,108 +337,253 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(178, 190, 195));
 
-        jButton7.setText("Edit Product");
+        jButton18.setBackground(new java.awt.Color(178, 190, 195));
+        jButton18.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jButton18.setForeground(new java.awt.Color(250, 250, 250));
+        jButton18.setText("Edit Product");
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton18MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton18MouseExited(evt);
+            }
+        });
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
-        jButton8.setText("Edit Unit");
+        jButton19.setBackground(new java.awt.Color(178, 190, 195));
+        jButton19.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jButton19.setForeground(new java.awt.Color(250, 250, 250));
+        jButton19.setText("Edit Unit");
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton19MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton19MouseExited(evt);
+            }
+        });
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
 
-        jButton9.setText("Edit Inventory Info");
+        jButton20.setBackground(new java.awt.Color(178, 190, 195));
+        jButton20.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jButton20.setForeground(new java.awt.Color(250, 250, 250));
+        jButton20.setText("Edit Suppliers");
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton20MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton20MouseExited(evt);
+            }
+        });
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
 
-        jButton10.setText("Edit Supplier");
-
-        jButton11.setText("Edit Branch");
+        jButton21.setBackground(new java.awt.Color(178, 190, 195));
+        jButton21.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jButton21.setForeground(new java.awt.Color(250, 250, 250));
+        jButton21.setText("Edit Branch");
+        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton21MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton21MouseExited(evt);
+            }
+        });
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(74, 74, 74)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton11)
-                    .addComponent(jButton10)
-                    .addComponent(jButton9)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
-                .addContainerGap(425, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                        .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(55, 55, 55))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jButton7)
-                .addGap(29, 29, 29)
-                .addComponent(jButton8)
-                .addGap(18, 18, 18)
-                .addComponent(jButton10)
-                .addGap(18, 18, 18)
-                .addComponent(jButton11)
-                .addGap(29, 29, 29)
-                .addComponent(jButton9)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab2", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(178, 190, 195));
 
-        jButton12.setText("Recieve/Withdraw items");
+        jButton22.setBackground(new java.awt.Color(178, 190, 195));
+        jButton22.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jButton22.setForeground(new java.awt.Color(250, 250, 250));
+        jButton22.setText("Recieve/Withdraw Items");
+        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton22MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton22MouseExited(evt);
+            }
+        });
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
 
-        jButton13.setText("Edit Transaction");
+        jButton23.setBackground(new java.awt.Color(178, 190, 195));
+        jButton23.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jButton23.setForeground(new java.awt.Color(250, 250, 250));
+        jButton23.setText("Edit Transaction");
+        jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton23MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton23MouseExited(evt);
+            }
+        });
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jButton12)
-                .addGap(98, 98, 98)
-                .addComponent(jButton13)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addGap(85, 85, 85)
+                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(148, 148, 148)
+                .addGap(170, 170, 170)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13))
-                .addContainerGap(271, Short.MAX_VALUE))
+                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab3", jPanel6);
 
         jPanel7.setBackground(new java.awt.Color(178, 190, 195));
 
-        jButton14.setText("View Products");
+        jButton24.setBackground(new java.awt.Color(178, 190, 195));
+        jButton24.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jButton24.setForeground(new java.awt.Color(250, 250, 250));
+        jButton24.setText("View Transaction");
+        jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton24MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton24MouseExited(evt);
+            }
+        });
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
 
-        jButton15.setText("View Transaction");
+        jButton25.setBackground(new java.awt.Color(178, 190, 195));
+        jButton25.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jButton25.setForeground(new java.awt.Color(250, 250, 250));
+        jButton25.setText("View Products");
+        jButton25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton25MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton25MouseExited(evt);
+            }
+        });
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
+        jButton26.setBackground(new java.awt.Color(178, 190, 195));
+        jButton26.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jButton26.setForeground(new java.awt.Color(250, 250, 250));
+        jButton26.setText("View Suppliers");
+        jButton26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton26MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton26MouseExited(evt);
+            }
+        });
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jButton14)
-                .addContainerGap(438, Short.MAX_VALUE))
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(67, 67, 67)
-                    .addComponent(jButton15)
-                    .addContainerGap(425, Short.MAX_VALUE)))
+                .addGap(73, 73, 73)
+                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jButton14)
-                .addContainerGap(294, Short.MAX_VALUE))
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(74, 74, 74)
-                    .addComponent(jButton15)
-                    .addContainerGap(345, Short.MAX_VALUE)))
+                .addGap(118, 118, 118)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab4", jPanel7);
@@ -651,13 +806,20 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        jTabbedPane1.setSelectedIndex(4);
+        //jTabbedPane1.setSelectedIndex(4);
          jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png")));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gTrans.png")));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gUsers.png")));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gView.png")));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/wReport.png")));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gNewitems.png")));
+         
+
+  ReportClass.setVisible(true);
+        ReportClass.setDefaultCloseOperation(ReportClass.DISPOSE_ON_CLOSE);
+        ReportClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        ReportClass.openWindowAction();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -788,6 +950,202 @@ jButton6.setForeground(new java.awt.Color(250, 250, 250));
         NewCategoryClass.openWindowAction();
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseEntered
+        // TODO add your handling code here:
+        jButton18.setBackground(new java.awt.Color(250, 250, 250));
+        jButton18.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_jButton18MouseEntered
+
+    private void jButton18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseExited
+        // TODO add your handling code here:
+        jButton2.setBackground(new java.awt.Color(178, 190, 195));
+jButton2.setForeground(new java.awt.Color(250, 250, 250));
+    }//GEN-LAST:event_jButton18MouseExited
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+        
+
+
+EditProductClass.setVisible(true);
+        EditProductClass.setDefaultCloseOperation(EditProductClass.DISPOSE_ON_CLOSE);
+        EditProductClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        EditProductClass.openWindowAction();
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseEntered
+        // TODO add your handling code here:
+        jButton19.setBackground(new java.awt.Color(250, 250, 250));
+        jButton19.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_jButton19MouseEntered
+
+    private void jButton19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseExited
+        // TODO add your handling code here:
+        jButton19.setBackground(new java.awt.Color(178, 190, 195));
+jButton19.setForeground(new java.awt.Color(250, 250, 250));
+    }//GEN-LAST:event_jButton19MouseExited
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+        
+ EditUnitClass.setVisible(true);
+        EditUnitClass.setDefaultCloseOperation(EditUnitClass.DISPOSE_ON_CLOSE);
+        EditUnitClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        EditUnitClass.openWindowAction();
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseEntered
+        // TODO add your handling code here:
+        jButton20.setBackground(new java.awt.Color(250, 250, 250));
+        jButton20.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_jButton20MouseEntered
+
+    private void jButton20MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseExited
+        // TODO add your handling code here:
+        jButton20.setBackground(new java.awt.Color(178, 190, 195));
+jButton20.setForeground(new java.awt.Color(250, 250, 250));
+    }//GEN-LAST:event_jButton20MouseExited
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+         EditSupplierClass.setVisible(true);
+        EditSupplierClass.setDefaultCloseOperation(EditSupplierClass.DISPOSE_ON_CLOSE);
+        EditSupplierClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        EditSupplierClass.openWindowAction();
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseEntered
+        // TODO add your handling code here:
+        jButton21.setBackground(new java.awt.Color(250, 250, 250));
+        jButton21.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_jButton21MouseEntered
+
+    private void jButton21MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseExited
+        // TODO add your handling code here:
+        jButton21.setBackground(new java.awt.Color(178, 190, 195));
+jButton21.setForeground(new java.awt.Color(250, 250, 250));
+    }//GEN-LAST:event_jButton21MouseExited
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        // TODO add your handling code here:
+        
+        
+EditBranchClass.setVisible(true);
+        EditBranchClass.setDefaultCloseOperation(EditBranchClass.DISPOSE_ON_CLOSE);
+        EditBranchClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        EditBranchClass.openWindowAction();
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton22MouseEntered
+
+    private void jButton22MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseExited
+        // TODO add your handling code here:
+        jButton22.setBackground(new java.awt.Color(250, 250, 250));
+        jButton22.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_jButton22MouseExited
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        // TODO add your handling code here:
+        
+transactionClass.setVisible(true);
+        transactionClass.setDefaultCloseOperation(transactionClass.DISPOSE_ON_CLOSE);
+        transactionClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        transactionClass.openWindowAction();
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseEntered
+        // TODO add your handling code here:
+        jButton23.setBackground(new java.awt.Color(250, 250, 250));
+        jButton23.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_jButton23MouseEntered
+
+    private void jButton23MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseExited
+        // TODO add your handling code here:
+        jButton23.setBackground(new java.awt.Color(178, 190, 195));
+        jButton23.setForeground(new java.awt.Color(250, 250, 250));
+    }//GEN-LAST:event_jButton23MouseExited
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        // TODO add your handling code here:
+        EditTransactionClass.setVisible(true);
+        EditTransactionClass.setDefaultCloseOperation(EditTransactionClass.DISPOSE_ON_CLOSE);
+        EditTransactionClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        EditTransactionClass.openWindowAction();
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton24MouseEntered
+
+    private void jButton24MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton24MouseExited
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+        
+ ViewTransactionsClass.setVisible(true);
+        ViewTransactionsClass.setDefaultCloseOperation(ViewTransactionsClass.HIDE_ON_CLOSE);
+        ViewTransactionsClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        ViewTransactionsClass.openWindowAction();
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton25MouseEntered
+
+    private void jButton25MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton25MouseExited
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        // TODO add your handling code here:
+        ViewProductsClass.setVisible(true);
+        ViewProductsClass.setDefaultCloseOperation(ViewProductsClass.DISPOSE_ON_CLOSE);
+        ViewProductsClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+	
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton26MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton26MouseEntered
+
+    private void jButton26MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton26MouseExited
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+         viewSupClass.setVisible(true);
+        viewSupClass.setDefaultCloseOperation(viewSupClass.HIDE_ON_CLOSE);
+        viewSupClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        // TODO add your handling code here:
+        
+         jButton1.setBackground(new java.awt.Color(178, 190, 195));
+        jButton1.setForeground(new java.awt.Color(250, 250, 250));  
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jButton1.setBackground(new java.awt.Color(99,110,114));
+         jButton1.setForeground(new java.awt.Color(0, 0, 0));
+    }//GEN-LAST:event_jButton1MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -829,22 +1187,22 @@ jButton6.setForeground(new java.awt.Color(250, 250, 250));
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameTF;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
