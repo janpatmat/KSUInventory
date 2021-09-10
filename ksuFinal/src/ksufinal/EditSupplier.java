@@ -44,8 +44,13 @@ public class EditSupplier extends javax.swing.JFrame {
         questionMarkIcon = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         deleteBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        contactNumberTF = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        AddressTF = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        ContactPersonTF = new javax.swing.JTextField();
 
-        instructionDialogue.setBackground(new java.awt.Color(240, 240, 240));
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
         instructionDialogue.setResizable(false);
         instructionDialogue.setType(java.awt.Window.Type.POPUP);
@@ -106,7 +111,7 @@ public class EditSupplier extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Suppliers"
+                "Supplier Name", "Contact Number", "Address", "Contact Person"
             }
         ));
         supplierTable.setRowHeight(25);
@@ -140,33 +145,65 @@ public class EditSupplier extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("Contact Number");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("Address");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Contact Person");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(116, 116, 116)
-                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(116, 116, 116)
+                        .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel1))
-                            .addComponent(supplierNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                            .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(24, 24, 24)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(43, 43, 43)
+                                                .addComponent(jLabel1))
+                                            .addComponent(supplierNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(contactNumberTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(AddressTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ContactPersonTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(85, 85, 85)
+                                        .addComponent(jLabel3)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(56, 56, 56))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(59, 59, 59)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,19 +212,30 @@ public class EditSupplier extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(supplierNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(contactNumberTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(ContactPersonTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
                         .addComponent(updateBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(deleteBtn)))
+                        .addComponent(deleteBtn)
+                        .addGap(34, 34, 34)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -195,8 +243,8 @@ public class EditSupplier extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        if(supplierNameTF.getText().length() == 0){
-            JOptionPane.showMessageDialog(this,"Please input a Supplier Name", "Error", JOptionPane.ERROR_MESSAGE);
+        if(supplierNameTF.getText().length() == 0 || contactNumberTF.getText().length() == 0 || AddressTF.getText().length() == 0 || ContactPersonTF.getText().length() == 0){
+            JOptionPane.showMessageDialog(this,"Please Fill up all the fields", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else{
             if (supplierTable.getSelectedRowCount() != 0){
@@ -207,8 +255,11 @@ public class EditSupplier extends javax.swing.JFrame {
                         if (rs.next()){
                             JOptionPane.showMessageDialog(this,"Supplier Name already exist", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
-                            st = KsuFinal.con.prepareStatement("UPDATE suppliertable SET supplierName = ? WHERE supplierID = " + supplierID.get(i));
+                            st = KsuFinal.con.prepareStatement("UPDATE suppliertable SET supplierName = ?, Contact = ?, Address = ?, ContactPerson = ? WHERE supplierID = " + supplierID.get(i));
                             st.setString(1, supplierNameTF.getText());
+                            st.setString(2, contactNumberTF.getText());
+                            st.setString(3, AddressTF.getText());
+                            st.setString(4, ContactPersonTF.getText());
                             st.executeUpdate();
                             updateTable();
                             JOptionPane.showMessageDialog(this,"Successfully updated the supplier");
@@ -232,6 +283,11 @@ public class EditSupplier extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void supplierTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplierTableMouseClicked
+        int selectedRow = supplierTable.getSelectedRow();
+        supplierNameTF.setText(supplierTable.getValueAt(selectedRow, 0).toString());
+        contactNumberTF.setText(supplierTable.getValueAt(selectedRow, 1).toString());
+        AddressTF.setText(supplierTable.getValueAt(selectedRow, 2).toString());
+        ContactPersonTF.setText(supplierTable.getValueAt(selectedRow, 3).toString());
 
     }//GEN-LAST:event_supplierTableMouseClicked
 
@@ -291,9 +347,12 @@ public class EditSupplier extends javax.swing.JFrame {
             ResultSet rs = state.executeQuery("SELECT * FROM suppliertable");
             while(rs.next()){
                 String name = rs.getString("supplierName");
+                String conctactNumber = rs.getString("Contact");
+                String address = rs.getString("Address");
+                String contactPerson = rs.getString("ContactPerson");
                 String id = String.valueOf(rs.getInt("supplierID"));
 
-                t.addRow(new String[]{name});
+                t.addRow(new String[]{name, conctactNumber, address, contactPerson});
 
                 supplierID.add(id);
             }
@@ -304,11 +363,6 @@ public class EditSupplier extends javax.swing.JFrame {
     }
     public void openWindowAction(){
         updateTable();
-        
-        if (!currentUser.equals(Login.fullName)){
-            supplierNameTF.setText("");
-            currentUser = Login.fullName;
-        }
         
     }
     /**
@@ -354,9 +408,15 @@ public class EditSupplier extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AddressTF;
+    private javax.swing.JTextField ContactPersonTF;
+    private javax.swing.JTextField contactNumberTF;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JDialog instructionDialogue;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;

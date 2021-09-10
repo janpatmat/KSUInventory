@@ -230,11 +230,11 @@ public class EditUnit extends javax.swing.JFrame {
 
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        instructionDialogue.setLocationRelativeTo(this);
     }//GEN-LAST:event_formWindowOpened
 
     private void unitTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unitTableMouseClicked
-        instructionDialogue.setLocationRelativeTo(this);
+        
     }//GEN-LAST:event_unitTableMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -304,11 +304,6 @@ public class EditUnit extends javax.swing.JFrame {
     }
     public void openWindowAction(){
         updateTable();
-        
-        if (!currentUser.equals(Login.fullName)){
-            unitNameTF.setText("");
-            currentUser = Login.fullName;
-        }
         
     }
     

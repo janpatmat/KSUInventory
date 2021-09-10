@@ -235,12 +235,12 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="adminBtn" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="activeBtn" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="adminBtn" min="-2" pref="172" max="-2" attributes="0"/>
+                      <Component id="activeBtn" min="-2" pref="172" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -249,9 +249,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace pref="20" max="32767" attributes="0"/>
                   <Component id="activeBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="adminBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
