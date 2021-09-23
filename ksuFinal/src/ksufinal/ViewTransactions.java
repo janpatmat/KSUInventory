@@ -635,7 +635,7 @@ public class ViewTransactions extends javax.swing.JFrame {
                         String ct = rs.getString("Sub");
                         String qty = rs.getString("Quantity");
                         String ut = rs.getString("Unit");
-                        String pr = rs.getString("Price");
+                        String pr = String.format("%.2f", rs.getFloat("Price"));
                         String sb = rs.getString("SuppBranch");
                         String dt = rs.getString("Date");
                         String act = rs.getString("Action");
@@ -646,7 +646,7 @@ public class ViewTransactions extends javax.swing.JFrame {
                             qty = String.valueOf(Float.parseFloat(qty) * -1);
                         }
 
-                        String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
+                        String tp = String.format("%.2f",Float.parseFloat(pr) * Float.parseFloat(qty));
 
                         String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
                         TransactionTableModel.addRow(item);
@@ -760,9 +760,8 @@ public class ViewTransactions extends javax.swing.JFrame {
         else if (dateCB.getSelectedItem().toString().equals("Yesterday")){
             LocalDate yesterdayDate = currentDate.minusDays(1);
             Date date1 = Date.from(yesterdayDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            Date date2 = Date.from(currentDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
             fromDateChooser.setDate(date1);
-            toDateChooser.setDate(date2);
+            toDateChooser.setDate(date1);
         }
         
         else if (dateCB.getSelectedItem().toString().equals("This Week")){
@@ -832,25 +831,25 @@ public class ViewTransactions extends javax.swing.JFrame {
 //            }
             ResultSet rs = KsuFinal.con.createStatement().executeQuery(finalStatement);
             while(rs.next()){
-
+                
                 String id = rs.getString("prodID");
                 String TranNo = rs.getString("TransactionNo");
                 String nm = rs.getString("Name");
                 String ct = rs.getString("Sub");
                 String qty = rs.getString("Quantity");
                 String ut = rs.getString("Unit");
-                String pr = rs.getString("Price");
+                String pr = String.format("%.2f", rs.getFloat("Price"));
                 String sb = rs.getString("SuppBranch");
-                String dt = rs.getDate("Date").toString();
+                String dt = rs.getString("Date");
                 String act = rs.getString("Action");
                 String tb = rs.getString("Transby");
-     
-                
+
+
                 if (Float.parseFloat(qty) < 0){
                     qty = String.valueOf(Float.parseFloat(qty) * -1);
                 }
-                
-                String tp = String.valueOf(Float.parseFloat(pr) * Float.parseFloat(qty));
+
+                String tp = String.format("%.2f",Float.parseFloat(pr) * Float.parseFloat(qty));
                 String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
                 TransactionTableModel.addRow(item);
 //                System.out.println(TranNo);

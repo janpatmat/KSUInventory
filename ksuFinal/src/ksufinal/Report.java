@@ -990,9 +990,8 @@ public class Report extends javax.swing.JFrame {
         else if (dateComboBox.getSelectedItem().toString().equals("Yesterday")){
             LocalDate yesterdayDate = currentDate.minusDays(1);
             Date date1 = Date.from(yesterdayDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            Date date2 = Date.from(currentDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
             fromDateChooser.setDate(date1);
-            toDateChooser.setDate(date2);
+            toDateChooser.setDate(date1);
         }
 
         else if (dateComboBox.getSelectedItem().toString().equals("This Week")){
