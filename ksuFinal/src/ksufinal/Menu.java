@@ -6,6 +6,7 @@
 package ksufinal;
 
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
@@ -930,6 +931,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
+        
+        if(Login.admin == true){
         jTabbedPane1.setSelectedIndex(5);
          jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png")));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gTrans.png")));
@@ -937,6 +940,10 @@ public class Menu extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gView.png")));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gReport.png")));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gNewitems.png")));
+        }
+        else{
+              JOptionPane.showMessageDialog(this,"You must be an Admin to access this tab");
+        }
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered

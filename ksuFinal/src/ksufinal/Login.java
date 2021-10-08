@@ -250,6 +250,11 @@ public class Login extends javax.swing.JFrame {
 
     private void registerBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtn1ActionPerformed
         // TODO add your handling code here:
+        RegisterClass.setVisible(true);
+        RegisterClass.setDefaultCloseOperation(RegisterClass.DISPOSE_ON_CLOSE);
+        RegisterClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+       // RegisterClass.openWindowAction();
     }//GEN-LAST:event_registerBtn1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
