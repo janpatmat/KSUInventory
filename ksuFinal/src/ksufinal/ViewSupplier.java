@@ -76,7 +76,7 @@ public class ViewSupplier extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(supplierTable);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Filter"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Search Suppliers"));
         jPanel1.setToolTipText("");
         jPanel1.setName(""); // NOI18N
 
@@ -341,6 +341,10 @@ public void refresh(){
         conTxt.setText(" ");
         adTxt.setText(" ");
         conperTxt.setText(" ");
+        nameTxt.setEditable(false);
+        adTxt.setEditable(false);
+        conTxt.setEditable(false);
+        conperTxt.setEditable(false);
     }//GEN-LAST:event_formWindowClosing
 public void filter(){
     try{
