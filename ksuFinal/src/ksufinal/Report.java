@@ -905,8 +905,8 @@ public class Report extends javax.swing.JFrame {
             UnitOfMeasureCB.setSelected(false);
             UserCB.setSelected(false);
 //            editDateCB.setSelected(false);
-            withdrawCB.setSelected(false);
-            deliveryCB.setSelected(false);
+            withdrawCB.setSelected(true);
+            deliveryCB.setSelected(true);
 //            dateComboBox.setEnabled(false);
 
 //            BSSortTF.setText("All");
@@ -927,6 +927,8 @@ public class Report extends javax.swing.JFrame {
             Date date2 = Date.from(currentDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
             fromDateChooser.setDate(date1);
             toDateChooser.setDate(date2);
+            dateComboBox.setSelectedItem("This Week");
+            
             
             BelowMinimumCB.setEnabled(false);
             StandardPriceCB.setEnabled(false);
@@ -1176,12 +1178,12 @@ public class Report extends javax.swing.JFrame {
 //            withdrawCB.setSelected(true);
             columnArr.add("Action");
         }
-        else{
+//        else{
 //            deliveryCB.setEnabled(false);
 //            withdrawCB.setEnabled(false);
 //            deliveryCB.setSelected(false);
 //            withdrawCB.setSelected(false);
-        }
+//        }
         
 //        if (UserCB.isSelected()){
 //            reportTableModel.addColumn("User");

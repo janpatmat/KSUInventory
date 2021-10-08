@@ -262,27 +262,27 @@ public class sortBS extends javax.swing.JFrame {
             sortSupplierTableModel.setRowCount(0);
             sortBranchTableModel.setRowCount(0);
             
-            sortSupplierTable.setEnabled(true);
-            sortSupplierTable.setRowSelectionAllowed(true);
-            sortSupplierTable.setForeground(Color.black);
-            sortSupplierTable.setBackground(Color.white);        
-            
-            sortBranchTable.setEnabled(true);
-            sortBranchTable.setRowSelectionAllowed(true);
-            sortBranchTable.setForeground(Color.black);
-            sortBranchTable.setBackground(Color.white);
+//            sortSupplierTable.setEnabled(true);
+//            sortSupplierTable.setRowSelectionAllowed(true);
+//            sortSupplierTable.setForeground(Color.black);
+//            sortSupplierTable.setBackground(Color.white);        
+//            
+//            sortBranchTable.setEnabled(true);
+//            sortBranchTable.setRowSelectionAllowed(true);
+//            sortBranchTable.setForeground(Color.black);
+//            sortBranchTable.setBackground(Color.white);
             
             selectAllSupplierCBox.setSelected(false);
-//            sortSupplierTable.setRowSelectionAllowed(false);
-//            sortSupplierTable.setEnabled(false);
-//            sortSupplierTable.setForeground(Color.LIGHT_GRAY);
-//            sortSupplierTable.setBackground(new Color(236, 236, 236));
+            sortSupplierTable.setRowSelectionAllowed(false);
+            sortSupplierTable.setEnabled(false);
+            sortSupplierTable.setForeground(Color.LIGHT_GRAY);
+            sortSupplierTable.setBackground(new Color(236, 236, 236));
             
             selectAllBranchCBox.setSelected(false);
-//            sortBranchTable.setRowSelectionAllowed(false);
-//            sortBranchTable.setEnabled(false);
-//            sortBranchTable.setForeground(Color.LIGHT_GRAY);
-//            sortBranchTable.setBackground(new Color(236, 236, 236));
+            sortBranchTable.setRowSelectionAllowed(false);
+            sortBranchTable.setEnabled(false);
+            sortBranchTable.setForeground(Color.LIGHT_GRAY);
+            sortBranchTable.setBackground(new Color(236, 236, 236));
             
             try{
                 rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.suppliertable;");
@@ -301,6 +301,41 @@ public class sortBS extends javax.swing.JFrame {
             }
             catch(Exception e){
                 System.out.println(e);
+            }
+            
+            if (location.equals("TransReport")){
+                if (ViewTransactions.withdrawCB.isSelected()){
+                    selectAllBranchCBox.setEnabled(true);
+                    sortBranchTable.setEnabled(true);
+                    sortBranchTable.setRowSelectionAllowed(true);
+                    sortBranchTable.setForeground(Color.black);
+                    sortBranchTable.setBackground(Color.white);
+   
+                }
+                if (ViewTransactions.deliveryCB.isSelected()){
+                    selectAllSupplierCBox.setEnabled(true);
+                    sortSupplierTable.setEnabled(true);
+                    sortSupplierTable.setRowSelectionAllowed(true);
+                    sortSupplierTable.setForeground(Color.black);
+                    sortSupplierTable.setBackground(Color.white);  
+                } 
+            }
+            else if (location.equals("report")){
+                if (Report.withdrawCB.isSelected()){
+                    selectAllBranchCBox.setEnabled(true);
+                    sortBranchTable.setEnabled(true);
+                    sortBranchTable.setRowSelectionAllowed(true);
+                    sortBranchTable.setForeground(Color.black);
+                    sortBranchTable.setBackground(Color.white);
+   
+                }
+                if (Report.deliveryCB.isSelected()){
+                    selectAllSupplierCBox.setEnabled(true);
+                    sortSupplierTable.setEnabled(true);
+                    sortSupplierTable.setRowSelectionAllowed(true);
+                    sortSupplierTable.setForeground(Color.black);
+                    sortSupplierTable.setBackground(Color.white);  
+                }
             }
 //            currentUser = Login.fullName;
 //        }
