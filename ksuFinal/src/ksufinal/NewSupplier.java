@@ -228,12 +228,15 @@ public class NewSupplier extends javax.swing.JFrame {
                     st.setString(4, supplierConper.getText());
                     st.executeUpdate();
                     supplierNameTF.setText("");
+                    supplierNum.setText("");
+                    supplierAd.setText("");
+                    supplierConper.setText("");
                     JOptionPane.showMessageDialog(this,"Successfully added the Supplier");  
                 }
             }
             catch(Exception e){
                 System.out.println(e);
-            }               
+            }             
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
