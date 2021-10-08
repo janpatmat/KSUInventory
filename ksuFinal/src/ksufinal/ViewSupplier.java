@@ -245,25 +245,18 @@ public class ViewSupplier extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_nameTxtKeyReleased
-
-    private void cbxNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNameActionPerformed
-        // TODO add your handling c                ode here:
-        if(cbxName.isSelected() == true){
+public void refresh(){
+    if(cbxName.isSelected() == true){
             nameTxt.setEditable(true);
         }
         else{
             nameTxt.setEditable(false);
             nameTxt.setText("");
         }
-        
-    }//GEN-LAST:event_cbxNameActionPerformed
-
-    private void cbxConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxConActionPerformed
-        // TODO add your handling code here:
-         if(cbxCon.isSelected() == true){
+    if(cbxCon.isSelected() == true){
             
             conTxt.setEditable(true);
-             con1 = "AND";
+             con1 = "AND ";
              
         }
         else{
@@ -271,15 +264,10 @@ public class ViewSupplier extends javax.swing.JFrame {
             conTxt.setText("");
             con1 = "";
         }
-         
-    }//GEN-LAST:event_cbxConActionPerformed
-
-    private void cbxAdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAdActionPerformed
-        // TODO add your handling code here:
          if(cbxAd.isSelected() == true){
             
             adTxt.setEditable(true);
-             con2 = "AND";
+             con2 = "AND ";
              
         }
         else{
@@ -288,20 +276,36 @@ public class ViewSupplier extends javax.swing.JFrame {
             con2 = "";
             
         }
-    }//GEN-LAST:event_cbxAdActionPerformed
-
-    private void cbxConperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxConperActionPerformed
-        // TODO add your handling code here:
-         if(cbxConper.isSelected() == true){
+          if(cbxConper.isSelected() == true){
             
             conperTxt.setEditable(true);
              
-             con3 = "AND";
+             con3 = "AND ";
         }
         else{
             conperTxt.setEditable(false);
             con3 = "";
         }
+}
+    private void cbxNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNameActionPerformed
+        // TODO add your handling c                ode here:
+        refresh();
+        
+    }//GEN-LAST:event_cbxNameActionPerformed
+
+    private void cbxConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxConActionPerformed
+        // TODO add your handling code here:
+         refresh();
+    }//GEN-LAST:event_cbxConActionPerformed
+
+    private void cbxAdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAdActionPerformed
+        // TODO add your handling code here:
+         refresh();
+    }//GEN-LAST:event_cbxAdActionPerformed
+
+    private void cbxConperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxConperActionPerformed
+        // TODO add your handling code here:
+        refresh();
     }//GEN-LAST:event_cbxConperActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -329,6 +333,14 @@ public class ViewSupplier extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         Login.MenuClass.setVisible(true);
+        cbxAd.setSelected(false);
+        cbxCon.setSelected(false);
+        cbxConper.setSelected(false);
+        cbxName.setSelected(false);
+        nameTxt.setText(" ");
+        conTxt.setText(" ");
+        adTxt.setText(" ");
+        conperTxt.setText(" ");
     }//GEN-LAST:event_formWindowClosing
 public void filter(){
     try{
@@ -354,14 +366,14 @@ public void filter(){
                 ResultSet rs = state.executeQuery(query);
         
       while(rs.next()){
-            String id = rs.getString("supplierID");
+           
                 String name = rs.getString("supplierName");
                 String con = rs.getString("Contact");
                 String ad = rs.getString("Address");
                 String conper = rs.getString("ContactPerson");
                 
                 
-                String[] item = {id,name,con,ad,conper};
+                String[] item = {name,con,ad,conper};
               t.addRow(item);
            
                

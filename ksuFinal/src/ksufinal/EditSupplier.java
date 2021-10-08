@@ -252,7 +252,7 @@ public class EditSupplier extends javax.swing.JFrame {
                     int i = supplierTable.getSelectedRow();
                     try{
                         ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM suppliertable WHERE supplierName = '" + supplierNameTF.getText() + "'");
-                        if (rs.next()){
+                        if (rs.next() && (!supplierNameTF.getText().equals(supplierTable.getValueAt(i, 0)))){
                             JOptionPane.showMessageDialog(this,"Supplier Name already exist", "Error", JOptionPane.ERROR_MESSAGE);
                         }else{
                             st = KsuFinal.con.prepareStatement("UPDATE suppliertable SET supplierName = ?, Contact = ?, Address = ?, ContactPerson = ? WHERE supplierID = " + supplierID.get(i));
