@@ -1356,9 +1356,9 @@ public class Report extends javax.swing.JFrame {
                             for (String x: columnArr){
                                 if (x.equals("TotalPrice")){
                                     if (databaseTableName.equals("producttrans")){
-                                        tempArr.add(String.valueOf(Math.round((Float.parseFloat(rs.getString("Quantity")) * Float.parseFloat(rs.getString("Price"))) * 100) / 100));
+                                        tempArr.add(String.valueOf(Math.abs(Math.round((Float.parseFloat(rs.getString("Quantity")) * Float.parseFloat(rs.getString("Price"))) * 100) / 100)));
                                     }else{
-                                        tempArr.add(String.valueOf(Math.round((Float.parseFloat(rs.getString("productQuantity")) * Float.parseFloat(rs.getString("standardPrice"))) * 100) / 100));
+                                        tempArr.add(String.valueOf(Math.abs(Math.round((Float.parseFloat(rs.getString("productQuantity")) * Float.parseFloat(rs.getString("standardPrice"))) * 100) / 100)));
                                     }
                                 }
                                 else{
@@ -1484,20 +1484,40 @@ public class Report extends javax.swing.JFrame {
             for (int x = 0; x < pdfWidth; x++){
                 createcell(texts, reportTable.getColumnName(x), Element.ALIGN_CENTER, 1, text12, 0, 179, 179, 179);
             }
+            int z;
+            for (z = 0; z < reportTable.getColumnCount(); z++){
+                if (reportTable.getColumnName(z).equals("Total Price")){
+                    break;
+                }
+            }
             
             
             createSpace(texts, pdfWidth);
-//            double totUnitPrice = 0;
+            double totPrice = 0;
             int rowSize = reportTable.getRowCount();
-            
-            for (int x = 0; x < rowSize; x++){
+            int x;
+            for (x = 0; x < rowSize; x++){
                 for (int y = 0; y < pdfWidth; y++){
                     String value = reportTable.getValueAt(x, y).toString();
                     createcell(texts, value, Element.ALIGN_CENTER, 1, text12, 0, 255, 255, 255);
-//                    totUnitPrice += Integer.parseInt(x[5]) * Integer.parseInt(x[4]) ;
+                    
+                    
                 }
                 createSpace(texts, pdfWidth);
+                if (TotalPriceCB.isSelected()){
+                    totPrice += Double.parseDouble(reportTable.getValueAt(x, z).toString());
+                }
+                
             }
+            createcell(texts, "______________________________________________________________________________________", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
+            if (TotalPriceCB.isSelected()){
+                createSpace(texts, pdfWidth);
+                createcell(texts, String.format("Summation of Total Price: %.2f", totPrice), Element.ALIGN_LEFT, pdfWidth, textBold12, 0, 255, 255, 255);
+                createcell(texts, "No. of Transactions: " + x, Element.ALIGN_LEFT, pdfWidth, textBold12, 0, 255, 255, 255);
+
+                
+            }
+            
             
             
             
