@@ -1,4 +1,4 @@
-"supplierID";"supplierName"
-1;"SM"
-2;"NCCC"
-3;"GMALL"
+"supplierID";"supplierName";"Contact";"Address";"ContactPerson"
+1;"SM";"03213";"Davao";"Jan"
+2;"NCCC";"472347";"Manila";"Patrick"
+3;"GMALL";"32483";"Cebu";"Matayabas"
