@@ -1500,22 +1500,17 @@ public class Report extends javax.swing.JFrame {
                 for (int y = 0; y < pdfWidth; y++){
                     String value = reportTable.getValueAt(x, y).toString();
                     createcell(texts, value, Element.ALIGN_CENTER, 1, text12, 0, 255, 255, 255);
-                    
-                    
                 }
                 createSpace(texts, pdfWidth);
                 if (TotalPriceCB.isSelected()){
                     totPrice += Double.parseDouble(reportTable.getValueAt(x, z).toString());
                 }
-                
-            }
+            }   
             createcell(texts, "______________________________________________________________________________________", Element.ALIGN_CENTER, pdfWidth, text12, 0, 255, 255, 255);
             if (TotalPriceCB.isSelected()){
                 createSpace(texts, pdfWidth);
                 createcell(texts, String.format("Summation of Total Price: %.2f", totPrice), Element.ALIGN_LEFT, pdfWidth, textBold12, 0, 255, 255, 255);
                 createcell(texts, "No. of Transactions: " + x, Element.ALIGN_LEFT, pdfWidth, textBold12, 0, 255, 255, 255);
-
-                
             }
             
             

@@ -155,6 +155,7 @@ public class Menu extends javax.swing.JFrame {
         jButton8.setForeground(new java.awt.Color(250, 250, 250));
         jButton8.setText("-");
         jButton8.setBorder(null);
+        jButton8.setBorderPainted(false);
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton8MouseEntered(evt);

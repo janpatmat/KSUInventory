@@ -26,11 +26,13 @@ public class KsuFinal {
         // TODO code application logic here
         
       
-        String user = "root";
-        String pass = "Naiskongmagpakalasingdahilwalakana14";
-        
 //        String user = "root";
+//        String pass = "Naiskongmagpakalasingdahilwalakana14";
+        
+        String user = "root";
 //        String pass = "Langgalangga1";
+
+        String pass = "Corei810thgen";
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/expenses",user,pass);
