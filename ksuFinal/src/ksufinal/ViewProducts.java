@@ -14,10 +14,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewProducts extends javax.swing.JFrame {
    //adProd aprd = new adProd();
-    PreparedStatement st = null;
-    PreparedStatement del = null;
+//    PreparedStatement st = null;
+//    PreparedStatement del = null;
     
-    static ArrayList<String[]> adProdArr = new ArrayList<String[]>();
+//    static ArrayList<String[]> adProdArr = new ArrayList<String[]>();
     /**
      * Creates new form adProd
      */
@@ -66,11 +66,11 @@ public class ViewProducts extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product ID", "Name", "Quantity", "Unit of Measure", "Minimum Quantity", "Standard Price", "Category"
+                "Product ID", "Name", "Quantity", "Unit of Measure", "Minimum Quantity", "Standard Price", "Category", "Sub-Category"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, true, true, true
+                true, false, false, false, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -142,8 +142,9 @@ public class ViewProducts extends javax.swing.JFrame {
                 String munit = prodres.getString("prodMinq");
                 String stp = prodres.getString("standardPrice");
                 String sub = prodres.getString("Sub");
-                String[] item = {id, name, quan, unit,munit, stp, sub};
-                String[] item2 = {id, name, quan, unit};
+                String subsub = prodres.getString("subsub");
+                String[] item = {id, name, quan, unit,munit, stp, sub, subsub};
+//                String[] item2 = {id, name, quan, unit};
                 t.addRow(item);
             }
        }
