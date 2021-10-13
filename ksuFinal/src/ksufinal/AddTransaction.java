@@ -65,6 +65,8 @@ public class AddTransaction extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         questionMarkIcon = new javax.swing.JLabel();
         quantityShow = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        subCategoryTF = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
@@ -175,6 +177,10 @@ public class AddTransaction extends javax.swing.JFrame {
 
         quantityShow.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         quantityShow.setText("text");
+
+        jLabel8.setText("Sub-Category");
+
+        subCategoryTF.setEditable(false);
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,19 +191,13 @@ public class AddTransaction extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(depositRadioBtn)
+                        .addComponent(transactionBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(withdrawRadioBtn)
-                        .addGap(382, 382, 382))
+                        .addComponent(quantityShow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel2)
@@ -205,39 +205,49 @@ public class AddTransaction extends javax.swing.JFrame {
                                             .addComponent(suppBranchLabel)
                                             .addComponent(pptLabel))
                                         .addGap(30, 30, 30)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(unitShow)
-                                            .addComponent(transactionQtyTF)
-                                            .addComponent(transactionPriceTF)
-                                            .addComponent(supCmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(supCmb, javax.swing.GroupLayout.Alignment.LEADING, 0, 174, Short.MAX_VALUE)
+                                            .addComponent(transactionPriceTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(transactionQtyTF, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(unitShow)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(depositRadioBtn)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(withdrawRadioBtn))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel5)
-                                            .addComponent(jLabel1))
-                                        .addGap(61, 61, 61)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(productComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(categoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(transactionBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(quantityShow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(223, 223, 223))))
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel8))
+                                        .addGap(39, 39, 39)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(subCategoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(productComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(categoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 103, Short.MAX_VALUE)
+                                .addComponent(jLabel6)
+                                .addGap(78, 78, 78)
+                                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(jLabel6)
-                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel6)))
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(depositRadioBtn)
                     .addComponent(withdrawRadioBtn))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(productComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,6 +255,10 @@ public class AddTransaction extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(categoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(subCategoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -261,11 +275,11 @@ public class AddTransaction extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(supCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(suppBranchLabel))
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transactionBtn)
                     .addComponent(quantityShow, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -283,6 +297,7 @@ public class AddTransaction extends javax.swing.JFrame {
                     transactionQtyTF.setText("");
                     transactionPriceTF.setText("");
                     categoryTF.setText("");
+                    subCategoryTF.setText("");
                     unitShow.setText("");
                     supCmb.setSelectedItem("");
                 }else{
@@ -291,6 +306,7 @@ public class AddTransaction extends javax.swing.JFrame {
                         transactionPriceTF.setText(transactionArr.get(idx)[5]);
                     }
                     categoryTF.setText(transactionArr.get(idx)[6]);
+                    subCategoryTF.setText(transactionArr.get(idx)[7]);
                     unitShow.setText(unit);
                 }
             }
@@ -324,6 +340,7 @@ public class AddTransaction extends javax.swing.JFrame {
         transactionQtyTF.setText("");
         transactionPriceTF.setText("");
         categoryTF.setText("");
+        subCategoryTF.setText("");
         unitShow.setText("");
         productComboBox.setSelectedItem("");
         supCmb.setSelectedItem("");
@@ -346,6 +363,7 @@ public class AddTransaction extends javax.swing.JFrame {
         transactionPriceTF.setText("");
         transactionBtn.setText("Withdraw");
         categoryTF.setText("");
+        subCategoryTF.setText("");
         unitShow.setText("");
         currRadioBtn = "withdraw";
         pptLabel.setText("Standard Price");
@@ -412,7 +430,7 @@ public class AddTransaction extends javax.swing.JFrame {
                     KsuFinal.con.prepareStatement(statement).executeUpdate(); 
 
                     //Edit the table in the transactions table
-                    PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID,Name,Quantity,Unit,Price,SuppBranch,Date, Action, Sub , Transby)VALUES(?,?,?,?,?,?,?,?,?,?)");
+                    PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID,Name,Quantity,Unit,Price,SuppBranch,Date, Action, Sub , Transby, subsub)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 
                     st.setInt(1, Integer.parseInt(transactionArr.get(idx)[4])); // ProdID
                     st.setString(2, transactionArr.get(idx)[2]); // Name
@@ -428,11 +446,13 @@ public class AddTransaction extends javax.swing.JFrame {
                     }
                     st.setString(9, categoryTF.getText()); // Sub
                     st.setString(10, t.fullName); // Transby
+                    st.setString(11, subCategoryTF.getText()); // subsub
 
                     st.executeUpdate();            
                     transactionQtyTF.setText("");
                     transactionPriceTF.setText("");
                     categoryTF.setText("");
+                    subCategoryTF.setText("");
                     unitShow.setText("");
                     productComboBox.setSelectedItem("");
                     supCmb.setSelectedItem("");
@@ -504,6 +524,7 @@ public class AddTransaction extends javax.swing.JFrame {
         transactionQtyTF.setText("");
         transactionPriceTF.setText("");
         categoryTF.setText("");
+        subCategoryTF.setText("");
         pptLabel.setText("Price per Item");
 
         try{
@@ -514,7 +535,7 @@ public class AddTransaction extends javax.swing.JFrame {
             ResultSet rsBranch = KsuFinal.con.createStatement().executeQuery("SELECT * FROM branchtable");
            
             productComboBox.addItem("");
-            transactionArr.add(new String[]{"", "", "", "", "", "", ""});
+            transactionArr.add(new String[]{"", "", "", "", "", "", "", ""});
             while(rs.next()){
                 String id = rs.getString("productID");
                 String nm = rs.getString("productName");
@@ -523,10 +544,11 @@ public class AddTransaction extends javax.swing.JFrame {
                 String ut = rs.getString("Unit");
                 String mm = rs.getString("prodMinq");
                 String sp = String.format("%.2f" ,rs.getFloat("standardPrice"));
-                String sb = rs.getString("Sub");    
+                String sb = rs.getString("Sub");
+                String sbsb = rs.getString("subsub");
                 
                 productComboBox.addItem(nm);
-                String[] item = {qt, ut, nm, mm, id, sp, sb};
+                String[] item = {qt, ut, nm, mm, id, sp, sb, sbsb};
                 
                 transactionArr.add(item);
                 
@@ -605,11 +627,13 @@ public class AddTransaction extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel pptLabel;
     private javax.swing.JComboBox<String> productComboBox;
     private javax.swing.JLabel quantityShow;
     private javax.swing.JLabel questionMarkIcon;
+    private javax.swing.JTextField subCategoryTF;
     private javax.swing.JComboBox supCmb;
     private javax.swing.JLabel suppBranchLabel;
     private javax.swing.JButton transactionBtn;
