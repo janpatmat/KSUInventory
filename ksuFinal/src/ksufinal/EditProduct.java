@@ -394,7 +394,7 @@ public class EditProduct extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this,"Product Name already exists", "Error", JOptionPane.ERROR_MESSAGE);
 
                     }else{
-                        String query = "UPDATE producttable SET productName = ?, Unit = ?, prodMinq = ?, Sub = ?, subsub = ?, WHERE (productID = " + id + ")";
+                        String query = "UPDATE producttable SET productName = ?, Unit = ?, prodMinq = ?, Sub = ?, subsub = ? WHERE (productID = " + id + ")";
                         st = KsuFinal.con.prepareStatement(query);
                         st.setString(1, nm);
                         st.setString(2, uomCB.getSelectedItem().toString());
