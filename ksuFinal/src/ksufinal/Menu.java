@@ -29,6 +29,7 @@ public class Menu extends javax.swing.JFrame {
     ViewUnit ViewUnitClass = new ViewUnit();
     Report ReportClass = new Report();
     EditCategory EditCategoryClass = new EditCategory();
+    EditSubCategory EditSubCategoryClass = new EditSubCategory();
     EditProduct EditProductClass = new EditProduct();
     EditTransaction EditTransactionClass = new EditTransaction();
     EditUnit EditUnitClass = new EditUnit();
@@ -58,10 +59,9 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        companyName = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -84,6 +84,8 @@ public class Menu extends javax.swing.JFrame {
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         editCategoryBtn = new javax.swing.JButton();
+        editSubCategoryBtn = new javax.swing.JButton();
+        editInventoryBtn = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
@@ -129,12 +131,6 @@ public class Menu extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel3.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Production Spare Parts Inventory System");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
         jButton7.setBackground(new java.awt.Color(45, 52, 54));
         jButton7.setForeground(new java.awt.Color(250, 250, 250));
         jButton7.setText("X");
@@ -158,7 +154,8 @@ public class Menu extends javax.swing.JFrame {
         jButton8.setForeground(new java.awt.Color(250, 250, 250));
         jButton8.setText("-");
         jButton8.setBorder(null);
-        jButton8.setBorderPainted(false);
+        jButton8.setMaximumSize(new java.awt.Dimension(7, 15));
+        jButton8.setMinimumSize(new java.awt.Dimension(7, 15));
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton8MouseEntered(evt);
@@ -174,11 +171,11 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 50, 20));
 
-        jLabel10.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel10.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Monde Nissin Corporation - Davao Plant");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        companyName.setBackground(new java.awt.Color(153, 153, 153));
+        companyName.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        companyName.setForeground(new java.awt.Color(255, 255, 255));
+        companyName.setText("Title Text");
+        jPanel2.add(companyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 70));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 90));
 
@@ -507,6 +504,42 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        editSubCategoryBtn.setBackground(new java.awt.Color(178, 190, 195));
+        editSubCategoryBtn.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        editSubCategoryBtn.setForeground(new java.awt.Color(250, 250, 250));
+        editSubCategoryBtn.setText("Edit Sub-Category");
+        editSubCategoryBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editSubCategoryBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editSubCategoryBtnMouseExited(evt);
+            }
+        });
+        editSubCategoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSubCategoryBtnActionPerformed(evt);
+            }
+        });
+
+        editInventoryBtn.setBackground(new java.awt.Color(178, 190, 195));
+        editInventoryBtn.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        editInventoryBtn.setForeground(new java.awt.Color(250, 250, 250));
+        editInventoryBtn.setText("Edit Inventory Info");
+        editInventoryBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editInventoryBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editInventoryBtnMouseExited(evt);
+            }
+        });
+        editInventoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editInventoryBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -515,10 +548,14 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(74, 74, 74)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(editCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(editCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editSubCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
@@ -541,8 +578,12 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
-                .addComponent(editCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editSubCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addComponent(editInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab2", jPanel5);
@@ -1458,6 +1499,58 @@ transactionClass.setVisible(true);
         NewSubCategoryClass.openWindowAction();
     }//GEN-LAST:event_newSubCategoryBtnActionPerformed
 
+    private void editSubCategoryBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editSubCategoryBtnMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editSubCategoryBtnMouseEntered
+
+    private void editSubCategoryBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editSubCategoryBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editSubCategoryBtnMouseExited
+
+    private void editSubCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSubCategoryBtnActionPerformed
+        EditSubCategoryClass.setVisible(true);
+        EditSubCategoryClass.setDefaultCloseOperation(EditSubCategoryClass.DISPOSE_ON_CLOSE);
+        EditSubCategoryClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        EditSubCategoryClass.openWindowAction();
+    }//GEN-LAST:event_editSubCategoryBtnActionPerformed
+
+    private void editInventoryBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInventoryBtnMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editInventoryBtnMouseEntered
+
+    private void editInventoryBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInventoryBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editInventoryBtnMouseExited
+
+    private void editInventoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editInventoryBtnActionPerformed
+        // TODO add your handling code here:
+        
+        EditInventoryInfoClass.setVisible(true);
+        EditInventoryInfoClass.setDefaultCloseOperation(EditInventoryInfoClass.DISPOSE_ON_CLOSE);
+        EditInventoryInfoClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        EditInventoryInfoClass.openWindowAction();
+    }//GEN-LAST:event_editInventoryBtnActionPerformed
+    
+    public void openWindowAction(){
+        try{
+            ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.inventoryinfo;");
+
+            rs.next();
+
+            String cn = rs.getString("title");
+
+
+            companyName.setText(cn);
+            
+        }catch(Exception ex){
+            
+        }
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -1497,7 +1590,10 @@ transactionClass.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel companyName;
     private javax.swing.JButton editCategoryBtn;
+    private javax.swing.JButton editInventoryBtn;
+    private javax.swing.JButton editSubCategoryBtn;
     private javax.swing.JLabel firstNameTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton16;
@@ -1516,10 +1612,8 @@ transactionClass.setVisible(true);
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

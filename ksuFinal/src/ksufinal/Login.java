@@ -197,6 +197,7 @@ public class Login extends javax.swing.JFrame {
             String ln = rs.getString("Lastname");
             String ad = rs.getString("Admin");
             MenuClass.setVisible(true);
+            MenuClass.openWindowAction();
             if(ad.equals("TRUE")){
                 admin = true;
             }
@@ -234,9 +235,6 @@ public class Login extends javax.swing.JFrame {
         }catch(Exception ex){
             
         }
-        
-        
-        
     }
     
     
