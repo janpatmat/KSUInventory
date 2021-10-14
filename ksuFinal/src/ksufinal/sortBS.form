@@ -110,6 +110,7 @@
     <Component class="javax.swing.JCheckBox" name="selectAllSupplierCBox">
       <Properties>
         <Property name="text" type="java.lang.String" value="Select All Supplier"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectAllSupplierCBoxActionPerformed"/>
@@ -159,6 +160,7 @@
     <Component class="javax.swing.JCheckBox" name="selectAllBranchCBox">
       <Properties>
         <Property name="text" type="java.lang.String" value="Select All Branch"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectAllBranchCBoxActionPerformed"/>

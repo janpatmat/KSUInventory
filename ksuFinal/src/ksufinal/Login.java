@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ksufinal;
+import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -42,14 +43,14 @@ public class Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         uname = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
-        Login = new javax.swing.JButton();
+        LoginBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         registerBtn1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -79,16 +80,21 @@ public class Login extends javax.swing.JFrame {
 
         pass.setBackground(new java.awt.Color(99, 110, 114));
         pass.setBorder(null);
-        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 230, 20));
-
-        Login.setBackground(new java.awt.Color(0, 153, 153));
-        Login.setText("Login");
-        Login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginActionPerformed(evt);
+        pass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passKeyPressed(evt);
             }
         });
-        jPanel2.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 100, -1));
+        jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 230, 20));
+
+        LoginBtn.setBackground(new java.awt.Color(0, 153, 153));
+        LoginBtn.setText("Login");
+        LoginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(LoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 100, -1));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 128, 192));
@@ -111,18 +117,18 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Password");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 360));
-
-        jPanel3.setBackground(new java.awt.Color(45, 52, 54));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         registerBtn1.setText("Register");
         registerBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerBtn1ActionPerformed(evt);
             }
         });
-        jPanel3.add(registerBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 100, -1));
+        jPanel2.add(registerBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 100, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 360));
+
+        jPanel3.setBackground(new java.awt.Color(45, 52, 54));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setBackground(new java.awt.Color(45, 52, 54));
         jButton2.setForeground(new java.awt.Color(250, 250, 250));
@@ -178,7 +184,7 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
+    private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         MenuClass.setLocationRelativeTo(null);
         try{
          //us = uname.getText();
@@ -220,7 +226,7 @@ public class Login extends javax.swing.JFrame {
          System.out.println(e);
      }
 
-    }//GEN-LAST:event_LoginActionPerformed
+    }//GEN-LAST:event_LoginBtnActionPerformed
     public void updateStandardPrice(){
         String statement = 
             "UPDATE producttable " +
@@ -243,7 +249,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_unameActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void registerBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtn1ActionPerformed
@@ -268,25 +274,33 @@ public class Login extends javax.swing.JFrame {
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
         // TODO add your handling code here:
         jButton2.setBackground(new java.awt.Color(220,20,60));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
          
          
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
         jButton2.setBackground(new java.awt.Color(45,52,54));
-         jButton2.setForeground(new java.awt.Color(250, 250, 250));
+        jButton2.setForeground(new java.awt.Color(250, 250, 250));
     }//GEN-LAST:event_jButton2MouseExited
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
         // TODO add your handling code here:
         jButton1.setBackground(new java.awt.Color(45,52,54));
+        jButton1.setForeground(new java.awt.Color(250,250,250));
     }//GEN-LAST:event_jButton1MouseExited
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
         jButton1.setBackground(new java.awt.Color(250,250,250));
-         jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
     }//GEN-LAST:event_jButton1MouseEntered
+
+    private void passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            LoginBtn.doClick();
+        }
+    }//GEN-LAST:event_passKeyPressed
 
     /**
      * @param args the command line arguments
@@ -325,7 +339,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Login;
+    private javax.swing.JButton LoginBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

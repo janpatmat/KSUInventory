@@ -47,6 +47,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        
     }
 
     /**
@@ -127,6 +128,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(178, 190, 195));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(45, 52, 54));
@@ -150,12 +152,14 @@ public class Menu extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 50, 20));
+        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 50, 20));
 
         jButton8.setBackground(new java.awt.Color(45, 52, 54));
         jButton8.setForeground(new java.awt.Color(250, 250, 250));
         jButton8.setText("-");
         jButton8.setBorder(null);
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton8.setFocusPainted(false);
         jButton8.setMaximumSize(new java.awt.Dimension(7, 15));
         jButton8.setMinimumSize(new java.awt.Dimension(7, 15));
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,7 +175,7 @@ public class Menu extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 50, 20));
+        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 50, 20));
 
         companyName.setBackground(new java.awt.Color(153, 153, 153));
         companyName.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
@@ -179,7 +183,7 @@ public class Menu extends javax.swing.JFrame {
         companyName.setText("Title Text");
         jPanel2.add(companyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 70));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 90));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 760, 100));
 
         jPanel3.setBackground(new java.awt.Color(99, 110, 114));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,7 +203,7 @@ public class Menu extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 110, -1));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gEdititems.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -210,7 +214,7 @@ public class Menu extends javax.swing.JFrame {
                 jLabel1MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gTrans.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -221,7 +225,7 @@ public class Menu extends javax.swing.JFrame {
                 jLabel4MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gUsers.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -232,7 +236,7 @@ public class Menu extends javax.swing.JFrame {
                 jLabel5MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gView.png"))); // NOI18N
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -240,7 +244,7 @@ public class Menu extends javax.swing.JFrame {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gReport.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -248,7 +252,7 @@ public class Menu extends javax.swing.JFrame {
                 jLabel7MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/gNewitems.png"))); // NOI18N
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,9 +263,9 @@ public class Menu extends javax.swing.JFrame {
                 jLabel8MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 170, 480));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 190, 540));
 
         jTabbedPane1.setBackground(new java.awt.Color(99, 110, 114));
         jTabbedPane1.setForeground(new java.awt.Color(99, 110, 114));
@@ -387,7 +391,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -409,7 +413,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newSubCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", jPanel4);
@@ -560,7 +564,7 @@ public class Menu extends javax.swing.JFrame {
                                 .addComponent(editSubCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                                 .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -585,7 +589,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(editSubCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(editInventoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab2", jPanel5);
@@ -635,7 +639,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
         );
@@ -646,7 +650,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab3", jPanel6);
@@ -784,12 +788,12 @@ public class Menu extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(112, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(viewSubCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(viewTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(viewUnitsBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(viewUnitsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(viewSupplierBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(85, 85, 85)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -809,13 +813,13 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewSupplierBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewBranchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewUnitsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                    .addComponent(viewUnitsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addComponent(viewSubCategoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab4", jPanel7);
@@ -831,14 +835,14 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(217, 217, 217)
                 .addComponent(jButton16)
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(177, 177, 177)
                 .addComponent(jButton16)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab5", jPanel8);
@@ -859,14 +863,14 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(196, 196, 196)
                 .addComponent(jButton17)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(354, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(158, 158, 158)
                 .addComponent(jButton17)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab6", jPanel9);
@@ -898,40 +902,41 @@ public class Menu extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel2))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lastNameTF)
-                    .addComponent(firstNameTF))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addGap(26, 26, 26))
+                .addGap(0, 76, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(lastNameTF))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(firstNameTF)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel9)
-                .addGap(97, 97, 97)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(firstNameTF))
-                .addGap(34, 34, 34)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lastNameTF))
-                .addContainerGap(178, Short.MAX_VALUE))
+                    .addComponent(lastNameTF)
+                    .addComponent(jLabel2))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab7", jPanel10);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 610, 470));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 630, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -948,7 +953,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1322,59 +1327,6 @@ transactionClass.setVisible(true);
         EditTransactionClass.openWindowAction();
     }//GEN-LAST:event_jButton23ActionPerformed
 
-    private void viewTransactionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTransactionBtnMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewTransactionBtnMouseEntered
-
-    private void viewTransactionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTransactionBtnMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewTransactionBtnMouseExited
-
-    private void viewTransactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTransactionBtnActionPerformed
-        // TODO add your handling code here:
-        
- ViewTransactionsClass.setVisible(true);
-        ViewTransactionsClass.setDefaultCloseOperation(ViewTransactionsClass.HIDE_ON_CLOSE);
-        ViewTransactionsClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        ViewTransactionsClass.openWindowAction();
-    }//GEN-LAST:event_viewTransactionBtnActionPerformed
-
-    private void viewProductsBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProductsBtnMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewProductsBtnMouseEntered
-
-    private void viewProductsBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProductsBtnMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewProductsBtnMouseExited
-
-    private void viewProductsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProductsBtnActionPerformed
-        // TODO add your handling code here:
-        ViewProductsClass.setVisible(true);
-        ViewProductsClass.setDefaultCloseOperation(ViewProductsClass.DISPOSE_ON_CLOSE);
-        ViewProductsClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-	
-    }//GEN-LAST:event_viewProductsBtnActionPerformed
-
-    private void viewBranchBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewBranchBtnMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewBranchBtnMouseEntered
-
-    private void viewBranchBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewBranchBtnMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewBranchBtnMouseExited
-
-    private void viewBranchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBranchBtnActionPerformed
-        // TODO add your handling code here:
-        ViewBranchClass.setVisible(true);
-        ViewBranchClass.setDefaultCloseOperation(ViewBranchClass.DISPOSE_ON_CLOSE);
-        ViewBranchClass.setLocationRelativeTo(null);
-        ViewBranchClass.openWindowAction();
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_viewBranchBtnActionPerformed
-
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
         
@@ -1397,55 +1349,6 @@ transactionClass.setVisible(true);
         this.setVisible(false);
         EditInventoryInfoClass.openWindowAction();
     }//GEN-LAST:event_editInventoryMenuActionPerformed
-
-    private void viewCategoryBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCategoryBtnMouseEntered
-
-    }//GEN-LAST:event_viewCategoryBtnMouseEntered
-
-    private void viewCategoryBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCategoryBtnMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewCategoryBtnMouseExited
-
-    private void viewCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCategoryBtnActionPerformed
-        ViewCategoryClass.setVisible(true);
-        ViewCategoryClass.setDefaultCloseOperation(ViewCategoryClass.DISPOSE_ON_CLOSE);
-        ViewCategoryClass.setLocationRelativeTo(null);
-        this.setVisible(false);
-        ViewCategoryClass.openWindowAction();
-    }//GEN-LAST:event_viewCategoryBtnActionPerformed
-
-    private void viewSupplierBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSupplierBtnMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewSupplierBtnMouseEntered
-
-    private void viewSupplierBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSupplierBtnMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewSupplierBtnMouseExited
-
-    private void viewSupplierBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSupplierBtnActionPerformed
-        ViewSupplierClass.setVisible(true);
-        ViewSupplierClass.setDefaultCloseOperation(ViewSupplierClass.DISPOSE_ON_CLOSE);
-        ViewSupplierClass.setLocationRelativeTo(null);
-        ViewSupplierClass.openWindowAction();
-        this.setVisible(false);
-    }//GEN-LAST:event_viewSupplierBtnActionPerformed
-
-    private void viewUnitsBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewUnitsBtnMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewUnitsBtnMouseEntered
-
-    private void viewUnitsBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewUnitsBtnMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewUnitsBtnMouseExited
-
-    private void viewUnitsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUnitsBtnActionPerformed
-        // TODO add your handling code here:
-        ViewUnitClass.setVisible(true);
-        ViewUnitClass.setDefaultCloseOperation(ViewUnitClass.DISPOSE_ON_CLOSE);
-        ViewUnitClass.setLocationRelativeTo(null);  
-        this.setVisible(false);
-        ViewUnitClass.openWindowAction();
-    }//GEN-LAST:event_viewUnitsBtnActionPerformed
 
     private void editCategoryBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editCategoryBtnMouseEntered
         // TODO add your handling code here:
@@ -1473,24 +1376,26 @@ transactionClass.setVisible(true);
 
     private void jButton7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseEntered
         // TODO add your handling code here:
-         jButton7.setBackground(new java.awt.Color(220,20,60));
+        jButton7.setBackground(new java.awt.Color(220,20,60));
+        jButton7.setForeground(new java.awt.Color(0, 0, 0));
     }//GEN-LAST:event_jButton7MouseEntered
 
     private void jButton7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseExited
         // TODO add your handling code here:
         jButton7.setBackground(new java.awt.Color(45,52,54));
-         jButton7.setForeground(new java.awt.Color(250, 250, 250));
+        jButton7.setForeground(new java.awt.Color(250, 250, 250));
     }//GEN-LAST:event_jButton7MouseExited
 
     private void jButton8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseEntered
         // TODO add your handling code here:
-         jButton8.setBackground(new java.awt.Color(250,250,250));
-         jButton8.setForeground(new java.awt.Color(0, 0, 0));
+        jButton8.setBackground(new java.awt.Color(250,250,250));
+        jButton8.setForeground(new java.awt.Color(0, 0, 0));
     }//GEN-LAST:event_jButton8MouseEntered
 
     private void jButton8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseExited
         // TODO add your handling code here:
-          jButton8.setBackground(new java.awt.Color(45,52,54));
+        jButton8.setBackground(new java.awt.Color(45,52,54));
+        jButton8.setForeground(new java.awt.Color(250, 250, 250));
     }//GEN-LAST:event_jButton8MouseExited
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1553,14 +1458,6 @@ transactionClass.setVisible(true);
         EditInventoryInfoClass.openWindowAction();
     }//GEN-LAST:event_editInventoryBtnActionPerformed
 
-    private void viewSubCategoryBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSubCategoryBtnMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewSubCategoryBtnMouseEntered
-
-    private void viewSubCategoryBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSubCategoryBtnMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewSubCategoryBtnMouseExited
-
     private void viewSubCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSubCategoryBtnActionPerformed
         // TODO add your handling code here:
         ViewSubCategoryClass.setVisible(true);
@@ -1569,6 +1466,116 @@ transactionClass.setVisible(true);
         this.setVisible(false);
         ViewSubCategoryClass.openWindowAction();
     }//GEN-LAST:event_viewSubCategoryBtnActionPerformed
+
+    private void viewSubCategoryBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSubCategoryBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewSubCategoryBtnMouseExited
+
+    private void viewSubCategoryBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSubCategoryBtnMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewSubCategoryBtnMouseEntered
+
+    private void viewUnitsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUnitsBtnActionPerformed
+        // TODO add your handling code here:
+        ViewUnitClass.setVisible(true);
+        ViewUnitClass.setDefaultCloseOperation(ViewUnitClass.DISPOSE_ON_CLOSE);
+        ViewUnitClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        ViewUnitClass.openWindowAction();
+    }//GEN-LAST:event_viewUnitsBtnActionPerformed
+
+    private void viewUnitsBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewUnitsBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewUnitsBtnMouseExited
+
+    private void viewUnitsBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewUnitsBtnMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewUnitsBtnMouseEntered
+
+    private void viewSupplierBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSupplierBtnActionPerformed
+        ViewSupplierClass.setVisible(true);
+        ViewSupplierClass.setDefaultCloseOperation(ViewSupplierClass.DISPOSE_ON_CLOSE);
+        ViewSupplierClass.setLocationRelativeTo(null);
+        ViewSupplierClass.openWindowAction();
+        this.setVisible(false);
+    }//GEN-LAST:event_viewSupplierBtnActionPerformed
+
+    private void viewSupplierBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSupplierBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewSupplierBtnMouseExited
+
+    private void viewSupplierBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSupplierBtnMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewSupplierBtnMouseEntered
+
+    private void viewCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCategoryBtnActionPerformed
+        ViewCategoryClass.setVisible(true);
+        ViewCategoryClass.setDefaultCloseOperation(ViewCategoryClass.DISPOSE_ON_CLOSE);
+        ViewCategoryClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        ViewCategoryClass.openWindowAction();
+    }//GEN-LAST:event_viewCategoryBtnActionPerformed
+
+    private void viewCategoryBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCategoryBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewCategoryBtnMouseExited
+
+    private void viewCategoryBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCategoryBtnMouseEntered
+
+    }//GEN-LAST:event_viewCategoryBtnMouseEntered
+
+    private void viewBranchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBranchBtnActionPerformed
+        // TODO add your handling code here:
+        ViewBranchClass.setVisible(true);
+        ViewBranchClass.setDefaultCloseOperation(ViewBranchClass.DISPOSE_ON_CLOSE);
+        ViewBranchClass.setLocationRelativeTo(null);
+        ViewBranchClass.openWindowAction();
+        this.setVisible(false);
+
+    }//GEN-LAST:event_viewBranchBtnActionPerformed
+
+    private void viewBranchBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewBranchBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewBranchBtnMouseExited
+
+    private void viewBranchBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewBranchBtnMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewBranchBtnMouseEntered
+
+    private void viewProductsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProductsBtnActionPerformed
+        // TODO add your handling code here:
+        ViewProductsClass.setVisible(true);
+        ViewProductsClass.setDefaultCloseOperation(ViewProductsClass.DISPOSE_ON_CLOSE);
+        ViewProductsClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_viewProductsBtnActionPerformed
+
+    private void viewProductsBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProductsBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewProductsBtnMouseExited
+
+    private void viewProductsBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProductsBtnMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewProductsBtnMouseEntered
+
+    private void viewTransactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTransactionBtnActionPerformed
+        // TODO add your handling code here:
+
+        ViewTransactionsClass.setVisible(true);
+        ViewTransactionsClass.setDefaultCloseOperation(ViewTransactionsClass.HIDE_ON_CLOSE);
+        ViewTransactionsClass.setLocationRelativeTo(null);
+        this.setVisible(false);
+        ViewTransactionsClass.openWindowAction();
+    }//GEN-LAST:event_viewTransactionBtnActionPerformed
+
+    private void viewTransactionBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTransactionBtnMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewTransactionBtnMouseExited
+
+    private void viewTransactionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewTransactionBtnMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewTransactionBtnMouseEntered
     
     public void openWindowAction(){
         try{
@@ -1580,6 +1587,7 @@ transactionClass.setVisible(true);
 
 
             companyName.setText(cn);
+           
             
         }catch(Exception ex){
             
