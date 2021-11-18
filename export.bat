@@ -1,0 +1,1 @@
+SQLCMD -S localhost -d student -E -Q "select * from students" -s "," -o "C:\Users\Ricky\Documents\ksuInventory\test.csv"

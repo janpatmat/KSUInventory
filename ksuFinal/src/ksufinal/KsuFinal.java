@@ -42,7 +42,7 @@ public class KsuFinal {
         
         
         
-        Login loginClass = new Login();
+        loading loginClass = new loading();
         loginClass.setVisible(true);
         loginClass.setLocationRelativeTo(null);
 
