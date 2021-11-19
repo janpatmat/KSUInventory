@@ -60,9 +60,11 @@ public class EditProduct extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         categoryCB = new javax.swing.JComboBox();
         uomCB = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        subCategoryCB = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        deactivateBtn = new javax.swing.JButton();
+        viewDeactivateBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         questionMarkIcon = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -124,11 +126,11 @@ public class EditProduct extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product ID", "Product Name", "Category", "Unit of Measure", "Quantity", "Minimum Quantity", "Standard Price"
+                "Product ID", "Product Name", "Category", "Sub-Category", "Unit of Measure", "Quantity", "Minimum Quantity", "Standard Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, true, true, false, true, true
+                true, false, true, true, true, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -210,32 +212,41 @@ public class EditProduct extends javax.swing.JFrame {
 
         uomCB.setMaximumSize(new java.awt.Dimension(28, 20));
 
+        jLabel9.setText("Sub-Category");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(productNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(uomCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(categoryCB, 0, 110, Short.MAX_VALUE)
-                            .addComponent(minimumTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addComponent(productNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(uomCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(categoryCB, 0, 110, Short.MAX_VALUE)
+                                    .addComponent(minimumTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(editDataBtn)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel9)
+                        .addGap(38, 38, 38)
+                        .addComponent(subCategoryCB, 0, 110, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(editDataBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,6 +261,10 @@ public class EditProduct extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(subCategoryCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(uomCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -258,22 +273,22 @@ public class EditProduct extends javax.swing.JFrame {
                     .addComponent(minimumTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(editDataBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Edit Deactivated Product", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jButton2.setText("Deactivate Product");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        deactivateBtn.setText("Deactivate Product");
+        deactivateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                deactivateBtnActionPerformed(evt);
             }
         });
 
-        jButton3.setText("View Deactivated Products");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        viewDeactivateBtn.setText("View Deactivated Products");
+        viewDeactivateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                viewDeactivateBtnActionPerformed(evt);
             }
         });
 
@@ -285,19 +300,19 @@ public class EditProduct extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(viewDeactivateBtn)
                         .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(deactivateBtn)
                         .addGap(54, 54, 54))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jButton2)
+                .addComponent(deactivateBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(viewDeactivateBtn)
                 .addGap(20, 20, 20))
         );
 
@@ -325,9 +340,9 @@ public class EditProduct extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -335,7 +350,7 @@ public class EditProduct extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(358, 358, 358)
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 453, Short.MAX_VALUE)
                         .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -346,16 +361,18 @@ public class EditProduct extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addGap(19, 19, 19))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
 
         pack();
@@ -372,17 +389,18 @@ public class EditProduct extends javax.swing.JFrame {
                 
                 ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * from producttable WHERE productName = '" + nm + "'");
                 
-                if (productNameTF.getText().length() > 0 && minimumTF.getText().length() > 0 && uomCB.getSelectedItem().toString().length() > 0 && categoryCB.getSelectedItem().toString().length() > 0){
+                if (productNameTF.getText().length() > 0 && minimumTF.getText().length() > 0 && uomCB.getSelectedItem().toString().length() > 0 && categoryCB.getSelectedItem().toString().length() > 0 && subCategoryCB.getSelectedItem().toString().length() > 0){
                     if(rs.next() && (!productNameTF.getText().equals(proddbTable.getValueAt(i, 1)))){ 
                         JOptionPane.showMessageDialog(this,"Product Name already exists", "Error", JOptionPane.ERROR_MESSAGE);
 
                     }else{
-                        String query = "UPDATE producttable SET productName = ?, Unit = ?, prodMinq = ?, Sub = ? WHERE (productID = " + id + ")";
+                        String query = "UPDATE producttable SET productName = ?, Unit = ?, prodMinq = ?, Sub = ?, subsub = ? WHERE (productID = " + id + ")";
                         st = KsuFinal.con.prepareStatement(query);
                         st.setString(1, nm);
                         st.setString(2, uomCB.getSelectedItem().toString());
                         st.setString(3, minimumTF.getText());
                         st.setString(4, categoryCB.getSelectedItem().toString());
+                        st.setString(5, subCategoryCB.getSelectedItem().toString());
                         st.executeUpdate();
                         editActiveTable();
 
@@ -390,6 +408,7 @@ public class EditProduct extends javax.swing.JFrame {
                         minimumTF.setText("");
                         uomCB.setSelectedItem("");
                         categoryCB.setSelectedItem("");
+                        subCategoryCB.setSelectedItem("");
                         JOptionPane.showMessageDialog(this,"Successfully edited the Product");
                     }
                 }else{
@@ -421,11 +440,12 @@ public class EditProduct extends javax.swing.JFrame {
                 String quan = String.valueOf(prodRs.getInt("productQuantity"));
                 String unit = prodRs.getString("Unit");
                 String cat = prodRs.getString("Sub");
+                String subcat = prodRs.getString("subsub");
                 String min = prodRs.getString("prodMinq");
                 String stndrd = prodRs.getString("standardPrice");
                 String fromD = prodRs.getString("dateFrom");
                 String toD = prodRs.getString("dateTo");
-                String[] item = {id, name, cat, unit, quan, min, stndrd};
+                String[] item = {id, name, cat, subcat, unit, quan, min, stndrd};
                 String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
                 t.addRow(item);
                 adProdArr.add(item2);
@@ -444,8 +464,9 @@ public class EditProduct extends javax.swing.JFrame {
         
         productNameTF.setText(proddbTable.getValueAt(i, 1).toString());
         categoryCB.setSelectedItem(proddbTable.getValueAt(i, 2));
-        uomCB.setSelectedItem(proddbTable.getValueAt(i, 3));
-        minimumTF.setText(proddbTable.getValueAt(i, 5).toString());
+        subCategoryCB.setSelectedItem(proddbTable.getValueAt(i, 3));
+        uomCB.setSelectedItem(proddbTable.getValueAt(i, 4));
+        minimumTF.setText(proddbTable.getValueAt(i, 6).toString());
         
         try{
             if (adProdArr.get(i)[5].equals("0")){
@@ -464,7 +485,7 @@ public class EditProduct extends javax.swing.JFrame {
        
     }//GEN-LAST:event_proddbTableMouseClicked
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void deactivateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deactivateBtnActionPerformed
         int yesNO = 0;
         if (proddbTable.getSelectedRowCount() > 0){
             yesNO = JOptionPane.showConfirmDialog (null, "Do you really want to deactivate these products?","Warning",JOptionPane.YES_NO_OPTION);
@@ -493,16 +514,16 @@ public class EditProduct extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Please select a row", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_deactivateBtnActionPerformed
     public static void printThis(){
         for (String[]x : adProdArr){
             System.out.println(Arrays.deepToString(x));
         }
     }
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void viewDeactivateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDeactivateBtnActionPerformed
         dec.setVisible(true);
         dec.setDefaultCloseOperation(dec.HIDE_ON_CLOSE);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_viewDeactivateBtnActionPerformed
 
     private void SPBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SPBtnActionPerformed
         int checkTransaction = 0;
@@ -618,14 +639,17 @@ public class EditProduct extends javax.swing.JFrame {
         adProdArr.clear();
         uomCB.removeAllItems();
         categoryCB.removeAllItems();
+        subCategoryCB.removeAllItems();
         uomCB.addItem("");
         categoryCB.addItem("");
+        subCategoryCB.addItem("");
         
         try{
 //            Statement state = KsuFinal.con.createStatement();
             ResultSet prodRs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.producttable WHERE Active = 'TRUE'");
             ResultSet unitRs = KsuFinal.con.createStatement().executeQuery("SELECT Unit FROM unittable");
             ResultSet catRs = KsuFinal.con.createStatement().executeQuery("SELECT categoryName FROM categorytable");
+            ResultSet subCatRs = KsuFinal.con.createStatement().executeQuery("SELECT subCategoryName FROM subcategorytable");
 
 
             while(prodRs.next()){
@@ -634,11 +658,12 @@ public class EditProduct extends javax.swing.JFrame {
                 String quan = String.valueOf(prodRs.getInt("productQuantity"));
                 String unit = prodRs.getString("Unit");
                 String cat = prodRs.getString("Sub");
+                String subcat = prodRs.getString("subsub");
                 String min = prodRs.getString("prodMinq");
                 String stndrd = String.format("%.2f", prodRs.getFloat("standardPrice"));
                 String fromD = prodRs.getString("dateFrom");
                 String toD = prodRs.getString("dateTo");
-                String[] item = {id, name, cat, unit, quan, min, stndrd};
+                String[] item = {id, name, cat, subcat, unit, quan, min, stndrd};
                 String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};
                 t.addRow(item);
                 adProdArr.add(item2);
@@ -654,9 +679,15 @@ public class EditProduct extends javax.swing.JFrame {
                 categoryCB.addItem(ct);
             }
             
+            while (subCatRs.next()){
+                String sc = subCatRs.getString("subCategoryName");
+                subCategoryCB.addItem(sc);
+            }
+            
             
             uomCB.setSelectedItem("");
             categoryCB.setSelectedItem("");
+            subCategoryCB.setSelectedItem("");
             
         }
         catch(Exception e){
@@ -703,11 +734,10 @@ public class EditProduct extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SPBtn;
     private javax.swing.JComboBox categoryCB;
+    private javax.swing.JButton deactivateBtn;
     private javax.swing.JButton editDataBtn;
     private com.toedter.calendar.JDateChooser fromDateChooser;
     private javax.swing.JDialog instructionDialogue;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -716,6 +746,7 @@ public class EditProduct extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
@@ -728,7 +759,9 @@ public class EditProduct extends javax.swing.JFrame {
     public static javax.swing.JTable proddbTable;
     private javax.swing.JTextField productNameTF;
     private javax.swing.JLabel questionMarkIcon;
+    private javax.swing.JComboBox subCategoryCB;
     private com.toedter.calendar.JDateChooser toDateChooser;
     private javax.swing.JComboBox uomCB;
+    private javax.swing.JButton viewDeactivateBtn;
     // End of variables declaration//GEN-END:variables
 }

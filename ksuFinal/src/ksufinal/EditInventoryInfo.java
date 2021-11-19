@@ -148,12 +148,13 @@ public class EditInventoryInfo extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         Login.MenuClass.setVisible(true);
+        Login.MenuClass.openWindowAction();
     }//GEN-LAST:event_formWindowClosing
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         try{
             
-            String sql = "UPDATE inventoryinfo SET title = ?, street = ?, city = ?, contactNum = ? WHERE num = 1";
+            String sql = "UPDATE inventoryinfo SET title = ?, street = ?, city = ?, contactNum = ? WHERE num = 0";
             st = KsuFinal.con.prepareStatement(sql);
             st.setString(1, titleTF.getText());
             st.setString(2, streetTF.getText());
@@ -162,12 +163,15 @@ public class EditInventoryInfo extends javax.swing.JFrame {
             
             
             st.executeUpdate();
+            JOptionPane.showMessageDialog(this,"Successfully updated");
             
         }catch(Exception ex){
             
+            System.out.println(ex);
+            
         }
         
-        JOptionPane.showMessageDialog(this,"Successfully updated");
+        
 
         
     }//GEN-LAST:event_updateBtnActionPerformed

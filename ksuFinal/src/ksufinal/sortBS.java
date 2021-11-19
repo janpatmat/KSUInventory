@@ -86,6 +86,7 @@ public class sortBS extends javax.swing.JFrame {
         });
 
         selectAllSupplierCBox.setText("Select All Supplier");
+        selectAllSupplierCBox.setEnabled(false);
         selectAllSupplierCBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectAllSupplierCBoxActionPerformed(evt);
@@ -114,6 +115,7 @@ public class sortBS extends javax.swing.JFrame {
         jScrollPane2.setViewportView(sortBranchTable);
 
         selectAllBranchCBox.setText("Select All Branch");
+        selectAllBranchCBox.setEnabled(false);
         selectAllBranchCBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectAllBranchCBoxActionPerformed(evt);
@@ -272,17 +274,7 @@ public class sortBS extends javax.swing.JFrame {
 //            sortBranchTable.setForeground(Color.black);
 //            sortBranchTable.setBackground(Color.white);
             
-            selectAllSupplierCBox.setSelected(false);
-            sortSupplierTable.setRowSelectionAllowed(false);
-            sortSupplierTable.setEnabled(false);
-            sortSupplierTable.setForeground(Color.LIGHT_GRAY);
-            sortSupplierTable.setBackground(new Color(236, 236, 236));
-            
-            selectAllBranchCBox.setSelected(false);
-            sortBranchTable.setRowSelectionAllowed(false);
-            sortBranchTable.setEnabled(false);
-            sortBranchTable.setForeground(Color.LIGHT_GRAY);
-            sortBranchTable.setBackground(new Color(236, 236, 236));
+
             
             try{
                 rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.suppliertable;");
@@ -303,42 +295,62 @@ public class sortBS extends javax.swing.JFrame {
                 System.out.println(e);
             }
             
-            if (location.equals("TransReport")){
-                if (ViewTransactions.withdrawCB.isSelected()){
-                    selectAllBranchCBox.setEnabled(true);
-                    sortBranchTable.setEnabled(true);
-                    sortBranchTable.setRowSelectionAllowed(true);
-                    sortBranchTable.setForeground(Color.black);
-                    sortBranchTable.setBackground(Color.white);
-   
-                }
-                if (ViewTransactions.deliveryCB.isSelected()){
-                    selectAllSupplierCBox.setEnabled(true);
-                    sortSupplierTable.setEnabled(true);
-                    sortSupplierTable.setRowSelectionAllowed(true);
-                    sortSupplierTable.setForeground(Color.black);
-                    sortSupplierTable.setBackground(Color.white);  
-                } 
-            }
-            else if (location.equals("report")){
-                if (Report.withdrawCB.isSelected()){
-                    selectAllBranchCBox.setEnabled(true);
-                    sortBranchTable.setEnabled(true);
-                    sortBranchTable.setRowSelectionAllowed(true);
-                    sortBranchTable.setForeground(Color.black);
-                    sortBranchTable.setBackground(Color.white);
-   
-                }
-                if (Report.deliveryCB.isSelected()){
-                    selectAllSupplierCBox.setEnabled(true);
-                    sortSupplierTable.setEnabled(true);
-                    sortSupplierTable.setRowSelectionAllowed(true);
-                    sortSupplierTable.setForeground(Color.black);
-                    sortSupplierTable.setBackground(Color.white);  
-                }
-            }
+            whatToDisable();
+            
+
 //            currentUser = Login.fullName;
 //        }
+    }
+    
+    public void whatToDisable(){
+        selectAllSupplierCBox.setSelected(false);
+        selectAllSupplierCBox.setEnabled(false);
+        sortSupplierTable.setRowSelectionAllowed(false);
+        sortSupplierTable.setEnabled(false);
+        sortSupplierTable.setForeground(Color.LIGHT_GRAY);
+        sortSupplierTable.setBackground(new Color(236, 236, 236));
+
+        selectAllBranchCBox.setSelected(false);
+        selectAllBranchCBox.setEnabled(false);
+        sortBranchTable.setRowSelectionAllowed(false);
+        sortBranchTable.setEnabled(false);
+        sortBranchTable.setForeground(Color.LIGHT_GRAY);
+        sortBranchTable.setBackground(new Color(236, 236, 236));
+        
+        if (location.equals("TransReport")){
+            if (ViewTransactions.withdrawCB.isSelected()){
+                selectAllBranchCBox.setEnabled(true);
+                sortBranchTable.setEnabled(true);
+                sortBranchTable.setRowSelectionAllowed(true);
+                sortBranchTable.setForeground(Color.black);
+                sortBranchTable.setBackground(Color.white);
+
+            }
+            if (ViewTransactions.deliveryCB.isSelected()){
+                selectAllSupplierCBox.setEnabled(true);
+                sortSupplierTable.setEnabled(true);
+                sortSupplierTable.setRowSelectionAllowed(true);
+                sortSupplierTable.setForeground(Color.black);
+                sortSupplierTable.setBackground(Color.white);  
+            } 
+        }
+        else if (location.equals("report")){
+            if (Report.withdrawCB.isSelected()){
+                selectAllBranchCBox.setEnabled(true);
+                sortBranchTable.setEnabled(true);
+                sortBranchTable.setRowSelectionAllowed(true);
+                sortBranchTable.setForeground(Color.black);
+                sortBranchTable.setBackground(Color.white);
+
+            }
+            if (Report.deliveryCB.isSelected()){
+                selectAllSupplierCBox.setEnabled(true);
+                sortSupplierTable.setEnabled(true);
+                sortSupplierTable.setRowSelectionAllowed(true);
+                sortSupplierTable.setForeground(Color.black);
+                sortSupplierTable.setBackground(Color.white);  
+            }
+        }
     }
     private void selectAllBranchCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllBranchCBoxActionPerformed
         int l = sortBranchTable.getRowCount();
