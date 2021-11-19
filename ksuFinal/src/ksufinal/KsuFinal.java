@@ -24,14 +24,16 @@ public class KsuFinal {
      */
     
     static Connection con;
+    static String user = "";
+    static String pass = "";
     
     
     public static void main(String[] args) {
         // TODO code application logic here
         
       
-        String user = "root";
-        String pass = "Naiskongmagpakalasingdahilwalakana14";
+        user = "root";
+        pass = "Naiskongmagpakalasingdahilwalakana14";
         
 //        String user = "root";
 //        String pass = "Langgalangga1";
