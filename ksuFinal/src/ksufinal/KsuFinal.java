@@ -34,9 +34,9 @@ public class KsuFinal {
 //        String pass = "Naiskongmagpakalasingdahilwalakana14";
         
         String user = "root";
-//        String pass = "Langgalangga1";
+        String pass = "Langgalangga1";
 
-        String pass = "Corei810thgen";
+//        String pass = "Corei810thgen";
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/expenses",user,pass);
