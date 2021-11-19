@@ -186,8 +186,13 @@ public class Login extends javax.swing.JFrame {
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         MenuClass.setLocationRelativeTo(null);
+
+
         try{
          //us = uname.getText();
+            KsuFinal.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/expenses",KsuFinal.user, KsuFinal.pass);
+            
+                    
             PreparedStatement state = KsuFinal.con.prepareStatement("SELECT * FROM usertable WHERE Username = ? and Password = ? and Active = 'TRUE'");
             state.setString(1, uname.getText());
             state.setString(2, String.valueOf(pass.getPassword()));

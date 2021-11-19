@@ -146,44 +146,44 @@ public class sortSubCategory extends javax.swing.JFrame {
         subCategorySortStatement = "";
         
 
-        if (selectAllCBox.isSelected()){
-            if (location.equals("TransReport")){
-//                ViewTransactions.CategorySortTF.setText("All");
-                ViewTransactions.SubCategorySelectedAll = true;
-            }
-            else if (location.equals("report")){
-//                Report.CategorySortTF.setText("All");
-                Report.SubCategorySelectedAll = true;
-            }
-            
-        }
-        else{
-            int l = sortSubCategoryTable.getRowCount();
-            for (int x = 0; x < l; x++){
-                if (sortSubCategoryTable.getValueAt(x, 1).toString().equals("true")){
-                    selectedSubCategories.add(sortSubCategoryTable.getValueAt(x, 0).toString());
-                }
-            }
-//            String jointArray = String.join(", ", selectedCategories);
-            
-            if (location.equals("TransReport")){
-//                ViewTransactions.CategorySortTF.setText(jointArray);
-                ViewTransactions.SubCategorySelectedAll = false;
-            }
-            else if (location.equals("report")){
-//                Report.CategorySortTF.setText(jointArray);
-                Report.SubCategorySelectedAll = false;
-            }
-
-            ArrayList<String> strArr = new ArrayList<String>();
-
-            for (String x: selectedSubCategories){
-                strArr.add("subsub = '" + x + "'");
-            }
-
-            subCategorySortStatement = " (" + String.join(" or ", strArr) + ") ";
-
-        }
+//        if (selectAllCBox.isSelected()){
+//            if (location.equals("TransReport")){
+////                ViewTransactions.CategorySortTF.setText("All");
+//                ViewTransactions.SubCategorySelectedAll = true;
+//            }
+//            else if (location.equals("report")){
+////                Report.CategorySortTF.setText("All");
+//                Report.SubCategorySelectedAll = true;
+//            }
+//            
+//        }
+//        else{
+//            int l = sortSubCategoryTable.getRowCount();
+//            for (int x = 0; x < l; x++){
+//                if (sortSubCategoryTable.getValueAt(x, 1).toString().equals("true")){
+//                    selectedSubCategories.add(sortSubCategoryTable.getValueAt(x, 0).toString());
+//                }
+//            }
+////            String jointArray = String.join(", ", selectedCategories);
+//            
+//            if (location.equals("TransReport")){
+////                ViewTransactions.CategorySortTF.setText(jointArray);
+//                ViewTransactions.SubCategorySelectedAll = false;
+//            }
+//            else if (location.equals("report")){
+////                Report.CategorySortTF.setText(jointArray);
+//                Report.SubCategorySelectedAll = false;
+//            }
+//
+//            ArrayList<String> strArr = new ArrayList<String>();
+//
+//            for (String x: selectedSubCategories){
+//                strArr.add("subsub = '" + x + "'");
+//            }
+//
+//            subCategorySortStatement = " (" + String.join(" or ", strArr) + ") ";
+//
+//        }
 
         this.setVisible(false);
         

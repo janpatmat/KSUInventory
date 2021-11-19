@@ -30,7 +30,7 @@ public class ViewTransactions extends javax.swing.JFrame {
     static sortUOM sortUOMClass = new sortUOM("TransReport");
     static sortBS sortBSClass = new sortBS("TransReport");
     static sortCategory sortCategoryClass = new sortCategory("TransReport");
-    static sortSubCategory sortSubCategoryClass = new sortSubCategory("TransReport");
+//    static sortSubCategory sortSubCategoryClass = new sortSubCategory("TransReport");
     static sortUser sortUserClass = new sortUser("TransReport");
     static String deliveryWithdrawStatement = "";
     static String currentUser = "";
@@ -83,8 +83,6 @@ public class ViewTransactions extends javax.swing.JFrame {
         dateCB = new javax.swing.JComboBox();
         changePeriodBtn = new javax.swing.JButton();
         refreshAllFilterBtn = new javax.swing.JButton();
-        SubCategoryBtn = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
@@ -144,11 +142,11 @@ public class ViewTransactions extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Trans. ID", "Prod. ID", "Date", "Name", "Category", "Sub-Category", "Price", "Quantity", "Total Price", "Unit of measure", "Branch/Supplier", "Action"
+                "Trans. ID", "Prod. ID", "Date", "Name", "Category", "Price", "Quantity", "Total Price", "Unit of measure", "Branch/Supplier", "Action"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -301,15 +299,6 @@ public class ViewTransactions extends javax.swing.JFrame {
             }
         });
 
-        SubCategoryBtn.setText("Select Filter");
-        SubCategoryBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SubCategoryBtnActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("Sub-Category");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -318,31 +307,28 @@ public class ViewTransactions extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(BSBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(SubCategoryBtn))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(UOMBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(userLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(userBtn))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(51, 51, 51)
-                                .addComponent(filterProdBtn)
-                                .addGap(77, 77, 77)
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(CategoryBtn))))
+                                .addComponent(UOMBtn))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(BSBtn)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(userLabel)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(userBtn))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(51, 51, 51)
+                                    .addComponent(filterProdBtn)
+                                    .addGap(77, 77, 77)
+                                    .addComponent(jLabel6)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(CategoryBtn)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(deliveryCB)
@@ -378,33 +364,22 @@ public class ViewTransactions extends javax.swing.JFrame {
                                 .addComponent(jLabel1))
                             .addComponent(filterProdBtn))
                         .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BSBtn)
+                            .addComponent(userBtn)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BSBtn)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(jLabel5)))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(UOMBtn)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel9))
-                                    .addComponent(SubCategoryBtn))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userBtn)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(userLabel))))))
+                                    .addComponent(jLabel5)
+                                    .addComponent(userLabel))))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(UOMBtn)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -605,21 +580,21 @@ public class ViewTransactions extends javax.swing.JFrame {
             notChange = false;
         }
         
-        if (SubCategorySelectedAll){
-            // Do Nothing
-        }
-//        if (CategorySortTF.getText().equals("All")){
-//            //do Nothing
+//        if (SubCategorySelectedAll){
+//            // Do Nothing
 //        }
-        else if(sortSubCategoryClass.subCategorySortStatement.length() > 5){
-            
-            finalArr.add(sortSubCategoryClass.subCategorySortStatement);
-        }
-        else{
-            TransactionTableModel.setRowCount(0);
-//            JOptionPane.showMessageDialog(null,"Please select a Sub-Category", "Error", JOptionPane.ERROR_MESSAGE);
-            notChange = false;
-        }
+////        if (CategorySortTF.getText().equals("All")){
+////            //do Nothing
+////        }
+//        else if(sortSubCategoryClass.subCategorySortStatement.length() > 5){
+//            
+//            finalArr.add(sortSubCategoryClass.subCategorySortStatement);
+//        }
+//        else{
+//            TransactionTableModel.setRowCount(0);
+////            JOptionPane.showMessageDialog(null,"Please select a Sub-Category", "Error", JOptionPane.ERROR_MESSAGE);
+//            notChange = false;
+//        }
         
         if (Login.admin){
             if (UserSelectedAll){
@@ -679,7 +654,7 @@ public class ViewTransactions extends javax.swing.JFrame {
                         String TranNo = rs.getString("TransactionNo");
                         String nm = rs.getString("Name");
                         String ct = rs.getString("Sub");
-                        String sct = rs.getString("subsub");
+//                        String sct = rs.getString("subsub");
                         String qty = rs.getString("Quantity");
                         String ut = rs.getString("Unit");
                         String pr = String.format("%.2f", rs.getFloat("Price"));
@@ -695,7 +670,7 @@ public class ViewTransactions extends javax.swing.JFrame {
 
                         String tp = String.format("%.2f",Float.parseFloat(pr) * Float.parseFloat(qty));
 
-                        String[] item = {TranNo, id, dt, nm, ct, sct, pr, qty, tp, ut, sb, act, tb};
+                        String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
                         TransactionTableModel.addRow(item);
 
                     }
@@ -848,7 +823,7 @@ public class ViewTransactions extends javax.swing.JFrame {
         
         BSSelectedAll = true;
         CategorySelectedAll = true;
-        SubCategorySelectedAll = true;
+//        SubCategorySelectedAll = true;
         ProductSelectedAll = true;
         UOMSelectedAll = true;
         UserSelectedAll = true;
@@ -866,13 +841,6 @@ public class ViewTransactions extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_refreshAllFilterBtnActionPerformed
-
-    private void SubCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubCategoryBtnActionPerformed
-        // TODO add your handling code here:
-        sortSubCategoryClass.setVisible(true);
-        sortSubCategoryClass.setDefaultCloseOperation(sortSubCategoryClass.HIDE_ON_CLOSE);
-        sortSubCategoryClass.openWindowAction();
-    }//GEN-LAST:event_SubCategoryBtnActionPerformed
     
     public static void updateTransReportTable(){
         DefaultTableModel TransactionTableModel = (DefaultTableModel) TransactionTable.getModel();
@@ -891,8 +859,8 @@ public class ViewTransactions extends javax.swing.JFrame {
                 String TranNo = rs.getString("TransactionNo");
                 String nm = rs.getString("Name");
                 String ct = rs.getString("Sub");
-                String sct = rs.getString("subsub");
-                String qty = rs.getString("Quantity");
+//                String sct = rs.getString("subsub");
+                String qty = String.format("%.2f", rs.getFloat("Quantity"));
                 String ut = rs.getString("Unit");
                 String pr = String.format("%.2f", rs.getFloat("Price"));
                 String sb = rs.getString("SuppBranch");
@@ -906,7 +874,7 @@ public class ViewTransactions extends javax.swing.JFrame {
                 }
 
                 String tp = String.format("%.2f",Float.parseFloat(pr) * Float.parseFloat(qty));
-                String[] item = {TranNo, id, dt, nm, ct, sct, pr, qty, tp, ut, sb, act, tb};
+                String[] item = {TranNo, id, dt, nm, ct, pr, qty, tp, ut, sb, act, tb};
                 TransactionTableModel.addRow(item);
 //                System.out.println(TranNo);
             }  
@@ -955,7 +923,6 @@ public class ViewTransactions extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BSBtn;
     private javax.swing.JButton CategoryBtn;
-    private javax.swing.JButton SubCategoryBtn;
     public static javax.swing.JTable TransactionTable;
     private javax.swing.JButton UOMBtn;
     private java.awt.Button button1;
@@ -973,7 +940,6 @@ public class ViewTransactions extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

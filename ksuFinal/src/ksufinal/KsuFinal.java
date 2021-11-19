@@ -24,17 +24,20 @@ public class KsuFinal {
      */
     
     static Connection con;
+    static String user = "";
+    static String pass = "";
     
     
     public static void main(String[] args) {
         // TODO code application logic here
         
       
+
 //        String user = "root";
 //        String pass = "Naiskongmagpakalasingdahilwalakana14";
         
-        String user = "root";
-        String pass = "Langgalangga1";
+        user = "root";
+        pass = "Langgalangga1";
 
 //        String pass = "Corei810thgen";
 
@@ -51,7 +54,7 @@ public class KsuFinal {
            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306",user,pass);
         String sql = "show databases like '%expenses%'";
         Statement st = connect.createStatement();
-         ResultSet rs = st.executeQuery(sql);
+        ResultSet rs = st.executeQuery(sql);
          
       if(rs.next()){
         
@@ -69,6 +72,7 @@ public class KsuFinal {
 
 }
         catch(Exception le){
+            
             System.out.println(le);
 
 }

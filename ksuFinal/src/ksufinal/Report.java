@@ -39,7 +39,7 @@ public class Report extends javax.swing.JFrame {
     static ResultSet rs;
     static sortProduct sortProductClass2 = new sortProduct("report");
     static sortCategory sortCategoryClass2 = new sortCategory("report");
-    static sortSubCategory sortSubCategoryClass2 = new sortSubCategory("report");
+//    static sortSubCategory sortSubCategoryClass2 = new sortSubCategory("report");
     static sortUOM sortUOMClass2 = new sortUOM("report");
     static sortBS sortBSClass2 = new sortBS("report");
     static sortUser sortUserClass2 = new sortUser("report");
@@ -56,7 +56,7 @@ public class Report extends javax.swing.JFrame {
     static boolean ProductSelectedAll = true;
     static boolean UOMSelectedAll = true;
     static boolean UserSelectedAll = true;
-    static boolean SubCategorySelectedAll = true;
+//    static boolean SubCategorySelectedAll = true;
     
     static String title;
     static String street;
@@ -99,7 +99,6 @@ public class Report extends javax.swing.JFrame {
         TotalPriceCB = new javax.swing.JCheckBox();
         UnitOfMeasureCB = new javax.swing.JCheckBox();
         CategoryCB = new javax.swing.JCheckBox();
-        SubCategoryCB = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         filterProdBtn = new javax.swing.JButton();
@@ -122,8 +121,6 @@ public class Report extends javax.swing.JFrame {
         changePeriodBtn = new javax.swing.JButton();
         dateComboBox = new javax.swing.JComboBox();
         jButton2 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        filterSubCategoryBtn = new javax.swing.JButton();
         questionMarkIcon = new javax.swing.JLabel();
 
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
@@ -300,13 +297,6 @@ public class Report extends javax.swing.JFrame {
             }
         });
 
-        SubCategoryCB.setText("Sub-Category");
-        SubCategoryCB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SubCategoryCBActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -333,9 +323,8 @@ public class Report extends javax.swing.JFrame {
                                     .addComponent(ProductNoCB)
                                     .addComponent(ProductNameCB))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(SubCategoryCB)
-                                    .addComponent(CategoryCB)))))
+                                .addComponent(CategoryCB)))
+                        .addGap(28, 28, 28))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SupplierBranchCB)
@@ -362,9 +351,7 @@ public class Report extends javax.swing.JFrame {
                             .addComponent(ProductNoCB)
                             .addComponent(CategoryCB))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ProductNameCB)
-                            .addComponent(SubCategoryCB))
+                        .addComponent(ProductNameCB)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(StandardPriceCB)
@@ -528,15 +515,6 @@ public class Report extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setText("Sub-Category");
-
-        filterSubCategoryBtn.setText("Select Filter");
-        filterSubCategoryBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filterSubCategoryBtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -552,11 +530,9 @@ public class Report extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel11))
-                        .addGap(47, 47, 47)
+                            .addComponent(jLabel3))
+                        .addGap(74, 74, 74)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(filterSubCategoryBtn)
                             .addComponent(filterProdBtn)
                             .addComponent(filterCategoryBtn)))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -582,7 +558,7 @@ public class Report extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addComponent(jButton2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -592,10 +568,6 @@ public class Report extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(filterCategoryBtn)
                             .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(filterSubCategoryBtn))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -614,7 +586,7 @@ public class Report extends javax.swing.JFrame {
                             .addComponent(deliveryCB))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BelowMinimumCB)
-                        .addGap(0, 25, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -677,7 +649,7 @@ public class Report extends javax.swing.JFrame {
     private void TransactionCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionCBActionPerformed
         sortBSClass2.BSSortStatement = "";
         sortCategoryClass2.categorySortStatement = "";
-        sortSubCategoryClass2.subCategorySortStatement = "";
+//        sortSubCategoryClass2.subCategorySortStatement = "";
         sortProductClass2.prodSortStatement = "";
         sortUOMClass2.UOMSortStatement = "";
         sortUserClass2.UserSortStatement = "";
@@ -713,7 +685,7 @@ public class Report extends javax.swing.JFrame {
             
             filterProdBtn.setEnabled(true);
             filterCategoryBtn.setEnabled(true);
-            filterSubCategoryBtn.setEnabled(true);
+//            filterSubCategoryBtn.setEnabled(true);
             filterBSBtn.setEnabled(true);
             filterUOMBtn.setEnabled(true);
             filterUserBtn.setEnabled(true);
@@ -756,7 +728,7 @@ public class Report extends javax.swing.JFrame {
 //            
             filterProdBtn.setEnabled(false);
             filterCategoryBtn.setEnabled(false);
-            filterSubCategoryBtn.setEnabled(false);
+//            filterSubCategoryBtn.setEnabled(false);
             filterBSBtn.setEnabled(false);
             filterUOMBtn.setEnabled(false);
             filterUserBtn.setEnabled(false);
@@ -930,7 +902,7 @@ public class Report extends javax.swing.JFrame {
             DateCB.setSelected(false);
             BelowMinimumCB.setSelected(false);
             CategoryCB.setSelected(false);
-            SubCategoryCB.setSelected(false);
+//            SubCategoryCB.setSelected(false);
             MinimumCB.setSelected(false);
             PriceCB.setSelected(false);
             ProductNameCB.setSelected(false);
@@ -953,7 +925,7 @@ public class Report extends javax.swing.JFrame {
 
             BSSelectedAll = true;
             CategorySelectedAll = true;
-            SubCategorySelectedAll = true;
+//            SubCategorySelectedAll = true;
             ProductSelectedAll = true;
             UOMSelectedAll = true;
             UserSelectedAll = true;
@@ -1067,14 +1039,14 @@ public class Report extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         sortBSClass2.BSSortStatement = "";
         sortCategoryClass2.categorySortStatement = "";
-        sortSubCategoryClass2.subCategorySortStatement = "";
+//        sortSubCategoryClass2.subCategorySortStatement = "";
         sortProductClass2.prodSortStatement = "";
         sortUOMClass2.UOMSortStatement = "";
         sortUserClass2.UserSortStatement = "";
 
         BSSelectedAll = true;
         CategorySelectedAll = true;
-        SubCategorySelectedAll = true;
+//        SubCategorySelectedAll = true;
         ProductSelectedAll = true;
         UOMSelectedAll = true;
         UserSelectedAll = true;
@@ -1092,17 +1064,6 @@ public class Report extends javax.swing.JFrame {
         sortFunction();
 
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void filterSubCategoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterSubCategoryBtnActionPerformed
-        sortSubCategoryClass2.setVisible(true);
-        sortSubCategoryClass2.setDefaultCloseOperation(sortSubCategoryClass2.HIDE_ON_CLOSE);
-        sortSubCategoryClass2.openWindowAction();
-    }//GEN-LAST:event_filterSubCategoryBtnActionPerformed
-
-    private void SubCategoryCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubCategoryCBActionPerformed
-        setColumnInTable();
-        sortFunction();
-    }//GEN-LAST:event_SubCategoryCBActionPerformed
 
     
     
@@ -1182,11 +1143,11 @@ public class Report extends javax.swing.JFrame {
             columnArr.add("Sub");
         }
         
-        if (SubCategoryCB.isSelected()){
-            reportTableModel.addColumn("Sub-Category");
-//            filterSubCategoryBtn.setEnabled(true);
-            columnArr.add("subsub");
-        }
+//        if (SubCategoryCB.isSelected()){
+//            reportTableModel.addColumn("Sub-Category");
+////            filterSubCategoryBtn.setEnabled(true);
+//            columnArr.add("subsub");
+//        }
         
 //        else{
 //            filterCategoryBtn.setEnabled(false);
@@ -1346,20 +1307,20 @@ public class Report extends javax.swing.JFrame {
             notChange = false;
         }
         
-        if (SubCategorySelectedAll){
-            
-        }
-//        if (CategorySortTF.getText().equals("All")){
-//            //do Nothing
+//        if (SubCategorySelectedAll){
+//            
 //        }
-        else if(sortSubCategoryClass2.subCategorySortStatement.length() > 5){
-            finalArr.add(sortSubCategoryClass2.subCategorySortStatement);
-        }
-        else{
-            ReportTableModel.setRowCount(0);
-//            JOptionPane.showMessageDialog(null,"Please select a Category");
-            notChange = false;
-        }
+////        if (CategorySortTF.getText().equals("All")){
+////            //do Nothing
+////        }
+//        else if(sortSubCategoryClass2.subCategorySortStatement.length() > 5){
+//            finalArr.add(sortSubCategoryClass2.subCategorySortStatement);
+//        }
+//        else{
+//            ReportTableModel.setRowCount(0);
+////            JOptionPane.showMessageDialog(null,"Please select a Category");
+//            notChange = false;
+//        }
         
         if (Login.admin){
             if (UserSelectedAll){
@@ -1684,7 +1645,6 @@ public class Report extends javax.swing.JFrame {
     public static javax.swing.JCheckBox ProductNoCB;
     public static javax.swing.JCheckBox QuantityCB;
     public static javax.swing.JCheckBox StandardPriceCB;
-    public static javax.swing.JCheckBox SubCategoryCB;
     public static javax.swing.JCheckBox SupplierBranchCB;
     public static javax.swing.JCheckBox TotalPriceCB;
     public static javax.swing.JCheckBox TransactionCB;
@@ -1697,7 +1657,6 @@ public class Report extends javax.swing.JFrame {
     public static javax.swing.JButton filterBSBtn;
     public static javax.swing.JButton filterCategoryBtn;
     public static javax.swing.JButton filterProdBtn;
-    public static javax.swing.JButton filterSubCategoryBtn;
     public static javax.swing.JButton filterUOMBtn;
     public static javax.swing.JButton filterUserBtn;
     public static com.toedter.calendar.JDateChooser fromDateChooser;
@@ -1705,7 +1664,6 @@ public class Report extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
