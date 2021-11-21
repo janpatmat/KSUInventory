@@ -17,6 +17,7 @@ import java.sql.Statement;
  */
 public class KsuFinal {
     static setup setupClass = new setup();
+    static Login loginClass = new Login();
     
 //    static Login loginClass = new Login();
     /**
@@ -58,7 +59,7 @@ public class KsuFinal {
          
       if(rs.next()){
         
-        Login loginClass = new Login();
+        
         loginClass.setVisible(true);
         loginClass.setLocationRelativeTo(null);
         

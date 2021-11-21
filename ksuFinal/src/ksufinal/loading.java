@@ -33,7 +33,7 @@ String munittable = "create table if not exists expenses.unittable (unitID int n
 String musertable = "create table if not exists expenses.usertable (userID int not null unique auto_increment, Firstname text null, Lastname text null, Username text null, Password text null, Admin varchar(5) not null default 'FALSE', Active varchar(5) not null default 'TRUE', primary key(userID))";
 String admaker = "insert into expenses.usertable (Firstname , Lastname , Username , Password, Admin, Active) values ('admin', 'admin', 'admin', 'admin', 'FALSE' , 'TRUE')";
  try{
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306" , "root" , "Naiskongmagpakalasingdahilwalakana14");
+    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306" , KsuFinal.user , KsuFinal.pass);
     PreparedStatement dbm;
 PreparedStatement btm;
 PreparedStatement ctm;
