@@ -1593,7 +1593,7 @@ transactionClass.setVisible(true);
         chooser.setAcceptAllFileFilterUsed(false);
 
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            fileLocationLabel.setText(chooser.getSelectedFile().toString());
+            fileLocationLabel.setText(chooser.getSelectedFile().toString() + "\\");
         } else {
           System.out.println("No Selection ");
         }
