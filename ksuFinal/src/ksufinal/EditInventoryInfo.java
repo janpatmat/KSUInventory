@@ -32,16 +32,17 @@ public class EditInventoryInfo extends javax.swing.JFrame {
             String street = rs.getString("street");
             String city = rs.getString("city");
             String contactNum = rs.getString("contactNum");
+            String backupLocation = rs.getString("backupLocation");
 
             titleTF.setText(title);
             streetTF.setText(street);
             cityTF.setText(city);
             contactNumTF.setText(contactNum);
+            backupLocationTF.setText(backupLocation);
             
         }catch(Exception ex){
             
         }
-        
         
     }
     
@@ -64,6 +65,8 @@ public class EditInventoryInfo extends javax.swing.JFrame {
         contactNumTF = new javax.swing.JTextField();
         cityTF = new javax.swing.JTextField();
         updateBtn = new javax.swing.JButton();
+        backupLocationTF = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -87,6 +90,8 @@ public class EditInventoryInfo extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("Back-up Location");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,7 +100,7 @@ public class EditInventoryInfo extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(updateBtn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
@@ -111,7 +116,11 @@ public class EditInventoryInfo extends javax.swing.JFrame {
                             .addGap(50, 50, 50)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(titleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(streetTF, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(streetTF, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(backupLocationTF, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -127,7 +136,7 @@ public class EditInventoryInfo extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(titleTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
@@ -137,7 +146,11 @@ public class EditInventoryInfo extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)))
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backupLocationTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(53, 53, 53)
                 .addComponent(updateBtn)
                 .addContainerGap())
         );
@@ -154,15 +167,18 @@ public class EditInventoryInfo extends javax.swing.JFrame {
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         try{
             
-            String sql = "UPDATE inventoryinfo SET title = ?, street = ?, city = ?, contactNum = ? WHERE num = 0";
+            String sql = "UPDATE inventoryinfo SET title = ?, street = ?, city = ?, contactNum = ?, backupLocation = ? WHERE num = 0";
             st = KsuFinal.con.prepareStatement(sql);
             st.setString(1, titleTF.getText());
             st.setString(2, streetTF.getText());
             st.setString(3, cityTF.getText());
             st.setString(4, contactNumTF.getText());
+            st.setString(5, backupLocationTF.getText());
             
             
             st.executeUpdate();
+            
+//            Login.MenuClass.openWindowAction();
             JOptionPane.showMessageDialog(this,"Successfully updated");
             
         }catch(Exception ex){
@@ -212,12 +228,14 @@ public class EditInventoryInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField backupLocationTF;
     private javax.swing.JTextField cityTF;
     private javax.swing.JTextField contactNumTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField streetTF;
     private javax.swing.JTextField titleTF;
     private javax.swing.JButton updateBtn;

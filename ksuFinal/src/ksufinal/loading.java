@@ -25,65 +25,66 @@ public class loading extends javax.swing.JFrame {
     
     public void createDB(){
         String dbMaker = "Create database if not exists expenses";
-String mbranchTable = "create table if not exists expenses.branchtable (branchID int not null unique AUTO_INCREMENT, branchName varchar(45) null, primary key(branchID))";
-String mcategorytable = "create table if not exists expenses.categorytable (categoryID int not null unique, categoryName varchar(45) null, primary key(categoryID))"; 
-String mproducttable = "create table if not exists expenses.producttable (productID int not null unique auto_increment , productName varchar(45) null, productQuantity double null, Unit varchar(45) null, prodMinq double null, Active varchar(45) null default 'TRUE' , standardPrice double null , dateFrom text null , dateTo text null , Sub text null , primary key(productID))";
-String msuppliertable = "create table if not exists expenses.suppliertable (supplierID int not null unique auto_increment , supplierName varchar(45) null, Contact varchar(45) null, Address varchar(45) null, ContactPerson varchar(45) null, primary key(supplierID))";
-String munittable = "create table if not exists expenses.unittable (unitID int not null unique AUTO_INCREMENT, Unit varchar(45) null, primary key(unitID))";
-String musertable = "create table if not exists expenses.usertable (userID int not null unique auto_increment, Firstname text null, Lastname text null, Username text null, Password text null, Admin varchar(5) not null default 'FALSE', Active varchar(5) not null default 'TRUE', primary key(userID))";
-String admaker = "insert into expenses.usertable (Firstname , Lastname , Username , Password, Admin, Active) values ('admin', 'admin', 'admin', 'admin', 'FALSE' , 'TRUE')";
- try{
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306" , KsuFinal.user , KsuFinal.pass);
-    PreparedStatement dbm;
-PreparedStatement btm;
-PreparedStatement ctm;
+        String mbranchTable = "create table if not exists expenses.branchtable (branchID int not null unique AUTO_INCREMENT, branchName varchar(45) null, primary key(branchID))";
+        String mcategorytable = "create table if not exists expenses.categorytable (categoryID int not null unique, categoryName varchar(45) null, primary key(categoryID))"; 
+        String mproducttable = "create table if not exists expenses.producttable (productID int not null unique auto_increment , productName varchar(45) null, productQuantity double null, Unit varchar(45) null, prodMinq double null, Active varchar(45) null default 'TRUE' , standardPrice double null , dateFrom text null , dateTo text null , Sub text null , primary key(productID))";
+        String msuppliertable = "create table if not exists expenses.suppliertable (supplierID int not null unique auto_increment , supplierName varchar(45) null, Contact varchar(45) null, Address varchar(45) null, ContactPerson varchar(45) null, primary key(supplierID))";
+        String munittable = "create table if not exists expenses.unittable (unitID int not null unique AUTO_INCREMENT, Unit varchar(45) null, primary key(unitID))";
+        String musertable = "create table if not exists expenses.usertable (userID int not null unique auto_increment, Firstname text null, Lastname text null, Username text null, Password text null, Admin varchar(5) not null default 'FALSE', Active varchar(5) not null default 'TRUE', primary key(userID))";
+        String minventoryinfo = "create table if no exists expenses.inventoryinfo (num int not null, title text null, street text null, city text null, contactNum int null, backupLocation text null)";
+        String adinfo = "insert into expenses.inventoryinfo values (0, 'Company Name Inventory', 'NA', 'NA', '0123456789', 'D:\\')";
+        String admaker = "insert into expenses.usertable (Firstname , Lastname , Username , Password, Admin, Active) values ('admin', 'admin', 'admin', 'admin', 'TRUE' , 'TRUE')";
+        try{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306" , KsuFinal.user , KsuFinal.pass);
+            PreparedStatement dbm;
+            PreparedStatement btm;
+            PreparedStatement ctm;
 
-PreparedStatement ptm;
-PreparedStatement stm;
-PreparedStatement utm;
-PreparedStatement ustm;
-PreparedStatement adm;
-
-dbm = con.prepareStatement(dbMaker);
-
-btm = con.prepareStatement(mbranchTable);
-ctm = con.prepareStatement(mcategorytable);
-
+            PreparedStatement ptm;
+            PreparedStatement stm;
+            PreparedStatement utm;
+            PreparedStatement ustm;
+            PreparedStatement iitm;
+            PreparedStatement adim;
+            PreparedStatement adm;
 
 
-ptm = con.prepareStatement(mproducttable);
+            dbm = con.prepareStatement(dbMaker);
 
-stm = con.prepareStatement(msuppliertable);
+            btm = con.prepareStatement(mbranchTable);
+            ctm = con.prepareStatement(mcategorytable);
 
-utm = con.prepareStatement(munittable);
+            ptm = con.prepareStatement(mproducttable);
 
-ustm = con.prepareStatement(musertable);
-adm = con.prepareStatement(admaker);
-dbm.executeUpdate();
-btm.executeUpdate();
-ctm.executeUpdate();
+            stm = con.prepareStatement(msuppliertable);
 
-ptm.executeUpdate();
-stm.executeUpdate();
-utm.executeUpdate();
-ustm.executeUpdate();
-adm.executeUpdate();
-    System.err.println("Success");
-    
-        this.setVisible(false);
-      
-    
-        KsuFinal.setupClass.setVisible(false);
-        
-    Login loginClass = new Login();
-        loginClass.setVisible(true);
-        loginClass.setLocationRelativeTo(null);
+            utm = con.prepareStatement(munittable);
 
-}
-catch(Exception e){
-    System.err.println(e);
-}
+            ustm = con.prepareStatement(musertable);
+            iitm = con.prepareStatement(minventoryinfo);
+            adim = con.prepareStatement(adinfo);
+            adm = con.prepareStatement(admaker);
+            dbm.executeUpdate();
+            btm.executeUpdate();
+            ctm.executeUpdate();
 
+            ptm.executeUpdate();
+            stm.executeUpdate();
+            utm.executeUpdate();
+            ustm.executeUpdate();
+            iitm.executeUpdate();
+            adim.executeUpdate();
+            adm.executeUpdate();
+            System.err.println("Success");
+            this.setVisible(false);
+            KsuFinal.setupClass.setVisible(false);
+            Login loginClass = new Login();
+            loginClass.setVisible(true);
+            loginClass.setLocationRelativeTo(null);
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
         
     }
     public loading() {

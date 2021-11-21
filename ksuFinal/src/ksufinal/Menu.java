@@ -6,9 +6,13 @@
 package ksufinal;
 
 import java.awt.Color;
+import java.awt.Desktop;
+import java.io.File;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 /**
  *
@@ -48,6 +52,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        
         
     }
 
@@ -103,10 +108,15 @@ public class Menu extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        welcomeLabel = new javax.swing.JLabel();
         firstNameTF = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lastNameTF = new javax.swing.JLabel();
+        fileLocationLabel = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        editFileBtn = new javax.swing.JButton();
+        loadBackupBtn = new javax.swing.JButton();
+        saveBackupBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -121,6 +131,12 @@ public class Menu extends javax.swing.JFrame {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -130,7 +146,6 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(45, 52, 54));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton7.setBackground(new java.awt.Color(45, 52, 54));
@@ -150,7 +165,7 @@ public class Menu extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 50, 20));
+        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(719, 10, 50, 20));
 
         jButton8.setBackground(new java.awt.Color(45, 52, 54));
         jButton8.setForeground(new java.awt.Color(250, 250, 250));
@@ -173,7 +188,7 @@ public class Menu extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 50, 20));
+        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 50, 20));
 
         companyName.setBackground(new java.awt.Color(153, 153, 153));
         companyName.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
@@ -185,9 +200,9 @@ public class Menu extends javax.swing.JFrame {
                 companyNameMouseClicked(evt);
             }
         });
-        jPanel2.add(companyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 70));
+        jPanel2.add(companyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 70));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 760, 100));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 770, 100));
 
         jPanel3.setBackground(new java.awt.Color(99, 110, 114));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -844,51 +859,90 @@ public class Menu extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(178, 190, 195));
 
         jLabel2.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel2.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setText("Last Name:");
 
-        jLabel9.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel9.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Welcome to the KSU Inventory System");
+        welcomeLabel.setBackground(new java.awt.Color(153, 153, 153));
+        welcomeLabel.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        welcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomeLabel.setText("Title Text");
+        welcomeLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        welcomeLabel.setMaximumSize(new java.awt.Dimension(10000, 1000));
 
         firstNameTF.setBackground(new java.awt.Color(153, 153, 153));
-        firstNameTF.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        firstNameTF.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         firstNameTF.setText("Hello");
 
         jLabel11.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel11.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel11.setText("First Name:");
 
         lastNameTF.setBackground(new java.awt.Color(153, 153, 153));
-        lastNameTF.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        lastNameTF.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lastNameTF.setText("Hello");
+
+        fileLocationLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        jLabel1.setText("Back-up File Location:");
+
+        editFileBtn.setText("Edit");
+        editFileBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        editFileBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editFileBtnActionPerformed(evt);
+            }
+        });
+
+        loadBackupBtn.setText("Load Back-up File");
+        loadBackupBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loadBackupBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadBackupBtnActionPerformed(evt);
+            }
+        });
+
+        saveBackupBtn.setText("Save Back-up File");
+        saveBackupBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveBackupBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBackupBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addGap(0, 76, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 77, Short.MAX_VALUE)
+                .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(112, 112, 112)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(lastNameTF))
+                    .addComponent(loadBackupBtn)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fileLocationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(firstNameTF)))
+                        .addComponent(editFileBtn))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lastNameTF)
+                            .addComponent(firstNameTF)))
+                    .addComponent(saveBackupBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel9)
+                .addContainerGap()
+                .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -897,7 +951,16 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lastNameTF)
                     .addComponent(jLabel2))
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fileLocationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(editFileBtn))
+                .addGap(39, 39, 39)
+                .addComponent(saveBackupBtn)
+                .addGap(18, 18, 18)
+                .addComponent(loadBackupBtn)
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab7", jPanel10);
@@ -919,19 +982,24 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        try{
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        }catch(Exception ex){
+            
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         int log = 0;
         log = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning",JOptionPane.YES_NO_OPTION);
         if(log == JOptionPane.YES_OPTION){
             this.dispose();
-            
             Login loginClass = new Login();
             loginClass.setVisible(true);
             loginClass.setLocationRelativeTo(null);
+            saveBackUp();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1165,13 +1233,13 @@ public class Menu extends javax.swing.JFrame {
     private void editUnitBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editUnitBtnMouseExited
         // TODO add your handling code here:
         editUnitBtn.setBackground(new java.awt.Color(178, 190, 195));
-editUnitBtn.setForeground(new java.awt.Color(250, 250, 250));
+        editUnitBtn.setForeground(new java.awt.Color(250, 250, 250));
     }//GEN-LAST:event_editUnitBtnMouseExited
 
     private void editUnitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUnitBtnActionPerformed
         // TODO add your handling code here:
         
- EditUnitClass.setVisible(true);
+        EditUnitClass.setVisible(true);
         EditUnitClass.setDefaultCloseOperation(EditUnitClass.DISPOSE_ON_CLOSE);
         EditUnitClass.setLocationRelativeTo(null);
         this.setVisible(false);
@@ -1339,6 +1407,7 @@ transactionClass.setVisible(true);
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        saveBackUp();
         System.exit(0);
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -1516,17 +1585,115 @@ transactionClass.setVisible(true);
     private void companyNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_companyNameMouseClicked
         jTabbedPane1.setSelectedIndex(6);
     }//GEN-LAST:event_companyNameMouseClicked
+
+    private void editFileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editFileBtnActionPerformed
+        JFileChooser chooser = new JFileChooser("D:\\");
+        chooser.setDialogTitle("choosertitle");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.setAcceptAllFileFilterUsed(false);
+
+        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            fileLocationLabel.setText(chooser.getSelectedFile().toString());
+        } else {
+          System.out.println("No Selection ");
+        }
+        
+    }//GEN-LAST:event_editFileBtnActionPerformed
+
+    private void saveBackupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBackupBtnActionPerformed
+        int confirmation = 0;
+        String message = "<html><body><p width='250px' align='center'>Do you want to save the database in the specified location?<br>NOTE: If the file already exists, the file would be overwritten</p></body></html>";
+        confirmation = JOptionPane.showConfirmDialog (this, message,"Message",JOptionPane.YES_NO_OPTION);
+        if (confirmation == JOptionPane.YES_OPTION){
+            saveBackUp();
+        }
+        
+        
+        
+    }//GEN-LAST:event_saveBackupBtnActionPerformed
+
+    private void loadBackupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadBackupBtnActionPerformed
+        int confirmation = 0;
+        String message = "<html><body><p width='250px' align='center'>Do you want to load the database in the specified location?<br>NOTE: All the data would be overwritten</p></body></html>";
+        confirmation = JOptionPane.showConfirmDialog (this, message, "Message",JOptionPane.YES_NO_OPTION);
+        if (confirmation == JOptionPane.YES_OPTION){
+            loadBackUp();
+        }
+        
+    }//GEN-LAST:event_loadBackupBtnActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        saveBackUp();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        
+    }//GEN-LAST:event_formWindowDeactivated
+    
+    public void saveBackUp(){
+        String executeCmd = "";
+        String dbUser = KsuFinal.user;
+        String dbPass = KsuFinal.pass;
+        String dbName = "expenses";
+        
+        executeCmd = "mysqldump -u "+dbUser+" -p"+dbPass+" "+dbName+" -r" + fileLocationLabel.getText() + "backup.sql";
+        try{
+            Process runtimeProcess =Runtime.getRuntime().exec(executeCmd);
+            int processComplete = runtimeProcess.waitFor();
+            
+            if(processComplete == 0){
+                JOptionPane.showMessageDialog(this,"Backup Database successfully saved");
+            } else{
+                JOptionPane.showMessageDialog(this,"The location is invalid", "Error!", JOptionPane.ERROR_MESSAGE);
+
+            }
+            
+        }catch(Exception ex){
+            
+        }
+    }
+    
+    public void loadBackUp(){
+        String[] executeCmd = {};
+        String dbUser = KsuFinal.user;
+        String dbPass = KsuFinal.pass;
+        String dbName = "expenses";
+        
+        executeCmd = new String[]{"mysql", dbName, "--user=" + dbUser,"--password=" + dbPass, "-e", " source " + fileLocationLabel.getText() + "backup.sql"};
+        
+        try{
+            Process runtimeProcess =Runtime.getRuntime().exec(executeCmd);
+            int processComplete = runtimeProcess.waitFor();
+            
+            if(processComplete == 0){
+                JOptionPane.showMessageDialog(this,"Backup Database successfully loaded");
+            } else{
+                JOptionPane.showMessageDialog(this,"File is not found in the specified location", "Error!", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+    }
+    
     
     public void openWindowAction(){
         try{
+            
             ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT * FROM expenses.inventoryinfo;");
 
             rs.next();
 
             String cn = rs.getString("title");
+            String bl = rs.getString("backupLocation");
 
 
             companyName.setText(cn);
+            jTabbedPane1.setSelectedIndex(6);
+            String paragraph = "Welcome to " + cn;
+            welcomeLabel.setText("<html><p>"+paragraph+"</p></html>");
+            fileLocationLabel.setText(bl);
+            
            
             
         }catch(Exception ex){
@@ -1578,21 +1745,23 @@ transactionClass.setVisible(true);
     private javax.swing.JLabel companyName;
     private javax.swing.JButton editBranchBtn;
     private javax.swing.JButton editCategoryBtn;
+    private javax.swing.JButton editFileBtn;
     private javax.swing.JButton editInventoryInfoBtn;
     private javax.swing.JLabel editItemsLabel;
     private javax.swing.JButton editProductBtn;
     private javax.swing.JButton editSuppliersBtn;
     private javax.swing.JButton editTransactionBtn;
     private javax.swing.JButton editUnitBtn;
+    private javax.swing.JTextField fileLocationLabel;
     private javax.swing.JLabel firstNameTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -1605,6 +1774,7 @@ transactionClass.setVisible(true);
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lastNameTF;
+    private javax.swing.JButton loadBackupBtn;
     private javax.swing.JButton newBranchBtn;
     private javax.swing.JButton newCategoryBtn;
     private javax.swing.JLabel newItemsLabel;
@@ -1613,6 +1783,7 @@ transactionClass.setVisible(true);
     private javax.swing.JButton newUnitBtn;
     private javax.swing.JButton receiveWithdrawItemsBtn;
     private javax.swing.JLabel reportLabel;
+    private javax.swing.JButton saveBackupBtn;
     private javax.swing.JLabel transactionLabel;
     private javax.swing.JLabel userLabel;
     private javax.swing.JButton viewBranchBtn;
@@ -1622,5 +1793,6 @@ transactionClass.setVisible(true);
     private javax.swing.JButton viewSupplierBtn;
     private javax.swing.JButton viewTransactionBtn;
     private javax.swing.JButton viewUnitsBtn;
+    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

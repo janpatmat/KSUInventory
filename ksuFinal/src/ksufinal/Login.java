@@ -21,7 +21,7 @@ public class Login extends javax.swing.JFrame {
     static String firstName;
     static String lastName;
     static boolean admin;
-    public static Menu MenuClass = new Menu();
+    static Menu MenuClass = new Menu();
     Register RegisterClass = new Register();
     /**
      * Creates new form login
