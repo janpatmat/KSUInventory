@@ -100,12 +100,14 @@
                                           <Component id="suppBranchLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="pptLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="supCmb" alignment="0" pref="174" max="32767" attributes="0"/>
-                                          <Component id="transactionPriceTF" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="transactionQtyTF" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="unitShow" max="32767" attributes="0"/>
+                                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="supCmb" alignment="0" pref="174" max="32767" attributes="0"/>
+                                              <Component id="transactionPriceTF" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="transactionQtyTF" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="unitShow" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -118,14 +120,15 @@
                                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="productComboBox" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="categoryTF" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="productComboBox" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="subCategoryTF" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="107" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="103" max="32767" attributes="0"/>
@@ -135,6 +138,10 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -168,7 +175,12 @@
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="categoryTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="subCategoryTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="unitShow" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -188,12 +200,12 @@
                   <Component id="supCmb" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="suppBranchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="transactionBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="quantityShow" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="81" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -245,7 +257,7 @@
         <Property name="text" type="java.lang.String" value="Unit of Measure"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="unitShow">
+    <Component class="javax.swing.JTextField" name="subCategoryTF">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -328,6 +340,16 @@
           <Font name="Tahoma" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="text"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sub-Category"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="unitShow">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
   </SubComponents>

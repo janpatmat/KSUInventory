@@ -48,6 +48,8 @@ public String prdnm = null;
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        subCategoryCB = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
@@ -134,6 +136,9 @@ public String prdnm = null;
         jLabel6.setText("Minimum Quantity");
 
         jLabel7.setText("Unit of Measure");
+
+        jLabel8.setText("Sub-Category");
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,38 +149,38 @@ public String prdnm = null;
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4))
-                                .addGap(36, 36, 36)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(productName)
-                                    .addComponent(catCmb, 0, 310, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(13, 13, 13)
-                                        .addComponent(unitCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(minQ)))))
-                        .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(109, 109, 109)
+                        .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(109, 109, 109)
-                                .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(addProductBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(107, 107, 107))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(catCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(productName, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(minQ, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(unitCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(subCategoryCB, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(19, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addProductBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,15 +199,19 @@ public String prdnm = null;
                     .addComponent(catCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(unitCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(jLabel8)
+                    .addComponent(subCategoryCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(unitCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(minQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(addProductBtn)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,7 +222,7 @@ public String prdnm = null;
         if (productName.getText().length() > 0 && minQ.getText().length() > 0 && unitCmb.getSelectedItem().toString().length() > 0 && catCmb.getSelectedItem().toString().length() > 0){    
             try{
                 boolean checker = false;
-                st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo) VALUES (?,?,?,?,?,?,?,?)");
+                st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo, subsub) VALUES (?,?,?,?,?,?,?,?,?)");
                 String nm = productName.getText();
                 Statement sta = KsuFinal.con.createStatement();
                 ResultSet rs = sta.executeQuery("SELECT productName from producttable");
@@ -241,14 +250,14 @@ public String prdnm = null;
                     st.setFloat(7, 0);
                     st.setString(8, "0");
                     st.setString(9, "0");
-//                    st.setString(10, subCategoryCB.getSelectedItem().toString());
+                    st.setString(10, subCategoryCB.getSelectedItem().toString());
                     st.executeUpdate();
 
                     productName.setText("");
                     minQ.setText("");
                     unitCmb.setSelectedItem("");
                     catCmb.setSelectedItem("");
-//                    subCategoryCB.setSelectedItem("");
+                    subCategoryCB.setSelectedItem("");
                     JOptionPane.showMessageDialog(this,"Successfully registered the product");
                 }
             }
@@ -297,11 +306,11 @@ public String prdnm = null;
     public void openWindowAction(){
         unitCmb.removeAllItems();
         catCmb.removeAllItems();
-//        subCategoryCB.removeAllItems();
+        subCategoryCB.removeAllItems();
         
         unitCmb.addItem("");
         catCmb.addItem("");
-//        subCategoryCB.addItem("");
+        subCategoryCB.addItem("");
         
         try{
             String unit;
@@ -309,7 +318,7 @@ public String prdnm = null;
             String subCategory;
             ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT Unit FROM unittable");
             ResultSet res = KsuFinal.con.createStatement().executeQuery("SELECT categoryName FROM categorytable");
-//            ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT Unit FROM subcategorytable");
+            ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT Unit FROM subcategorytable");
             
             while(rs.next()){
                 unit = rs.getString("Unit");
@@ -319,16 +328,16 @@ public String prdnm = null;
                 category = res.getString("categoryName");
                 catCmb.addItem(category);
             }
-//            while (rs2.next()){
-//                subCategory = rs2.getString("subCategoryName");
-//                subCategoryCB.addItem(subCategory);
-//            }
+            while (rs2.next()){
+                subCategory = rs2.getString("subCategoryName");
+                subCategoryCB.addItem(subCategory);
+            }
             
             
             
             unitCmb.setSelectedItem("");
             catCmb.setSelectedItem("");
-//            subCategoryCB.setSelectedItem("");
+            subCategoryCB.setSelectedItem("");
         }
         catch(Exception e){
             System.out.println(e);
@@ -391,10 +400,12 @@ public String prdnm = null;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField minQ;
     private javax.swing.JTextField productName;
     private javax.swing.JLabel questionMarkIcon;
+    private javax.swing.JComboBox subCategoryCB;
     private javax.swing.JComboBox unitCmb;
     // End of variables declaration//GEN-END:variables
 }

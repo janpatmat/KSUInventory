@@ -51,7 +51,7 @@ public class ViewSubCategory extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Category"
+                "Sub-Category"
             }
         ));
         subCategoryTable.setRowHeight(25);

@@ -63,11 +63,11 @@ PreparedStatement st = null;
 
             },
             new String [] {
-                "Product ID", "Product Name", "Category", "Unit of Measure", "Quantity", "Minimum Quantity", "Standard Price"
+                "Product ID", "Product Name", "Category", "Sub-Category", "Unit of Measure", "Quantity", "Minimum Quantity", "Standard Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, true, true
+                false, false, false, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -132,12 +132,13 @@ PreparedStatement st = null;
                 String quan = String.valueOf(prodRs.getInt("productQuantity"));
                 String unit = prodRs.getString("Unit");
                 String cat = prodRs.getString("Sub");
+                String scat = prodRs.getString("subsub");
                 String min = prodRs.getString("prodMinq");
                 String stndrd = prodRs.getString("standardPrice");
                 String fromD = prodRs.getString("dateFrom");
                 String toD = prodRs.getString("dateTo");
                 
-                String[] item = {id, name, cat, unit, quan, min, stndrd};
+                String[] item = {id, name, cat, scat, unit, quan, min, stndrd};
                 t.addRow(item);
                 
                 String[] item2 = {id, name, quan, unit, stndrd, fromD, toD};

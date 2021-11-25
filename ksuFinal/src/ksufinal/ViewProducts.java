@@ -66,11 +66,11 @@ public class ViewProducts extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product ID", "Name", "Quantity", "Unit of Measure", "Minimum Quantity", "Standard Price", "Category"
+                "Product ID", "Name", "Category", "Sub-Category", "Unit of Measure", "Quantity", "Minimum Quantity", "Standard Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, true, true, true
+                true, false, true, true, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -142,8 +142,8 @@ public class ViewProducts extends javax.swing.JFrame {
                 String munit = prodres.getString("prodMinq");
                 String stp = prodres.getString("standardPrice");
                 String sub = prodres.getString("Sub");
-//                String subsub = prodres.getString("subsub");
-                String[] item = {id, name, quan, unit,munit, stp, sub};
+                String subsub = prodres.getString("subsub");
+                String[] item = {id, name, sub, subsub, unit, quan,munit, stp};
 //                String[] item2 = {id, name, quan, unit};
                 t.addRow(item);
             }
