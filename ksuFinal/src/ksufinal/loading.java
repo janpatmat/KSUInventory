@@ -31,8 +31,8 @@ public class loading extends javax.swing.JFrame {
         String msuppliertable = "create table if not exists expenses.suppliertable (supplierID int not null unique auto_increment , supplierName varchar(45) null, Contact varchar(45) null, Address varchar(45) null, ContactPerson varchar(45) null, primary key(supplierID))";
         String munittable = "create table if not exists expenses.unittable (unitID int not null unique AUTO_INCREMENT, Unit varchar(45) null, primary key(unitID))";
         String musertable = "create table if not exists expenses.usertable (userID int not null unique auto_increment, Firstname text null, Lastname text null, Username text null, Password text null, Admin varchar(5) not null default 'FALSE', Active varchar(5) not null default 'TRUE', primary key(userID))";
-        String minventoryinfo = "create table if no exists expenses.inventoryinfo (num int not null, title text null, street text null, city text null, contactNum int null, backupLocation text null)";
-        String adinfo = "insert into expenses.inventoryinfo values (0, 'Company Name Inventory', 'NA', 'NA', '0123456789', 'D:\\')";
+        String minventoryinfo = "create table if not exists expenses.inventoryinfo (num int not null, title text null, street text null, city text null, contactNum int null, backupLocation text null)";
+        String adinfo = "insert into expenses.inventoryinfo values (0, 'Company Name Inventory', 'NA', 'NA', '0123456789', 'D:\\\\')";
         String admaker = "insert into expenses.usertable (Firstname , Lastname , Username , Password, Admin, Active) values ('admin', 'admin', 'admin', 'admin', 'TRUE' , 'TRUE')";
         try{
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306" , KsuFinal.user , KsuFinal.pass);

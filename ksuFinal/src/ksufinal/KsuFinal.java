@@ -40,7 +40,7 @@ public class KsuFinal {
         user = "root";
         pass = "Langgalangga1";
 
-//        String pass = "Corei810thgen";
+//        pass = "Corei810thgen";
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/expenses",user,pass);
