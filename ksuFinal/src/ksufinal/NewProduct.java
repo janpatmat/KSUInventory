@@ -52,7 +52,6 @@ public String prdnm = null;
         subCategoryCB = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
 
-        instructionDialogue.setBackground(new java.awt.Color(240, 240, 240));
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
         instructionDialogue.setResizable(false);
         instructionDialogue.setType(java.awt.Window.Type.POPUP);
@@ -140,6 +139,11 @@ public String prdnm = null;
 
         jLabel8.setText("Sub-Category");
 
+        subCategoryCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subCategoryCBActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,26 +227,30 @@ public String prdnm = null;
     private void addProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductBtnActionPerformed
         if (productName.getText().length() > 0 && minQ.getText().length() > 0 && unitCmb.getSelectedItem().toString().length() > 0 && catCmb.getSelectedItem().toString().length() > 0 && subCategoryCB.getSelectedItem().toString().length() > 0){    
             try{
+                System.out.println("1");
                 boolean checker = false;
-                st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo, subsub) VALUES (?,?,?,?,?,?,?,?,?)");
+                st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo, subsub) VALUES (?,?,?,?,?,?,?,?,?,?)");
                 String nm = productName.getText();
                 Statement sta = KsuFinal.con.createStatement();
                 ResultSet rs = sta.executeQuery("SELECT productName from producttable");
                 while(rs.next()){
+                    System.out.println("2");
                     prdnm = rs.getString("productName");
                     if (prdnm.equals(nm)){
                         checker = true;
                         break;
                     }
                     else{
+                        System.out.println("2 false");
                         checker = false;
                     }
                 }
                 if(checker == true){
                     JOptionPane.showMessageDialog(this,"Please select a new Product Name", "Error", JOptionPane.ERROR_MESSAGE);
-
+                    System.out.println("3 true");
                 }
                 else{
+                    System.out.println("3 false");
                     st.setString(1, productName.getText());
                     st.setInt(2, 0);
                     st.setString(3,(String) unitCmb.getSelectedItem());
@@ -267,6 +275,7 @@ public String prdnm = null;
                 if (ex instanceof NumberFormatException){
                     JOptionPane.showMessageDialog(this,"Please put a numeric value in the Minimum Quantity Field", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+                System.err.print(ex);
             }
         }else{
             JOptionPane.showMessageDialog(this,"There are missing inputs", "Error", JOptionPane.ERROR_MESSAGE);
@@ -320,7 +329,7 @@ public String prdnm = null;
             String subCategory;
             ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT Unit FROM unittable");
             ResultSet res = KsuFinal.con.createStatement().executeQuery("SELECT categoryName FROM categorytable");
-            ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT Unit FROM subcategorytable");
+            ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT subCategoryName FROM subcategorytable");
             
             while(rs.next()){
                 unit = rs.getString("Unit");
@@ -353,6 +362,10 @@ public String prdnm = null;
         instructionDialogue.setVisible(true);
 
     }//GEN-LAST:event_questionMarkIconMouseEntered
+
+    private void subCategoryCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subCategoryCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subCategoryCBActionPerformed
 
     public void test(){
     }

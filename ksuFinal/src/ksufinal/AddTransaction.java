@@ -399,8 +399,8 @@ public class AddTransaction extends javax.swing.JFrame {
                 //Edit the table in the products table
                 int idx = productComboBox.getSelectedIndex();
                 String nm = transactionArr.get(idx)[2];
-                int quan = Integer.parseInt(transactionArr.get(idx)[0]);
-                int inputQuan = Integer.parseInt(transactionQtyTF.getText());
+                double quan = Double.parseDouble(transactionArr.get(idx)[0]);
+                double inputQuan = Double.parseDouble(transactionQtyTF.getText());
                 String newQuan = "";
 
 
@@ -409,7 +409,7 @@ public class AddTransaction extends javax.swing.JFrame {
 
                 }else{
                     newQuan = String.valueOf(quan - inputQuan);
-                    int intNewQuan = Integer.parseInt(newQuan);
+                    double intNewQuan = Double.parseDouble(newQuan);
                     int intMin = Integer.parseInt(transactionArr.get(idx)[3]);
                     if (intNewQuan >= 0){
                         if (intNewQuan < intMin){
@@ -434,8 +434,10 @@ public class AddTransaction extends javax.swing.JFrame {
 
                     st.setInt(1, Integer.parseInt(transactionArr.get(idx)[4])); // ProdID
                     st.setString(2, transactionArr.get(idx)[2]); // Name
-                    st.setInt(3, inputQuan); // Quantity
+                    st.setDouble(3, inputQuan); // Quantity
                     st.setString(4, transactionArr.get(idx)[1]); // Unit
+                    String curDob = transactionPriceTF.getText();
+                    System.out.println(curDob);
                     st.setDouble(5, Double.parseDouble(transactionPriceTF.getText())); // Price
                     st.setString(6, (String) supCmb.getSelectedItem()); // SuppBranch
                     st.setString(7, java.time.LocalDate.now().toString()); // Date
@@ -475,11 +477,14 @@ public class AddTransaction extends javax.swing.JFrame {
                 }
             }    
             catch(Exception ex){
+                 System.err.println(ex);
                 if (ex instanceof NumberFormatException){
                     if (currRadioBtn.equals("deposit")){
                         JOptionPane.showMessageDialog(this,"Please input a numeric value in the Quantity Field and Price Field ", "Error", JOptionPane.ERROR_MESSAGE);
+                        System.err.println(ex);
                     }else{
                         JOptionPane.showMessageDialog(this,"Please input a numeric value in the Quantity Field ", "Error", JOptionPane.ERROR_MESSAGE);
+                    System.err.println(ex);
                     }
                 }
             }
