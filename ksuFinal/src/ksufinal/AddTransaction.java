@@ -475,13 +475,8 @@ public class AddTransaction extends javax.swing.JFrame {
                 }
             }    
             catch(Exception ex){
-                if (ex instanceof NumberFormatException){
-                    if (currRadioBtn.equals("deposit")){
-                        JOptionPane.showMessageDialog(this,"Please input a numeric value in the Quantity Field and Price Field ", "Error", JOptionPane.ERROR_MESSAGE);
-                    }else{
-                        JOptionPane.showMessageDialog(this,"Please input a numeric value in the Quantity Field ", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
+                JOptionPane.showMessageDialog(this,ex, "Error", JOptionPane.ERROR_MESSAGE);
+                    
             }
         }
     }//GEN-LAST:event_transactionBtnActionPerformed

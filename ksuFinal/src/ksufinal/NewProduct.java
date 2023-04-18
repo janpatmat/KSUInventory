@@ -320,8 +320,8 @@ public String prdnm = null;
             String subCategory;
             ResultSet rs = KsuFinal.con.createStatement().executeQuery("SELECT Unit FROM unittable");
             ResultSet res = KsuFinal.con.createStatement().executeQuery("SELECT categoryName FROM categorytable");
-            ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT Unit FROM subcategorytable");
-            
+            ResultSet rs2 = KsuFinal.con.createStatement().executeQuery("SELECT subCategoryName FROM subcategorytable");
+            System.out.println("Hello worldodod");
             while(rs.next()){
                 unit = rs.getString("Unit");
                 unitCmb.addItem(unit);
