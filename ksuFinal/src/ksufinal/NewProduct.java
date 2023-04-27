@@ -224,7 +224,7 @@ public String prdnm = null;
         if (productName.getText().length() > 0 && minQ.getText().length() > 0 && unitCmb.getSelectedItem().toString().length() > 0 && catCmb.getSelectedItem().toString().length() > 0 && subCategoryCB.getSelectedItem().toString().length() > 0){    
             try{
                 boolean checker = false;
-                st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo, subsub) VALUES (?,?,?,?,?,?,?,?,?)");
+                st = KsuFinal.con.prepareStatement("INSERT INTO producttable (productName,productQuantity, Unit,prodMinq, Active, Sub, standardPrice, dateFrom, dateTo, subsub) VALUES (?,?,?,?,?,?,?,?,?,?)");
                 String nm = productName.getText();
                 Statement sta = KsuFinal.con.createStatement();
                 ResultSet rs = sta.executeQuery("SELECT productName from producttable");
@@ -264,12 +264,10 @@ public String prdnm = null;
                 }
             }
             catch(Exception ex){
-                if (ex instanceof NumberFormatException){
-                    JOptionPane.showMessageDialog(this,"Please put a numeric value in the Minimum Quantity Field", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+               JOptionPane.showMessageDialog(this,ex, "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
-            JOptionPane.showMessageDialog(this,"There are missing inputs", "Error", JOptionPane.ERROR_MESSAGE);
+   
+            
         }
     }//GEN-LAST:event_addProductBtnActionPerformed
 

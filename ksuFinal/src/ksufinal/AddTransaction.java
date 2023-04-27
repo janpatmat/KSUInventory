@@ -366,10 +366,10 @@ public class AddTransaction extends javax.swing.JFrame {
         subCategoryTF.setText("");
         unitShow.setText("");
         currRadioBtn = "withdraw";
-        pptLabel.setText("Standard Price");
+        pptLabel.setText("Price");
        
        //Get standard price from the product table and setText to priceTF
-       transactionPriceTF.setEditable(false);
+       //transactionPriceTF.setEditable(false);
        
 
 
@@ -395,22 +395,24 @@ public class AddTransaction extends javax.swing.JFrame {
         else{
             int yesNO = 0;
             boolean belowMinimum = false;
+           
             try{
                 //Edit the table in the products table
                 int idx = productComboBox.getSelectedIndex();
                 String nm = transactionArr.get(idx)[2];
-                int quan = Integer.parseInt(transactionArr.get(idx)[0]);
-                int inputQuan = Integer.parseInt(transactionQtyTF.getText());
+                double quan = Double.parseDouble(transactionArr.get(idx)[0]);
+                double inputQuan = Double.parseDouble(transactionQtyTF.getText());
+                double totprice = Double.parseDouble(transactionPriceTF.getText()) * inputQuan;
                 String newQuan = "";
-
+                
 
                 if (currRadioBtn.equals("deposit")){
                     newQuan = String.valueOf(quan + inputQuan);
 
                 }else{
                     newQuan = String.valueOf(quan - inputQuan);
-                    int intNewQuan = Integer.parseInt(newQuan);
-                    int intMin = Integer.parseInt(transactionArr.get(idx)[3]);
+                    double intNewQuan = Double.parseDouble(newQuan);
+                    int intMin = 0;
                     if (intNewQuan >= 0){
                         if (intNewQuan < intMin){
                             // display Warning if below minimum
@@ -430,12 +432,16 @@ public class AddTransaction extends javax.swing.JFrame {
                     KsuFinal.con.prepareStatement(statement).executeUpdate(); 
 
                     //Edit the table in the transactions table
-                    PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID,Name,Quantity,Unit,Price,SuppBranch,Date, Action, Sub , Transby, subsub)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+                    PreparedStatement st = KsuFinal.con.prepareStatement("INSERT INTO expenses.producttrans (prodID,Name,Quantity,Unit,Price,SuppBranch,Date, Action, Sub , TotalPrice, subsub)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 
-                    st.setInt(1, Integer.parseInt(transactionArr.get(idx)[4])); // ProdID
+                    st.setInt(1, Integer.parseInt(transactionArr.get(idx)[4]));
+                    System.out.println("1 " + transactionArr.get(idx)[4]);// ProdID
                     st.setString(2, transactionArr.get(idx)[2]); // Name
-                    st.setInt(3, inputQuan); // Quantity
+                    System.out.println("2 " + transactionArr.get(idx)[2]);
+                    st.setDouble(3, inputQuan); // Quantity
+                    System.out.println("3 " + inputQuan);
                     st.setString(4, transactionArr.get(idx)[1]); // Unit
+                    System.out.println("4 " + transactionArr.get(idx)[1]);
                     st.setDouble(5, Double.parseDouble(transactionPriceTF.getText())); // Price
                     st.setString(6, (String) supCmb.getSelectedItem()); // SuppBranch
                     st.setString(7, java.time.LocalDate.now().toString()); // Date
@@ -445,7 +451,7 @@ public class AddTransaction extends javax.swing.JFrame {
                         st.setString(8, "withdraw");
                     }
                     st.setString(9, categoryTF.getText()); // Sub
-                    st.setString(10, t.fullName); // Transby
+                    st.setDouble(10, totprice); // Transby
                     st.setString(11, subCategoryTF.getText()); // subsub
 
                     st.executeUpdate();            
@@ -476,6 +482,7 @@ public class AddTransaction extends javax.swing.JFrame {
             }    
             catch(Exception ex){
                 JOptionPane.showMessageDialog(this,ex, "Error", JOptionPane.ERROR_MESSAGE);
+                System.out.println(transactionArr.get(1)[0]);
                     
             }
         }

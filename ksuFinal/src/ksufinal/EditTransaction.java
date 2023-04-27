@@ -446,7 +446,7 @@ public class EditTransaction extends javax.swing.JFrame {
                 String sb = rsTransaction.getString("SuppBranch");
                 Date dt = rsTransaction.getDate("Date");
                 String ac = rsTransaction.getString("Action");
-                String tb = rsTransaction.getString("Transby");
+                String tb = rsTransaction.getString("TotalPrice");
                 String tp = String.format("%,.2f", Float.parseFloat(pr) * Float.parseFloat(quant));
                 pr = String.format("%,.2f", Float.parseFloat(pr));
                 

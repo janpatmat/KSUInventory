@@ -991,7 +991,7 @@ public class Report extends javax.swing.JFrame {
                 contactNum = rs.getString("contactNum");
                 
             }catch (Exception ex){
-                
+                System.out.println(ex);
             }
 //        }
     }
