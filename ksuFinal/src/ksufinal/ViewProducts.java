@@ -40,6 +40,8 @@ public class ViewProducts extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         proddbTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        search = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jMenu2.setText("File");
@@ -86,6 +88,14 @@ public class ViewProducts extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("VIEW PRODUCTS MENU");
+
+        jLabel1.setText("Search");
+
+        search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchKeyReleased(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -95,7 +105,11 @@ public class ViewProducts extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(423, 423, 423)
                 .addComponent(jLabel6)
-                .addContainerGap(431, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -105,9 +119,12 @@ public class ViewProducts extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel1)
+                    .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -153,6 +170,35 @@ public class ViewProducts extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_formWindowActivated
 
+    private void searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyReleased
+        // TODO add your handling code here:
+        String a = search.getText();
+        DefaultTableModel t = (DefaultTableModel)proddbTable.getModel();
+        t.setRowCount(0);
+        try{
+            Statement prodstate = KsuFinal.con.createStatement();
+            ResultSet prodres = prodstate.executeQuery("SELECT * FROM producttable WHERE productName LIKE '" + a + "%'");
+
+            while(prodres.next()){
+
+                String id = prodres.getString("productID");
+                String name = prodres.getString("productName");
+                String quan = String.valueOf(prodres.getInt("productQuantity"));
+                String unit = prodres.getString("Unit");
+                String munit = prodres.getString("prodMinq");
+                String stp = prodres.getString("standardPrice");
+                String sub = prodres.getString("Sub");
+                String subsub = prodres.getString("subsub");
+                String[] item = {id, name, quan, unit,munit, stp, sub, subsub};
+//                String[] item2 = {id, name, quan, unit};
+                t.addRow(item);
+            }
+       }
+       catch(Exception e){
+           System.out.println(e);
+       }
+    }//GEN-LAST:event_searchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -192,6 +238,7 @@ public class ViewProducts extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -199,5 +246,6 @@ public class ViewProducts extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable proddbTable;
+    private javax.swing.JTextField search;
     // End of variables declaration//GEN-END:variables
 }

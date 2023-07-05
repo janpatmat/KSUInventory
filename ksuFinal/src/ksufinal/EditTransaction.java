@@ -60,6 +60,8 @@ public class EditTransaction extends javax.swing.JFrame {
         questionMarkIcon = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         ET_deleteBtn = new javax.swing.JButton();
+        search = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         instructionDialogue.setBackground(new java.awt.Color(240, 240, 240));
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
@@ -124,7 +126,6 @@ public class EditTransaction extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        ET_TransactionTable.setRowHeight(20);
         ET_TransactionTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ET_TransactionTableMouseClicked(evt);
@@ -187,6 +188,14 @@ public class EditTransaction extends javax.swing.JFrame {
             }
         });
 
+        search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchKeyReleased(evt);
+            }
+        });
+
+        jLabel3.setText("Search");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -223,7 +232,11 @@ public class EditTransaction extends javax.swing.JFrame {
                                 .addComponent(ET_deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(399, 399, 399)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -235,8 +248,11 @@ public class EditTransaction extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,6 +509,42 @@ public class EditTransaction extends javax.swing.JFrame {
         instructionDialogue.setVisible(false);
     }//GEN-LAST:event_questionMarkIconMouseExited
 
+    private void searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel TransactionTableModel = (DefaultTableModel) ET_TransactionTable.getModel();
+        TransactionTableModel.setRowCount(0);
+        String a = search.getText();
+        transactionArr.clear();
+        dateArr.clear();
+        try{
+            ResultSet rsTransaction = KsuFinal.con.createStatement().executeQuery("SELECT * FROM producttrans where Name LIKE '" + a + "%';");
+            while(rsTransaction.next()){
+                String tn = rsTransaction.getString("TransactionNo");
+                String pid = rsTransaction.getString("prodID");
+                String nm = rsTransaction.getString("Name");
+                String sub = rsTransaction.getString("Sub");
+                String quant = rsTransaction.getString("Quantity");
+                String ut = rsTransaction.getString("Unit");
+                String pr = rsTransaction.getString("Price");
+                String sb = rsTransaction.getString("SuppBranch");
+                Date dt = rsTransaction.getDate("Date");
+                String ac = rsTransaction.getString("Action");
+                String tb = rsTransaction.getString("TotalPrice");
+                String tp = String.format("%,.2f", Float.parseFloat(pr) * Float.parseFloat(quant));
+                pr = String.format("%,.2f", Float.parseFloat(pr));
+                
+                String[] row = {tn, pid, dt.toString(), nm, sub, pr, quant, tp, ut, sb, ac, tb};
+                
+                TransactionTableModel.addRow(row);
+                transactionArr.add(row);
+                dateArr.add(dt);
+            }
+        }
+        catch(Exception ex){
+            
+        }
+    }//GEN-LAST:event_searchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -541,6 +593,7 @@ public class EditTransaction extends javax.swing.JFrame {
     private javax.swing.JDialog instructionDialogue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -548,5 +601,6 @@ public class EditTransaction extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel questionMarkIcon;
+    private javax.swing.JTextField search;
     // End of variables declaration//GEN-END:variables
 }

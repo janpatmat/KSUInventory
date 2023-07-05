@@ -155,7 +155,6 @@ public class ViewTransactions extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TransactionTable.setRowHeight(20);
         jScrollPane1.setViewportView(TransactionTable);
 
         questionMarkIcon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -660,7 +659,8 @@ public class ViewTransactions extends javax.swing.JFrame {
             SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
             String fdate = dFormat.format(fromDateChooser.getDate());
             String tdate = dFormat.format(toDateChooser.getDate());
-
+            System.out.println(fdate);
+            System.out.println(tdate);
             finalArr.add(" Date BETWEEN '" + fdate + "' AND '" + tdate + "'");
             
             
@@ -686,7 +686,7 @@ public class ViewTransactions extends javax.swing.JFrame {
                         String sb = rs.getString("SuppBranch");
                         String dt = rs.getString("Date");
                         String act = rs.getString("Action");
-                        String tb = rs.getString("Transby");
+                        String tb = rs.getString("TotalPrice");
 
 
                         if (Float.parseFloat(qty) < 0){

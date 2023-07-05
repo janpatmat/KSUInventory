@@ -9,6 +9,9 @@ import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,7 +53,7 @@ public class AddTransaction extends javax.swing.JFrame {
         depositRadioBtn = new javax.swing.JRadioButton();
         withdrawRadioBtn = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        productComboBox = new javax.swing.JComboBox<String>();
+        productComboBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         unitShow = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -67,6 +70,7 @@ public class AddTransaction extends javax.swing.JFrame {
         quantityShow = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         subCategoryTF = new javax.swing.JTextField();
+        dateChoose = new com.toedter.calendar.JDateChooser();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         instructionDialogue.setMinimumSize(new java.awt.Dimension(292, 198));
@@ -144,6 +148,12 @@ public class AddTransaction extends javax.swing.JFrame {
 
         jLabel3.setText("Quantity");
 
+        transactionQtyTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                transactionQtyTFKeyReleased(evt);
+            }
+        });
+
         pptLabel.setText("Price per Item");
 
         transactionBtn.setText("Receive");
@@ -211,10 +221,6 @@ public class AddTransaction extends javax.swing.JFrame {
                                             .addComponent(transactionQtyTF, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(unitShow)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(depositRadioBtn)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(withdrawRadioBtn))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel5)
                                             .addComponent(jLabel1)
@@ -231,7 +237,16 @@ public class AddTransaction extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addGap(78, 78, 78)
                                 .addComponent(questionMarkIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(depositRadioBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(withdrawRadioBtn)
+                        .addGap(25, 244, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dateChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +258,9 @@ public class AddTransaction extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jLabel6)))
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
+                .addComponent(dateChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(depositRadioBtn)
                     .addComponent(withdrawRadioBtn))
@@ -389,8 +406,12 @@ public class AddTransaction extends javax.swing.JFrame {
     }//GEN-LAST:event_withdrawRadioBtnActionPerformed
 
     private void transactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionBtnActionPerformed
-        if (transactionPriceTF.getText().length() == 0 ||transactionQtyTF.getText().length() == 0 || productComboBox.getSelectedItem().toString().length() == 0 || supCmb.getSelectedItem().toString().length() == 0){
+         
+           
+        if (transactionPriceTF.getText().length() == 0 ||transactionQtyTF.getText().length() == 0 || productComboBox.getSelectedItem().toString().length() == 0 || supCmb.getSelectedItem().toString().length() == 0|| dateChoose.getDate() == null){
             JOptionPane.showMessageDialog(this,"Missing fields", "Error", JOptionPane.ERROR_MESSAGE);
+//            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+//          
         }
         else{
             int yesNO = 0;
@@ -403,6 +424,9 @@ public class AddTransaction extends javax.swing.JFrame {
                 double quan = Double.parseDouble(transactionArr.get(idx)[0]);
                 double inputQuan = Double.parseDouble(transactionQtyTF.getText());
                 double totprice = Double.parseDouble(transactionPriceTF.getText()) * inputQuan;
+                SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String fdate = dFormat.format(dateChoose.getDate());
+               
                 String newQuan = "";
                 
 
@@ -444,7 +468,8 @@ public class AddTransaction extends javax.swing.JFrame {
                     System.out.println("4 " + transactionArr.get(idx)[1]);
                     st.setDouble(5, Double.parseDouble(transactionPriceTF.getText())); // Price
                     st.setString(6, (String) supCmb.getSelectedItem()); // SuppBranch
-                    st.setString(7, java.time.LocalDate.now().toString()); // Date
+                    st.setString(7, fdate.toString()); // Date
+                    
                     if (currRadioBtn.equals("deposit")){ // Action
                         st.setString(8, "deposit");
                     }else{
@@ -464,7 +489,9 @@ public class AddTransaction extends javax.swing.JFrame {
                     supCmb.setSelectedItem("");
                     quantityShow.setText("");
                     if (currRadioBtn.equals("deposit")){
+                        
                         JOptionPane.showMessageDialog(this,"Successfully received the product");
+                        
                     }else{
                         JOptionPane.showMessageDialog(this,"Successfully withdrawn the product");
                         quantityShow.setText("");
@@ -483,6 +510,7 @@ public class AddTransaction extends javax.swing.JFrame {
             catch(Exception ex){
                 JOptionPane.showMessageDialog(this,ex, "Error", JOptionPane.ERROR_MESSAGE);
                 System.out.println(transactionArr.get(1)[0]);
+                
                     
             }
         }
@@ -582,6 +610,11 @@ public class AddTransaction extends javax.swing.JFrame {
         instructionDialogue.setVisible(false);
     }//GEN-LAST:event_questionMarkIconMouseExited
 
+    private void transactionQtyTFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_transactionQtyTFKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_transactionQtyTFKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -621,6 +654,7 @@ public class AddTransaction extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField categoryTF;
+    private com.toedter.calendar.JDateChooser dateChoose;
     private javax.swing.JRadioButton depositRadioBtn;
     private javax.swing.JDialog instructionDialogue;
     private javax.swing.JLabel jLabel1;
